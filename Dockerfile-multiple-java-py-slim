@@ -1,0 +1,14 @@
+FROM python:3.9.18
+RUN apt-get update -y
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+RUN apt-get install -y \
+    default-jdk-headless
+
+# Standard requirements
+COPY . /app
+WORKDIR /app
+RUN test -f /app/generations.json && rm /app/generations.json || true
+
+RUN pip3 install -r requirements.txt
+CMD ["python3", "main.py"]
