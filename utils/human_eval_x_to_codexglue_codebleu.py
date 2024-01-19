@@ -7,7 +7,7 @@ from datasets import load_dataset
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Convert MultiPL-E to CodeBLEU score references')
+        description='Convert humaneval-x to CodeBLEU score references')
     parser.add_argument('--language', '-lang',
                         required=True, help='')
     parser.add_argument('--num_of_problems', '-num_prob',
