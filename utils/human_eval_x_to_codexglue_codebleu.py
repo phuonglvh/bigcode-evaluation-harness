@@ -10,7 +10,7 @@ def main():
         description='Convert humaneval-x to CodeBLEU score references')
     parser.add_argument('--language', '-lang',
                         required=True, help='')
-    parser.add_argument('--num_of_problems', '-num_prob',
+    parser.add_argument('--predictions_path', '-pred_path',
                         required=True, help='')
     parser.add_argument('--references_path', '-ref_path',
                         required=True, help='')
@@ -23,9 +23,23 @@ def main():
     else:
         raise ValueError('Unsupported language: {}'.format(args.language))
 
+    func_sig_pattern = r'def\s+(\w+)\s*\('
+    task_predictions = json.load(open(args.predictions_path, 'r'))
+    task_predictions = [predictions[0] for predictions in task_predictions]
+
+    predicted_funcs = []
+    for task_prediction in task_predictions:
+        match = re.search(func_sig_pattern, task_prediction)
+        if match:
+            function_name = match.group(1)
+            predicted_funcs.append(function_name)
+        else:
+            raise ValueError(
+                'Could not find function name in prediction: {}'.format(task_prediction))
+
     reference_lines = []
-    for task in tasks:
-        ref_json = {}
+    for predicted_func in predicted_funcs:
+        task = [task for task in tasks if task['entry_point'] == predicted_func][0]
         prompt = task.get('prompt')
         canonical_solution = task.get('canonical_solution')
 
