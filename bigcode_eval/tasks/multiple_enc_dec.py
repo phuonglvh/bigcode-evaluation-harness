@@ -127,7 +127,7 @@ class GeneralMultiPLEEncDec(GeneralMultiPLE):
         """
         doc = self.get_dataset()[idx]
         prompt = self.get_prompt(doc)
-        gen = self.remove_last_block(generation[len(prompt):].rstrip())
+        gen = self.remove_last_block(generation[len(prompt):].rstrip(), self.stop_words)
         # Strip to maintain same behavior as with get_prompt
         post_gen = doc["prompt"].rstrip() + self._stop_at_stop_token(gen, self.stop_words)
         print(f'postprocess_generation:\ngeneration={generation}\npost_gen={post_gen}')
