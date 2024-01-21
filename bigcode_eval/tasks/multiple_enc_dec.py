@@ -67,8 +67,8 @@ def create_all_tasks():
 
 
 def create_task(language):
-    class GeneralMultiPLEEncDec(Task):
-        def __init__(self):
+    class GeneralMultiPLEEncDec(GeneralMultiPLE):
+        def __init__(self, language):
             super().__init__(language)
 
     return GeneralMultiPLEEncDec
