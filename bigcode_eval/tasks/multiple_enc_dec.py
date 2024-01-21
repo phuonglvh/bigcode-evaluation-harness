@@ -109,7 +109,7 @@ class GeneralMultiPLEEncDec(GeneralMultiPLE):
         prompt_base = self.get_prompt_base(doc)
         instruction = extract_text(prompt_base)
         prompt = self.decoder_prompt_pattern.format(instruction, prompt_base)
-        print(f'get_prompt (decoder): {prompt}')
+        # print(f'get_prompt (decoder): {prompt}')
         return prompt
 
     def get_prompt_encoder(self, doc):
@@ -117,7 +117,7 @@ class GeneralMultiPLEEncDec(GeneralMultiPLE):
         prompt_base = self.get_prompt_base(doc)
         instruction = extract_text(prompt_base)
         prompt = self.encoder_prompt_pattern.format(instruction)
-        print(f'get_prompt_encoder: {prompt}')
+        # print(f'get_prompt_encoder: {prompt}')
         return prompt
 
     def remove_last_block(self, code, stop_words):
