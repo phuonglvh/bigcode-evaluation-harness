@@ -170,8 +170,11 @@ class GeneralMultiPLEEncDec(GeneralMultiPLE):
         prompt = self.get_prompt(doc)
         gen = self.remove_last_block(generation[len(prompt):].rstrip(), self.stop_words)
         # Strip to maintain same behavior as with get_prompt
-        post_gen = doc["prompt"].rstrip() + self._stop_at_stop_token(gen, self.stop_words)
-        print(f'postprocess_generation:\ngeneration={generation}\n\npost_gen={post_gen}')
+        doc_prompt = doc["prompt"].rstrip()
+        sep = '' if doc_prompt.endswith('\n') else '\n'
+        post_gen = doc_prompt + sep + \
+            self._stop_at_stop_token(gen, self.stop_words)
+        print(f'postprocess_generation:\n\ngeneration={generation}\n\npost_gen={post_gen}')
         return post_gen
 
     def process_results(self, generations, references):
