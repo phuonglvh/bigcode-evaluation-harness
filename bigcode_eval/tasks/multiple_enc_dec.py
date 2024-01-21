@@ -67,11 +67,11 @@ def create_all_tasks():
 
 
 def create_task(language):
-    class GeneralMultiPLEEncDec(GeneralMultiPLE):
-        def __init__(self, language):
+    class MultiPLE(GeneralMultiPLEEncDec):
+        def __init__(self):
             super().__init__(language)
 
-    return GeneralMultiPLEEncDec
+    return MultiPLE
 
 def extract_text(prompt, remove_lines=True):
     token = '\"\"\"'
