@@ -3,7 +3,7 @@ from pprint import pprint
 
 from . import (apps, codexglue_code_to_text, codexglue_text_to_text, conala,
                concode, ds1000, gsm, humaneval, humanevalpack,
-               instruct_humaneval, instruct_wizard_humaneval, mbpp, multiple,
+               instruct_humaneval, instruct_wizard_humaneval, mbpp, multiple, multiple_enc_dec,
                parity, python_bugs, quixbugs, recode, santacoder_fim)
 
 TASK_REGISTRY = {
@@ -11,6 +11,7 @@ TASK_REGISTRY = {
     **codexglue_code_to_text.create_all_tasks(),
     **codexglue_text_to_text.create_all_tasks(),
     **multiple.create_all_tasks(),
+    **multiple_enc_dec.create_all_tasks(),
     "codexglue_code_to_text-python-left": codexglue_code_to_text.LeftCodeToText,
     "conala": conala.Conala,
     "concode": concode.Concode,
