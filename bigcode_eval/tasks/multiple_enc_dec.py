@@ -95,6 +95,8 @@ class GeneralMultiPLEEncDec(GeneralMultiPLE):
 
     def __init__(self, language):
         super().__init__(language)
+        self.stop_words.append("<|endoftext|>")
+        # self.stop_words.append(*["\nclass", "\ndef", "\n#", "\n@", "\nprint", "\nif", "\nassert"])
         self.encoder_prompt_pattern = 'Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{}\n\n### Response:'
         self.decoder_prompt_pattern = 'Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{}\n\n### Response:{}'
     
@@ -130,7 +132,7 @@ class GeneralMultiPLEEncDec(GeneralMultiPLE):
         gen = self.remove_last_block(generation[len(prompt):].rstrip(), self.stop_words)
         # Strip to maintain same behavior as with get_prompt
         post_gen = doc["prompt"].rstrip() + self._stop_at_stop_token(gen, self.stop_words)
-        print(f'postprocess_generation:\ngeneration={generation}\npost_gen={post_gen}')
+        print(f'postprocess_generation:\ngeneration={generation}\n\npost_gen={post_gen}')
         return post_gen
 
     def process_results(self, generations, references):
