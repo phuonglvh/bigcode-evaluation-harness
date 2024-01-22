@@ -79,6 +79,7 @@ def evaluate_problem(
     num_problems = len(problem["completions"])
     min_problem = len(test_results["results"])
 
+    print(f'running cached_eval_script on {problem_json_path} by {max_workers} workers')
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         for j in executor.map(
             lambda index: cached_eval_script(problem, index),

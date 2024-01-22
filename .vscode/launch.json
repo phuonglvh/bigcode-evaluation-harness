@@ -1,0 +1,102 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: generations_to_codexglue_bleu",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/utils/generations_to_codexglue_bleu.py",
+            "args": [
+                "-gen_path",
+                "generations_py.json",
+                "-pred_path",
+                "results/bleu/predictions_py.txt"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: generations_to_codexglue_codebleu",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/utils/generations_to_codexglue_codebleu.py",
+            "args": [
+                "-gen_path",
+                "generations_py.json",
+                "-pred_path",
+                "results/codebleu/predictions_py.txt"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: human_eval_x_to_codexglue_bleu",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/utils/human_eval_x_to_codexglue_bleu.py",
+            "args": [
+                "-lang",
+                "python",
+                "-ref_path",
+                "datasets/references/bleu/references_2_py.jsonl",
+                "-num_prob",
+                "164"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: human_eval_x_to_codexglue_codebleu",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/utils/human_eval_x_to_codexglue_codebleu.py",
+            "args": [
+                "-lang",
+                "python",
+                "-ref_path",
+                "datasets/references/codebleu/references_2_py.txt",
+                "-num_prob",
+                "164"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Python: main",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "--model",
+                "codeparrot/codeparrot-small",
+                "--tasks",
+                // "humaneval",
+                // "multiple-js",
+                "multiple-java",
+                // "ds1000-numpy-completion",
+                // "concode",
+                "--max_length_generation",
+                "512",
+                "--temperature",
+                "0.5",
+                "--n_samples",
+                "10",
+                "--batch_size",
+                "10",
+                "--allow_code_execution",
+                "--limit",
+                "5",
+                "--generation_only",
+                "--save_generations",
+                "--save_generations_path",
+                "generations_java.json"
+                // "--save_references",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+    ]
+}
