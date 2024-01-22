@@ -48,6 +48,7 @@ cd bigcode-evaluation-harness
 ```
 Install [`torch`](https://pytorch.org/get-started/locally/) based on your device type, and install the other packages using:
 ```
+pip install torch torchvision
 pip install -e .
 ```
 To run the `DS-1000` benchmark, additional constraints must be resolved.
@@ -214,3 +215,7 @@ We thank EleutherAI for their work on the [lm-evaluation harness](https://github
   year = 2022,
 }
 ```
+
+## Prompts
+
+- [MBPP](https://github.com/google-research/google-research/tree/master/mbpp#evaluation-details)
