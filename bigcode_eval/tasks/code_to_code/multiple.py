@@ -61,12 +61,11 @@ LANGUAGE_ALIASES = [
 MODEL_LANGUAGE_NAMES = {
     # "cpp"   : "C++",
     # "go"    : "Go",
-    "java"  : "Java",
+    "java": "Java",
     # "js"    : "JavaScript",
     "python": "Python",
     "py": "Python",
 }
-
 
 
 def create_all_tasks():
@@ -98,6 +97,7 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
         assert language in LANGUAGE_ALIASES
         super().__init__(language)
         self.kwargs = kwargs
+        self.translated_dataset: Dataset = None
 
     def _get_prompt_translation(self, target_doc, source_code, source_lang_alias, target_lang_alias):
         assert source_lang_alias in LANGUAGE_ALIASES
@@ -110,9 +110,10 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
         return prompt
 
     def _extract_func_name(self, func_code):
-        assert func_code.startswith("def "), f'{func_code} must be a python function and start with "def "'
+        assert func_code.startswith(
+            "def "), f'{func_code} must be a python function and start with "def "'
 
-        func_sig_pattern = r'def\s+(\w+)\s*\(' # def func_name(...):
+        func_sig_pattern = r'def\s+(\w+)\s*\('  # def func_name(...):
         match = re.search(func_sig_pattern, func_code)
         if match:
             func_name = match.group(1)
@@ -121,40 +122,54 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
             raise ValueError(
                 'Could not find function name in code: {}'.format(func_code))
 
-
     def get_dataset(self):
-        """Returns dataset for the task or an iterable of any object, that get_prompt can handle"""
+        """Returns the translated dataset for the task or an iterable of any object, that get_prompt can handle"""
+        if self.translated_dataset:
+            return self.translated_dataset
+
         target_lang_tasks = self.dataset["test"]
 
         source_lang = self.kwargs.get("source_lang", None)
         target_lang = self.language
-        source_generations_path = self.kwargs.get("source_generations_path", None)
+        source_generations_path = self.kwargs.get(
+            "source_generations_path", None)
 
         assert source_lang, source_generations_path
 
-        tasks_generations = json.load(open(source_generations_path, 'r')) # [["generated code"]]
+        tasks_generations = json.load(
+            open(source_generations_path, 'r'))  # [["generated code"]]
 
         translated_tasks = []
 
         for single_task_gens in tasks_generations:
-            all_func_names = [self._extract_func_name(task_gen) for task_gen in single_task_gens]
-            assert len(set(all_func_names)) == 1, f"All functions should have the same name, in: {single_task_gens}"
+            all_func_names = [self._extract_func_name(
+                task_gen) for task_gen in single_task_gens]
+            assert len(set(
+                all_func_names)) == 1, f"All functions should have the same name, in: {single_task_gens}"
 
             first_gen = single_task_gens[0]
             func_name = self._extract_func_name(first_gen)
 
-            found_tasks = target_lang_tasks.filter(lambda doc: doc['name'].rstrip().endswith(f'_{func_name}')) # HumanEval_0_has_close_elements
+            found_tasks = target_lang_tasks.filter(lambda doc: doc['name'].rstrip(
+            ).endswith(f'_{func_name}'))  # HumanEval_0_has_close_elements
             assert len(
                 found_tasks) == 1, f"Must have one and only one task of {len(func_name)}, got: {len(found_tasks)}"
-            
+
+            sub_target_tasks = []
+
             target_lang_task = found_tasks[0]
-            target_lang_task['prompt'] = [self._get_prompt_translation(target_lang_task, task_gen, source_lang, target_lang) for task_gen in single_task_gens]
+            for gen_id, task_gen in enumerate(single_task_gens):
+                sub_target_task = target_lang_task.copy()
+                sub_target_task['prompt'] = self._get_prompt_translation(
+                    target_lang_task, task_gen, source_lang, target_lang)
+                sub_target_task['original_name'] = sub_target_task["name"]
+                sub_target_task['name'] = f'{sub_target_task["original_name"]}_{gen_id}'
+                sub_target_tasks.append(sub_target_task)
 
-            translated_tasks.append(target_lang_task)
+            translated_tasks.extend(sub_target_tasks)
 
-        new_ds = Dataset.from_list(translated_tasks)
-
-        return new_ds
+        self.translated_dataset = Dataset.from_list(translated_tasks)
+        return self.translated_dataset
 
     def get_prompt(self, doc) -> List[str]:
         """Builds the prompt for the LM to generate from."""
