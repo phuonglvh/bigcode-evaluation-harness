@@ -107,6 +107,9 @@ def parallel_generations(
     if accelerator.is_main_process:
         print(f"number of problems for this task is {n_tasks}")
     n_copies = ceil(args.n_samples / args.batch_size)
+    print(f"number of batches for each task is {n_copies}")
+    print(
+        f"total number of batches (iterations) for this task is {n_copies*n_tasks}")
 
     ds_tokenized = TokenizedDataset(
         task,
