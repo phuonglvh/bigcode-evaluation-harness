@@ -67,7 +67,7 @@ def parse_args():
         help="Model revision to use",
     )
     parser.add_argument(
-        "--use_auth_token",
+        "--token",
         action="store_true",
         help="Use the token generated when running `huggingface-cli login` (necessary for private model).",
     )
@@ -102,7 +102,7 @@ def parse_args():
     parser.add_argument(
         "--precision",
         type=str,
-        default="fp32",
+        default="bf16",
         help="Model precision, from: fp32, fp16 or bf16",
     )
     parser.add_argument(
@@ -299,7 +299,7 @@ def main():
         model_kwargs = {
             "revision": args.revision,
             "trust_remote_code": args.trust_remote_code,
-            "use_auth_token": args.use_auth_token,
+            "token": args.token,
         }
         if args.load_in_8bit:
             print("Loading model in 8bit")
@@ -353,7 +353,7 @@ def main():
             args.model,
             revision=args.revision,
             trust_remote_code=args.trust_remote_code,
-            use_auth_token=args.use_auth_token,
+            token=args.token,
             truncation_side="left",
             # padding on the right is needed to cut off padding in `complete_code`
             padding_side="right",
