@@ -110,10 +110,7 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
         return prompt
 
     def _extract_func_name(self, func_code):
-        assert func_code.startswith(
-            "def "), f'{func_code} must be a python function and start with "def "'
-
-        func_sig_pattern = r'def\s+(\w+)\s*\('  # def func_name(...):
+        func_sig_pattern = r'def\s+(\w+)\s*\('  # <some preceding text> def func_name(...):
         match = re.search(func_sig_pattern, func_code)
         if match:
             func_name = match.group(1)
