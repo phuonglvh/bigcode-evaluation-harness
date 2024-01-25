@@ -149,8 +149,10 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
 
             found_tasks = target_lang_tasks.filter(lambda doc: doc['name'].rstrip(
             ).endswith(f'_{func_name}'))  # HumanEval_0_has_close_elements
-            assert len(
-                found_tasks) == 1, f"Must have one and only one task of {len(func_name)}, got: {len(found_tasks)}"
+            if len(found_tasks) > 1:
+                print(f'single_task_gens: {single_task_gens}\n\n extracted_func_name: "{func_name}"')
+                assert len(
+                    found_tasks) == 1, f"Must have one and only one task of {len(func_name)}, got: {len(found_tasks)}"
 
             sub_target_tasks = []
 
