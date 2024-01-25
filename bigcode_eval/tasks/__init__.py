@@ -32,9 +32,10 @@ TASK_REGISTRY = {
 
 ALL_TASKS = sorted(list(TASK_REGISTRY))
 
-TRANSLATION_TASKS = sorted(list({
+TRANSLATION_TASK_REGISTRY = {
     **code_to_code.multiple.create_all_tasks(),
-}))
+}
+TRANSLATION_TASKS = sorted(list(TRANSLATION_TASK_REGISTRY))
 
 
 def get_task(task_name, args=None):
@@ -58,12 +59,12 @@ def get_code_to_code_task(task_name, args=None):
     try:
         kwargs = {'source_lang': args.source_lang,
                   'source_generations_path': args.source_generations_path}
-        if "prompt" in inspect.signature(TRANSLATION_TASKS[task_name]).parameters:
+        if "prompt" in inspect.signature(TRANSLATION_TASK_REGISTRY[task_name]).parameters:
             kwargs["prompt"] = args.prompt
-        if "load_data_path" in inspect.signature(TRANSLATION_TASKS[task_name]).parameters:
+        if "load_data_path" in inspect.signature(TRANSLATION_TASK_REGISTRY[task_name]).parameters:
             kwargs["load_data_path"] = args.load_data_path
-        return TRANSLATION_TASKS[task_name](**kwargs)
+        return TRANSLATION_TASK_REGISTRY[task_name](**kwargs)
     except KeyError:
         print("Available tasks:")
-        pprint(TRANSLATION_TASKS)
+        pprint(TRANSLATION_TASK_REGISTRY)
         raise KeyError(f"Missing task {task_name}")
