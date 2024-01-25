@@ -11,6 +11,7 @@ seed=0
 precision=bf16
 lang=java
 limit_start=0
+limit=158
 batch_size=10
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
