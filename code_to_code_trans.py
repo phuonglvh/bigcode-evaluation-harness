@@ -16,8 +16,13 @@ from transformers import (
 
 from bigcode_eval.arguments import EvalArguments
 from bigcode_eval.evaluator import Evaluator
-from bigcode_eval.tasks import ALL_TASKS
+from bigcode_eval.tasks import ALL_TASKS as GENERATION_TASKS
 from bigcode_eval.tasks import TRANSLATION_TASKS
+
+ALL_TASKS = []
+ALL_TASKS.extend(GENERATION_TASKS)
+ALL_TASKS.extend(TRANSLATION_TASKS)
+ALL_TASKS = sorted(ALL_TASKS)
 
 
 class MultiChoice:
@@ -74,8 +79,8 @@ def parse_args():
     parser.add_argument(
         "--tasks",
         default=None,
-        choices=MultiChoice(ALL_TASKS.extend(TRANSLATION_TASKS)),
-        help=f"Evaluation tasks from {ALL_TASKS.extend(TRANSLATION_TASKS)}",
+        choices=MultiChoice(ALL_TASKS),
+        help=f"Evaluation tasks from {ALL_TASKS}",
     )
     parser.add_argument(
         "--instruction_tokens",
