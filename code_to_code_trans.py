@@ -209,8 +209,8 @@ def parse_args():
         help="Don't run generation but benchmark ground truth (useful for debugging)",
     )
 
-    for task_specific_args_builder in ALL_TASK_SPECIFIC_ARGS:
-        parser = task_specific_args_builder(parser)
+    for add_task_specific_args in ALL_TASK_SPECIFIC_ARGS:
+        parser = add_task_specific_args(parser)
 
     return parser.parse_args()
 

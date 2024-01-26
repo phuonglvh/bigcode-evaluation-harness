@@ -76,7 +76,7 @@ def create_all_tasks():
     return {f"code2code-multiple-{language}": create_task(language) for language in LANGUAGE_ALIASES}
 
 
-def task_specific_args(main_parser):
+def add_task_specific_args(main_parser):
     main_args, _ = main_parser.parse_known_args()
     all_task_names = list(create_all_tasks().keys())
 
