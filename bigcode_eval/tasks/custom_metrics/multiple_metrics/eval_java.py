@@ -32,6 +32,7 @@ def eval_script(path: Path):
             # Well, it's a compile error. May be a type error or
             # something. But, why break the set convention
             status = "SyntaxError"
+            print(f'{status}: {result.stderr}')
         else:
             result = run(["java", "-ea", "-cp", f"{outdir}", "Problem"], env=sys_env)
             if result.timeout:
