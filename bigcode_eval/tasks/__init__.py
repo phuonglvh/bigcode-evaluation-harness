@@ -38,6 +38,8 @@ TRANSLATION_TASK_REGISTRY = {
 TRANSLATION_TASKS = sorted(list(TRANSLATION_TASK_REGISTRY))
 
 
+ALL_TASK_SPECIFIC_ARGS = [code_to_code.multiple.add_task_specific_args]
+
 def get_task(task_name, args=None):
     if task_name in TRANSLATION_TASKS:
         return get_code_to_code_task(task_name, args)
