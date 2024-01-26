@@ -273,8 +273,9 @@ def verify_args(args):
 
 
 def main():
+    args = parse_args()
     verify_args(args)
-    args = temp_override_args(parse_args())
+    args = temp_override_args(args)
     transformers.logging.set_verbosity_error()
     datasets.logging.set_verbosity_error()
 

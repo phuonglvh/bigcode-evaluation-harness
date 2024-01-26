@@ -138,34 +138,15 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
 
         translated_tasks = []
 
-        for single_task_gens in tasks_generations:
-            all_func_names = [self._extract_func_name(
-                task_gen) for task_gen in single_task_gens]
-            assert len(set(
-                all_func_names)) == 1, f"All functions should have the same name, in: {single_task_gens}"
-
-            first_gen = single_task_gens[0]
-            func_name = self._extract_func_name(first_gen)
-
-            found_tasks = target_lang_tasks.filter(lambda doc: doc['name'].rstrip(
-            ).endswith(f'_{func_name}'))  # HumanEval_0_has_close_elements
-            if len(found_tasks) > 1:
-                print(f'single_task_gens[0]:\n{first_gen}\n\nextracted_func_name: "{func_name}"\n\nfound_tasks:\n{[task for task in found_tasks]}')
-                assert len(
-                    found_tasks) == 1, f"Must have one and only one task of {len(func_name)}, got: {len(found_tasks)}"
-
-            sub_target_tasks = []
-
-            target_lang_task = found_tasks[0]
-            for gen_id, task_gen in enumerate(single_task_gens):
+        for task_gens, target_lang_task in zip(tasks_generations, target_lang_tasks):
+            for gen_id, task_gen in enumerate(task_gens):
                 sub_target_task = target_lang_task.copy()
                 sub_target_task['prompt'] = self._get_prompt_translation(
                     target_lang_task, task_gen, source_lang, target_lang)
                 sub_target_task['original_name'] = sub_target_task["name"]
                 sub_target_task['name'] = f'{sub_target_task["original_name"]}_{gen_id}'
-                sub_target_tasks.append(sub_target_task)
 
-            translated_tasks.extend(sub_target_tasks)
+                translated_tasks.append(sub_target_task)
 
         self.translated_dataset = Dataset.from_list(translated_tasks)
         return self.translated_dataset
