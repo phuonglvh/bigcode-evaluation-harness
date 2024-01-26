@@ -433,12 +433,12 @@ def main():
 
     # Save all args and config
     results["config"] = vars(args)
+
+    dumped = json.dumps(results, indent=2)
     if accelerator.is_main_process:
-        print(f'evaluation results:\n{results}')
+        print(f'evaluation results:\n{dumped}')
 
     if not args.generation_only:
-        dumped = json.dumps(results, indent=2)
-
         with open(args.metric_output_path, "w") as f:
             f.write(dumped)
             print(
