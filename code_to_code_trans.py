@@ -269,7 +269,7 @@ def verify_args(args):
 
     if generation_only and load_generations_path:
         warnings.warn(
-            f'evaluation mode only but results will not be saved at {metric_output_path} due to args.generation_only is True')
+            f'evaluation only mode but results will not be saved at {metric_output_path} due to args.generation_only is True')
 
 
 def main():
@@ -413,7 +413,7 @@ def main():
 
             if args.generation_only:
                 if accelerator.is_main_process:
-                    print("generation mode only")
+                    print("generation only mode")
                 generations, references = evaluator.generate_text(
                     task, intermediate_generations=intermediate_generations
                 )
