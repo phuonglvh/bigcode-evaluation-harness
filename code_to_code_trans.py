@@ -1,21 +1,18 @@
-import os
 import fnmatch
 import json
+import os
 import warnings
 
-import datasets
 import torch
 import transformers
 from accelerate import Accelerator
-from transformers import (
-    AutoModelForCausalLM,
-    AutoModelForSeq2SeqLM,
-    AutoTokenizer,
-    HfArgumentParser,
-)
+from transformers import (AutoModelForCausalLM, AutoModelForSeq2SeqLM,
+                          AutoTokenizer, HfArgumentParser)
 
+import datasets
 from bigcode_eval.arguments import EvalArguments
 from bigcode_eval.evaluator import Evaluator
+from bigcode_eval.tasks import ALL_TASK_SPECIFIC_ARGS
 from bigcode_eval.tasks import ALL_TASKS as GENERATION_TASKS
 from bigcode_eval.tasks import TRANSLATION_TASKS
 
@@ -204,28 +201,16 @@ def parse_args():
         "--max_memory_per_gpu",
         type=str,
         default=None,
-        help="Max memroy to allocate per gpu, you can also use 'auto'",
+        help="Max memory to allocate per gpu, you can also use 'auto'",
     )
     parser.add_argument(
         "--check_references",
         action="store_true",
-        help="Don't run generation but benchmark groundtruth (useful for debugging)",
+        help="Don't run generation but benchmark ground truth (useful for debugging)",
     )
 
-    parser.add_argument(
-        "--source_generations_path",
-        type=str,
-        help="path of source language generations",
-        required=True
-    )
-
-    parser.add_argument(
-        "--source_lang",
-        type=str,
-        choices=['java', 'py'],
-        help="source language alias",
-        required=True
-    )
+    for task_specific_args_builder in ALL_TASK_SPECIFIC_ARGS:
+        parser = task_specific_args_builder(parser)
 
     return parser.parse_args()
 
@@ -354,7 +339,8 @@ def main():
             )
 
         if args.peft_model:
-            from peft import PeftModel  # dynamic import to avoid dependency on peft
+            from peft import \
+                PeftModel  # dynamic import to avoid dependency on peft
 
             model = PeftModel.from_pretrained(model, args.peft_model)
             print("Loaded PEFT model. Merging...")

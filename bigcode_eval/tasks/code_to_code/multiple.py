@@ -76,6 +76,27 @@ def create_all_tasks():
     return {f"code2code-multiple-{language}": create_task(language) for language in LANGUAGE_ALIASES}
 
 
+def task_specific_args(main_parser):
+    main_args, _ = main_parser.parse_known_args()
+    all_task_names = list(create_all_tasks().keys())
+
+    if main_args.tasks in all_task_names:
+        main_parser.add_argument(
+            "--source_generations_path",
+            type=str,
+            help="path of source language generations",
+            required=True
+        )
+
+        main_parser.add_argument(
+            "--source_lang",
+            type=str,
+            choices=LANGUAGE_ALIASES,
+            help=f"source language alias, {LANGUAGE_ALIASES}",
+            required=True
+        )
+    return main_parser
+
 def create_task(language):
     class MultiPLE(Code2CodeMultiPLE):
         def __init__(self, **kwargs):
