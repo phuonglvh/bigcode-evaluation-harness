@@ -224,8 +224,18 @@ def get_gpus_max_memory(max_memory, num_gpus):
     return max_memory
 
 
+def verify_args(args):
+    load_generations_path = args.load_generations_path
+    generation_only = args.generation_only
+    metric_output_path = args.metric_output_path
+
+    if generation_only and load_generations_path:
+        warnings.warn(
+            f'evaluation mode only but results will not be saved at {metric_output_path} due to args.generation_only is True')
+
 def main():
     args = parse_args()
+    verify_args(args)
     transformers.logging.set_verbosity_error()
     datasets.logging.set_verbosity_error()
 
@@ -317,7 +327,8 @@ def main():
             trust_remote_code=args.trust_remote_code,
             use_auth_token=args.use_auth_token,
             truncation_side="left",
-            padding_side="right",  # padding on the right is needed to cut off padding in `complete_code`
+            # padding on the right is needed to cut off padding in `complete_code`
+            padding_side="right",
         )
         if not tokenizer.eos_token:
             if tokenizer.bos_token:
@@ -327,7 +338,7 @@ def main():
                 raise ValueError("No eos_token or bos_token found")
         try:
             tokenizer.pad_token = tokenizer.eos_token
-            
+
         # Some models like CodeGeeX2 have pad_token as a read-only property
         except AttributeError:
             print("Not setting pad_token to eos_token")
@@ -381,15 +392,19 @@ def main():
                     task, intermediate_generations=intermediate_generations
                 )
 
-    # Save all args to config
+    # Save all args and config
     results["config"] = vars(args)
+    if accelerator.is_main_process:
+        print(f'evaluation results:\n{results}')
+
     if not args.generation_only:
         dumped = json.dumps(results, indent=2)
-        if accelerator.is_main_process:
-            print(dumped)
 
         with open(args.metric_output_path, "w") as f:
             f.write(dumped)
+            print(
+                f"evaluation results were saved at {args.metric_output_path}"
+            )
 
 
 if __name__ == "__main__":

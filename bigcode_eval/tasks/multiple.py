@@ -145,14 +145,14 @@ class GeneralMultiPLE(Task):
         # a common temp dir for all the problems
         temp_dir = tempfile.gettempdir()
         list_files = []
-        for (prompt_name, generation, reference) in zip(
+        for (prompt_name, prompt_completions, reference) in zip(
             prompts_names, generations, references
         ):
             problem = {
                 "name": prompt_name["name"],
                 "language": self.language,
                 "prompt": prompt_name["prompt"],
-                "completions": generation,
+                "completions": prompt_completions,
                 "tests": reference,
             }
             # each problem is save in a json file
@@ -170,6 +170,7 @@ class GeneralMultiPLE(Task):
             evaluate_problem(temp_dir, file, max_workers)
 
         # compute pass@k scores
+        print('computing pass@k')
         result_array = np.array(
             [for_file(p) for p in Path(temp_dir).glob("*.results.json")]
         )
@@ -184,4 +185,6 @@ class GeneralMultiPLE(Task):
             for k, v in zip([1, 10, 100], result)
             if k <= len(generations[0])
         }
+        
+        print('computed pass@k')
         return results

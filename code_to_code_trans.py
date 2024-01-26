@@ -262,7 +262,18 @@ def temp_override_args(args):
     return args
 
 
+def verify_args(args):
+    load_generations_path = args.load_generations_path
+    generation_only = args.generation_only
+    metric_output_path = args.metric_output_path
+
+    if generation_only and load_generations_path:
+        warnings.warn(
+            f'evaluation mode only but results will not be saved at {metric_output_path} due to args.generation_only is True')
+
+
 def main():
+    verify_args(args)
     args = temp_override_args(parse_args())
     transformers.logging.set_verbosity_error()
     datasets.logging.set_verbosity_error()
@@ -420,15 +431,19 @@ def main():
                     task, intermediate_generations=intermediate_generations
                 )
 
-    # Save all args to config
+    # Save all args and config
     results["config"] = vars(args)
+    if accelerator.is_main_process:
+        print(f'evaluation results:\n{results}')
+
     if not args.generation_only:
         dumped = json.dumps(results, indent=2)
-        if accelerator.is_main_process:
-            print(dumped)
 
         with open(args.metric_output_path, "w") as f:
             f.write(dumped)
+            print(
+                f"evaluation results were saved at {args.metric_output_path}"
+            )
 
 
 if __name__ == "__main__":
