@@ -1,5 +1,7 @@
 #!/bin/bash
 
+BASE_DIR="${BASE_DIR:-.}"
+
 AUTHOR="THUDM"
 MODEL_NAME="codegeex2-6b"
 max_length=1024
@@ -15,6 +17,7 @@ lang=py
 save_every_k_tasks=5 # after completing 5 dataset's tasks
 save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
 
+generations_path="$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang.json"
 
 # pass@{1,10,100}
 python main.py --model "$AUTHOR/$MODEL_NAME" \
@@ -30,27 +33,28 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --allow_code_execution \
     --trust_remote_code \
     --save_every_k_tasks $save_every_k_iterations \
-    --load_generations_path "./$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang.json" \
-    --metric_output_path "./$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang-evaluation_results.json" \
+    --load_generations_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang.json" \
+    --metric_output_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang-evaluation_results.json" \
     --use_auth_token
 
+
 python utils/generations_to_codexglue_codebleu.py \
-    --generations_path runpod/$MODEL_NAME/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang.json \
-    --predictions_path ./results/codebleu/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-predictions_multiple-$lang.txt
+    --load_generations_path "$generations_path" \
+    --save_predictions_format_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-codebleu-predictions_multiple-$lang.txt"
 
 python utils/generations_to_codexglue_bleu.py \
-    --generations_path runpod/$MODEL_NAME/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang.json \
-    --predictions_path ./results/bleu/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-predictions_multiple-$lang.txt
+    --load_generations_path "$generations_path" \
+    --save_predictions_format_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-bleu-predictions_multiple-$lang.txt"
 
 python utils/human_eval_x_to_codexglue_codebleu.py \
-    -lang python \
-    --predictions_path runpod/$MODEL_NAME/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang.json \
-    --references_path ./datasets/references/codebleu/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-references_multiple-$lang.text
+    --language python \
+    --load_generations_path "$generations_path" \
+    --save_references_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-codebleu-references_multiple-$lang.txt"
 
 python utils/human_eval_x_to_codexglue_bleu.py \
-    -lang python \
-    --predictions_path runpod/$MODEL_NAME/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang.json \
-    --references_path ./datasets/references/bleu/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-references_multiple-$lang.jsonl
+    --language python \
+    --load_generations_path "$generations_path" \
+    --save_references_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-bleu-references_multiple-$lang.jsonl"
 
 
 # part_1 = '/workspace/bigcode-evaluation-harness/codegeex2-6b-temp0.8-p0.95-bf16-n200-batch5-maxlen1024-py-generations_0-50-multiple-py.json'

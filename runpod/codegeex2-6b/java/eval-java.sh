@@ -19,6 +19,8 @@ lang=java
 save_every_k_tasks=5 # after completing 5 dataset's tasks
 save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
 
+generations_path="$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang.json"
+
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
     --max_length_generation $max_length \
@@ -33,5 +35,25 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --trust_remote_code \
     --save_every_k_tasks $save_every_k_iterations \
     --token \
-    --load_generations_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang.json" \
+    --load_generations_path "$generations_path" \
     --metric_output_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang-evaluation_results.json"
+    
+# generations_path="$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang.json"
+
+python utils/generations_to_codexglue_codebleu.py \
+    --load_generations_path "$generations_path" \
+    --save_predictions_format_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-codebleu-predictions_multiple-$lang.txt"
+
+python utils/generations_to_codexglue_bleu.py \
+    --load_generations_path "$generations_path" \
+    --save_predictions_format_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-bleu-predictions_multiple-$lang.txt"
+
+python utils/human_eval_x_to_codexglue_codebleu.py \
+    --language java \
+    --load_generations_path "$generations_path" \
+    --save_references_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-codebleu-references_multiple-$lang.txt"
+
+python utils/human_eval_x_to_codexglue_bleu.py \
+    --language java \
+    --load_generations_path "$generations_path" \
+    --save_references_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-bleu-references_multiple-$lang.jsonl"
