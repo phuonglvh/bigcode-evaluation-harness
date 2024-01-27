@@ -6,58 +6,57 @@ from datasets import load_dataset
 
 
 def main():
+    lang_choices = ['java', 'python']
     parser = argparse.ArgumentParser(
-        description='Convert humaneval-x to CodeBLEU score references')
+        description='Convert humaneval-x to CodeBLEU score references. Only humaneval-x items belong to generations are converted.')
     parser.add_argument('--language', '-lang',
-                        required=True, help='')
-    parser.add_argument('--predictions_path', '-pred_path',
-                        required=True, help='')
-    parser.add_argument('--references_path', '-ref_path',
-                        required=True, help='')
+                        required=True, help=f'The language of the generations. One of {lang_choices}.', choices=lang_choices)
+    parser.add_argument('--load_generations_path', required=True,
+                        help='absolute path to the generations json file')
+    parser.add_argument('--save_references_path', required=True,
+                        help='absolute path where you want to save their references in **txt** format')
     args = parser.parse_args()
 
     if args.language == 'python':
-        tasks = load_dataset('openai_humaneval')['test']
+        dataset = load_dataset('openai_humaneval')['test']
     elif args.language == 'java':
-        tasks = load_dataset('THUDM/humaneval-x', args.language)['test']
+        dataset = load_dataset('THUDM/humaneval-x', args.language)['test']
     else:
         raise ValueError('Unsupported language: {}'.format(args.language))
 
-    func_sig_pattern = r'def\s+(\w+)\s*\('
-    task_predictions = json.load(open(args.predictions_path, 'r'))
-    task_predictions = [predictions[0] for predictions in task_predictions]
+    all_gens = json.load(open(args.load_generations_path, 'r'))
+    print(
+        f'loaded generations {len(all_gens)} tasks from {args.load_generations_path}')
+    
+    if len(all_gens) > len(dataset):
+        print(f'{len(all_gens)} unknown tasks will be NOT be converted')
 
-    predicted_funcs = []
-    for task_prediction in task_predictions:
-        match = re.search(func_sig_pattern, task_prediction)
-        if match:
-            function_name = match.group(1)
-            predicted_funcs.append(function_name)
-        else:
-            raise ValueError(
-                'Could not find function name in prediction: {}'.format(task_prediction))
+    print(f'generations of {len(all_gens)} tasks will be converted')
 
-    reference_lines = []
-    for predicted_func in predicted_funcs:
-        task = [task for task in tasks if task['entry_point'] == predicted_func][0]
-        prompt = task.get('prompt')
-        canonical_solution = task.get('canonical_solution')
+    txt_references = []
+
+    for _, ds_task in zip(all_gens, dataset):
+        prompt = ds_task.get('prompt')
+        canonical_solution = ds_task.get('canonical_solution')
 
         # prompt = re.sub(r'\s+', ' ', prompt) # replace sequences of whitespaces with a single whitespace
-        prompt = re.sub(r'\r|\n', ' ', prompt) # remove newline characters
+        prompt = re.sub(r'\r|\n', ' ', prompt)  # remove newline characters
         prompt.strip()
 
         # canonical_solution = re.sub(r'\s+', ' ', canonical_solution) # replace sequences of whitespaces with a single whitespace
-        canonical_solution = re.sub(r'\r|\n', ' ', canonical_solution) # remove newline characters
+        # remove newline characters
+        canonical_solution = re.sub(r'\r|\n', ' ', canonical_solution)
         canonical_solution.strip()
 
         sep = ' '
 
-        reference_lines.append(f'{prompt}{sep}{canonical_solution}')
+        txt_references.append(f'{prompt}{sep}{canonical_solution}')
 
-    with open(args.references_path, 'w') as outfile:
-        for line in reference_lines:
+    with open(args.save_references_path, 'w') as outfile:
+        for line in txt_references:
             outfile.write(line + '\n')
+        print(
+            f'saved {len(txt_references)} CodeBLEU references at {args.save_references_path}')
 
 
 if __name__ == '__main__':
