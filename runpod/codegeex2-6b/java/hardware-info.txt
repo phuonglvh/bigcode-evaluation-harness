@@ -1,6 +1,6 @@
 1x RTX A4000
 20.6 TFLOPS
-13.9/16.0 GB gpu
+15.5/16.0 GB gpu
 Xeon® E5-2687W v3
 10.0/20 cpu
 15/26 GB ram
