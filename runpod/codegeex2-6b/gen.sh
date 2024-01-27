@@ -31,7 +31,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --save_generations_path "./$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations-$limit_start-$limit.json" \
     --save_references \
     --generation_only \
-    --use_auth_token \
+    --token \
     --limit_start $limit_start \
     --limit $limit
 
@@ -66,7 +66,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --save_generations_path "./$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations-$limit_start-$limit.json" \
     --save_references \
     --generation_only \
-    --use_auth_token \
+    --token \
     --limit_start $limit_start \
     --limit $limit
 
@@ -101,6 +101,6 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --save_generations_path "./$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations-$limit_start-$limit.json" \
     --save_references \
     --generation_only \
-    --use_auth_token \
+    --token \
     --limit_start $limit_start \
     --limit $limit
