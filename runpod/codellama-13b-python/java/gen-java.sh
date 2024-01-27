@@ -88,7 +88,7 @@ seed=0
 precision=bf16
 lang=java
 limit_start=100
-limit=61
+limit=100 # > actual number of records
 batch_size=10
 
 part_3_path="/workspace/bigcode-evaluation-harness/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations-$limit_start-$limit.json"
