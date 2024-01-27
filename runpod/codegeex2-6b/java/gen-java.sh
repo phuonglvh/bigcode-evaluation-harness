@@ -1,5 +1,7 @@
 #!/bin/bash
 
+huggingface-cli login
+
 BASE_DIR="${BASE_DIR:-.}"
 AUTHOR="THUDM"
 MODEL_NAME="codegeex2-6b"
@@ -11,7 +13,7 @@ n_samples=200
 batch_size=20
 seed=0
 precision=bf16
-lang=py
+lang=java
 limit_start=0
 limit=50
 save_every_k_tasks=50
@@ -48,9 +50,9 @@ n_samples=200
 batch_size=20
 seed=0
 precision=bf16
-lang=py
+lang=java
 limit_start=50
-limit=50
+limit=100
 save_every_k_tasks=50
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
@@ -70,7 +72,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --save_generations_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations-$limit_start-$limit.json" \
     --save_references \
     --generation_only \
-    --use_auth_token \
+    --token \
     --limit_start $limit_start \
     --limit $limit
 
@@ -85,7 +87,7 @@ n_samples=200
 batch_size=20
 seed=0
 precision=bf16
-lang=py
+lang=java
 limit_start=100
 limit=100
 save_every_k_tasks=50
@@ -107,6 +109,6 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --save_generations_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations-$limit_start-$limit.json" \
     --save_references \
     --generation_only \
-    --use_auth_token \
+    --token \
     --limit_start $limit_start \
     --limit $limit
