@@ -1,21 +1,22 @@
 #!/bin/bash
 
-set -euox
+huggingface-cli login
 
 BASE_DIR="${BASE_DIR:-.}"
-AUTHOR="codellama"
-MODEL_NAME="CodeLlama-13b-Python-hf"
+
+# FULL
+AUTHOR="THUDM"
+MODEL_NAME="codegeex2-6b"
 max_length=1024
 temperature=0.8
 top_p=0.95
 top_k=0
 n_samples=200
+batch_size=10 # not used in evaluation mode
 seed=0
 precision=bf16
 lang=java
-# limit_start=0
-# limit=158
-batch_size=10
+save_every_k_tasks=50
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
@@ -29,6 +30,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --precision $precision \
     --allow_code_execution \
     --trust_remote_code \
-    --save_every_k_tasks 10 \
+    --save_every_k_tasks $save_every_k_tasks \
+    --token \
     --load_generations_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang.json" \
     --metric_output_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations_multiple-$lang-evaluation_results.json"

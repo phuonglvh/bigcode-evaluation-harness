@@ -82,7 +82,7 @@ seed=42
 precision=bf16
 lang=py
 limit_start=100
-limit=61
+limit=100
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \

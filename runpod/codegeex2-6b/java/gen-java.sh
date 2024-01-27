@@ -10,7 +10,7 @@ temperature=0.8
 top_p=0.95
 top_k=0
 n_samples=200
-batch_size=20
+batch_size=10 # 20 if gpu > 16GB, 10 if GPU = 16GB
 seed=0
 precision=bf16
 lang=java
@@ -47,7 +47,7 @@ temperature=0.8
 top_p=0.95
 top_k=0
 n_samples=200
-batch_size=20
+batch_size=10 # 20 if gpu > 16GB, 10 if GPU = 16GB
 seed=0
 precision=bf16
 lang=java
@@ -84,7 +84,7 @@ temperature=0.8
 top_p=0.95
 top_k=0
 n_samples=200
-batch_size=20
+batch_size=10 # 20 if gpu > 16GB, 10 if GPU = 16GB
 seed=0
 precision=bf16
 lang=java
@@ -121,7 +121,7 @@ temperature=0.8
 top_p=0.95
 top_k=0
 n_samples=200
-batch_size=20
+batch_size=10
 seed=0
 precision=bf16
 lang=java
