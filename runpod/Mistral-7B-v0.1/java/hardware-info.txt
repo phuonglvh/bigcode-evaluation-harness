@@ -1,0 +1,11 @@
+1x RTX 3090
+35.3 TFLOPS
+22.4/24.0 GB gpu
+Xeon® E5-2698 v3
+10.7/64 cpu
+4/11 GB ram
+15.0/19.6 GB disk
+GPU: 100% 81C , CPU: 9% 
+mistral 7b
+$0.203/hr
+batch_size=20
