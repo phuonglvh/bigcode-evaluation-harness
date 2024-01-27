@@ -1,5 +1,7 @@
 #!/bin/bash
 
+huggingface-cli login
+
 BASE_DIR="${BASE_DIR:-.}"
 AUTHOR="bigcode"
 MODEL_NAME="starcoder"
