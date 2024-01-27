@@ -14,7 +14,8 @@ precision=bf16
 lang=java
 limit_start=0
 limit=50
-save_every_k_tasks=50
+save_every_k_tasks=5 # after completing 5 dataset's tasks
+save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
@@ -28,7 +29,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --precision $precision \
     --allow_code_execution \
     --trust_remote_code \
-    --save_every_k_tasks $save_every_k_tasks \
+    --save_every_k_tasks $save_every_k_iterations \
     --save_generations \
     --save_generations_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations-$limit_start-$limit.json" \
     --save_references \
@@ -50,7 +51,8 @@ precision=bf16
 lang=java
 limit_start=50
 limit=50
-save_every_k_tasks=50
+save_every_k_tasks=5
+save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
@@ -64,7 +66,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --precision $precision \
     --allow_code_execution \
     --trust_remote_code \
-    --save_every_k_tasks $save_every_k_tasks \
+    --save_every_k_tasks $save_every_k_iterations \
     --save_generations \
     --save_generations_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations-$limit_start-$limit.json" \
     --save_references \
@@ -86,7 +88,8 @@ precision=bf16
 lang=java
 limit_start=100
 limit=100
-save_every_k_tasks=50
+save_every_k_tasks=5
+save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
@@ -100,7 +103,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --precision $precision \
     --allow_code_execution \
     --trust_remote_code \
-    --save_every_k_tasks $save_every_k_tasks \
+    --save_every_k_tasks $save_every_k_iterations \
     --save_generations \
     --save_generations_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations-$limit_start-$limit.json" \
     --save_references \
