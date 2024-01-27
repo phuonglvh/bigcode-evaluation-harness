@@ -106,6 +106,8 @@ def parallel_generations(
         instruction_tokens = None
     if accelerator.is_main_process:
         print(f"number of problems for this task is {n_tasks}")
+        print(
+            f"task starting from {args.limit_start + curr_sample_idx}/{args.limit_start + curr_sample_idx + n_tasks}")
     n_copies = ceil(args.n_samples / args.batch_size)
     print(f"{args.n_samples} completions required for each task")
     print(f"{args.batch_size} completion/prompt")

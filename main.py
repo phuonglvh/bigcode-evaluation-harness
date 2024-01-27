@@ -370,7 +370,11 @@ def main():
                 with open(args.load_generations_intermediate_paths[idx], "r") as f_in:
                     # intermediate_generations: list[list[str | None]] of len n_tasks
                     # where list[i] = generated codes or empty
+                    print(f'task {task}: loading intermediate generations from {args.load_generations_intermediate_paths}')
+                    
                     intermediate_generations = json.load(f_in)
+
+                    print(f'task {task}: loaded {len(intermediate_generations)} intermediate generations from {args.load_generations_intermediate_paths}')
 
             if args.generation_only:
                 if accelerator.is_main_process:
