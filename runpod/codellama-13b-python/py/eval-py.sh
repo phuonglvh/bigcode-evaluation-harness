@@ -5,18 +5,18 @@ set -euox
 BASE_DIR="${BASE_DIR:-.}"
 AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
-max_length=1024
+max_length=512
 temperature=0.8
 top_p=0.95
 top_k=0
 n_samples=200
 seed=0
 precision=bf16
-lang=java
-full_language=java
+lang=py
+full_language=python
 # limit_start=0
 # limit=164
-batch_size=10
+batch_size=32
 
 save_every_k_tasks=5 # after completing 5 dataset's tasks
 save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
