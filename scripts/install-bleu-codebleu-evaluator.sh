@@ -6,7 +6,7 @@ git clone https://github.com/phuonglvh/CodeXGLUE.git
 (cd ./CodeXGLUE && git checkout feature/thesis)
 
 (
-    cd ./CodeXGLUE/Code-Code/code-to-code-trans/evaluator/CodeBLEU
+    cd ./CodeXGLUE/Code-Code/code-to-code-trans/evaluator/CodeBLEU || ! echo "cd failure"
     pip install tree_sitter
     cd parser && bash build.sh
 )

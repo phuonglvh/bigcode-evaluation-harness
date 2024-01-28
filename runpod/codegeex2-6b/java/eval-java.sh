@@ -56,7 +56,7 @@ python utils/human_eval_x_to_codexglue_bleu.py \
     --load_generations_path "$generations_path" \
     --save_references_path "$bleu_references_path"
 (
-    cd ./CodeXGLUE/Text-Code/text-to-code
+    cd ./CodeXGLUE/Text-Code/text-to-code || ! echo "cd failure"
     python evaluator/evaluator.py --answers "$bleu_references_path" --predictions "$bleu_predictions_path"
 )
 
@@ -73,7 +73,7 @@ python utils/human_eval_x_to_codexglue_codebleu.py \
     --save_references_path "$codebleu_references_path"
 
 (
-    cd ./CodeXGLUE/Code-Code/code-to-code-trans/evaluator/CodeBLEU
+    cd ./CodeXGLUE/Code-Code/code-to-code-trans/evaluator/CodeBLEU || ! echo "cd failure"
     python calc_code_bleu.py \
         --lang $full_language \
         --params "0.25,0.25,0.25,0.25" \
