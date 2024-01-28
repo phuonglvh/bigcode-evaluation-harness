@@ -75,7 +75,7 @@ python utils/human_eval_x_to_codexglue_codebleu.py \
         --lang $full_language \
         --params "0.25,0.25,0.25,0.25" \
         --refs "$codebleu_references_path" \
-        --hyp "$bleu_predictions_path"
+        --hyp "$codebleu_predictions_path"
 )
 
 
