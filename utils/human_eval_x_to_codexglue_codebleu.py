@@ -17,25 +17,37 @@ def main():
                         help='absolute path where you want to save their references in **txt** format')
     args = parser.parse_args()
 
-    if args.language == 'python':
-        dataset = load_dataset('openai_humaneval')['test']
-    elif args.language == 'java':
-        dataset = load_dataset('THUDM/humaneval-x', args.language)['test']
+    language = args.language
+
+    if language == 'python':
+        # dataset = load_dataset('openai_humaneval')['test']
+        dataset = load_dataset('THUDM/humaneval-x', name=language)['test']
+    elif language == 'java':
+        dataset = load_dataset('THUDM/humaneval-x', name=language)['test']
     else:
-        raise ValueError('Unsupported language: {}'.format(args.language))
+        raise ValueError('Unsupported language: {}'.format(language))
+
+    multiple_e_ds = load_dataset(
+        "nuprl/MultiPL-E", name=f"humaneval-{'py' if language == 'python' else 'java'}", revision="d23b094346c5dbda1080a74bb2a24c18adbf7409")['test']
 
     all_gens = json.load(open(args.load_generations_path, 'r'))
     print(
-        f'loaded generations {len(all_gens)} tasks from {args.load_generations_path}')
-    
-    if len(all_gens) > len(dataset):
-        print(f'{len(all_gens)} unknown tasks will be NOT be converted')
+        f'loaded generations of {len(all_gens)} tasks from {args.load_generations_path}')
 
-    print(f'generations of {len(all_gens)} tasks will be converted')
+    assert len(all_gens) <= len(
+        dataset), f'the number of tasks in generations ({len(all_gens)}) must be smaller dataset\'s ({len(dataset)})'
 
     txt_references = []
+    for gen_i, task_gens in enumerate(all_gens):
+        source_task = multiple_e_ds[gen_i] # order-wise
+        task_id = source_task['name'].split('_')[1] # HumanEval_<task_id>_<func_name>
+        humaneval_tasks = dataset.filter(lambda task: task['task_id'] == f'{language.capitalize()}/{task_id}') # task_id-wise
 
-    for _, ds_task in zip(all_gens, dataset):
+        assert len(humaneval_tasks) == 1, f'there must be only one humaneval_task, got {len(humaneval_tasks)} instead'
+            
+        ds_task = humaneval_tasks[0]
+        assert ds_task, f'there must exist a dataset task for generation:\n{task_gens[0]}'
+
         prompt = ds_task.get('prompt')
         canonical_solution = ds_task.get('canonical_solution')
 
