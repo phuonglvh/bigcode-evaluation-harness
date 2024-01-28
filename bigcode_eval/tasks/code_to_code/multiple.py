@@ -130,16 +130,6 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
 {target_doc['prompt']}'''
         return prompt
 
-    def _extract_func_name(self, func_code):
-        func_sig_pattern = r'def\s+(\w+)\s*\('  # <some preceding text> def func_name(...):
-        match = re.search(func_sig_pattern, func_code)
-        if match:
-            func_name = match.group(1)
-            return func_name
-        else:
-            raise ValueError(
-                'Could not find function name in code: {}'.format(func_code))
-
     def get_dataset(self):
         """Returns the translated dataset for the task or an iterable of any object, that get_prompt can handle"""
         if self.translated_dataset:
@@ -175,3 +165,17 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
     def get_prompt(self, doc) -> List[str]:
         """Builds the prompt for the LM to generate from."""
         return doc["prompt"].strip()
+
+    def postprocess_generation(self, generation, idx):
+        """Defines the postprocessing for a LM generation.
+        :param generation: str
+            code generation from LM
+        :param idx: int
+            index of doc in the dataset to which the generation belongs
+            (not used for this task)
+        """
+        prompt = self.get_prompt(self.get_dataset()[idx])
+        completion = generation[len(prompt) :]
+
+        target_lang_prompt = super().get_prompt(super().get_dataset()[idx])
+        return target_lang_prompt + self._stop_at_stop_token(completion, self.stop_words)
