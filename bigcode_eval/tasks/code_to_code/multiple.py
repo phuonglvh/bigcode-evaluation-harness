@@ -152,8 +152,10 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
         for task_gens, target_lang_task in zip(tasks_generations, target_lang_tasks):
             for gen_id, task_gen in enumerate(task_gens):
                 sub_target_task = target_lang_task.copy()
+                sub_target_task['original_prompt'] = sub_target_task["prompt"]
                 sub_target_task['prompt'] = self._get_prompt_translation(
                     target_lang_task, task_gen, source_lang, target_lang)
+
                 sub_target_task['original_name'] = sub_target_task["name"]
                 sub_target_task['name'] = f'{sub_target_task["original_name"]}_{gen_id}'
 
@@ -177,5 +179,5 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
         prompt = self.get_prompt(self.get_dataset()[idx])
         completion = generation[len(prompt) :]
 
-        target_lang_prompt = super().get_prompt(super().get_dataset()[idx])
+        target_lang_prompt = self.get_dataset()[idx]['original_prompt'].strip()
         return target_lang_prompt + self._stop_at_stop_token(completion, self.stop_words)
