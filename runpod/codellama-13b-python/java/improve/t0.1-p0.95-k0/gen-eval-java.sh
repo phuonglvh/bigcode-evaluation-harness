@@ -3,7 +3,7 @@
 
 set -euox
 
-BASE_DIR=./runpod/codellama-13b-python/java/improve/t0.1-p0.1
+BASE_DIR=./runpod/codellama-13b-python/java/improve/t0.1-p0.95-k0
 AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
 max_length=1024
