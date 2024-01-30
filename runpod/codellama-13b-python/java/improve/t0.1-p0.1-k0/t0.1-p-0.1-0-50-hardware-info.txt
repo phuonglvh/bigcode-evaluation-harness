@@ -1,0 +1,35 @@
+1x RTX A6000
+36.1  TFLOPS
+m:10958host:64430verified
+40.5/48.0 GB gpu
+622.3 GB/s
+Motherboard
+PCIE 3.0, 16x11.0 GB/s
+Xeon® Gold 6248R
+6.0/48 cpu
+28/48 GB ram
+QEMU HARDDISK
+4154 MB/s26.0/27.7 GB
+484.1 Mbps375.2 MbpsMax CUDA: 12.2
+GPU: 96% 77C , CPU: 17% Status: success, running pytorch/pytorch_2.0.1-cuda11.7-cudnn8-devel/jupyter
+codellama 13b
+$0.556/hr --> faster than A40
+
+
+====
+1x A40
+29.9  TFLOPS
+m:10890datacenter:47223verified 
+46.7/48.0 GB gpu
+597.4 GB/s
+X12DPG
+PCIE 4.0, 16x22.7 GB/s
+Xeon® Gold 5320
+6.5/52 cpu
+2/56 GB ram
+SAMSUNG MZ1LB3T8HMLA-00007
+2102 MB/s26.0/28.6 GB
+788.3 Mbps671.7 MbpsMax CUDA: 12.0
+GPU: 97% 65C , CPU: 15% Status: success, running pytorch/pytorch_2.0.1-cuda11.7-cudnn8-devel/jupyter
+codellama 13b 28gb 48gb
+$0.446/hr 
