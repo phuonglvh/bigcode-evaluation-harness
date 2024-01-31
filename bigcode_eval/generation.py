@@ -1,6 +1,6 @@
 import json
+import os
 from math import ceil
-
 from typing import List, Optional
 
 from accelerate.utils import set_seed
@@ -55,6 +55,9 @@ def parallel_generations(
     if args.load_generations_path:
         # load generated code
         with open(args.load_generations_path) as fp:
+            if accelerator.is_main_process:
+                print(f'loading generations from "{os.path.abspath(args.load_generations_path)}"')
+
             generations = json.load(fp)
             if accelerator.is_main_process:
                 print(
