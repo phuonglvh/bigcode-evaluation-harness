@@ -1,13 +1,13 @@
 {
   "multiple-java": {
-    "pass@1": 0.2845,
-    "pass@10": 0.6363124159103037,
-    "pass@100": 0.8592622179934787
+    "pass@1": 0.25300000000000006,
+    "pass@10": 0.5977700955167525,
+    "pass@100": 0.8296818981304865
   },
   "config": {
     "prefix": "",
     "do_sample": true,
-    "temperature": 0.8,
+    "temperature": 0.9,
     "top_k": 0,
     "top_p": 0.95,
     "n_samples": 200,
@@ -28,13 +28,13 @@
     "load_in_4bit": false,
     "limit": 50,
     "limit_start": 0,
-    "save_every_k_tasks": 100,
+    "save_every_k_tasks": 20,
     "postprocess": true,
     "allow_code_execution": true,
     "generation_only": false,
-    "load_generations_path": "./runpod/codellama-13b-python/java/CodeLlama-13b-Python-hf-temp0.8-p0.95-bf16-n200-batch10-maxlen1024-java-generations_multiple-java.json",
+    "load_generations_path": "./runpod/codellama-13b-python/java/improve/t0.9-p0.95-k0/CodeLlama-13b-Python-hf-temp0.9-p0.95-k0-bf16-n200-batch10-maxlen1024-java-generations-0-50_multiple-java.json",
     "load_data_path": null,
-    "metric_output_path": "./runpod/codellama-13b-python/java/CodeLlama-13b-Python-hf-temp0.8-p0.95-bf16-n200-batch10-maxlen1024-java-generations_multiple-java-eval-0-50-evaluation_results.json",
+    "metric_output_path": "./runpod/codellama-13b-python/java/improve/t0.9-p0.95-k0/CodeLlama-13b-Python-hf-temp0.9-p0.95-k0-bf16-n200-batch10-maxlen1024-java-generations-0-50_multiple-java-eval-0-50-evaluation_results.json",
     "save_generations": false,
     "load_generations_intermediate_paths": null,
     "save_generations_path": "generations.json",
