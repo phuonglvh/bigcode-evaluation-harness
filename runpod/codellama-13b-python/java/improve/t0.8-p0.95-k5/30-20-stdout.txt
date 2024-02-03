@@ -7,7 +7,7 @@ top_p=0.95
 top_k=5
 
 BASE_DIR=./runpod/codellama-13b-python/java/improve/t$temperature-p$top_p-k$top_k
-mkdir $BASE_DIR
+mkdir -p $BASE_DIR
 mkdir: cannot create directory ‘./runpod/codellama-13b-python/java/improve/t0.8-p0.95-k5’: File exists
 
 n_samples=200

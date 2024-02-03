@@ -7,9 +7,9 @@ AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
 max_length=1024
 
-temperature=0.8
+temperature=0.4
 top_p=0.95
-top_k=20
+top_k=0
 
 BASE_DIR=./runpod/codellama-13b-python/java/improve/t$temperature-p$top_p-k$top_k
 mkdir -p $BASE_DIR
@@ -21,13 +21,11 @@ lang=java
 batch_size=10
 
 # limit_start=0
-# limit=25
-# limit_start=15
-# limit=15
-limit_start=25
-limit=25
-# limit_start=0
-# limit=50
+# limit=30
+# limit_start=30
+# limit=20
+limit_start=0
+limit=50
 eval_limit_start=0
 eval_limit=50
 

@@ -12,7 +12,7 @@ top_p=0.95
 top_k=0
 
 BASE_DIR=./runpod/codellama-13b-python/java/improve/t$temperature-p$top_p-k$top_k
-mkdir $BASE_DIR
+mkdir -p $BASE_DIR
 
 n_samples=200
 seed=0
