@@ -20,8 +20,8 @@ precision=bf16
 lang=java
 batch_size=10
 
-limit_start=30
-limit=20
+limit_start=0
+limit=50
 eval_limit_start=0
 eval_limit=50
 
