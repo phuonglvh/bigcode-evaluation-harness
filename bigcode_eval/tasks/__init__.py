@@ -5,7 +5,7 @@ from . import (apps, code_to_code, codexglue_code_to_text,
                codexglue_text_to_text, conala, concode, ds1000, gsm, humaneval,
                humanevalpack, instruct_humaneval, instruct_wizard_humaneval,
                mbpp, multiple, multiple_enc_dec, parity, python_bugs, quixbugs,
-               recode, santacoder_fim)
+               recode, santacoder_fim, bug_fix)
 
 TASK_REGISTRY = {
     **apps.create_all_tasks(),
@@ -37,12 +37,21 @@ TRANSLATION_TASK_REGISTRY = {
 }
 TRANSLATION_TASKS = sorted(list(TRANSLATION_TASK_REGISTRY))
 
+BUGFIX_TASK_REGISTRY = {
+    **bug_fix.multiple.create_all_tasks(),
+}
+BUGFIX_TASKS = sorted(list(BUGFIX_TASK_REGISTRY))
 
-ALL_TASK_SPECIFIC_ARGS = [code_to_code.multiple.add_task_specific_args]
+ALL_TASK_SPECIFIC_ARGS = [
+    code_to_code.multiple.add_task_specific_args, bug_fix.multiple.add_task_specific_args]
+
 
 def get_task(task_name, args=None):
     if task_name in TRANSLATION_TASKS:
         return get_code_to_code_task(task_name, args)
+
+    if task_name in BUGFIX_TASKS:
+        return get_bugfix_task(task_name, args)
 
     try:
         kwargs = {}
@@ -69,4 +78,18 @@ def get_code_to_code_task(task_name, args=None):
     except KeyError:
         print("Available tasks:")
         pprint(TRANSLATION_TASK_REGISTRY)
+        raise KeyError(f"Missing task {task_name}")
+
+def get_bugfix_task(task_name, args=None):
+    try:
+        kwargs = {'debug': args.debug,
+                  'source_generations_path': args.source_generations_path}
+        if "prompt" in inspect.signature(BUGFIX_TASK_REGISTRY[task_name]).parameters:
+            kwargs["prompt"] = args.prompt
+        if "load_data_path" in inspect.signature(BUGFIX_TASK_REGISTRY[task_name]).parameters:
+            kwargs["load_data_path"] = args.load_data_path
+        return BUGFIX_TASK_REGISTRY[task_name](**kwargs)
+    except KeyError:
+        print("Available tasks:")
+        pprint(BUGFIX_TASK_REGISTRY)
         raise KeyError(f"Missing task {task_name}")
