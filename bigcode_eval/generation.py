@@ -63,7 +63,11 @@ def parallel_generations(
                 print(
                     f"generations loaded, {n_tasks} selected from {len(generations)} with {len(generations[0])} candidates"
                 )
-        return generations[:n_tasks]
+        from_idx=args.limit_start
+        to_idx =from_idx+n_tasks
+        selected_gens = generations[from_idx:to_idx]
+        print(f'loaded tasks (0-based indexing): {from_idx} - {to_idx}')
+        return selected_gens
 
     set_seed(args.seed, device_specific=True)
 
