@@ -67,8 +67,8 @@ def create_all_tasks():
 
 def create_task(language):
     class MultiPLE(GeneralMultiPLE):
-        def __init__(self):
-            super().__init__(language)
+        def __init__(self, **kwargs):
+            super().__init__(language, **kwargs)
 
     return MultiPLE
 
@@ -82,7 +82,7 @@ class GeneralMultiPLE(Task):
     DATASET_NAME = None
     DATASET_REVISION = "d23b094346c5dbda1080a74bb2a24c18adbf7409"
 
-    def __init__(self, language):
+    def __init__(self, language, **kwargs):
         self.language = language
         self.DATASET_NAME = f"humaneval-{language}"
         # we need the dataset to get stop words for each language
@@ -95,6 +95,7 @@ class GeneralMultiPLE(Task):
             stop_words=stop_words,
             requires_execution=True,
         )
+        self.kwargs = kwargs
 
     def get_dataset(self):
         """Returns dataset for the task or an iterable of any object, that get_prompt can handle"""
@@ -138,7 +139,7 @@ class GeneralMultiPLE(Task):
         """
         # get prompts and problem names
         n_tasks = len(generations)
-        from_idx=self.args.limit_start
+        from_idx=self.kwargs.limit_start
         to_idx =from_idx+n_tasks
         selected_tasks = self.get_dataset()[from_idx:to_idx]
 
