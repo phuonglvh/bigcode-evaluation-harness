@@ -95,7 +95,7 @@ class GeneralMultiPLE(Task):
             stop_words=stop_words,
             requires_execution=True,
         )
-        self.kwargs = kwargs
+        self.args = kwargs
 
     def get_dataset(self):
         """Returns dataset for the task or an iterable of any object, that get_prompt can handle"""
@@ -139,7 +139,7 @@ class GeneralMultiPLE(Task):
         """
         # get prompts and problem names
         n_tasks = len(generations)
-        from_idx=self.kwargs.limit_start
+        from_idx = self.args['limit_start']
         to_idx =from_idx+n_tasks
         selected_tasks = self.get_dataset()[from_idx:to_idx]
 
