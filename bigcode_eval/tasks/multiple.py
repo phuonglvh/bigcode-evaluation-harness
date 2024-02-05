@@ -142,6 +142,8 @@ class GeneralMultiPLE(Task):
         from_idx = self.args['limit_start']
         to_idx = from_idx+n_tasks
         selected_tasks = self.get_dataset().select(range(from_idx, to_idx)).to_list()
+        print(f'process_results of {len(selected_tasks)} selected problems:' +
+              '\n'.join(task['name'] for task in selected_tasks))
 
         prompts_names = [
             {"prompt": doc["prompt"], "name": doc["name"]}
