@@ -16,7 +16,7 @@ from pathlib import Path
 from time import time
 
 import numpy as np
-from datasets import load_dataset
+from datasets import load_dataset, Dataset
 from tqdm import tqdm
 
 from bigcode_eval.base import Task
@@ -86,7 +86,7 @@ class GeneralMultiPLE(Task):
         self.language = language
         self.DATASET_NAME = f"humaneval-{language}"
         # we need the dataset to get stop words for each language
-        self.dataset = load_dataset(
+        self.dataset: Dataset = load_dataset(
             GeneralMultiPLE.DATASET_PATH,
             self.DATASET_NAME,
             revision=self.DATASET_REVISION)
@@ -97,7 +97,7 @@ class GeneralMultiPLE(Task):
         )
         self.args = kwargs
 
-    def get_dataset(self):
+    def get_dataset(self) -> Dataset:
         """Returns dataset for the task or an iterable of any object, that get_prompt can handle"""
         return self.dataset["test"]
 
@@ -140,12 +140,12 @@ class GeneralMultiPLE(Task):
         # get prompts and problem names
         n_tasks = len(generations)
         from_idx = self.args['limit_start']
-        to_idx =from_idx+n_tasks
-        selected_tasks = self.get_dataset()[from_idx:to_idx]
+        to_idx = from_idx+n_tasks
+        selected_tasks = self.get_dataset().select(range(from_idx, to_idx)).to_list()
 
         prompts_names = [
             {"prompt": doc["prompt"], "name": doc["name"]}
-            for i, doc in enumerate(selected_tasks)
+            for doc in selected_tasks
         ]
         # a common temp dir for all the problems
         temp_dir = tempfile.gettempdir()
