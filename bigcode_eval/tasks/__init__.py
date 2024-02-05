@@ -72,6 +72,8 @@ def get_code_to_code_task(task_name, args=None):
     try:
         kwargs = {'source_lang': args.source_lang,
                   'source_generations_path': args.source_generations_path}
+        kwargs['limit_start'] = args.limit_start
+        kwargs['limit'] = args.limit
         if "prompt" in inspect.signature(TRANSLATION_TASK_REGISTRY[task_name]).parameters:
             kwargs["prompt"] = args.prompt
         if "load_data_path" in inspect.signature(TRANSLATION_TASK_REGISTRY[task_name]).parameters:
@@ -86,6 +88,8 @@ def get_bugfix_task(task_name, args=None):
     try:
         kwargs = {'debug': args.debug,
                   'source_generations_path': args.source_generations_path}
+        kwargs['limit_start'] = args.limit_start
+        kwargs['limit'] = args.limit
         if "prompt" in inspect.signature(BUGFIX_TASK_REGISTRY[task_name]).parameters:
             kwargs["prompt"] = args.prompt
         if "load_data_path" in inspect.signature(BUGFIX_TASK_REGISTRY[task_name]).parameters:
