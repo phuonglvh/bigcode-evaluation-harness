@@ -137,10 +137,14 @@ class GeneralMultiPLE(Task):
             list of str containing refrences
         """
         # get prompts and problem names
+        n_tasks = len(generations)
+        from_idx=self.args.limit_start
+        to_idx =from_idx+n_tasks
+        selected_tasks = self.get_dataset()[from_idx:to_idx]
+
         prompts_names = [
             {"prompt": doc["prompt"], "name": doc["name"]}
-            for i, doc in enumerate(self.get_dataset())
-            if i < len(generations)
+            for i, doc in enumerate(selected_tasks)
         ]
         # a common temp dir for all the problems
         temp_dir = tempfile.gettempdir()
@@ -160,6 +164,7 @@ class GeneralMultiPLE(Task):
             list_files.append(temp_file_name)
             with open(temp_file_name, "wt") as f:
                 json.dump(problem, f)
+            print(f'saved 1 problem in {temp_file_name}')
         print(
             f"Saved {len(list_files)} problems in {temp_dir} for evaluation, each problem has {len(generations[0])} completions"
         )
