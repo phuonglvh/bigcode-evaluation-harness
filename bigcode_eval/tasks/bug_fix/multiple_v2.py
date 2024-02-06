@@ -127,10 +127,15 @@ class BugFixMultiPLE(GeneralMultiPLE):
             self.humaneval_dataset_dict[task_id] = task
 
     def _get_prompt_bugfix(self, doc, source_code):
+        entry_point_python = doc['entry_point']
+        entry_point = entry_point_python
+        if self.language.capitalize() == 'Java':
+            entry_point = "".join([word.capitalize() for word in entry_point_python.split('_')])
+
         prompt = f'''Problem:
 {source_code.rstrip()}\n    }}\n\n}}\n
 
-Fix bugs in Problem if any:
+Fix bugs in method {entry_point} if any:
 {doc['prompt']}'''
 
         return prompt
