@@ -42,6 +42,11 @@ BUGFIX_TASK_REGISTRY = {
 }
 BUGFIX_TASKS = sorted(list(BUGFIX_TASK_REGISTRY))
 
+BUGFIX_V2_TASK_REGISTRY = {
+    **bug_fix.multiple_v2.create_all_tasks(),
+}
+BUGFIX_V2_TASKS = sorted(list(BUGFIX_V2_TASK_REGISTRY))
+
 ALL_TASK_SPECIFIC_ARGS = [
     code_to_code.multiple.add_task_specific_args, bug_fix.multiple.add_task_specific_args]
 
@@ -51,6 +56,9 @@ def get_task(task_name, args=None):
         return get_code_to_code_task(task_name, args)
 
     if task_name in BUGFIX_TASKS:
+        return get_bugfix_task(task_name, args)
+    
+    if task_name in BUGFIX_V2_TASKS:
         return get_bugfix_task(task_name, args)
 
     try:
@@ -98,4 +106,20 @@ def get_bugfix_task(task_name, args=None):
     except KeyError:
         print("Available tasks:")
         pprint(BUGFIX_TASK_REGISTRY)
+        raise KeyError(f"Missing task {task_name}")
+
+def get_bugfix_v2_task(task_name, args=None):
+    try:
+        kwargs = {'debug': args.debug,
+                  'source_generations_path': args.source_generations_path}
+        kwargs['limit_start'] = args.limit_start
+        kwargs['limit'] = args.limit
+        if "prompt" in inspect.signature(BUGFIX_V2_TASK_REGISTRY[task_name]).parameters:
+            kwargs["prompt"] = args.prompt
+        if "load_data_path" in inspect.signature(BUGFIX_V2_TASK_REGISTRY[task_name]).parameters:
+            kwargs["load_data_path"] = args.load_data_path
+        return BUGFIX_V2_TASK_REGISTRY[task_name](**kwargs)
+    except KeyError:
+        print("Available tasks:")
+        pprint(BUGFIX_V2_TASK_REGISTRY)
         raise KeyError(f"Missing task {task_name}")
