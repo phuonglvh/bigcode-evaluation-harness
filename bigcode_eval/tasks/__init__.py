@@ -1,11 +1,11 @@
 import inspect
 from pprint import pprint
 
-from . import (apps, code_to_code, codexglue_code_to_text,
+from . import (apps, bug_fix, code_to_code, codexglue_code_to_text,
                codexglue_text_to_text, conala, concode, ds1000, gsm, humaneval,
                humanevalpack, instruct_humaneval, instruct_wizard_humaneval,
                mbpp, multiple, multiple_enc_dec, parity, python_bugs, quixbugs,
-               recode, santacoder_fim, bug_fix)
+               recode, santacoder_fim)
 
 TASK_REGISTRY = {
     **apps.create_all_tasks(),
@@ -47,8 +47,13 @@ BUGFIX_V2_TASK_REGISTRY = {
 }
 BUGFIX_V2_TASKS = sorted(list(BUGFIX_V2_TASK_REGISTRY))
 
+BUGFIX_V3_TASK_REGISTRY = {
+    **bug_fix.multiple_v3.create_all_tasks(),
+}
+BUGFIX_V3_TASKS = sorted(list(BUGFIX_V3_TASK_REGISTRY))
+
 ALL_TASK_SPECIFIC_ARGS = [
-    code_to_code.multiple.add_task_specific_args, bug_fix.multiple.add_task_specific_args, bug_fix.multiple_v2.add_task_specific_args]
+    code_to_code.multiple.add_task_specific_args, bug_fix.multiple.add_task_specific_args, bug_fix.multiple_v2.add_task_specific_args, bug_fix.multiple_v3.add_task_specific_args]
 
 
 def get_task(task_name, args=None):
@@ -60,6 +65,9 @@ def get_task(task_name, args=None):
 
     if task_name in BUGFIX_V2_TASKS:
         return get_bugfix_v2_task(task_name, args)
+
+    if task_name in BUGFIX_V3_TASKS:
+        return get_bugfix_v3_task(task_name, args)
 
     try:
         kwargs = {}
@@ -124,4 +132,21 @@ def get_bugfix_v2_task(task_name, args=None):
     except KeyError:
         print("Available tasks:")
         pprint(BUGFIX_V2_TASK_REGISTRY)
+        raise KeyError(f"Missing task {task_name}")
+
+
+def get_bugfix_v3_task(task_name, args=None):
+    try:
+        kwargs = {'debug': args.debug,
+                  'source_generations_path': args.source_generations_path}
+        kwargs['limit_start'] = args.limit_start
+        kwargs['limit'] = args.limit
+        if "prompt" in inspect.signature(BUGFIX_V3_TASK_REGISTRY[task_name]).parameters:
+            kwargs["prompt"] = args.prompt
+        if "load_data_path" in inspect.signature(BUGFIX_V3_TASK_REGISTRY[task_name]).parameters:
+            kwargs["load_data_path"] = args.load_data_path
+        return BUGFIX_V3_TASK_REGISTRY[task_name](**kwargs)
+    except KeyError:
+        print("Available tasks:")
+        pprint(BUGFIX_V3_TASK_REGISTRY)
         raise KeyError(f"Missing task {task_name}")

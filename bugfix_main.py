@@ -14,12 +14,13 @@ from bigcode_eval.arguments import EvalArguments
 from bigcode_eval.evaluator import Evaluator
 from bigcode_eval.tasks import ALL_TASK_SPECIFIC_ARGS
 from bigcode_eval.tasks import ALL_TASKS as GENERATION_TASKS
-from bigcode_eval.tasks import BUGFIX_TASKS, BUGFIX_V2_TASKS
+from bigcode_eval.tasks import BUGFIX_TASKS, BUGFIX_V2_TASKS, BUGFIX_V3_TASKS
 
 ALL_TASKS = []
 ALL_TASKS.extend(GENERATION_TASKS)
 ALL_TASKS.extend(BUGFIX_TASKS)
 ALL_TASKS.extend(BUGFIX_V2_TASKS)
+ALL_TASKS.extend(BUGFIX_V3_TASKS)
 ALL_TASKS = sorted(ALL_TASKS)
 
 
@@ -397,11 +398,13 @@ def main():
                 with open(args.load_generations_intermediate_paths[idx], "r") as f_in:
                     # intermediate_generations: list[list[str | None]] of len n_tasks
                     # where list[i] = generated codes or empty
-                    print(f'task {task}: loading intermediate generations from {args.load_generations_intermediate_paths}')
-                    
+                    print(
+                        f'task {task}: loading intermediate generations from {args.load_generations_intermediate_paths}')
+
                     intermediate_generations = json.load(f_in)
 
-                    print(f'task {task}: loaded {len(intermediate_generations)} intermediate generations from {args.load_generations_intermediate_paths}')
+                    print(
+                        f'task {task}: loaded {len(intermediate_generations)} intermediate generations from {args.load_generations_intermediate_paths}')
 
             if args.generation_only:
                 if accelerator.is_main_process:
