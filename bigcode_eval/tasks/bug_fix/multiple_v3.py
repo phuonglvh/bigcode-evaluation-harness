@@ -11,6 +11,7 @@ from typing import *
 
 from bigcode_eval.tasks.bug_fix.multiple_v2 import \
     BugFixMultiPLE as BugFixV2MultiPLE
+from bigcode_eval.tasks.bug_fix.utils import remove_comments
 
 _CITATION = """
 @article{cassano2022scalable,
@@ -91,11 +92,11 @@ class BugFixMultiPLE(BugFixV2MultiPLE):
 
         words = entry_point_python.split('_')
         if self.language.capitalize() == 'Java' and len(words) > 1:
-            entry_point = words[0] + \
-                "".join([word.capitalize() for word in words[1:]])
+            entry_point = words[0] + "".join([word.capitalize() for word in words[1:]])
 
-        prompt = f'''{LANGUAGE_TAG[self.language.lower()]}
-{super().get_prompt_bugfix(doc, source_code)}
+        prompt = f'''{source_code.rstrip()}\n    }}\n\n}}\n
+Fix bugs in {entry_point}:
+{remove_comments(doc["prompt"])}
 '''
 
         return prompt
