@@ -14,11 +14,12 @@ from bigcode_eval.arguments import EvalArguments
 from bigcode_eval.evaluator import Evaluator
 from bigcode_eval.tasks import ALL_TASK_SPECIFIC_ARGS
 from bigcode_eval.tasks import ALL_TASKS as GENERATION_TASKS
-from bigcode_eval.tasks import BUGFIX_TASKS
+from bigcode_eval.tasks import BUGFIX_TASKS, BUGFIX_V2_TASKS
 
 ALL_TASKS = []
 ALL_TASKS.extend(GENERATION_TASKS)
 ALL_TASKS.extend(BUGFIX_TASKS)
+ALL_TASKS.extend(BUGFIX_V2_TASKS)
 ALL_TASKS = sorted(ALL_TASKS)
 
 
