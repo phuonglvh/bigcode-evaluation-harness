@@ -128,10 +128,10 @@ class BugFixMultiPLE(GeneralMultiPLE):
 
     def _get_prompt_bugfix(self, doc, source_code):
         prompt = f'''Problem:
-{source_code.rstrip()}
+{source_code.rstrip()}\n    }}\n\n}}\n
 
 Fix bugs in Problem if any:
-{doc['prompt']}\n    }}\n\n}}\n'''
+{doc['prompt']}'''
 
         return prompt
 
