@@ -1,0 +1,13 @@
+1x Tesla V10011.3  TFLOPS
+13.1/16.0 GB gpu
+718.3 GB/s
+H12SSL
+PCIE 3.0, 16x12.4 GB/s
+AMD EPYC 7302P 16-Core Processor
+8.0/32 cpu
+13/32 GB ram
+WD_BLACK SN850X 4000GB
+6300 MB/s13.0/13.9 GB disk
+37.1 Mbps844.0 MbpsMax CUDA: 12.0
+GPU: 98% 46C , CPU: 12% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+$0.108/hr 
