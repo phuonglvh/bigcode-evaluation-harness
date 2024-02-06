@@ -126,7 +126,7 @@ class BugFixMultiPLE(GeneralMultiPLE):
             task_id = task['task_id'].replace('HumanEval/', '')
             self.humaneval_dataset_dict[task_id] = task
 
-    def _get_prompt_bugfix(self, doc, source_code):
+    def get_prompt_bugfix(self, doc, source_code):
         entry_point_python = doc['entry_point']
         entry_point = entry_point_python
 
@@ -167,7 +167,7 @@ Fix bugs in method {entry_point} if any:
                 sub_target_task = doc.copy()
                 sub_target_task['entry_point'] = entrypoint
                 sub_target_task['original_prompt'] = sub_target_task["prompt"]
-                sub_target_task['prompt'] = self._get_prompt_bugfix(sub_target_task, task_gen)
+                sub_target_task['prompt'] = self.get_prompt_bugfix(sub_target_task, task_gen)
 
                 sub_target_task['original_name'] = sub_target_task["name"]
                 sub_target_task['name'] = f'{sub_target_task["original_name"]}_{gen_id}'
