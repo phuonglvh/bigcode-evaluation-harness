@@ -48,7 +48,7 @@ BUGFIX_V2_TASK_REGISTRY = {
 BUGFIX_V2_TASKS = sorted(list(BUGFIX_V2_TASK_REGISTRY))
 
 ALL_TASK_SPECIFIC_ARGS = [
-    code_to_code.multiple.add_task_specific_args, bug_fix.multiple.add_task_specific_args]
+    code_to_code.multiple.add_task_specific_args, bug_fix.multiple.add_task_specific_args, bug_fix.multiple_v2.add_task_specific_args]
 
 
 def get_task(task_name, args=None):
@@ -57,7 +57,7 @@ def get_task(task_name, args=None):
 
     if task_name in BUGFIX_TASKS:
         return get_bugfix_task(task_name, args)
-    
+
     if task_name in BUGFIX_V2_TASKS:
         return get_bugfix_task(task_name, args)
 
@@ -92,6 +92,7 @@ def get_code_to_code_task(task_name, args=None):
         pprint(TRANSLATION_TASK_REGISTRY)
         raise KeyError(f"Missing task {task_name}")
 
+
 def get_bugfix_task(task_name, args=None):
     try:
         kwargs = {'debug': args.debug,
@@ -107,6 +108,7 @@ def get_bugfix_task(task_name, args=None):
         print("Available tasks:")
         pprint(BUGFIX_TASK_REGISTRY)
         raise KeyError(f"Missing task {task_name}")
+
 
 def get_bugfix_v2_task(task_name, args=None):
     try:

@@ -3,7 +3,6 @@
 
 set -euox
 
-BASE_DIR=./runpod/codellama-13b-python/java/improve/t0.1-p0.1-k0
 AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
 max_length=1024
@@ -11,6 +10,9 @@ max_length=1024
 temperature=0.1
 top_p=0.1
 top_k=0
+
+BASE_DIR=./runpod/codellama-13b-python/java/improve/t$temperature-p$top_p-k$top_k
+mkdir -p $BASE_DIR
 
 n_samples=200
 seed=0
@@ -21,7 +23,6 @@ batch_size=10
 
 limit_start=0
 limit=50
-
 eval_limit_start=0
 eval_limit=50
 
