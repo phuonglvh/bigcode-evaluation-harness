@@ -59,7 +59,7 @@ def get_task(task_name, args=None):
         return get_bugfix_task(task_name, args)
 
     if task_name in BUGFIX_V2_TASKS:
-        return get_bugfix_task(task_name, args)
+        return get_bugfix_v2_task(task_name, args)
 
     try:
         kwargs = {}
