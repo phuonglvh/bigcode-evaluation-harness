@@ -268,7 +268,7 @@ def complete_code(
                     batch["input_len"].max().item()
                 )
 
-            inputs = batch["ids"][:, : batch["input_len"]]
+            inputs = batch["ids"][:, : batch["input_len"]] if tokenizer.padding_side == "right" else batch["ids"]
             if "ids_encoder" in batch:
                 if is_wrapped:
                     generated_tokens = accelerator.unwrap_model(model).generate(
@@ -297,11 +297,22 @@ def complete_code(
                         **gen_kwargs,
                     )
                 else:
-                    generated_tokens = model.generate(
-                        input_ids=inputs,
-                        num_return_sequences=batch_size,
-                        **gen_kwargs,
-                    )
+                    # In transformers (>= 4.40.2), if the length of input_ids == max_length, a ValueError is thrown.
+                    # We want to ignore this error in order to reproduce old results with mbpp.
+                    try:
+                        generated_tokens = model.generate(
+                            input_ids=inputs,
+                            num_return_sequences=batch_size,
+                            **gen_kwargs,
+                        )
+                    except ValueError as e:
+                        # When the length of input_ids == max_length, the generation is the same as the input
+                        if str(e).startswith(f"Input length of input_ids is {inputs.shape[1]}, but `max_length` is set to {gen_kwargs['max_length']}"):
+                            warnings.warn(f"An error with the following message was thrown: {e}. Returning the input as the generation, for higher scores consider using a larger `max_length`")
+                            generated_tokens = inputs
+                        else:
+                            raise e
+
             # each task is generated batch_size times
             generated_tasks = batch["task_id"].repeat(batch_size)
             generated_tokens = accelerator.pad_across_processes(
@@ -365,7 +376,7 @@ def update_code_gens(
     postprocess,
     code_gens,
     gen_token_dict,
-):
+):  
     for sample, generated_tokens in gen_token_dict.items():
         for s in generated_tokens:
             if INFILL_MODE or tokenizer.eos_token in task.stop_words:
@@ -378,6 +389,13 @@ def update_code_gens(
                 gen_code = tokenizer.decode(
                     s, skip_special_tokens=False, clean_up_tokenization_spaces=False
                 )
+                try:
+                    # some tokenizers add a multi-token prefix to the generation (e.g ChatGLM)
+                    tokenizer_prefix = tokenizer.decode(tokenizer.get_prefix_tokens())
+                    if gen_code.startswith(f"{tokenizer_prefix}"):
+                        gen_code = gen_code[len(tokenizer_prefix):].lstrip()
+                except:
+                    pass
                 if INFILL_MODE:
                     gen_code = _parse_infill(gen_code, tokenizer)
                 if INSTRUCTION_MODE:
