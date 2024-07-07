@@ -2,10 +2,11 @@ import inspect
 from pprint import pprint
 
 from . import (apps, bug_fix, code_to_code, codexglue_code_to_text,
-               codexglue_text_to_text, conala, concode, ds1000, gsm, humaneval,
+               codexglue_text_to_text, conala, concode, ds1000, gsm, humaneval, humanevalplus,
                humanevalpack, instruct_humaneval, instruct_wizard_humaneval,
-               mbpp, multiple, multiple_enc_dec, parity, python_bugs, quixbugs,
-               recode, santacoder_fim)
+               mbpp, mbppplus, multiple_enc_dec, multiple, parity, python_bugs, quixbugs,
+               recode, santacoder_fim,
+               studenteval, mercury)
 
 TASK_REGISTRY = {
     **apps.create_all_tasks(),
@@ -18,8 +19,10 @@ TASK_REGISTRY = {
     "concode": concode.Concode,
     **ds1000.create_all_tasks(),
     **humaneval.create_all_tasks(),
+    **humanevalplus.create_all_tasks(),
     **humanevalpack.create_all_tasks(),
     "mbpp": mbpp.MBPP,
+    "mbppplus": mbppplus.MBPPPlus,
     "parity": parity.Parity,
     "python_bugs": python_bugs.PythonBugs,
     "quixbugs": quixbugs.QuixBugs,
@@ -28,6 +31,8 @@ TASK_REGISTRY = {
     **instruct_humaneval.create_all_tasks(),
     **recode.create_all_tasks(),
     **santacoder_fim.create_all_tasks(),
+    "studenteval": studenteval.StudentEval,
+    "mercury": mercury.Mercury,
 }
 
 ALL_TASKS = sorted(list(TASK_REGISTRY))
@@ -70,7 +75,8 @@ def get_task(task_name, args=None):
         return get_bugfix_v3_task(task_name, args)
 
     try:
-        kwargs = {}
+        args = args or {'trust_remote_code': False}
+        kwargs = {'trust_remote_code': args.trust_remote_code}
         if "prompt" in inspect.signature(TASK_REGISTRY[task_name]).parameters:
             kwargs["prompt"] = args.prompt
         if "load_data_path" in inspect.signature(TASK_REGISTRY[task_name]).parameters:

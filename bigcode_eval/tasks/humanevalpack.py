@@ -176,7 +176,9 @@ class HumanEvalPack(Task):
         elif self.prompt == "diff":
             stop_words = ["<commit_before>", "<commit_msg>", "<commit_after>"]
         elif self.prompt == "diff-carper":
-            stop_words = ["<BEF>", "<MSG>", "<DFF>", "\ No newline at end of file"]            
+            stop_words = ["<BEF>", "<MSG>", "<DFF>", "\ No newline at end of file"]          
+        elif self.prompt == "issue":  
+            stop_words.append("```")
         stop_words.append("<|endoftext|>")
         self.with_docs = with_docs
         super().__init__(stop_words=stop_words, requires_execution=True)
@@ -213,7 +215,7 @@ class HumanEvalPack(Task):
         elif self.prompt == "octogeex":
             prompt = f'Question: {inp.strip()}\n\nAnswer:\n{prompt_base}'            
         elif self.prompt == "starchat":
-            # https://huggingface.co/HuggingFaceH4/starchat-beta
+            # https://hf.co/HuggingFaceH4/starchat-beta
             prompt = f'<|system|>\n<|end|>\n<|user|>\n{inp}<|end|>\n<|assistant|>\n{prompt_base}'
         elif self.prompt == "starcodercommit":
             prompt = f'<commit_before><commit_msg>{inp}<commit_after>{prompt_base}'
@@ -224,7 +226,25 @@ class HumanEvalPack(Task):
             # https://github.com/nlpxucan/WizardLM/blob/main/WizardCoder/src/humaneval_gen.py#L37
             prompt = f'Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{inp}\n\n### Response:\n{prompt_base}'
         elif self.prompt == "codellama":
+            # https://hf.co/codellama             
             prompt = f"[INST] {inp.strip()} [/INST] {prompt_base}"
+        elif  self.prompt == "deepseek":
+            prompt = f"You are an AI programming assistant, utilizing the Deepseek Coder model, developed by Deepseek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer\n### Instruction:\n{inp.strip()}\n### Response:\n{prompt_base}"
+        elif self.prompt in ["tulu", "gritlm"]:
+            # https://hf.co/GritLM/GritLM-7B
+            prompt = f"<|user|>\n{inp}\n<|assistant|>\n{prompt_base}"
+        elif self.prompt == "zephyr":
+            # https://hf.co/HuggingFaceH4/zephyr-7b-beta
+            prompt = f"<|user|>\n{inp}</s>\n<|assistant|>\n{prompt_base}"
+        elif self.prompt in ["yi", "starchat2", "codeqwen"]:
+            # https://hf.co/01-ai/Yi-34B-Chat     
+            prompt = f"<|im_start|>user\n{inp}<|im_end|>\n<|im_start|>assistant\n{prompt_base}"
+        elif self.prompt == "codegemma":
+            prompt = f"<start_of_turn>user\n{inp}<end_of_turn>\n<start_of_turn>model\n{prompt_base}"
+        elif self.prompt == "codellama-70b":
+            prompt = f"Source: user\n\n {inp.strip()} Source: assistant\nDestination: user \n\n{prompt_base}"
+        elif self.prompt == "aurora-m":
+            prompt = f'### Instruction:\n{inp}\n### Response:\n{prompt_base}'
         else:
             raise ValueError(f"The --prompt argument {self.prompt} wasn't provided or isn't supported")
         # Strip off the final \n to make the tokens more natural
@@ -504,6 +524,8 @@ class HumanEvalFixBase(HumanEvalPackGenerative):
         elif self.prompt == "diff-carper":
             prompt = f"<NME> {self.get_filename_with_extension(input_file=doc['entry_point'])}\n"
             prompt += f"<BEF> {context}\n<MSG> {instruction}\n<DFF>"
+        elif self.prompt == "issue":
+            prompt = f"<issue_start>username_0: {instruction}\n\n```{context}```\nUpvotes: 100<issue_comment>username_1: Sure, here is the fixed code.\n\n```{prompt_base}"
         else:
             prompt = super().get_prompt(prompt_base, instruction, context)
         return prompt.strip()

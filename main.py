@@ -110,6 +110,11 @@ def parse_args():
         help="Load model in 4bit",
     )
     parser.add_argument(
+        "--left_padding",
+        action="store_true",
+        help="Force left padding, needed for models like chatglm3-6b",
+    )
+    parser.add_argument(
         "--limit",
         type=int,
         default=None,
@@ -280,6 +285,8 @@ def main():
         elif args.load_in_4bit:
             print("Loading model in 4bit")
             model_kwargs["load_in_4bit"] = args.load_in_4bit
+            model_kwargs["torch_dtype"] = torch.float16
+            model_kwargs["bnb_4bit_compute_dtype"] = torch.float16            
             model_kwargs["device_map"] = {"": accelerator.process_index}
         else:
             print(f"Loading model in {args.precision}")
@@ -321,15 +328,25 @@ def main():
             model.merge_and_unload()
             print("Merge complete.")
 
-        tokenizer = AutoTokenizer.from_pretrained(
-            args.model,
-            revision=args.revision,
-            trust_remote_code=args.trust_remote_code,
-            token=args.token,
-            truncation_side="left",
-            # padding on the right is needed to cut off padding in `complete_code`
-            padding_side="right",
-        )
+        if args.left_padding:
+            # left padding is required for some models like chatglm3-6b
+            tokenizer = AutoTokenizer.from_pretrained(
+                args.model,
+                revision=args.revision,
+                trust_remote_code=args.trust_remote_code,
+                token=args.token,
+                padding_side="left",  
+            )
+        else:
+            # used by default for most models
+            tokenizer = AutoTokenizer.from_pretrained(
+                args.model,
+                revision=args.revision,
+                trust_remote_code=args.trust_remote_code,
+                token=args.token,
+                truncation_side="left",
+                padding_side="right",  
+            )
         if not tokenizer.eos_token:
             if tokenizer.bos_token:
                 tokenizer.eos_token = tokenizer.bos_token
