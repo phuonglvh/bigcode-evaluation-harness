@@ -67,8 +67,8 @@ def create_all_tasks():
 
 def create_task(language):
     class MultiPLE(GeneralMultiPLE):
-        def __init__(self):
-            super().__init__(language)
+        def __init__(self, **kwargs):
+            super().__init__(language, **kwargs)
 
     return MultiPLE
 
@@ -82,14 +82,16 @@ class GeneralMultiPLE(Task):
     DATASET_NAME = None
     DATASET_REVISION = "d23b094346c5dbda1080a74bb2a24c18adbf7409"
 
-    def __init__(self, language):
+    def __init__(self, language, **kwargs):
         self.language = language
         self.DATASET_NAME = f"humaneval-{language}"
         # we need the dataset to get stop words for each language
         self.dataset = load_dataset(
             GeneralMultiPLE.DATASET_PATH,
             self.DATASET_NAME,
-            revision=self.DATASET_REVISION)
+            revision=self.DATASET_REVISION,
+            trust_remote_code=kwargs.get('trust_remote_code')
+        )
         stop_words = self.dataset["test"][0]["stop_tokens"] + ["<file_sep>"]
         super().__init__(
             stop_words=stop_words,
