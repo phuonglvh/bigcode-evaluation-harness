@@ -39,7 +39,8 @@ ALL_TASKS = sorted(list(TASK_REGISTRY))
 
 def get_task(task_name, args=None):
     try:
-        kwargs = {}
+        args = args or {'trust_remote_code': False}
+        kwargs = {'trust_remote_code': args.trust_remote_code}
         if "prompt" in inspect.signature(TASK_REGISTRY[task_name]).parameters:
             kwargs["prompt"] = args.prompt
         if "load_data_path" in inspect.signature(TASK_REGISTRY[task_name]).parameters:
