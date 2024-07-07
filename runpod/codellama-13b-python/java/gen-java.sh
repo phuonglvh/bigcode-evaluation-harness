@@ -17,7 +17,7 @@ limit=50
 batch_size=10
 
 save_every_k_tasks=5 # after completing 5 dataset's tasks
-save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
 part_1_path="/workspace/bigcode-evaluation-harness/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations-$limit_start-$limit.json"
 
@@ -56,7 +56,7 @@ limit=50
 batch_size=10
 
 save_every_k_tasks=5 # after completing 5 dataset's tasks
-save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
 part_2_path="/workspace/bigcode-evaluation-harness/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations-$limit_start-$limit.json"
 
@@ -95,7 +95,7 @@ limit=100 # > actual number of records
 batch_size=10
 
 save_every_k_tasks=5 # after completing 5 dataset's tasks
-save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
 part_3_path="/workspace/bigcode-evaluation-harness/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations-$limit_start-$limit.json"
 

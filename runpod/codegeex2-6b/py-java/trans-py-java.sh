@@ -23,7 +23,7 @@ NUM_RETURN_SEQUENCES_PER_PROMPT=1
 batch_size=$NUM_RETURN_SEQUENCES_PER_PROMPT
 
 save_every_k_tasks=$source_n_samples
-save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
 python code_to_code_trans.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks code2code-multiple-java \
@@ -63,7 +63,7 @@ NUM_RETURN_SEQUENCES_PER_PROMPT=1
 batch_size=$NUM_RETURN_SEQUENCES_PER_PROMPT
 
 save_every_k_tasks=$source_n_samples
-save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
 python code_to_code_trans.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks code2code-multiple-py \

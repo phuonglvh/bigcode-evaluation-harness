@@ -18,7 +18,7 @@ lang=java
 limit_start=0
 limit=50
 save_every_k_tasks=5 # after completing 5 dataset's tasks
-save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+save_every_k_iterations=$((save_every_k_tasks*n_samples/batch_size))
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
@@ -57,7 +57,7 @@ lang=java
 limit_start=50
 limit=50
 save_every_k_tasks=5 # after completing 5 dataset's tasks
-save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+save_every_k_iterations=$((save_every_k_tasks*n_samples/batch_size))
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
@@ -95,7 +95,7 @@ lang=java
 limit_start=100
 limit=100
 save_every_k_tasks=5 # after completing 5 dataset's tasks
-save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+save_every_k_iterations=$((save_every_k_tasks*n_samples/batch_size))
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \

@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 set -euox
@@ -27,15 +26,15 @@ eval_limit=25
 
 limit_start=0
 limit=25
-gen_limit_start=$((limit_start*source_n_samples))
-gen_limit=$((limit*source_n_samples))
+gen_limit_start=$((limit_start * source_n_samples))
+gen_limit=$((limit * source_n_samples))
 source_generations_path='./runpod/codellama-13b-python/java/improve/t0.8-p0.95-k0/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch10-maxlen1024-java-generations-0-50_multiple-java.json'
 
 NUM_RETURN_SEQUENCES_PER_PROMPT=1
 batch_size=$NUM_RETURN_SEQUENCES_PER_PROMPT
 
 save_every_k_tasks=$source_n_samples
-save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
 common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_bugfix-v3-multiple-$lang"

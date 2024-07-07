@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 set -euox
@@ -32,7 +31,7 @@ eval_limit_start=0
 eval_limit=50
 
 save_every_k_tasks=1 # after completing k dataset's tasks
-save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
 common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"

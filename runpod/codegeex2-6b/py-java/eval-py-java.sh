@@ -20,18 +20,18 @@ lang=java
 # source_lang=py
 source_n_samples=200
 
-limit_start=$((0*source_n_samples))
-limit=$((40*source_n_samples))
+limit_start=$((0 * source_n_samples))
+limit=$((40 * source_n_samples))
 
 NUM_RETURN_SEQUENCES_PER_PROMPT=1
 batch_size=$NUM_RETURN_SEQUENCES_PER_PROMPT
 
 save_every_k_tasks=$source_n_samples
-save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
 eval_n_samples=$source_n_samples
-eval_limit_start=$((limit_start/source_n_samples))
-eval_limit=$((limit/source_n_samples))
+eval_limit_start=$((limit_start / source_n_samples))
+eval_limit=$((limit / source_n_samples))
 
 common_name="$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_code2code-multiple-$lang"
@@ -74,4 +74,3 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --limit $eval_limit \
     --load_generations_path "$generations_path" \
     --metric_output_path "$BASE_DIR/$generations_name-evaluation_results.json"
-    

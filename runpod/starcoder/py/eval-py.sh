@@ -17,7 +17,7 @@ full_language=python
 batch_size=100
 
 save_every_k_tasks=5 # after completing 5 dataset's tasks
-save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
 common_name="$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations_multiple-$lang"
@@ -39,7 +39,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --token \
     --load_generations_path "$generations_path" \
     --metric_output_path "$BASE_DIR/$generations_name-evaluation_results.json"
-    
+
 # BLEU score
 bleu_predictions_path="$BASE_DIR/$common_name-bleu-predictions_multiple-$lang.txt"
 python utils/generations_to_codexglue_bleu.py \

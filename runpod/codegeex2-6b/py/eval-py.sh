@@ -16,7 +16,7 @@ lang=py
 full_language=python
 
 save_every_k_tasks=5 # after completing 5 dataset's tasks
-save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
 common_name="$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations_multiple-$lang"
@@ -38,7 +38,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --token \
     --load_generations_path "$generations_path" \
     --metric_output_path "$BASE_DIR/$generations_name-evaluation_results.json"
-    
+
 # generations_path="$BASE_DIR/$generations_name.json"
 
 # BLEU score
@@ -77,7 +77,6 @@ python utils/human_eval_x_to_codexglue_codebleu.py \
         --refs "$codebleu_references_path" \
         --hyp "$codebleu_predictions_path"
 )
-
 
 # part_1 = '/workspace/bigcode-evaluation-harness/codegeex2-6b-temp0.8-p0.95-bf16-n200-batch5-maxlen1024-py-generations_0-50-multiple-py.json'
 # part_2 = '/workspace/bigcode-evaluation-harness/codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py.json'
