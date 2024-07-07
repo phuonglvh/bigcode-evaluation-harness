@@ -5,8 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: Current Module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "${relativeFileDirname}.${fileBasenameNoExtension}"
+        },
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${relativeFile}",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Python: generations_to_codexglue_bleu",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/utils/generations_to_codexglue_bleu.py",
             "args": [
@@ -20,7 +33,7 @@
         },
         {
             "name": "Python: generations_to_codexglue_codebleu",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/utils/generations_to_codexglue_codebleu.py",
             "args": [
@@ -34,7 +47,7 @@
         },
         {
             "name": "Python: human_eval_x_to_codexglue_bleu",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/utils/human_eval_x_to_codexglue_bleu.py",
             "args": [
@@ -50,7 +63,7 @@
         },
         {
             "name": "Python: human_eval_x_to_codexglue_codebleu",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/utils/human_eval_x_to_codexglue_codebleu.py",
             "args": [
@@ -66,7 +79,7 @@
         },
         {
             "name": "Python: main",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/main.py",
             "args": [
