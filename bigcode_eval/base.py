@@ -26,6 +26,10 @@ class Task(ABC):
         self.requires_execution = requires_execution
         try:
             self.dataset = load_dataset(path=self.DATASET_PATH, name=self.DATASET_NAME)
+            
+            class_name = self.__class__.__name__
+            warn(f'{class_name} was invoked. However, it shouldn\'t have been. This might lead to `load_dataset` had been called twice (in subclass and {class_name}).')
+
         except Exception as e:
             warn(
                 f"Loading the dataset failed with {str(e)}. This task will use a locally downloaded dataset, not from the HF hub. \

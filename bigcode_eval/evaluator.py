@@ -85,6 +85,11 @@ class Evaluator:
             warnings.warn(
                 f"Number of tasks wasn't proportional to number of devices, we removed extra predictions to only keep nsamples={self.args.n_samples}"
             )
+            
+        audit_generations = getattr(task, 'audit_generations', None)
+        if callable(audit_generations):
+            task.audit_generations(generations)
+
         return generations, references
 
     def evaluate(self, task_name, intermediate_generations=None):
