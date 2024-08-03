@@ -29,7 +29,7 @@ save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
 common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
-generations_path="./runpod/codellama-13b-python/java/CodeLlama-13b-Python-hf-temp0.8-p0.95-bf16-n200-batch10-maxlen1024-java-generations_multiple-java.json"
+generations_path="$BASE_DIR/$generations_name.json"
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
@@ -49,7 +49,8 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --save_references \
     --generation_only \
     --limit_start $limit_start \
-    --limit $limit
+    --limit $limit \
+    --max_memory_per_gpu auto
 
 rm -rf /tmp/* /var/tmp/*
 
