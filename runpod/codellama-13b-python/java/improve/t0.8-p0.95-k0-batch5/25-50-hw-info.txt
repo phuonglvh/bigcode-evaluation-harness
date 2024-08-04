@@ -1,0 +1,24 @@
+11775330
+Age:
+2m 0s
+Remaining:
+16 days
+Tennessee, US
+2x RTX 309071.0  TFLOPS
+m:26266
+host:140622
+unverified
+?/48.0 GB
+768.5 GB/s
+ProArt X670E
+PCIE 4.0, 8x
+12.7 GB/s
+AMD Ryzen 9 7900X 12-Core Processor
+24.0/24 cpu
+?/0 GB
+Samsung SSD 990 PRO 4TB
+4856 MB/s-1.0/27.9 GB
+314.0 Mbps776.1 MbpsMax CUDA: 12.2
+Status: 81cfad07e895: Verifying Checksum
+25-25
+$0.165/hr
