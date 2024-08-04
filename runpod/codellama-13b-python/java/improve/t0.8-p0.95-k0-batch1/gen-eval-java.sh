@@ -20,7 +20,7 @@ lang=java
 batch_size=1
 
 limit_start=0
-limit=25
+limit=50
 eval_limit_start=0
 eval_limit=50
 
