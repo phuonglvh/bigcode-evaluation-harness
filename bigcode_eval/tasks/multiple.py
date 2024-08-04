@@ -26,7 +26,7 @@ from bigcode_eval.tasks.custom_metrics.multiple_metrics.evaluation import \
     evaluate_problem
 from bigcode_eval.tasks.custom_metrics.multiple_metrics.single_experiment_pass_k import \
     for_file
-from utils.java import build_java_public_static_func_with_empty_body, extract_function_name_from_prompt, java_detect_unknown_task
+from utils.java import java_detect_unknown_tasks
 from utils.py import py_detect_unknown_tasks
 
 _CITATION = """
