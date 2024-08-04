@@ -26,7 +26,7 @@ from bigcode_eval.tasks.custom_metrics.multiple_metrics.evaluation import \
     evaluate_problem
 from bigcode_eval.tasks.custom_metrics.multiple_metrics.single_experiment_pass_k import \
     for_file
-from utils.java import build_java_public_static_func_with_empty_body, extract_function_name_from_prompt, java_detect_unknown_tasks
+from utils.java import build_java_public_static_func_with_empty_body, extract_function_name_from_prompt, java_detect_unknown_task
 from utils.py import py_detect_unknown_tasks
 
 _CITATION = """
@@ -124,7 +124,6 @@ class GeneralMultiPLE(Task):
         # last string should be ""
         return "".join(string_list[:-2])
 
-
     def postprocess_generation(self, generation, idx):
         """Defines the postprocessing for a LM generation.
         :param generation: str
@@ -134,7 +133,7 @@ class GeneralMultiPLE(Task):
             (not used for this task)
         """
         prompt = self.get_prompt(self.get_dataset()[idx])
-        completion = generation[len(prompt) :]
+        completion = generation[len(prompt):]
         return prompt + self._stop_at_stop_token(completion, self.stop_words)
 
     def process_results(self, generations, references):
@@ -208,22 +207,22 @@ class GeneralMultiPLE(Task):
             for k, v in zip([1, 10, 100], result)
             if k <= len(generations[0])
         }
-        
+
         print('computed pass@k')
         return results
-    
+
     def audit_generations(self, generations: List[List[str]]):
         print(f'audit_generations: verifying generations against dataset')
-        unknown_tasks = detect_unknown_tasks(self.get_dataset(), self.language, generations)
+        unknown_tasks = detect_unknown_tasks(
+            self.get_dataset(), self.language, generations, self.args['limit_start'])
         print(f'audit_generations: unknown_tasks', unknown_tasks)
-        
 
-def detect_unknown_tasks(dataset: Dataset, language_code: str, generations: List[List[str]]) -> List[str]:
+
+def detect_unknown_tasks(dataset: Dataset, language_code: str, generations: List[List[str]], start_idx) -> List[str]:
     if language_code == 'java':
-        return java_detect_unknown_tasks(dataset, generations)
-    
-    if language_code == 'py':
-        return py_detect_unknown_tasks(dataset, generations)
-    
-    return []
+        return java_detect_unknown_tasks(dataset, generations, start_idx)
 
+    if language_code == 'py':
+        return py_detect_unknown_tasks(dataset, generations, start_idx)
+
+    return []
