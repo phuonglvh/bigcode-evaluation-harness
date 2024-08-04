@@ -49,7 +49,10 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --save_references \
     --generation_only \
     --limit_start $limit_start \
-    --limit $limit
+    --limit $limit \
+    --max_memory_per_gpu auto
+
+rm -rf /tmp/* /var/tmp/*
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
