@@ -51,6 +51,8 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --limit_start $limit_start \
     --limit $limit
 
+rm -rf /tmp/* /var/tmp/*
+
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
     --max_length_generation $max_length \
