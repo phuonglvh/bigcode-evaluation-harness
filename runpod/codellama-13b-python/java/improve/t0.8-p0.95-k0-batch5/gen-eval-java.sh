@@ -19,8 +19,8 @@ seed=0
 precision=bf16
 lang=java
 
-limit_start=25
-limit=25
+limit_start=100
+limit=58
 eval_limit_start=0
 eval_limit=50
 
