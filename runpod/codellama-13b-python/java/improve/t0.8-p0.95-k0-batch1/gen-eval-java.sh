@@ -7,9 +7,9 @@ MODEL_NAME="CodeLlama-13b-Python-hf"
 max_length=1024
 
 temperature=0.8
-top_p=0.95
 top_k=0
-batch_size=1
+top_p=0.95
+batch_size=10
 
 BASE_DIR=./runpod/codellama-13b-python/java/improve/t$temperature-p$top_p-k$top_k-batch$batch_size
 mkdir -p $BASE_DIR
@@ -19,10 +19,10 @@ seed=0
 precision=bf16
 lang=java
 
-limit_start=124
-limit=34
+limit_start=0
+limit=158
 eval_limit_start=0
-eval_limit=50
+eval_limit=158
 
 save_every_k_tasks=1 # after completing k dataset's tasks
 save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
