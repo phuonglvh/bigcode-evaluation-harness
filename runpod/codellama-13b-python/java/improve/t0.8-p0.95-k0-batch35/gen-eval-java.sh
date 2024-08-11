@@ -20,9 +20,9 @@ precision=bf16
 lang=java
 
 limit_start=0
-limit=50
+limit=158
 eval_limit_start=0
-eval_limit=50
+eval_limit=158
 
 save_every_k_tasks=1 # after completing k dataset's tasks
 save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
