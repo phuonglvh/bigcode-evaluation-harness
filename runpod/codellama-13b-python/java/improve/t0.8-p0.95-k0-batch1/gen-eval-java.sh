@@ -9,7 +9,7 @@ max_length=1024
 temperature=0.8
 top_k=0
 top_p=0.95
-batch_size=10
+batch_size=1
 
 BASE_DIR=./runpod/codellama-13b-python/java/improve/t$temperature-p$top_p-k$top_k-batch$batch_size
 mkdir -p $BASE_DIR
