@@ -10,9 +10,9 @@ temperature=0.8
 top_k=0
 top_p=0.95
 batch_size=10
+gen_th=3
 
-BASE_DIR=./runpod/codellama-13b-python/java/improve/t$temperature-p$top_p-k$top_k
-mkdir -p $BASE_DIR
+BASE_DIR=./runpod/codellama-13b-python/java/improve/t$temperature-p$top_p-k$top_k-batch$batch_size/gen$gen_th
 
 n_samples=200
 seed=0
