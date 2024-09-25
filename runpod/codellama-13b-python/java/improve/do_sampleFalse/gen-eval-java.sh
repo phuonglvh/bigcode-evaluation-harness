@@ -2,36 +2,33 @@
 
 set -euox
 
-# AUTHOR="codellama"
-# MODEL_NAME="CodeLlama-13b-Python-hf"
-AUTHOR="codeparrot"
-MODEL_NAME="codeparrot-small"
+AUTHOR="codellama"
+MODEL_NAME="CodeLlama-13b-Python-hf"
+# AUTHOR="codeparrot"
+# MODEL_NAME="codeparrot-small"
 max_length=1024
 
 do_sample=False
-temperature=0.8
-# top_k=0
-# top_p=0.95
 num_return_sequences=1
 batch_size=$num_return_sequences
 
-BASE_DIR=./runpod/codellama-13b-python/java/improve/t$temperature-do_sample$do_sample
+BASE_DIR=./runpod/codellama-13b-python/java/improve/do_sample$do_sample
 mkdir -p $BASE_DIR
 
-n_samples=200
-seed=0
+n_samples=1
+seed=10
 precision=bf16
 lang=java
 
 limit_start=0
-limit=1
+limit=158
 eval_limit_start=0
 eval_limit=158
 
 save_every_k_tasks=1 # after completing k dataset's tasks
 save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
-common_name="$MODEL_NAME-temp$temperature-do_sample$do_sample-$precision-n$n_samples-maxlen$max_length-$lang"
+common_name="$MODEL_NAME-do_sample$do_sample-$precision-n$n_samples-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
 generations_path="$BASE_DIR/$generations_name.json"
 
@@ -39,7 +36,6 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
     --max_length_generation $max_length \
     --do_sample $do_sample \
-    --temperature $temperature \
     --seed $seed \
     --n_samples $n_samples \
     --batch_size $batch_size \
@@ -50,7 +46,6 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --save_generations \
     --save_generations_path "$BASE_DIR/$common_name-generations-${limit_start}-${limit}.json" \
     --save_references \
-    --generation_only \
     --limit_start $limit_start \
     --limit $limit \
     --max_memory_per_gpu auto
@@ -61,7 +56,6 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
     --max_length_generation $max_length \
     --do_sample $do_sample \
-    --temperature $temperature \
     --seed $seed \
     --n_samples $n_samples \
     --batch_size $batch_size \
