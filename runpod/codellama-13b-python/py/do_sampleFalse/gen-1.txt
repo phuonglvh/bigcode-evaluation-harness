@@ -1,0 +1,646 @@
+n-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 30%|██████████████████████████▏                                                             | 47/158 [03:31<09:04,  4.91s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 30%|██████████████████████████▋                                                             | 48/158 [03:42<12:38,  6.90s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 31%|███████████████████████████▎                                                            | 49/158 [03:47<11:14,  6.19s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 32%|███████████████████████████▊                                                            | 50/158 [03:48<08:35,  4.78s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 32%|████████████████████████████▍                                                           | 51/158 [03:51<07:41,  4.31s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 33%|████████████████████████████▉                                                           | 52/158 [03:54<06:33,  3.71s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 34%|█████████████████████████████▌                                                          | 53/158 [03:56<05:59,  3.42s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 34%|██████████████████████████████                                                          | 54/158 [04:00<06:13,  3.59s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 35%|██████████████████████████████▋                                                         | 55/158 [04:08<08:26,  4.92s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 35%|███████████████████████████████▏                                                        | 56/158 [04:10<06:43,  3.96s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 36%|███████████████████████████████▋                                                        | 57/158 [04:13<06:04,  3.61s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 37%|████████████████████████████████▎                                                       | 58/158 [04:15<05:23,  3.23s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 37%|████████████████████████████████▊                                                       | 59/158 [04:19<05:31,  3.35s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 38%|█████████████████████████████████▍                                                      | 60/158 [04:28<08:29,  5.19s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 39%|█████████████████████████████████▉                                                      | 61/158 [04:31<07:04,  4.38s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 39%|██████████████████████████████████▌                                                     | 62/158 [04:33<06:02,  3.77s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 40%|███████████████████████████████████                                                     | 63/158 [04:56<14:58,  9.45s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 41%|███████████████████████████████████▋                                                    | 64/158 [05:02<13:20,  8.51s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 41%|████████████████████████████████████▏                                                   | 65/158 [05:05<10:26,  6.74s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 42%|████████████████████████████████████▊                                                   | 66/158 [05:19<13:38,  8.89s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 42%|█████████████████████████████████████▎                                                  | 67/158 [05:21<10:27,  6.89s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 43%|█████████████████████████████████████▊                                                  | 68/158 [05:24<08:41,  5.79s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 44%|██████████████████████████████████████▍                                                 | 69/158 [05:35<10:46,  7.27s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 44%|██████████████████████████████████████▉                                                 | 70/158 [05:37<08:20,  5.69s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 45%|███████████████████████████████████████▌                                                | 71/158 [05:40<07:15,  5.00s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 46%|████████████████████████████████████████                                                | 72/158 [05:44<06:37,  4.62s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 46%|████████████████████████████████████████▋                                               | 73/158 [05:45<05:04,  3.58s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 47%|█████████████████████████████████████████▏                                              | 74/158 [05:47<04:07,  2.95s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 47%|█████████████████████████████████████████▊                                              | 75/158 [05:47<03:11,  2.30s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 48%|██████████████████████████████████████████▎                                             | 76/158 [05:49<02:44,  2.00s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 49%|██████████████████████████████████████████▉                                             | 77/158 [05:55<04:26,  3.29s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 49%|███████████████████████████████████████████▍                                            | 78/158 [06:00<05:07,  3.84s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 50%|████████████████████████████████████████████                                            | 79/158 [06:04<04:55,  3.75s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 51%|████████████████████████████████████████████▌                                           | 80/158 [06:06<04:07,  3.17s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 51%|█████████████████████████████████████████████                                           | 81/158 [06:09<04:14,  3.30s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 52%|█████████████████████████████████████████████▋                                          | 82/158 [06:12<04:04,  3.22s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 53%|██████████████████████████████████████████████▏                                         | 83/158 [06:21<06:13,  4.98s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 53%|██████████████████████████████████████████████▊                                         | 84/158 [06:29<07:15,  5.88s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 54%|███████████████████████████████████████████████▎                                        | 85/158 [06:31<05:30,  4.53s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 54%|███████████████████████████████████████████████▉                                        | 86/158 [06:35<05:24,  4.51s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 55%|████████████████████████████████████████████████▍                                       | 87/158 [06:39<05:04,  4.30s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 56%|█████████████████████████████████████████████████                                       | 88/158 [06:52<08:16,  7.10s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 56%|█████████████████████████████████████████████████▌                                      | 89/158 [06:54<06:20,  5.51s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 57%|██████████████████████████████████████████████████▏                                     | 90/158 [06:58<05:47,  5.12s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 58%|██████████████████████████████████████████████████▋                                     | 91/158 [07:07<06:55,  6.20s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 58%|███████████████████████████████████████████████████▏                                    | 92/158 [07:16<07:38,  6.95s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 59%|███████████████████████████████████████████████████▊                                    | 93/158 [07:20<06:30,  6.01s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 59%|████████████████████████████████████████████████████▎                                   | 94/158 [07:22<05:16,  4.94s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 60%|████████████████████████████████████████████████████▉                                   | 95/158 [07:25<04:22,  4.17s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 61%|█████████████████████████████████████████████████████▍                                  | 96/158 [07:27<03:40,  3.56s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 61%|██████████████████████████████████████████████████████                                  | 97/158 [07:40<06:39,  6.55s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 62%|██████████████████████████████████████████████████████▌                                 | 98/158 [07:42<05:15,  5.26s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 63%|███████████████████████████████████████████████████████▏                                | 99/158 [07:45<04:19,  4.41s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 63%|███████████████████████████████████████████████████████                                | 100/158 [07:46<03:21,  3.48s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 64%|███████████████████████████████████████████████████████▌                               | 101/158 [07:51<03:47,  3.99s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 65%|████████████████████████████████████████████████████████▏                              | 102/158 [07:55<03:29,  3.75s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 65%|████████████████████████████████████████████████████████▋                              | 103/158 [07:57<02:57,  3.23s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 66%|█████████████████████████████████████████████████████████▎                             | 104/158 [08:09<05:15,  5.84s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 66%|█████████████████████████████████████████████████████████▊                             | 105/158 [08:18<06:07,  6.93s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 67%|██████████████████████████████████████████████████████████▎                            | 106/158 [08:25<06:06,  7.04s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 68%|██████████████████████████████████████████████████████████▉                            | 107/158 [08:30<05:17,  6.23s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 68%|███████████████████████████████████████████████████████████▍                           | 108/158 [08:35<05:05,  6.11s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 69%|████████████████████████████████████████████████████████████                           | 109/158 [08:56<08:25, 10.31s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 70%|████████████████████████████████████████████████████████████▌                          | 110/158 [08:58<06:18,  7.88s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 70%|█████████████████████████████████████████████████████████████                          | 111/158 [09:01<05:05,  6.51s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 71%|█████████████████████████████████████████████████████████████▋                         | 112/158 [09:07<04:55,  6.42s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 72%|██████████████████████████████████████████████████████████████▏                        | 113/158 [09:09<03:42,  4.95s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 72%|██████████████████████████████████████████████████████████████▊                        | 114/158 [09:12<03:13,  4.40s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 73%|███████████████████████████████████████████████████████████████▎                       | 115/158 [09:16<03:10,  4.44s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 73%|███████████████████████████████████████████████████████████████▊                       | 116/158 [09:22<03:14,  4.64s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 74%|████████████████████████████████████████████████████████████████▍                      | 117/158 [09:23<02:32,  3.72s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 75%|████████████████████████████████████████████████████████████████▉                      | 118/158 [09:30<03:04,  4.61s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 75%|█████████████████████████████████████████████████████████████████▌                     | 119/158 [09:34<02:50,  4.38s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 76%|██████████████████████████████████████████████████████████████████                     | 120/158 [09:38<02:49,  4.47s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 77%|██████████████████████████████████████████████████████████████████▋                    | 121/158 [09:40<02:19,  3.76s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 77%|███████████████████████████████████████████████████████████████████▏                   | 122/158 [09:43<01:57,  3.27s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 78%|███████████████████████████████████████████████████████████████████▋                   | 123/158 [09:50<02:34,  4.41s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 78%|████████████████████████████████████████████████████████████████████▎                  | 124/158 [09:52<02:04,  3.66s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 79%|████████████████████████████████████████████████████████████████████▊                  | 125/158 [09:54<01:43,  3.15s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 80%|█████████████████████████████████████████████████████████████████████▍                 | 126/158 [09:57<01:44,  3.27s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 80%|█████████████████████████████████████████████████████████████████████▉                 | 127/158 [09:59<01:26,  2.80s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 81%|██████████████████████████████████████████████████████████████████████▍                | 128/158 [10:03<01:37,  3.26s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 82%|███████████████████████████████████████████████████████████████████████                | 129/158 [10:07<01:37,  3.37s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 82%|███████████████████████████████████████████████████████████████████████▌               | 130/158 [10:08<01:16,  2.74s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 83%|████████████████████████████████████████████████████████████████████████▏              | 131/158 [10:10<01:04,  2.39s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 84%|████████████████████████████████████████████████████████████████████████▋              | 132/158 [10:12<01:02,  2.42s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 84%|█████████████████████████████████████████████████████████████████████████▏             | 133/158 [10:14<00:55,  2.20s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 85%|█████████████████████████████████████████████████████████████████████████▊             | 134/158 [10:28<02:20,  5.84s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 85%|██████████████████████████████████████████████████████████████████████████▎            | 135/158 [10:31<01:52,  4.89s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 86%|██████████████████████████████████████████████████████████████████████████▉            | 136/158 [10:35<01:46,  4.84s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 87%|███████████████████████████████████████████████████████████████████████████▍           | 137/158 [10:39<01:30,  4.30s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 87%|███████████████████████████████████████████████████████████████████████████▉           | 138/158 [10:43<01:25,  4.27s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 88%|████████████████████████████████████████████████████████████████████████████▌          | 139/158 [10:45<01:09,  3.67s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 89%|█████████████████████████████████████████████████████████████████████████████          | 140/158 [10:46<00:52,  2.90s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 89%|█████████████████████████████████████████████████████████████████████████████▋         | 141/158 [10:49<00:49,  2.91s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 90%|██████████████████████████████████████████████████████████████████████████████▏        | 142/158 [10:50<00:39,  2.46s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 91%|██████████████████████████████████████████████████████████████████████████████▋        | 143/158 [10:52<00:32,  2.17s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 91%|███████████████████████████████████████████████████████████████████████████████▎       | 144/158 [10:55<00:35,  2.56s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 92%|███████████████████████████████████████████████████████████████████████████████▊       | 145/158 [10:57<00:30,  2.38s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 92%|████████████████████████████████████████████████████████████████████████████████▍      | 146/158 [11:00<00:30,  2.54s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 93%|████████████████████████████████████████████████████████████████████████████████▉      | 147/158 [11:06<00:38,  3.48s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 94%|█████████████████████████████████████████████████████████████████████████████████▍     | 148/158 [11:10<00:36,  3.64s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 94%|██████████████████████████████████████████████████████████████████████████████████     | 149/158 [11:23<00:58,  6.54s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 95%|██████████████████████████████████████████████████████████████████████████████████▌    | 150/158 [11:27<00:46,  5.84s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 96%|███████████████████████████████████████████████████████████████████████████████████▏   | 151/158 [11:32<00:37,  5.41s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 96%|███████████████████████████████████████████████████████████████████████████████████▋   | 152/158 [11:33<00:25,  4.23s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 97%|████████████████████████████████████████████████████████████████████████████████████▏  | 153/158 [11:35<00:16,  3.35s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 97%|████████████████████████████████████████████████████████████████████████████████████▊  | 154/158 [11:37<00:12,  3.05s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 98%|█████████████████████████████████████████████████████████████████████████████████████▎ | 155/158 [11:42<00:10,  3.64s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 99%|█████████████████████████████████████████████████████████████████████████████████████▉ | 156/158 [11:45<00:06,  3.35s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+ 99%|██████████████████████████████████████████████████████████████████████████████████████▍| 157/158 [12:05<00:08,  8.58s/it]intermediate generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py_intermediate.json
+100%|███████████████████████████████████████████████████████████████████████████████████████| 158/158 [12:09<00:00,  7.18100%|███████████████████████████████████████████████████████████████████████████████████████| 158/158 [12:09<00:00,  4.62s/it]
+audit_generations: verifying generations against dataset
+audit_generations: unknown_tasks []
+generations were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py.json
+references were saved at references_multiple-py.json
+Evaluating generations...
+process_results of 158 selected problems:
+HumanEval_23_strlen
+HumanEval_89_encrypt
+HumanEval_95_check_dict_case
+HumanEval_85_add
+HumanEval_140_fix_spaces
+HumanEval_63_fibfib
+HumanEval_151_double_the_difference
+HumanEval_22_filter_integers
+HumanEval_41_car_race_collision
+HumanEval_17_parse_music
+HumanEval_79_decimal_to_binary
+HumanEval_14_all_prefixes
+HumanEval_53_add
+HumanEval_159_eat
+HumanEval_115_max_fill
+HumanEval_160_do_algebra
+HumanEval_27_flip_case
+HumanEval_105_by_length
+HumanEval_25_factorize
+HumanEval_96_count_up_to
+HumanEval_34_unique
+HumanEval_74_total_match
+HumanEval_35_max_element
+HumanEval_132_is_nested
+HumanEval_103_rounded_avg
+HumanEval_113_odd_count
+HumanEval_109_move_one_ball
+HumanEval_107_even_odd_palindrome
+HumanEval_138_is_equal_to_sum_even
+HumanEval_62_derivative
+HumanEval_126_is_sorted
+HumanEval_161_solve
+HumanEval_130_tri
+HumanEval_36_fizz_buzz
+HumanEval_29_filter_by_prefix
+HumanEval_84_solve
+HumanEval_129_minPath
+HumanEval_98_count_upper
+HumanEval_120_maximum
+HumanEval_24_largest_divisor
+HumanEval_88_sort_array
+HumanEval_106_f
+HumanEval_77_iscube
+HumanEval_93_encode
+HumanEval_91_is_bored
+HumanEval_43_pairs_sum_to_zero
+HumanEval_71_triangle_area
+HumanEval_148_bf
+HumanEval_131_digits
+HumanEval_101_words_string
+HumanEval_18_how_many_times
+HumanEval_137_compare_one
+HumanEval_51_remove_vowels
+HumanEval_70_strange_sort_list
+HumanEval_20_find_closest_elements
+HumanEval_76_is_simple_power
+HumanEval_39_prime_fib
+HumanEval_145_order_by_points
+HumanEval_0_has_close_elements
+HumanEval_10_make_palindrome
+HumanEval_11_string_xor
+HumanEval_139_special_factorial
+HumanEval_122_add_elements
+HumanEval_46_fib4
+HumanEval_104_unique_digits
+HumanEval_117_select_words
+HumanEval_72_will_it_fly
+HumanEval_55_fib
+HumanEval_153_Strongest_Extension
+HumanEval_119_match_parens
+HumanEval_90_next_smallest
+HumanEval_92_any_int
+HumanEval_2_truncate_number
+HumanEval_42_incr_list
+HumanEval_150_x_or_y
+HumanEval_49_modp
+HumanEval_155_even_odd_count
+HumanEval_80_is_happy
+HumanEval_59_largest_prime_factor
+HumanEval_66_digitSum
+HumanEval_21_rescale_to_unit
+HumanEval_121_solution
+HumanEval_68_pluck
+HumanEval_147_get_max_triples
+HumanEval_110_exchange
+HumanEval_47_median
+HumanEval_82_prime_length
+HumanEval_73_smallest_change
+HumanEval_133_sum_squares
+HumanEval_141_file_name_check
+HumanEval_40_triples_sum_to_zero
+HumanEval_127_intersection
+HumanEval_1_separate_paren_groups
+HumanEval_152_compare
+HumanEval_83_starts_one_ends
+HumanEval_134_check_if_last_char_is_a_letter
+HumanEval_124_valid_date
+HumanEval_108_count_nums
+HumanEval_86_anti_shuffle
+HumanEval_48_is_palindrome
+HumanEval_118_get_closest_vowel
+HumanEval_31_is_prime
+HumanEval_144_simplify
+HumanEval_78_hex_key
+HumanEval_143_words_in_sentence
+HumanEval_111_histogram
+HumanEval_87_get_row
+HumanEval_123_get_odd_collatz
+HumanEval_135_can_arrange
+HumanEval_19_sort_numbers
+HumanEval_65_circular_shift
+HumanEval_142_sum_squares
+HumanEval_94_skjkasdkd
+HumanEval_8_sum_product
+HumanEval_102_choose_num
+HumanEval_136_largest_smallest_integers
+HumanEval_16_count_distinct_characters
+HumanEval_100_make_a_pile
+HumanEval_128_prod_signs
+HumanEval_114_minSubArraySum
+HumanEval_15_string_sequence
+HumanEval_154_cycpattern_check
+HumanEval_57_monotonic
+HumanEval_12_longest
+HumanEval_52_below_threshold
+HumanEval_75_is_multiply_prime
+HumanEval_30_get_positive
+HumanEval_33_sort_third
+HumanEval_6_parse_nested_parens
+HumanEval_45_triangle_area
+HumanEval_97_multiply
+HumanEval_4_mean_absolute_deviation
+HumanEval_58_common
+HumanEval_156_int_to_mini_roman
+HumanEval_67_fruit_distribution
+HumanEval_112_reverse_delete
+HumanEval_13_greatest_common_divisor
+HumanEval_125_split_words
+HumanEval_116_sort_array
+HumanEval_28_concatenate
+HumanEval_149_sorted_list_sum
+HumanEval_7_filter_by_substring
+HumanEval_99_closest_integer
+HumanEval_64_vowels_count
+HumanEval_158_find_max
+HumanEval_162_string_to_md5
+HumanEval_44_change_base
+HumanEval_157_right_angle_triangle
+HumanEval_81_numerical_letter_grade
+HumanEval_5_intersperse
+HumanEval_146_specialFilter
+HumanEval_60_sum_to_n
+HumanEval_26_remove_duplicates
+HumanEval_163_generate_integers
+HumanEval_9_rolling_max
+HumanEval_3_below_zero
+HumanEval_69_search
+HumanEval_61_correct_bracketing
+saved 1 problem in /tmp/HumanEval_23_strlen.json
+saved 1 problem in /tmp/HumanEval_89_encrypt.json
+saved 1 problem in /tmp/HumanEval_95_check_dict_case.json
+saved 1 problem in /tmp/HumanEval_85_add.json
+saved 1 problem in /tmp/HumanEval_140_fix_spaces.json
+saved 1 problem in /tmp/HumanEval_63_fibfib.json
+saved 1 problem in /tmp/HumanEval_151_double_the_difference.json
+saved 1 problem in /tmp/HumanEval_22_filter_integers.json
+saved 1 problem in /tmp/HumanEval_41_car_race_collision.json
+saved 1 problem in /tmp/HumanEval_17_parse_music.json
+saved 1 problem in /tmp/HumanEval_79_decimal_to_binary.json
+saved 1 problem in /tmp/HumanEval_14_all_prefixes.json
+saved 1 problem in /tmp/HumanEval_53_add.json
+saved 1 problem in /tmp/HumanEval_159_eat.json
+saved 1 problem in /tmp/HumanEval_115_max_fill.json
+saved 1 problem in /tmp/HumanEval_160_do_algebra.json
+saved 1 problem in /tmp/HumanEval_27_flip_case.json
+saved 1 problem in /tmp/HumanEval_105_by_length.json
+saved 1 problem in /tmp/HumanEval_25_factorize.json
+saved 1 problem in /tmp/HumanEval_96_count_up_to.json
+saved 1 problem in /tmp/HumanEval_34_unique.json
+saved 1 problem in /tmp/HumanEval_74_total_match.json
+saved 1 problem in /tmp/HumanEval_35_max_element.json
+saved 1 problem in /tmp/HumanEval_132_is_nested.json
+saved 1 problem in /tmp/HumanEval_103_rounded_avg.json
+saved 1 problem in /tmp/HumanEval_113_odd_count.json
+saved 1 problem in /tmp/HumanEval_109_move_one_ball.json
+saved 1 problem in /tmp/HumanEval_107_even_odd_palindrome.json
+saved 1 problem in /tmp/HumanEval_138_is_equal_to_sum_even.json
+saved 1 problem in /tmp/HumanEval_62_derivative.json
+saved 1 problem in /tmp/HumanEval_126_is_sorted.json
+saved 1 problem in /tmp/HumanEval_161_solve.json
+saved 1 problem in /tmp/HumanEval_130_tri.json
+saved 1 problem in /tmp/HumanEval_36_fizz_buzz.json
+saved 1 problem in /tmp/HumanEval_29_filter_by_prefix.json
+saved 1 problem in /tmp/HumanEval_84_solve.json
+saved 1 problem in /tmp/HumanEval_129_minPath.json
+saved 1 problem in /tmp/HumanEval_98_count_upper.json
+saved 1 problem in /tmp/HumanEval_120_maximum.json
+saved 1 problem in /tmp/HumanEval_24_largest_divisor.json
+saved 1 problem in /tmp/HumanEval_88_sort_array.json
+saved 1 problem in /tmp/HumanEval_106_f.json
+saved 1 problem in /tmp/HumanEval_77_iscube.json
+saved 1 problem in /tmp/HumanEval_93_encode.json
+saved 1 problem in /tmp/HumanEval_91_is_bored.json
+saved 1 problem in /tmp/HumanEval_43_pairs_sum_to_zero.json
+saved 1 problem in /tmp/HumanEval_71_triangle_area.json
+saved 1 problem in /tmp/HumanEval_148_bf.json
+saved 1 problem in /tmp/HumanEval_131_digits.json
+saved 1 problem in /tmp/HumanEval_101_words_string.json
+saved 1 problem in /tmp/HumanEval_18_how_many_times.json
+saved 1 problem in /tmp/HumanEval_137_compare_one.json
+saved 1 problem in /tmp/HumanEval_51_remove_vowels.json
+saved 1 problem in /tmp/HumanEval_70_strange_sort_list.json
+saved 1 problem in /tmp/HumanEval_20_find_closest_elements.json
+saved 1 problem in /tmp/HumanEval_76_is_simple_power.json
+saved 1 problem in /tmp/HumanEval_39_prime_fib.json
+saved 1 problem in /tmp/HumanEval_145_order_by_points.json
+saved 1 problem in /tmp/HumanEval_0_has_close_elements.json
+saved 1 problem in /tmp/HumanEval_10_make_palindrome.json
+saved 1 problem in /tmp/HumanEval_11_string_xor.json
+saved 1 problem in /tmp/HumanEval_139_special_factorial.json
+saved 1 problem in /tmp/HumanEval_122_add_elements.json
+saved 1 problem in /tmp/HumanEval_46_fib4.json
+saved 1 problem in /tmp/HumanEval_104_unique_digits.json
+saved 1 problem in /tmp/HumanEval_117_select_words.json
+saved 1 problem in /tmp/HumanEval_72_will_it_fly.json
+saved 1 problem in /tmp/HumanEval_55_fib.json
+saved 1 problem in /tmp/HumanEval_153_Strongest_Extension.json
+saved 1 problem in /tmp/HumanEval_119_match_parens.json
+saved 1 problem in /tmp/HumanEval_90_next_smallest.json
+saved 1 problem in /tmp/HumanEval_92_any_int.json
+saved 1 problem in /tmp/HumanEval_2_truncate_number.json
+saved 1 problem in /tmp/HumanEval_42_incr_list.json
+saved 1 problem in /tmp/HumanEval_150_x_or_y.json
+saved 1 problem in /tmp/HumanEval_49_modp.json
+saved 1 problem in /tmp/HumanEval_155_even_odd_count.json
+saved 1 problem in /tmp/HumanEval_80_is_happy.json
+saved 1 problem in /tmp/HumanEval_59_largest_prime_factor.json
+saved 1 problem in /tmp/HumanEval_66_digitSum.json
+saved 1 problem in /tmp/HumanEval_21_rescale_to_unit.json
+saved 1 problem in /tmp/HumanEval_121_solution.json
+saved 1 problem in /tmp/HumanEval_68_pluck.json
+saved 1 problem in /tmp/HumanEval_147_get_max_triples.json
+saved 1 problem in /tmp/HumanEval_110_exchange.json
+saved 1 problem in /tmp/HumanEval_47_median.json
+saved 1 problem in /tmp/HumanEval_82_prime_length.json
+saved 1 problem in /tmp/HumanEval_73_smallest_change.json
+saved 1 problem in /tmp/HumanEval_133_sum_squares.json
+saved 1 problem in /tmp/HumanEval_141_file_name_check.json
+saved 1 problem in /tmp/HumanEval_40_triples_sum_to_zero.json
+saved 1 problem in /tmp/HumanEval_127_intersection.json
+saved 1 problem in /tmp/HumanEval_1_separate_paren_groups.json
+saved 1 problem in /tmp/HumanEval_152_compare.json
+saved 1 problem in /tmp/HumanEval_83_starts_one_ends.json
+saved 1 problem in /tmp/HumanEval_134_check_if_last_char_is_a_letter.json
+saved 1 problem in /tmp/HumanEval_124_valid_date.json
+saved 1 problem in /tmp/HumanEval_108_count_nums.json
+saved 1 problem in /tmp/HumanEval_86_anti_shuffle.json
+saved 1 problem in /tmp/HumanEval_48_is_palindrome.json
+saved 1 problem in /tmp/HumanEval_118_get_closest_vowel.json
+saved 1 problem in /tmp/HumanEval_31_is_prime.json
+saved 1 problem in /tmp/HumanEval_144_simplify.json
+saved 1 problem in /tmp/HumanEval_78_hex_key.json
+saved 1 problem in /tmp/HumanEval_143_words_in_sentence.json
+saved 1 problem in /tmp/HumanEval_111_histogram.json
+saved 1 problem in /tmp/HumanEval_87_get_row.json
+saved 1 problem in /tmp/HumanEval_123_get_odd_collatz.json
+saved 1 problem in /tmp/HumanEval_135_can_arrange.json
+saved 1 problem in /tmp/HumanEval_19_sort_numbers.json
+saved 1 problem in /tmp/HumanEval_65_circular_shift.json
+saved 1 problem in /tmp/HumanEval_142_sum_squares.json
+saved 1 problem in /tmp/HumanEval_94_skjkasdkd.json
+saved 1 problem in /tmp/HumanEval_8_sum_product.json
+saved 1 problem in /tmp/HumanEval_102_choose_num.json
+saved 1 problem in /tmp/HumanEval_136_largest_smallest_integers.json
+saved 1 problem in /tmp/HumanEval_16_count_distinct_characters.json
+saved 1 problem in /tmp/HumanEval_100_make_a_pile.json
+saved 1 problem in /tmp/HumanEval_128_prod_signs.json
+saved 1 problem in /tmp/HumanEval_114_minSubArraySum.json
+saved 1 problem in /tmp/HumanEval_15_string_sequence.json
+saved 1 problem in /tmp/HumanEval_154_cycpattern_check.json
+saved 1 problem in /tmp/HumanEval_57_monotonic.json
+saved 1 problem in /tmp/HumanEval_12_longest.json
+saved 1 problem in /tmp/HumanEval_52_below_threshold.json
+saved 1 problem in /tmp/HumanEval_75_is_multiply_prime.json
+saved 1 problem in /tmp/HumanEval_30_get_positive.json
+saved 1 problem in /tmp/HumanEval_33_sort_third.json
+saved 1 problem in /tmp/HumanEval_6_parse_nested_parens.json
+saved 1 problem in /tmp/HumanEval_45_triangle_area.json
+saved 1 problem in /tmp/HumanEval_97_multiply.json
+saved 1 problem in /tmp/HumanEval_4_mean_absolute_deviation.json
+saved 1 problem in /tmp/HumanEval_58_common.json
+saved 1 problem in /tmp/HumanEval_156_int_to_mini_roman.json
+saved 1 problem in /tmp/HumanEval_67_fruit_distribution.json
+saved 1 problem in /tmp/HumanEval_112_reverse_delete.json
+saved 1 problem in /tmp/HumanEval_13_greatest_common_divisor.json
+saved 1 problem in /tmp/HumanEval_125_split_words.json
+saved 1 problem in /tmp/HumanEval_116_sort_array.json
+saved 1 problem in /tmp/HumanEval_28_concatenate.json
+saved 1 problem in /tmp/HumanEval_149_sorted_list_sum.json
+saved 1 problem in /tmp/HumanEval_7_filter_by_substring.json
+saved 1 problem in /tmp/HumanEval_99_closest_integer.json
+saved 1 problem in /tmp/HumanEval_64_vowels_count.json
+saved 1 problem in /tmp/HumanEval_158_find_max.json
+saved 1 problem in /tmp/HumanEval_162_string_to_md5.json
+saved 1 problem in /tmp/HumanEval_44_change_base.json
+saved 1 problem in /tmp/HumanEval_157_right_angle_triangle.json
+saved 1 problem in /tmp/HumanEval_81_numerical_letter_grade.json
+saved 1 problem in /tmp/HumanEval_5_intersperse.json
+saved 1 problem in /tmp/HumanEval_146_specialFilter.json
+saved 1 problem in /tmp/HumanEval_60_sum_to_n.json
+saved 1 problem in /tmp/HumanEval_26_remove_duplicates.json
+saved 1 problem in /tmp/HumanEval_163_generate_integers.json
+saved 1 problem in /tmp/HumanEval_9_rolling_max.json
+saved 1 problem in /tmp/HumanEval_3_below_zero.json
+saved 1 problem in /tmp/HumanEval_69_search.json
+saved 1 problem in /tmp/HumanEval_61_correct_bracketing.json
+Saved 158 problems in /tmp for evaluation, each problem has 1 completions
+  0%|                                                                                            | 0/158 [00:00<?, ?it/s]running cached_eval_script on /tmp/HumanEval_23_strlen.json by 55 workers
+  1%|▌                                                                                   | 1/158 [00:00<00:16,  9.61it/s]running cached_eval_script on /tmp/HumanEval_89_encrypt.json by 55 workers
+  1%|█                                                                                   | 2/158 [00:00<00:16,  9.67it/s]running cached_eval_script on /tmp/HumanEval_95_check_dict_case.json by 55 workers
+  2%|█▌                                                                                  | 3/158 [00:00<00:16,  9.67it/s]running cached_eval_script on /tmp/HumanEval_85_add.json by 55 workers
+  3%|██▏                                                                                 | 4/158 [00:00<00:15,  9.65it/s]running cached_eval_script on /tmp/HumanEval_140_fix_spaces.json by 55 workers
+  3%|██▋                                                                                 | 5/158 [00:00<00:15,  9.66it/s]running cached_eval_script on /tmp/HumanEval_63_fibfib.json by 55 workers
+  4%|███▏                                                                                | 6/158 [00:00<00:15,  9.65it/s]running cached_eval_script on /tmp/HumanEval_151_double_the_difference.json by 55 workers
+  4%|███▋                                                                                | 7/158 [00:00<00:15,  9.65it/s]running cached_eval_script on /tmp/HumanEval_22_filter_integers.json by 55 workers
+  5%|████▎                                                                               | 8/158 [00:00<00:15,  9.64it/s]running cached_eval_script on /tmp/HumanEval_41_car_race_collision.json by 55 workers
+  6%|████▊                                                                               | 9/158 [00:00<00:15,  9.65it/s]running cached_eval_script on /tmp/HumanEval_17_parse_music.json by 55 workers
+  6%|█████▎                                                                             | 10/158 [00:01<00:15,  9.65it/s]running cached_eval_script on /tmp/HumanEval_79_decimal_to_binary.json by 55 workers
+  7%|█████▊                                                                             | 11/158 [00:01<00:15,  9.64it/s]running cached_eval_script on /tmp/HumanEval_14_all_prefixes.json by 55 workers
+  8%|██████▎                                                                            | 12/158 [00:01<00:15,  9.64it/s]running cached_eval_script on /tmp/HumanEval_53_add.json by 55 workers
+  8%|██████▊                                                                            | 13/158 [00:01<00:15,  9.65it/s]running cached_eval_script on /tmp/HumanEval_159_eat.json by 55 workers
+  9%|███████▎                                                                           | 14/158 [00:01<00:14,  9.65it/s]running cached_eval_script on /tmp/HumanEval_115_max_fill.json by 55 workers
+  9%|███████▉                                                                           | 15/158 [00:01<00:14,  9.65it/s]running cached_eval_script on /tmp/HumanEval_160_do_algebra.json by 55 workers
+ 10%|████████▍                                                                          | 16/158 [00:01<00:14,  9.66it/s]running cached_eval_script on /tmp/HumanEval_27_flip_case.json by 55 workers
+ 11%|████████▉                                                                          | 17/158 [00:01<00:14,  9.66it/s]running cached_eval_script on /tmp/HumanEval_105_by_length.json by 55 workers
+ 11%|█████████▍                                                                         | 18/158 [00:01<00:14,  9.65it/s]running cached_eval_script on /tmp/HumanEval_25_factorize.json by 55 workers
+ 12%|█████████▉                                                                         | 19/158 [00:01<00:14,  9.65it/s]running cached_eval_script on /tmp/HumanEval_96_count_up_to.json by 55 workers
+ 13%|██████████▌                                                                        | 20/158 [00:02<00:14,  9.65it/s]running cached_eval_script on /tmp/HumanEval_34_unique.json by 55 workers
+ 13%|███████████                                                                        | 21/158 [00:02<00:14,  9.66it/s]running cached_eval_script on /tmp/HumanEval_74_total_match.json by 55 workers
+ 14%|███████████▌                                                                       | 22/158 [00:02<00:14,  9.65it/s]running cached_eval_script on /tmp/HumanEval_35_max_element.json by 55 workers
+ 15%|████████████                                                                       | 23/158 [00:02<00:13,  9.65it/s]running cached_eval_script on /tmp/HumanEval_132_is_nested.json by 55 workers
+ 15%|████████████▌                                                                      | 24/158 [00:02<00:13,  9.64it/s]running cached_eval_script on /tmp/HumanEval_103_rounded_avg.json by 55 workers
+ 16%|█████████████▏                                                                     | 25/158 [00:02<00:13,  9.64it/s]running cached_eval_script on /tmp/HumanEval_113_odd_count.json by 55 workers
+ 16%|█████████████▋                                                                     | 26/158 [00:02<00:13,  9.65it/s]running cached_eval_script on /tmp/HumanEval_109_move_one_ball.json by 55 workers
+ 17%|██████████████▏                                                                    | 27/158 [00:02<00:13,  9.64it/s]running cached_eval_script on /tmp/HumanEval_107_even_odd_palindrome.json by 55 workers
+ 18%|██████████████▋                                                                    | 28/158 [00:02<00:13,  9.65it/s]running cached_eval_script on /tmp/HumanEval_138_is_equal_to_sum_even.json by 55 workers
+ 18%|███████████████▏                                                                   | 29/158 [00:03<00:13,  9.65it/s]running cached_eval_script on /tmp/HumanEval_62_derivative.json by 55 workers
+ 19%|███████████████▊                                                                   | 30/158 [00:03<00:13,  9.65it/s]running cached_eval_script on /tmp/HumanEval_126_is_sorted.json by 55 workers
+ 20%|████████████████▎                                                                  | 31/158 [00:03<00:13,  9.64it/s]running cached_eval_script on /tmp/HumanEval_161_solve.json by 55 workers
+ 20%|████████████████▊                                                                  | 32/158 [00:03<00:13,  9.65it/s]running cached_eval_script on /tmp/HumanEval_130_tri.json by 55 workers
+ 21%|█████████████████▎                                                                 | 33/158 [00:03<00:12,  9.66it/s]running cached_eval_script on /tmp/HumanEval_36_fizz_buzz.json by 55 workers
+ 22%|█████████████████▊                                                                 | 34/158 [00:03<00:12,  9.67it/s]running cached_eval_script on /tmp/HumanEval_29_filter_by_prefix.json by 55 workers
+ 22%|██████████████████▍                                                                | 35/158 [00:03<00:12,  9.67it/s]running cached_eval_script on /tmp/HumanEval_84_solve.json by 55 workers
+ 23%|██████████████████▉                                                                | 36/158 [00:03<00:12,  9.68it/s]running cached_eval_script on /tmp/HumanEval_129_minPath.json by 55 workers
+ 23%|███████████████████▍                                                               | 37/158 [00:03<00:12,  9.68it/s]running cached_eval_script on /tmp/HumanEval_98_count_upper.json by 55 workers
+ 24%|███████████████████▉                                                               | 38/158 [00:03<00:12,  9.68it/s]running cached_eval_script on /tmp/HumanEval_120_maximum.json by 55 workers
+ 25%|████████████████████▍                                                              | 39/158 [00:04<00:12,  9.68it/s]running cached_eval_script on /tmp/HumanEval_24_largest_divisor.json by 55 workers
+ 25%|█████████████████████                                                              | 40/158 [00:04<00:12,  9.69it/s]running cached_eval_script on /tmp/HumanEval_88_sort_array.json by 55 workers
+ 26%|█████████████████████▌                                                             | 41/158 [00:04<00:12,  9.69it/s]running cached_eval_script on /tmp/HumanEval_106_f.json by 55 workers
+ 27%|██████████████████████                                                             | 42/158 [00:04<00:11,  9.69it/s]running cached_eval_script on /tmp/HumanEval_77_iscube.json by 55 workers
+ 27%|██████████████████████▌                                                            | 43/158 [00:04<00:11,  9.68it/s]running cached_eval_script on /tmp/HumanEval_93_encode.json by 55 workers
+ 28%|███████████████████████                                                            | 44/158 [00:04<00:11,  9.67it/s]running cached_eval_script on /tmp/HumanEval_91_is_bored.json by 55 workers
+ 28%|███████████████████████▋                                                           | 45/158 [00:04<00:11,  9.67it/s]running cached_eval_script on /tmp/HumanEval_43_pairs_sum_to_zero.json by 55 workers
+ 29%|████████████████████████▏                                                          | 46/158 [00:04<00:11,  9.67it/s]running cached_eval_script on /tmp/HumanEval_71_triangle_area.json by 55 workers
+ 30%|████████████████████████▋                                                          | 47/158 [00:04<00:11,  9.66it/s]running cached_eval_script on /tmp/HumanEval_148_bf.json by 55 workers
+ 30%|█████████████████████████▏                                                         | 48/158 [00:04<00:11,  9.65it/s]running cached_eval_script on /tmp/HumanEval_131_digits.json by 55 workers
+ 31%|█████████████████████████▋                                                         | 49/158 [00:05<00:11,  9.65it/s]running cached_eval_script on /tmp/HumanEval_101_words_string.json by 55 workers
+ 32%|██████████████████████████▎                                                        | 50/158 [00:05<00:11,  9.65it/s]running cached_eval_script on /tmp/HumanEval_18_how_many_times.json by 55 workers
+ 32%|██████████████████████████▊                                                        | 51/158 [00:05<00:11,  9.65it/s]running cached_eval_script on /tmp/HumanEval_137_compare_one.json by 55 workers
+ 33%|███████████████████████████▎                                                       | 52/158 [00:05<00:10,  9.64it/s]running cached_eval_script on /tmp/HumanEval_51_remove_vowels.json by 55 workers
+ 34%|███████████████████████████▊                                                       | 53/158 [00:05<00:10,  9.64it/s]running cached_eval_script on /tmp/HumanEval_70_strange_sort_list.json by 55 workers
+ 34%|████████████████████████████▎                                                      | 54/158 [00:05<00:10,  9.65it/s]running cached_eval_script on /tmp/HumanEval_20_find_closest_elements.json by 55 workers
+ 35%|████████████████████████████▉                                                      | 55/158 [00:05<00:10,  9.63it/s]running cached_eval_script on /tmp/HumanEval_76_is_simple_power.json by 55 workers
+ 35%|█████████████████████████████▍                                                     | 56/158 [00:05<00:10,  9.64it/s]running cached_eval_script on /tmp/HumanEval_39_prime_fib.json by 55 workers
+ 36%|█████████████████████████████▉                                                     | 57/158 [00:05<00:10,  9.63it/s]running cached_eval_script on /tmp/HumanEval_145_order_by_points.json by 55 workers
+ 37%|██████████████████████████████▍                                                    | 58/158 [00:06<00:10,  9.64it/s]running cached_eval_script on /tmp/HumanEval_0_has_close_elements.json by 55 workers
+ 37%|██████████████████████████████▉                                                    | 59/158 [00:06<00:10,  9.63it/s]running cached_eval_script on /tmp/HumanEval_10_make_palindrome.json by 55 workers
+ 38%|███████████████████████████████▌                                                   | 60/158 [00:06<00:10,  9.63it/s]running cached_eval_script on /tmp/HumanEval_11_string_xor.json by 55 workers
+ 39%|████████████████████████████████                                                   | 61/158 [00:06<00:10,  9.63it/s]running cached_eval_script on /tmp/HumanEval_139_special_factorial.json by 55 workers
+ 39%|████████████████████████████████▌                                                  | 62/158 [00:06<00:09,  9.63it/s]running cached_eval_script on /tmp/HumanEval_122_add_elements.json by 55 workers
+ 40%|█████████████████████████████████                                                  | 63/158 [00:06<00:09,  9.63it/s]running cached_eval_script on /tmp/HumanEval_46_fib4.json by 55 workers
+ 41%|█████████████████████████████████▌                                                 | 64/158 [00:06<00:09,  9.64it/s]running cached_eval_script on /tmp/HumanEval_104_unique_digits.json by 55 workers
+ 41%|██████████████████████████████████▏                                                | 65/158 [00:06<00:09,  9.65it/s]running cached_eval_script on /tmp/HumanEval_117_select_words.json by 55 workers
+ 42%|██████████████████████████████████▋                                                | 66/158 [00:06<00:09,  9.66it/s]running cached_eval_script on /tmp/HumanEval_72_will_it_fly.json by 55 workers
+ 42%|███████████████████████████████████▏                                               | 67/158 [00:06<00:09,  9.65it/s]running cached_eval_script on /tmp/HumanEval_55_fib.json by 55 workers
+ 43%|███████████████████████████████████▋                                               | 68/158 [00:07<00:09,  9.64it/s]running cached_eval_script on /tmp/HumanEval_153_Strongest_Extension.json by 55 workers
+ 44%|████████████████████████████████████▏                                              | 69/158 [00:07<00:09,  9.65it/s]running cached_eval_script on /tmp/HumanEval_119_match_parens.json by 55 workers
+ 44%|████████████████████████████████████▊                                              | 70/158 [00:07<00:09,  9.65it/s]running cached_eval_script on /tmp/HumanEval_90_next_smallest.json by 55 workers
+ 45%|█████████████████████████████████████▎                                             | 71/158 [00:07<00:09,  9.64it/s]running cached_eval_script on /tmp/HumanEval_92_any_int.json by 55 workers
+ 46%|█████████████████████████████████████▊                                             | 72/158 [00:07<00:08,  9.63it/s]running cached_eval_script on /tmp/HumanEval_2_truncate_number.json by 55 workers
+ 46%|██████████████████████████████████████▎                                            | 73/158 [00:07<00:08,  9.63it/s]running cached_eval_script on /tmp/HumanEval_42_incr_list.json by 55 workers
+ 47%|██████████████████████████████████████▊                                            | 74/158 [00:07<00:08,  9.63it/s]running cached_eval_script on /tmp/HumanEval_150_x_or_y.json by 55 workers
+ 47%|███████████████████████████████████████▍                                           | 75/158 [00:07<00:08,  9.61it/s]running cached_eval_script on /tmp/HumanEval_49_modp.json by 55 workers
+ 48%|███████████████████████████████████████▉                                           | 76/158 [00:07<00:08,  9.62it/s]running cached_eval_script on /tmp/HumanEval_155_even_odd_count.json by 55 workers
+ 49%|████████████████████████████████████████▍                                          | 77/158 [00:07<00:08,  9.62it/s]running cached_eval_script on /tmp/HumanEval_80_is_happy.json by 55 workers
+ 49%|████████████████████████████████████████▉                                          | 78/158 [00:08<00:08,  9.63it/s]running cached_eval_script on /tmp/HumanEval_59_largest_prime_factor.json by 55 workers
+ 50%|█████████████████████████████████████████▌                                         | 79/158 [00:08<00:08,  9.63it/s]running cached_eval_script on /tmp/HumanEval_66_digitSum.json by 55 workers
+ 51%|██████████████████████████████████████████                                         | 80/158 [00:08<00:08,  9.63it/s]running cached_eval_script on /tmp/HumanEval_21_rescale_to_unit.json by 55 workers
+ 51%|██████████████████████████████████████████▌                                        | 81/158 [00:08<00:08,  9.62it/s]running cached_eval_script on /tmp/HumanEval_121_solution.json by 55 workers
+ 52%|███████████████████████████████████████████                                        | 82/158 [00:08<00:07,  9.62it/s]running cached_eval_script on /tmp/HumanEval_68_pluck.json by 55 workers
+ 53%|███████████████████████████████████████████▌                                       | 83/158 [00:08<00:07,  9.62it/s]running cached_eval_script on /tmp/HumanEval_147_get_max_triples.json by 55 workers
+ 53%|████████████████████████████████████████████▏                                      | 84/158 [00:08<00:07,  9.63it/s]running cached_eval_script on /tmp/HumanEval_110_exchange.json by 55 workers
+ 54%|████████████████████████████████████████████▋                                      | 85/158 [00:08<00:07,  9.65it/s]running cached_eval_script on /tmp/HumanEval_47_median.json by 55 workers
+ 54%|█████████████████████████████████████████████▏                                     | 86/158 [00:08<00:07,  9.66it/s]running cached_eval_script on /tmp/HumanEval_82_prime_length.json by 55 workers
+ 55%|█████████████████████████████████████████████▋                                     | 87/158 [00:09<00:07,  9.65it/s]running cached_eval_script on /tmp/HumanEval_73_smallest_change.json by 55 workers
+ 56%|██████████████████████████████████████████████▏                                    | 88/158 [00:09<00:07,  9.65it/s]running cached_eval_script on /tmp/HumanEval_133_sum_squares.json by 55 workers
+ 56%|██████████████████████████████████████████████▊                                    | 89/158 [00:09<00:07,  9.65it/s]running cached_eval_script on /tmp/HumanEval_141_file_name_check.json by 55 workers
+ 57%|███████████████████████████████████████████████▎                                   | 90/158 [00:09<00:07,  9.65it/s]running cached_eval_script on /tmp/HumanEval_40_triples_sum_to_zero.json by 55 workers
+ 58%|███████████████████████████████████████████████▊                                   | 91/158 [00:09<00:06,  9.65it/s]running cached_eval_script on /tmp/HumanEval_127_intersection.json by 55 workers
+ 58%|████████████████████████████████████████████████▎                                  | 92/158 [00:09<00:06,  9.65it/s]running cached_eval_script on /tmp/HumanEval_1_separate_paren_groups.json by 55 workers
+ 59%|████████████████████████████████████████████████▊                                  | 93/158 [00:09<00:06,  9.65it/s]running cached_eval_script on /tmp/HumanEval_152_compare.json by 55 workers
+ 59%|█████████████████████████████████████████████████▍                                 | 94/158 [00:09<00:06,  9.63it/s]running cached_eval_script on /tmp/HumanEval_83_starts_one_ends.json by 55 workers
+ 60%|█████████████████████████████████████████████████▉                                 | 95/158 [00:09<00:06,  9.64it/s]running cached_eval_script on /tmp/HumanEval_134_check_if_last_char_is_a_letter.json by 55 workers
+ 61%|██████████████████████████████████████████████████▍                                | 96/158 [00:09<00:06,  9.64it/s]running cached_eval_script on /tmp/HumanEval_124_valid_date.json by 55 workers
+ 61%|██████████████████████████████████████████████████▉                                | 97/158 [00:10<00:06,  9.64it/s]running cached_eval_script on /tmp/HumanEval_108_count_nums.json by 55 workers
+ 62%|███████████████████████████████████████████████████▍                               | 98/158 [00:10<00:06,  9.65it/s]running cached_eval_script on /tmp/HumanEval_86_anti_shuffle.json by 55 workers
+ 63%|████████████████████████████████████████████████████                               | 99/158 [00:10<00:06,  9.65it/s]running cached_eval_script on /tmp/HumanEval_48_is_palindrome.json by 55 workers
+ 63%|███████████████████████████████████████████████████▉                              | 100/158 [00:10<00:06,  9.64it/s]running cached_eval_script on /tmp/HumanEval_118_get_closest_vowel.json by 55 workers
+ 64%|████████████████████████████████████████████████████▍                             | 101/158 [00:10<00:05,  9.64it/s]running cached_eval_script on /tmp/HumanEval_31_is_prime.json by 55 workers
+ 65%|████████████████████████████████████████████████████▉                             | 102/158 [00:10<00:05,  9.63it/s]running cached_eval_script on /tmp/HumanEval_144_simplify.json by 55 workers
+ 65%|█████████████████████████████████████████████████████▍                            | 103/158 [00:10<00:05,  9.64it/s]running cached_eval_script on /tmp/HumanEval_78_hex_key.json by 55 workers
+ 66%|█████████████████████████████████████████████████████▉                            | 104/158 [00:10<00:05,  9.65it/s]running cached_eval_script on /tmp/HumanEval_143_words_in_sentence.json by 55 workers
+ 66%|██████████████████████████████████████████████████████▍                           | 105/158 [00:10<00:05,  9.65it/s]running cached_eval_script on /tmp/HumanEval_111_histogram.json by 55 workers
+ 67%|███████████████████████████████████████████████████████                           | 106/158 [00:10<00:05,  9.65it/s]running cached_eval_script on /tmp/HumanEval_87_get_row.json by 55 workers
+ 68%|███████████████████████████████████████████████████████▌                          | 107/158 [00:11<00:05,  9.65it/s]running cached_eval_script on /tmp/HumanEval_123_get_odd_collatz.json by 55 workers
+ 68%|████████████████████████████████████████████████████████                          | 108/158 [00:11<00:05,  9.65it/s]running cached_eval_script on /tmp/HumanEval_135_can_arrange.json by 55 workers
+ 69%|████████████████████████████████████████████████████████▌                         | 109/158 [00:11<00:05,  9.65it/s]running cached_eval_script on /tmp/HumanEval_19_sort_numbers.json by 55 workers
+ 70%|█████████████████████████████████████████████████████████                         | 110/158 [00:11<00:04,  9.65it/s]running cached_eval_script on /tmp/HumanEval_65_circular_shift.json by 55 workers
+ 70%|█████████████████████████████████████████████████████████▌                        | 111/158 [00:11<00:04,  9.65it/s]running cached_eval_script on /tmp/HumanEval_142_sum_squares.json by 55 workers
+ 71%|██████████████████████████████████████████████████████████▏                       | 112/158 [00:11<00:04,  9.65it/s]running cached_eval_script on /tmp/HumanEval_94_skjkasdkd.json by 55 workers
+ 72%|██████████████████████████████████████████████████████████▋                       | 113/158 [00:11<00:04,  9.65it/s]running cached_eval_script on /tmp/HumanEval_8_sum_product.json by 55 workers
+ 72%|███████████████████████████████████████████████████████████▏                      | 114/158 [00:11<00:04,  9.65it/s]running cached_eval_script on /tmp/HumanEval_102_choose_num.json by 55 workers
+ 73%|███████████████████████████████████████████████████████████▋                      | 115/158 [00:11<00:04,  9.63it/s]running cached_eval_script on /tmp/HumanEval_136_largest_smallest_integers.json by 55 workers
+ 73%|████████████████████████████████████████████████████████████▏                     | 116/158 [00:12<00:04,  9.63it/s]running cached_eval_script on /tmp/HumanEval_16_count_distinct_characters.json by 55 workers
+ 74%|████████████████████████████████████████████████████████████▋                     | 117/158 [00:12<00:04,  9.63it/s]running cached_eval_script on /tmp/HumanEval_100_make_a_pile.json by 55 workers
+ 75%|█████████████████████████████████████████████████████████████▏                    | 118/158 [00:12<00:04,  9.64it/s]running cached_eval_script on /tmp/HumanEval_128_prod_signs.json by 55 workers
+ 75%|█████████████████████████████████████████████████████████████▊                    | 119/158 [00:12<00:04,  9.64it/s]running cached_eval_script on /tmp/HumanEval_114_minSubArraySum.json by 55 workers
+ 76%|██████████████████████████████████████████████████████████████▎                   | 120/158 [00:12<00:03,  9.64it/s]running cached_eval_script on /tmp/HumanEval_15_string_sequence.json by 55 workers
+ 77%|██████████████████████████████████████████████████████████████▊                   | 121/158 [00:12<00:03,  9.63it/s]running cached_eval_script on /tmp/HumanEval_154_cycpattern_check.json by 55 workers
+ 77%|███████████████████████████████████████████████████████████████▎                  | 122/158 [00:12<00:03,  9.64it/s]running cached_eval_script on /tmp/HumanEval_57_monotonic.json by 55 workers
+ 78%|███████████████████████████████████████████████████████████████▊                  | 123/158 [00:12<00:03,  9.64it/s]running cached_eval_script on /tmp/HumanEval_12_longest.json by 55 workers
+ 78%|████████████████████████████████████████████████████████████████▎                 | 124/158 [00:12<00:03,  9.64it/s]running cached_eval_script on /tmp/HumanEval_52_below_threshold.json by 55 workers
+ 79%|████████████████████████████████████████████████████████████████▊                 | 125/158 [00:12<00:03,  9.64it/s]running cached_eval_script on /tmp/HumanEval_75_is_multiply_prime.json by 55 workers
+ 80%|█████████████████████████████████████████████████████████████████▍                | 126/158 [00:13<00:03,  9.65it/s]running cached_eval_script on /tmp/HumanEval_30_get_positive.json by 55 workers
+ 80%|█████████████████████████████████████████████████████████████████▉                | 127/158 [00:13<00:03,  9.65it/s]running cached_eval_script on /tmp/HumanEval_33_sort_third.json by 55 workers
+ 81%|██████████████████████████████████████████████████████████████████▍               | 128/158 [00:13<00:03,  9.65it/s]running cached_eval_script on /tmp/HumanEval_6_parse_nested_parens.json by 55 workers
+ 82%|██████████████████████████████████████████████████████████████████▉               | 129/158 [00:13<00:03,  9.65it/s]running cached_eval_script on /tmp/HumanEval_45_triangle_area.json by 55 workers
+ 82%|███████████████████████████████████████████████████████████████████▍              | 130/158 [00:13<00:02,  9.66it/s]running cached_eval_script on /tmp/HumanEval_97_multiply.json by 55 workers
+ 83%|███████████████████████████████████████████████████████████████████▉              | 131/158 [00:13<00:02,  9.63it/s]running cached_eval_script on /tmp/HumanEval_4_mean_absolute_deviation.json by 55 workers
+ 84%|████████████████████████████████████████████████████████████████████▌             | 132/158 [00:13<00:02,  9.64it/s]running cached_eval_script on /tmp/HumanEval_58_common.json by 55 workers
+ 84%|█████████████████████████████████████████████████████████████████████             | 133/158 [00:13<00:02,  9.65it/s]running cached_eval_script on /tmp/HumanEval_156_int_to_mini_roman.json by 55 workers
+ 85%|█████████████████████████████████████████████████████████████████████▌            | 134/158 [00:13<00:02,  9.65it/s]running cached_eval_script on /tmp/HumanEval_67_fruit_distribution.json by 55 workers
+ 85%|██████████████████████████████████████████████████████████████████████            | 135/158 [00:13<00:02,  9.65it/s]running cached_eval_script on /tmp/HumanEval_112_reverse_delete.json by 55 workers
+ 86%|██████████████████████████████████████████████████████████████████████▌           | 136/158 [00:14<00:02,  9.66it/s]running cached_eval_script on /tmp/HumanEval_13_greatest_common_divisor.json by 55 workers
+ 87%|███████████████████████████████████████████████████████████████████████           | 137/158 [00:14<00:02,  9.66it/s]running cached_eval_script on /tmp/HumanEval_125_split_words.json by 55 workers
+ 87%|███████████████████████████████████████████████████████████████████████▌          | 138/158 [00:14<00:02,  9.66it/s]running cached_eval_script on /tmp/HumanEval_116_sort_array.json by 55 workers
+ 88%|████████████████████████████████████████████████████████████████████████▏         | 139/158 [00:14<00:01,  9.66it/s]running cached_eval_script on /tmp/HumanEval_28_concatenate.json by 55 workers
+ 89%|████████████████████████████████████████████████████████████████████████▋         | 140/158 [00:14<00:01,  9.66it/s]running cached_eval_script on /tmp/HumanEval_149_sorted_list_sum.json by 55 workers
+ 89%|█████████████████████████████████████████████████████████████████████████▏        | 141/158 [00:14<00:01,  9.65it/s]running cached_eval_script on /tmp/HumanEval_7_filter_by_substring.json by 55 workers
+ 90%|█████████████████████████████████████████████████████████████████████████▋        | 142/158 [00:14<00:01,  9.65it/s]running cached_eval_script on /tmp/HumanEval_99_closest_integer.json by 55 workers
+ 91%|██████████████████████████████████████████████████████████████████████████▏       | 143/158 [00:14<00:01,  9.65it/s]running cached_eval_script on /tmp/HumanEval_64_vowels_count.json by 55 workers
+ 91%|██████████████████████████████████████████████████████████████████████████▋       | 144/158 [00:14<00:01,  9.65it/s]running cached_eval_script on /tmp/HumanEval_158_find_max.json by 55 workers
+ 92%|███████████████████████████████████████████████████████████████████████████▎      | 145/158 [00:15<00:01,  9.65it/s]running cached_eval_script on /tmp/HumanEval_162_string_to_md5.json by 55 workers
+ 92%|███████████████████████████████████████████████████████████████████████████▊      | 146/158 [00:15<00:01,  9.65it/s]running cached_eval_script on /tmp/HumanEval_44_change_base.json by 55 workers
+ 93%|████████████████████████████████████████████████████████████████████████████▎     | 147/158 [00:15<00:01,  9.65it/s]running cached_eval_script on /tmp/HumanEval_157_right_angle_triangle.json by 55 workers
+ 94%|████████████████████████████████████████████████████████████████████████████▊     | 148/158 [00:15<00:01,  9.64it/s]running cached_eval_script on /tmp/HumanEval_81_numerical_letter_grade.json by 55 workers
+ 94%|█████████████████████████████████████████████████████████████████████████████▎    | 149/158 [00:15<00:00,  9.64it/s]running cached_eval_script on /tmp/HumanEval_5_intersperse.json by 55 workers
+ 95%|█████████████████████████████████████████████████████████████████████████████▊    | 150/158 [00:15<00:00,  9.64it/s]running cached_eval_script on /tmp/HumanEval_146_specialFilter.json by 55 workers
+ 96%|██████████████████████████████████████████████████████████████████████████████▎   | 151/158 [00:15<00:00,  9.65it/s]running cached_eval_script on /tmp/HumanEval_60_sum_to_n.json by 55 workers
+ 96%|██████████████████████████████████████████████████████████████████████████████▉   | 152/158 [00:15<00:00,  9.64it/s]running cached_eval_script on /tmp/HumanEval_26_remove_duplicates.json by 55 workers
+ 97%|███████████████████████████████████████████████████████████████████████████████▍  | 153/158 [00:15<00:00,  9.64it/s]running cached_eval_script on /tmp/HumanEval_163_generate_integers.json by 55 workers
+ 97%|███████████████████████████████████████████████████████████████████████████████▉  | 154/158 [00:15<00:00,  9.64it/s]running cached_eval_script on /tmp/HumanEval_9_rolling_max.json by 55 workers
+ 98%|████████████████████████████████████████████████████████████████████████████████▍ | 155/158 [00:16<00:00,  9.65it/s]running cached_eval_script on /tmp/HumanEval_3_below_zero.json by 55 workers
+ 99%|████████████████████████████████████████████████████████████████████████████████▉ | 156/158 [00:16<00:00,  9.65it/s]running cached_eval_script on /tmp/HumanEval_69_search.json by 55 workers
+ 99%|█████████████████████████████████████████████████████████████████████████████████▍| 157/158 [00:16<00:00,  9.65it/s]running cached_eval_script on /tmp/HumanEval_61_correct_bracketing.json by 55 workers
+100%|██████████████████████████████████████████████████████████████████████████████████| 158/158 [00:16<00:00,  9.65it/s]
+computing pass@k
+*.results.json stored in: /tmp
+computed pass@k
+evaluation results:
+{
+  "multiple-py": {
+    "pass@1": 0.47468354430379744
+  },
+  "config": {
+    "prefix": "",
+    "do_sample": false,
+    "temperature": 0.2,
+    "top_k": 0,
+    "top_p": 0.95,
+    "n_samples": 1,
+    "eos": "<|endoftext|>",
+    "seed": 10,
+    "model": "codellama/CodeLlama-13b-Python-hf",
+    "modeltype": "causal",
+    "peft_model": null,
+    "revision": null,
+    "token": false,
+    "trust_remote_code": true,
+    "tasks": "multiple-py",
+    "instruction_tokens": null,
+    "batch_size": 1,
+    "max_length_generation": 512,
+    "precision": "bf16",
+    "load_in_8bit": false,
+    "load_in_4bit": false,
+    "left_padding": false,
+    "limit": 158,
+    "limit_start": 0,
+    "save_every_k_tasks": 1,
+    "postprocess": true,
+    "allow_code_execution": true,
+    "generation_only": false,
+    "load_generations_path": null,
+    "load_data_path": null,
+    "metric_output_path": "./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py-eval-0-158-evaluation_results.json",
+    "save_generations": true,
+    "load_generations_intermediate_paths": null,
+    "save_generations_path": "./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158.json",
+    "save_references": true,
+    "save_references_path": "references.json",
+    "prompt": "prompt",
+    "max_memory_per_gpu": "auto",
+    "check_references": false
+  }
+}
+evaluation results were saved at ./runpod/codellama-13b-python/py/do_sampleFalse/CodeLlama-13b-Python-hf-do_sampleFalse-bf16-n1-maxlen512-py-generations-0-158_multiple-py-eval-0-158-evaluation_results.json

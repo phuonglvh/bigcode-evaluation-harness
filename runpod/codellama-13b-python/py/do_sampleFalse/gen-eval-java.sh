@@ -4,13 +4,13 @@ set -euox
 
 AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
-max_length=1024
+max_length=512
 
 do_sample=False
 num_return_sequences=1
 batch_size=$num_return_sequences
 
-BASE_DIR=./runpod/codellama-13b-python/java/improve/do_sample$do_sample
+BASE_DIR=./runpod/codellama-13b-python/py/do_sample$do_sample
 mkdir -p $BASE_DIR
 
 n_samples=1
