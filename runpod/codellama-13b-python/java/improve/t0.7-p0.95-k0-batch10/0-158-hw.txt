@@ -1,0 +1,22 @@
+13083528
+Age:
+13 hrs.
+Remaining:
+1 mon, 5d
+Virginia, US
+2x RTX 309070.5  TFLOPS
+m:21658
+host:102099
+verified
+0.7/48.0 GB
+766.0 GB/s
+X99
+PCIE 3.0, 16x
+11.7 GB/s
+Xeon® E5-1660 v3
+16.0/16 cpu
+?/0 GB
+KINGSTON SNV2S1000G
+638 MB/s27.0/27.9 GB
+871.0 Mbps847.8 MbpsMax CUDA: 12.2
+Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
