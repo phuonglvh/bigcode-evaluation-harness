@@ -11,11 +11,11 @@
 (0.6, 0.9) gen done
 (0.6, 0.95) eval done
 
-(0.7, 0.8) gen done
+(0.7, 0.8) evalling
 (0.7, 0.9) eval done
 (0.7, 0.95) eval done
 
-(0.8, 0.8) evalling
+(0.8, 0.8) eval done
 (0.8, 0.9) genning
 (0.8, 0.95) done
 
