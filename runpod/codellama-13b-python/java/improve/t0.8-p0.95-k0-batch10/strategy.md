@@ -17,8 +17,8 @@
 
 (0.8, 0.8) eval done
 (0.8, 0.9) genning
-(0.8, 0.95) done
+(0.8, 0.95) eval done
 
 (0.9, 0.8) eval done
-(0.9, 0.9) genning
+(0.9, 0.9) gen done
 (0.9, 0.95) eval done
