@@ -59,7 +59,7 @@ intermediate_generations_path+="_intermediate.json"
 
 echo $generations_path
 echo $intermediate_generations_path
-python main.py --model "$AUTHOR/$MODEL_NAME" \
+accelerate launch main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
     --max_length_generation $max_length \
     --temperature $temperature \
