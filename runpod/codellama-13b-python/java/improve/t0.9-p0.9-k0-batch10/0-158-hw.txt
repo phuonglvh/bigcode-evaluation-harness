@@ -1,0 +1,23 @@
+13083506
+Age:
+1d 23h
+Remaining:
+1 mon, 24d
+Ukraine, UA
+2x RTX 309071.5  TFLOPS
+m:27225
+host:22394
+unverified
+0.8/48.0 GB
+784.6 GB/s
+X10DRG
+PCIE 3.0, 16x
+10.4 GB/s
+Xeon® E5-2687W v4
+24.0/48 cpu
+26/129 GB
+ADATA LEGEND 960
+3247 MB/s28.0/27.9 GB
+714.1 Mbps883.5 MbpsMax CUDA: 12.5
+GPU: 0% 28C , CPU: 0% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+$0.220/hr
