@@ -1,0 +1,23 @@
+13102159
+Age:
+19 hrs.
+Remaining:
+2 mon, 20d
+Quebec, CA
+2x RTX 309070.5  TFLOPS
+m:21917
+host:47196
+unverified
+0.7/48.0 GB
+763.3 GB/s
+X99
+PCIE 3.0, 16x
+10.7 GB/s
+Xeon® E5-2699 v3
+72.0/72 cpu
+0/64 GB
+KINGSTON SNV2S2000G
+956 MB/s27.0/27.9 GB
+853.2 Mbps832.6 MbpsMax CUDA: 12.2
+GPU: 0% 40C , CPU: 0% Status: Error: Failed to connect to destination machine.
+$0.301/hr
