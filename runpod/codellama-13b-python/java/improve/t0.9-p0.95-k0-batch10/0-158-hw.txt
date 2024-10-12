@@ -1,0 +1,23 @@
+13108745
+Age:
+9 hrs.
+Remaining:
+5 days
+Minnesota, US
+2x RTX 309070.5  TFLOPS
+m:28013
+host:81276
+unverified
+0.7/48.0 GB
+770.3 GB/s
+X399 Taichi
+PCIE 3.0, 8x
+6.3 GB/s
+AMD Ryzen Threadripper 1950X 16-Core Processor
+16.0/32 cpu
+13/64 GB
+Fanxiang S660 4TB
+1753 MB/s27.0/27.9 GB
+874.9 Mbps879.6 MbpsMax CUDA: 12.2
+GPU: 1% 23C , CPU: 0% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+$0.247/hr 
