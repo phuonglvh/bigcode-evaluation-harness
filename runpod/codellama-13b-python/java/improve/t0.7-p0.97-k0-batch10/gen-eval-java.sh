@@ -20,7 +20,7 @@ precision=bf16
 lang=java
 
 limit_start=0
-limit=158
+limit=93
 eval_limit_start=0
 eval_limit=158
 
