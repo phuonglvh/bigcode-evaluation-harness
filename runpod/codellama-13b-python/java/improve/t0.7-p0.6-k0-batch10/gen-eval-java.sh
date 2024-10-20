@@ -19,8 +19,8 @@ seed=0
 precision=bf16
 lang=java
 
-limit_start=0
-limit=158
+limit_start=100
+limit=58
 eval_limit_start=0
 eval_limit=158
 
@@ -46,6 +46,34 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --save_every_k_tasks $save_every_k_iterations \
     --save_generations \
     --save_generations_path "$BASE_DIR/$common_name-generations-${limit_start}-${limit}.json" \
+    --save_references \
+    --generation_only \
+    --limit_start $limit_start \
+    --limit $limit \
+    --max_memory_per_gpu auto
+
+# use case: load intermediate generations
+intermediate_generations_path="$BASE_DIR/$generations_name" 
+intermediate_generations_path+="_intermediate.json"
+
+echo $generations_path
+echo $intermediate_generations_path
+python main.py --model "$AUTHOR/$MODEL_NAME" \
+    --tasks multiple-$lang \
+    --max_length_generation $max_length \
+    --temperature $temperature \
+    --top_p $top_p \
+    --top_k $top_k \
+    --seed $seed \
+    --n_samples $n_samples \
+    --batch_size $batch_size \
+    --precision $precision \
+    --allow_code_execution \
+    --trust_remote_code \
+    --save_every_k_tasks $save_every_k_iterations \
+    --save_generations \
+    --save_generations_path "$BASE_DIR/$common_name-generations-${limit_start}-${limit}.json" \
+    --load_generations_intermediate_paths "$intermediate_generations_path" \
     --save_references \
     --generation_only \
     --limit_start $limit_start \
