@@ -1,0 +1,23 @@
+13346875
+Age:
+28 min.
+Remaining:
+15 days
+Quebec, CA
+2x RTX 309071.5  TFLOPS
+m:24988
+host:68880
+unverified
+31.2/48.0 GB
+768.0 GB/s
+X99
+PCIE 3.0, 16x
+11.8 GB/s
+Xeon® E5-2699 v3
+72.0/72 cpu
+1/32 GB
+KINGSTON SNV2S1000G
+1430 MB/s62.0/65.3 GB
+874.5 Mbps883.2 MbpsMax CUDA: 12.4
+GPU: 29% 58C , CPU: 3% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+$0.285/hr 
