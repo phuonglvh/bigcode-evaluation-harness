@@ -1,0 +1,23 @@
+13344199
+Age:
+17 min.
+Remaining:
+2d 23h
+Poland, PL
+1x RTX A400020.6  TFLOPS
+m:18124
+host:78246
+verified
+12.6/16.0 GB
+364.0 GB/s
+B550
+PCIE 4.0, 16x
+25.0 GB/s
+AMD Ryzen 5 5600X 6-Core Processor
+6.0/12 cpu
+12/16 GB
+Micron 2300 NVMe 1024GB
+1439 MB/s15.0/16.0 GB
+841.9 Mbps804.8 MbpsMax CUDA: 12.2
+GPU: 98% 84C , CPU: 17% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+$0.078/hr 
