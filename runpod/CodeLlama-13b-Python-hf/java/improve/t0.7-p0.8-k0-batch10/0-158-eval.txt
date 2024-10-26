@@ -1,0 +1,573 @@
+root@C.13113062:/workspace/bigcode-evaluation-harness$ AUTHOR="codellama"
+MODEL_NAME="CodeLlama-13b-Python-hf"
+max_length=1024
+
+temperature=0.7
+top_k=0
+top_p=0.8
+batch_size=10
+
+BASE_DIR=./runpod/$MODEL_NAME/$lang/improve/t$temperature-p$top_p-k$top_k-batch$batch_size
+mkdir -p $BASE_DIR
+
+n_samples=200
+seed=0
+precision=bf16
+lang=java
+
+limit_start=0
+limit=158
+eval_limit_start=0
+eval_limit=158
+
+save_every_k_tasks=1 # after completing k dataset's tasks
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
+
+common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
+generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
+generations_path="$BASE_DIR/$generations_name.json"
+
+python main.py --model "$AUTHOR/$MODEL_NAME" \
+    --tasks multiple-$lang \
+    --max_length_generation $max_length \
+    --temperature $temperature \
+s.json"etric_output_path "$BASE_DIR/$generations_name-eval-${eval_limit_start}-${eval_limit}-evaluation_result
+Selected Tasks: ['multiple-java']
+evaluation only mode
+loading generations from "/workspace/bigcode-evaluation-harness/runpod/codellama-13b-python/java/improve/t0.7-p0.8-k0-batch10/CodeLlama-13b-Python-hf-temp0.7-p0.8-k0-bf16-n200-batch10-maxlen1024-java-generations-0-158_multiple-java.json"
+generations loaded, 158 selected from 158 with 200 candidates
+loaded tasks (0-based indexing): 0 - 157
+audit_generations: verifying generations against dataset
+audit_generations: unknown_tasks []
+Evaluating generations...
+process_results of 158 selected problems:
+HumanEval_23_strlen
+HumanEval_89_encrypt
+HumanEval_95_check_dict_case
+HumanEval_85_add
+HumanEval_140_fix_spaces
+HumanEval_63_fibfib
+HumanEval_151_double_the_difference
+HumanEval_22_filter_integers
+HumanEval_41_car_race_collision
+HumanEval_17_parse_music
+HumanEval_79_decimal_to_binary
+HumanEval_14_all_prefixes
+HumanEval_53_add
+HumanEval_159_eat
+HumanEval_115_max_fill
+HumanEval_160_do_algebra
+HumanEval_27_flip_case
+HumanEval_105_by_length
+HumanEval_25_factorize
+HumanEval_96_count_up_to
+HumanEval_34_unique
+HumanEval_74_total_match
+HumanEval_35_max_element
+HumanEval_132_is_nested
+HumanEval_113_odd_count
+HumanEval_109_move_one_ball
+HumanEval_107_even_odd_palindrome
+HumanEval_138_is_equal_to_sum_even
+HumanEval_62_derivative
+HumanEval_126_is_sorted
+HumanEval_161_solve
+HumanEval_130_tri
+HumanEval_36_fizz_buzz
+HumanEval_29_filter_by_prefix
+HumanEval_84_solve
+HumanEval_129_minPath
+HumanEval_98_count_upper
+HumanEval_120_maximum
+HumanEval_24_largest_divisor
+HumanEval_88_sort_array
+HumanEval_106_f
+HumanEval_77_iscube
+HumanEval_93_encode
+HumanEval_91_is_bored
+HumanEval_43_pairs_sum_to_zero
+HumanEval_71_triangle_area
+HumanEval_148_bf
+HumanEval_131_digits
+HumanEval_101_words_string
+HumanEval_18_how_many_times
+HumanEval_51_remove_vowels
+HumanEval_70_strange_sort_list
+HumanEval_20_find_closest_elements
+HumanEval_76_is_simple_power
+HumanEval_39_prime_fib
+HumanEval_145_order_by_points
+HumanEval_0_has_close_elements
+HumanEval_10_make_palindrome
+HumanEval_11_string_xor
+HumanEval_139_special_factorial
+HumanEval_122_add_elements
+HumanEval_46_fib4
+HumanEval_104_unique_digits
+HumanEval_117_select_words
+HumanEval_72_will_it_fly
+HumanEval_55_fib
+HumanEval_153_Strongest_Extension
+HumanEval_119_match_parens
+HumanEval_90_next_smallest
+HumanEval_92_any_int
+HumanEval_2_truncate_number
+HumanEval_42_incr_list
+HumanEval_150_x_or_y
+HumanEval_49_modp
+HumanEval_155_even_odd_count
+HumanEval_80_is_happy
+HumanEval_59_largest_prime_factor
+HumanEval_66_digitSum
+HumanEval_21_rescale_to_unit
+HumanEval_121_solution
+HumanEval_68_pluck
+HumanEval_147_get_max_triples
+HumanEval_110_exchange
+HumanEval_47_median
+HumanEval_82_prime_length
+HumanEval_73_smallest_change
+HumanEval_133_sum_squares
+HumanEval_141_file_name_check
+HumanEval_40_triples_sum_to_zero
+HumanEval_127_intersection
+HumanEval_1_separate_paren_groups
+HumanEval_152_compare
+HumanEval_83_starts_one_ends
+HumanEval_134_check_if_last_char_is_a_letter
+HumanEval_124_valid_date
+HumanEval_108_count_nums
+HumanEval_86_anti_shuffle
+HumanEval_48_is_palindrome
+HumanEval_118_get_closest_vowel
+HumanEval_31_is_prime
+HumanEval_144_simplify
+HumanEval_78_hex_key
+HumanEval_143_words_in_sentence
+HumanEval_111_histogram
+HumanEval_87_get_row
+HumanEval_123_get_odd_collatz
+HumanEval_135_can_arrange
+HumanEval_19_sort_numbers
+HumanEval_65_circular_shift
+HumanEval_142_sum_squares
+HumanEval_94_skjkasdkd
+HumanEval_8_sum_product
+HumanEval_102_choose_num
+HumanEval_136_largest_smallest_integers
+HumanEval_16_count_distinct_characters
+HumanEval_100_make_a_pile
+HumanEval_128_prod_signs
+HumanEval_114_minSubArraySum
+HumanEval_15_string_sequence
+HumanEval_154_cycpattern_check
+HumanEval_57_monotonic
+HumanEval_12_longest
+HumanEval_52_below_threshold
+HumanEval_75_is_multiply_prime
+HumanEval_30_get_positive
+HumanEval_33_sort_third
+HumanEval_6_parse_nested_parens
+HumanEval_45_triangle_area
+HumanEval_97_multiply
+HumanEval_4_mean_absolute_deviation
+HumanEval_58_common
+HumanEval_156_int_to_mini_roman
+HumanEval_67_fruit_distribution
+HumanEval_112_reverse_delete
+HumanEval_13_greatest_common_divisor
+HumanEval_116_sort_array
+HumanEval_28_concatenate
+HumanEval_149_sorted_list_sum
+HumanEval_7_filter_by_substring
+HumanEval_99_closest_integer
+HumanEval_64_vowels_count
+HumanEval_158_find_max
+HumanEval_162_string_to_md5
+HumanEval_44_change_base
+HumanEval_157_right_angle_triangle
+HumanEval_81_numerical_letter_grade
+HumanEval_5_intersperse
+HumanEval_146_specialFilter
+HumanEval_60_sum_to_n
+HumanEval_26_remove_duplicates
+HumanEval_163_generate_integers
+HumanEval_9_rolling_max
+HumanEval_3_below_zero
+HumanEval_69_search
+HumanEval_61_correct_bracketing
+HumanEval_37_sort_even
+HumanEval_54_same_chars
+HumanEval_56_correct_bracketing
+saved 1 problem in /tmp/HumanEval_23_strlen.json
+saved 1 problem in /tmp/HumanEval_89_encrypt.json
+saved 1 problem in /tmp/HumanEval_95_check_dict_case.json
+saved 1 problem in /tmp/HumanEval_85_add.json
+saved 1 problem in /tmp/HumanEval_140_fix_spaces.json
+saved 1 problem in /tmp/HumanEval_63_fibfib.json
+saved 1 problem in /tmp/HumanEval_151_double_the_difference.json
+saved 1 problem in /tmp/HumanEval_22_filter_integers.json
+saved 1 problem in /tmp/HumanEval_41_car_race_collision.json
+saved 1 problem in /tmp/HumanEval_17_parse_music.json
+saved 1 problem in /tmp/HumanEval_79_decimal_to_binary.json
+saved 1 problem in /tmp/HumanEval_14_all_prefixes.json
+saved 1 problem in /tmp/HumanEval_53_add.json
+saved 1 problem in /tmp/HumanEval_159_eat.json
+saved 1 problem in /tmp/HumanEval_115_max_fill.json
+saved 1 problem in /tmp/HumanEval_160_do_algebra.json
+saved 1 problem in /tmp/HumanEval_27_flip_case.json
+saved 1 problem in /tmp/HumanEval_105_by_length.json
+saved 1 problem in /tmp/HumanEval_25_factorize.json
+saved 1 problem in /tmp/HumanEval_96_count_up_to.json
+saved 1 problem in /tmp/HumanEval_34_unique.json
+saved 1 problem in /tmp/HumanEval_74_total_match.json
+saved 1 problem in /tmp/HumanEval_35_max_element.json
+saved 1 problem in /tmp/HumanEval_132_is_nested.json
+saved 1 problem in /tmp/HumanEval_113_odd_count.json
+saved 1 problem in /tmp/HumanEval_109_move_one_ball.json
+saved 1 problem in /tmp/HumanEval_107_even_odd_palindrome.json
+saved 1 problem in /tmp/HumanEval_138_is_equal_to_sum_even.json
+saved 1 problem in /tmp/HumanEval_62_derivative.json
+saved 1 problem in /tmp/HumanEval_126_is_sorted.json
+saved 1 problem in /tmp/HumanEval_161_solve.json
+saved 1 problem in /tmp/HumanEval_130_tri.json
+saved 1 problem in /tmp/HumanEval_36_fizz_buzz.json
+saved 1 problem in /tmp/HumanEval_29_filter_by_prefix.json
+saved 1 problem in /tmp/HumanEval_84_solve.json
+saved 1 problem in /tmp/HumanEval_129_minPath.json
+saved 1 problem in /tmp/HumanEval_98_count_upper.json
+saved 1 problem in /tmp/HumanEval_120_maximum.json
+saved 1 problem in /tmp/HumanEval_24_largest_divisor.json
+saved 1 problem in /tmp/HumanEval_88_sort_array.json
+saved 1 problem in /tmp/HumanEval_106_f.json
+saved 1 problem in /tmp/HumanEval_77_iscube.json
+saved 1 problem in /tmp/HumanEval_93_encode.json
+saved 1 problem in /tmp/HumanEval_91_is_bored.json
+saved 1 problem in /tmp/HumanEval_43_pairs_sum_to_zero.json
+saved 1 problem in /tmp/HumanEval_71_triangle_area.json
+saved 1 problem in /tmp/HumanEval_148_bf.json
+saved 1 problem in /tmp/HumanEval_131_digits.json
+saved 1 problem in /tmp/HumanEval_101_words_string.json
+saved 1 problem in /tmp/HumanEval_18_how_many_times.json
+saved 1 problem in /tmp/HumanEval_51_remove_vowels.json
+saved 1 problem in /tmp/HumanEval_70_strange_sort_list.json
+saved 1 problem in /tmp/HumanEval_20_find_closest_elements.json
+saved 1 problem in /tmp/HumanEval_76_is_simple_power.json
+saved 1 problem in /tmp/HumanEval_39_prime_fib.json
+saved 1 problem in /tmp/HumanEval_145_order_by_points.json
+saved 1 problem in /tmp/HumanEval_0_has_close_elements.json
+saved 1 problem in /tmp/HumanEval_10_make_palindrome.json
+saved 1 problem in /tmp/HumanEval_11_string_xor.json
+saved 1 problem in /tmp/HumanEval_139_special_factorial.json
+saved 1 problem in /tmp/HumanEval_122_add_elements.json
+saved 1 problem in /tmp/HumanEval_46_fib4.json
+saved 1 problem in /tmp/HumanEval_104_unique_digits.json
+saved 1 problem in /tmp/HumanEval_117_select_words.json
+saved 1 problem in /tmp/HumanEval_72_will_it_fly.json
+saved 1 problem in /tmp/HumanEval_55_fib.json
+saved 1 problem in /tmp/HumanEval_153_Strongest_Extension.json
+saved 1 problem in /tmp/HumanEval_119_match_parens.json
+saved 1 problem in /tmp/HumanEval_90_next_smallest.json
+saved 1 problem in /tmp/HumanEval_92_any_int.json
+saved 1 problem in /tmp/HumanEval_2_truncate_number.json
+saved 1 problem in /tmp/HumanEval_42_incr_list.json
+saved 1 problem in /tmp/HumanEval_150_x_or_y.json
+saved 1 problem in /tmp/HumanEval_49_modp.json
+saved 1 problem in /tmp/HumanEval_155_even_odd_count.json
+saved 1 problem in /tmp/HumanEval_80_is_happy.json
+saved 1 problem in /tmp/HumanEval_59_largest_prime_factor.json
+saved 1 problem in /tmp/HumanEval_66_digitSum.json
+saved 1 problem in /tmp/HumanEval_21_rescale_to_unit.json
+saved 1 problem in /tmp/HumanEval_121_solution.json
+saved 1 problem in /tmp/HumanEval_68_pluck.json
+saved 1 problem in /tmp/HumanEval_147_get_max_triples.json
+saved 1 problem in /tmp/HumanEval_110_exchange.json
+saved 1 problem in /tmp/HumanEval_47_median.json
+saved 1 problem in /tmp/HumanEval_82_prime_length.json
+saved 1 problem in /tmp/HumanEval_73_smallest_change.json
+saved 1 problem in /tmp/HumanEval_133_sum_squares.json
+saved 1 problem in /tmp/HumanEval_141_file_name_check.json
+saved 1 problem in /tmp/HumanEval_40_triples_sum_to_zero.json
+saved 1 problem in /tmp/HumanEval_127_intersection.json
+saved 1 problem in /tmp/HumanEval_1_separate_paren_groups.json
+saved 1 problem in /tmp/HumanEval_152_compare.json
+saved 1 problem in /tmp/HumanEval_83_starts_one_ends.json
+saved 1 problem in /tmp/HumanEval_134_check_if_last_char_is_a_letter.json
+saved 1 problem in /tmp/HumanEval_124_valid_date.json
+saved 1 problem in /tmp/HumanEval_108_count_nums.json
+saved 1 problem in /tmp/HumanEval_86_anti_shuffle.json
+saved 1 problem in /tmp/HumanEval_48_is_palindrome.json
+saved 1 problem in /tmp/HumanEval_118_get_closest_vowel.json
+saved 1 problem in /tmp/HumanEval_31_is_prime.json
+saved 1 problem in /tmp/HumanEval_144_simplify.json
+saved 1 problem in /tmp/HumanEval_78_hex_key.json
+saved 1 problem in /tmp/HumanEval_143_words_in_sentence.json
+saved 1 problem in /tmp/HumanEval_111_histogram.json
+saved 1 problem in /tmp/HumanEval_87_get_row.json
+saved 1 problem in /tmp/HumanEval_123_get_odd_collatz.json
+saved 1 problem in /tmp/HumanEval_135_can_arrange.json
+saved 1 problem in /tmp/HumanEval_19_sort_numbers.json
+saved 1 problem in /tmp/HumanEval_65_circular_shift.json
+saved 1 problem in /tmp/HumanEval_142_sum_squares.json
+saved 1 problem in /tmp/HumanEval_94_skjkasdkd.json
+saved 1 problem in /tmp/HumanEval_8_sum_product.json
+saved 1 problem in /tmp/HumanEval_102_choose_num.json
+saved 1 problem in /tmp/HumanEval_136_largest_smallest_integers.json
+saved 1 problem in /tmp/HumanEval_16_count_distinct_characters.json
+saved 1 problem in /tmp/HumanEval_100_make_a_pile.json
+saved 1 problem in /tmp/HumanEval_128_prod_signs.json
+saved 1 problem in /tmp/HumanEval_114_minSubArraySum.json
+saved 1 problem in /tmp/HumanEval_15_string_sequence.json
+saved 1 problem in /tmp/HumanEval_154_cycpattern_check.json
+saved 1 problem in /tmp/HumanEval_57_monotonic.json
+saved 1 problem in /tmp/HumanEval_12_longest.json
+saved 1 problem in /tmp/HumanEval_52_below_threshold.json
+saved 1 problem in /tmp/HumanEval_75_is_multiply_prime.json
+saved 1 problem in /tmp/HumanEval_30_get_positive.json
+saved 1 problem in /tmp/HumanEval_33_sort_third.json
+saved 1 problem in /tmp/HumanEval_6_parse_nested_parens.json
+saved 1 problem in /tmp/HumanEval_45_triangle_area.json
+saved 1 problem in /tmp/HumanEval_97_multiply.json
+saved 1 problem in /tmp/HumanEval_4_mean_absolute_deviation.json
+saved 1 problem in /tmp/HumanEval_58_common.json
+saved 1 problem in /tmp/HumanEval_156_int_to_mini_roman.json
+saved 1 problem in /tmp/HumanEval_67_fruit_distribution.json
+saved 1 problem in /tmp/HumanEval_112_reverse_delete.json
+saved 1 problem in /tmp/HumanEval_13_greatest_common_divisor.json
+saved 1 problem in /tmp/HumanEval_116_sort_array.json
+saved 1 problem in /tmp/HumanEval_28_concatenate.json
+saved 1 problem in /tmp/HumanEval_149_sorted_list_sum.json
+saved 1 problem in /tmp/HumanEval_7_filter_by_substring.json
+saved 1 problem in /tmp/HumanEval_99_closest_integer.json
+saved 1 problem in /tmp/HumanEval_64_vowels_count.json
+saved 1 problem in /tmp/HumanEval_158_find_max.json
+saved 1 problem in /tmp/HumanEval_162_string_to_md5.json
+saved 1 problem in /tmp/HumanEval_44_change_base.json
+saved 1 problem in /tmp/HumanEval_157_right_angle_triangle.json
+saved 1 problem in /tmp/HumanEval_81_numerical_letter_grade.json
+saved 1 problem in /tmp/HumanEval_5_intersperse.json
+saved 1 problem in /tmp/HumanEval_146_specialFilter.json
+saved 1 problem in /tmp/HumanEval_60_sum_to_n.json
+saved 1 problem in /tmp/HumanEval_26_remove_duplicates.json
+saved 1 problem in /tmp/HumanEval_163_generate_integers.json
+saved 1 problem in /tmp/HumanEval_9_rolling_max.json
+saved 1 problem in /tmp/HumanEval_3_below_zero.json
+saved 1 problem in /tmp/HumanEval_69_search.json
+saved 1 problem in /tmp/HumanEval_61_correct_bracketing.json
+saved 1 problem in /tmp/HumanEval_37_sort_even.json
+saved 1 problem in /tmp/HumanEval_54_same_chars.json
+saved 1 problem in /tmp/HumanEval_56_correct_bracketing.json
+Saved 158 problems in /tmp for evaluation, each problem has 200 completions
+  0%|                                                                                 | 0/158 [00:00<?, ?it/s]running cached_eval_script on /tmp/HumanEval_23_strlen.json by 55 workers
+  1%|▍                                                                        | 1/158 [00:01<02:50,  1.09s/it]running cached_eval_script on /tmp/HumanEval_89_encrypt.json by 55 workers
+  1%|▉                                                                        | 2/158 [00:11<17:46,  6.84s/it]running cached_eval_script on /tmp/HumanEval_95_check_dict_case.json by 55 workers
+  2%|█▍                                                                       | 3/158 [00:24<24:53,  9.64s/it]running cached_eval_script on /tmp/HumanEval_85_add.json by 55 workers
+  3%|█▊                                                                       | 4/158 [00:28<19:05,  7.44s/it]running cached_eval_script on /tmp/HumanEval_140_fix_spaces.json by 55 workers
+  3%|██▎                                                                      | 5/158 [00:38<21:11,  8.31s/it]running cached_eval_script on /tmp/HumanEval_63_fibfib.json by 55 workers
+  4%|██▊                                                                      | 6/158 [00:47<21:33,  8.51s/it]running cached_eval_script on /tmp/HumanEval_151_double_the_difference.json by 55 workers
+  4%|███▏                                                                     | 7/158 [00:58<23:02,  9.16s/it]running cached_eval_script on /tmp/HumanEval_22_filter_integers.json by 55 workers
+  5%|███▋                                                                     | 8/158 [01:08<24:06,  9.64s/it]running cached_eval_script on /tmp/HumanEval_41_car_race_collision.json by 55 workers
+  6%|████▏                                                                    | 9/158 [01:28<31:20, 12.62s/it]running cached_eval_script on /tmp/HumanEval_17_parse_music.json by 55 workers
+
+  6%|████▌                                                                   | 10/158 [01:39<30:01, 12.18s/it]running cached_eval_script on /tmp/HumanEval_79_decimal_to_binary.json by 55 workers
+  7%|█████                                                                   | 11/158 [01:40<21:56,  8.96s/it]running cached_eval_script on /tmp/HumanEval_14_all_prefixes.json by 55 workers
+  8%|█████▍                                                                  | 12/158 [01:42<16:35,  6.82s/it]running cached_eval_script on /tmp/HumanEval_53_add.json by 55 workers
+  8%|█████▉                                                                  | 13/158 [01:43<12:18,  5.09s/it]running cached_eval_script on /tmp/HumanEval_159_eat.json by 55 workers
+  9%|██████▍                                                                 | 14/158 [01:54<16:24,  6.84s/it]running cached_eval_script on /tmp/HumanEval_115_max_fill.json by 55 workers
+  9%|██████▊                                                                 | 15/158 [02:07<20:27,  8.58s/it]running cached_eval_script on /tmp/HumanEval_160_do_algebra.json by 55 workers
+ 10%|███████▎                                                                | 16/158 [02:17<21:30,  9.09s/it]running cached_eval_script on /tmp/HumanEval_27_flip_case.json by 55 workers
+ 11%|███████▋                                                                | 17/158 [02:25<20:26,  8.70s/it]running cached_eval_script on /tmp/HumanEval_105_by_length.json by 55 workers
+ 11%|████████▏                                                               | 18/158 [02:38<23:26, 10.05s/it]running cached_eval_script on /tmp/HumanEval_25_factorize.json by 55 workers
+ 12%|████████▋                                                               | 19/158 [02:46<21:56,  9.47s/it]running cached_eval_script on /tmp/HumanEval_96_count_up_to.json by 55 workers
+ 13%|█████████                                                               | 20/158 [02:56<22:11,  9.65s/it]running cached_eval_script on /tmp/HumanEval_34_unique.json by 55 workers
+ 13%|█████████▌                                                              | 21/158 [03:04<20:42,  9.07s/it]running cached_eval_script on /tmp/HumanEval_74_total_match.json by 55 workers
+ 14%|██████████                                                              | 22/158 [03:19<24:12, 10.68s/it]running cached_eval_script on /tmp/HumanEval_35_max_element.json by 55 workers
+ 15%|██████████▍                                                             | 23/158 [03:20<18:05,  8.04s/it]running cached_eval_script on /tmp/HumanEval_132_is_nested.json by 55 workers
+ 15%|██████████▉                                                             | 24/158 [03:28<17:38,  7.90s/it]running cached_eval_script on /tmp/HumanEval_113_odd_count.json by 55 workers
+ 16%|███████████▍                                                            | 25/158 [03:39<19:33,  8.82s/it]running cached_eval_script on /tmp/HumanEval_109_move_one_ball.json by 55 workers
+ 16%|███████████▊                                                            | 26/158 [04:01<28:06, 12.78s/it]running cached_eval_script on /tmp/HumanEval_107_even_odd_palindrome.json by 55 workers
+ 17%|████████████▎                                                           | 27/158 [04:10<25:39, 11.75s/it]running cached_eval_script on /tmp/HumanEval_138_is_equal_to_sum_even.json by 55 workers
+ 18%|████████████▊                                                           | 28/158 [04:32<31:37, 14.60s/it]running cached_eval_script on /tmp/HumanEval_62_derivative.json by 55 workers
+ 18%|█████████████▏                                                          | 29/158 [04:38<26:13, 12.20s/it]running cached_eval_script on /tmp/HumanEval_126_is_sorted.json by 55 workers
+ 19%|█████████████▋                                                          | 30/158 [04:49<25:08, 11.78s/it]running cached_eval_script on /tmp/HumanEval_161_solve.json by 55 workers
+ 20%|██████████████▏                                                         | 31/158 [05:00<24:22, 11.52s/it]running cached_eval_script on /tmp/HumanEval_130_tri.json by 55 workers
+ 20%|██████████████▌                                                         | 32/158 [05:13<25:25, 12.11s/it]running cached_eval_script on /tmp/HumanEval_36_fizz_buzz.json by 55 workers
+ 21%|███████████████                                                         | 33/158 [05:38<32:44, 15.72s/it]running cached_eval_script on /tmp/HumanEval_29_filter_by_prefix.json by 55 workers
+ 22%|███████████████▍                                                        | 34/158 [05:40<24:20, 11.78s/it]running cached_eval_script on /tmp/HumanEval_84_solve.json by 55 workers
+ 22%|███████████████▉                                                        | 35/158 [05:48<21:27, 10.47s/it]running cached_eval_script on /tmp/HumanEval_129_minPath.json by 55 workers
+ 23%|████████████████▍                                                       | 36/158 [05:56<20:10,  9.93s/it]running cached_eval_script on /tmp/HumanEval_98_count_upper.json by 55 workers
+ 23%|████████████████▊                                                       | 37/158 [06:03<18:00,  8.93s/it]running cached_eval_script on /tmp/HumanEval_120_maximum.json by 55 workers
+ 24%|█████████████████▎                                                      | 38/158 [06:15<20:05, 10.04s/it]running cached_eval_script on /tmp/HumanEval_24_largest_divisor.json by 55 workers
+ 25%|█████████████████▊                                                      | 39/158 [06:23<18:20,  9.25s/it]running cached_eval_script on /tmp/HumanEval_88_sort_array.json by 55 workers
+ 25%|██████████████████▏                                                     | 40/158 [06:37<21:00, 10.68s/it]running cached_eval_script on /tmp/HumanEval_106_f.json by 55 workers
+ 26%|██████████████████▋                                                     | 41/158 [06:47<20:31, 10.52s/it]running cached_eval_script on /tmp/HumanEval_77_iscube.json by 55 workers
+ 27%|███████████████████▏                                                    | 42/158 [06:56<19:31, 10.10s/it]running cached_eval_script on /tmp/HumanEval_93_encode.json by 55 workers
+ 27%|███████████████████▌                                                    | 43/158 [07:08<20:11, 10.54s/it]running cached_eval_script on /tmp/HumanEval_91_is_bored.json by 55 workers
+ 28%|████████████████████                                                    | 44/158 [07:17<19:23, 10.21s/it]running cached_eval_script on /tmp/HumanEval_43_pairs_sum_to_zero.json by 55 workers
+ 28%|████████████████████▌                                                   | 45/158 [07:29<20:17, 10.77s/it]running cached_eval_script on /tmp/HumanEval_71_triangle_area.json by 55 workers
+ 29%|████████████████████▉                                                   | 46/158 [07:39<19:43, 10.56s/it]running cached_eval_script on /tmp/HumanEval_148_bf.json by 55 workers
+ 30%|█████████████████████▍                                                  | 47/158 [07:51<20:10, 10.90s/it]running cached_eval_script on /tmp/HumanEval_131_digits.json by 55 workers
+ 30%|█████████████████████▊                                                  | 48/158 [07:58<17:56,  9.79s/it]running cached_eval_script on /tmp/HumanEval_101_words_string.json by 55 workers
+ 31%|██████████████████████▎                                                 | 49/158 [08:06<16:46,  9.23s/it]running cached_eval_script on /tmp/HumanEval_18_how_many_times.json by 55 workers
+ 32%|██████████████████████▊                                                 | 50/158 [08:24<21:30, 11.95s/it]running cached_eval_script on /tmp/HumanEval_51_remove_vowels.json by 55 workers
+ 32%|███████████████████████▏                                                | 51/158 [08:29<17:27,  9.79s/it]running cached_eval_script on /tmp/HumanEval_70_strange_sort_list.json by 55 workers
+ 33%|███████████████████████▋                                                | 52/158 [08:57<27:03, 15.31s/it]running cached_eval_script on /tmp/HumanEval_20_find_closest_elements.json by 55 workers
+ 34%|████████████████████████▏                                               | 53/158 [09:11<26:05, 14.91s/it]running cached_eval_script on /tmp/HumanEval_76_is_simple_power.json by 55 workers
+ 34%|████████████████████████▌                                               | 54/158 [09:35<30:35, 17.65s/it]running cached_eval_script on /tmp/HumanEval_39_prime_fib.json by 55 workers
+ 35%|█████████████████████████                                               | 55/158 [09:45<26:15, 15.30s/it]running cached_eval_script on /tmp/HumanEval_145_order_by_points.json by 55 workers
+ 35%|█████████████████████████▌                                              | 56/158 [09:58<24:37, 14.49s/it]running cached_eval_script on /tmp/HumanEval_0_has_close_elements.json by 55 workers
+ 36%|█████████████████████████▉                                              | 57/158 [10:05<20:44, 12.33s/it]running cached_eval_script on /tmp/HumanEval_10_make_palindrome.json by 55 workers
+ 37%|██████████████████████████▍                                             | 58/158 [10:17<20:07, 12.08s/it]running cached_eval_script on /tmp/HumanEval_11_string_xor.json by 55 workers
+ 37%|██████████████████████████▉                                             | 59/158 [10:24<17:44, 10.75s/it]running cached_eval_script on /tmp/HumanEval_139_special_factorial.json by 55 workers
+ 38%|███████████████████████████▎                                            | 60/158 [10:42<21:14, 13.01s/it]running cached_eval_script on /tmp/HumanEval_122_add_elements.json by 55 workers
+ 39%|███████████████████████████▊                                            | 61/158 [10:53<19:38, 12.15s/it]running cached_eval_script on /tmp/HumanEval_46_fib4.json by 55 workers
+ 39%|████████████████████████████▎                                           | 62/158 [11:02<18:11, 11.37s/it]running cached_eval_script on /tmp/HumanEval_104_unique_digits.json by 55 workers
+ 40%|████████████████████████████▋                                           | 63/158 [11:15<18:34, 11.73s/it]running cached_eval_script on /tmp/HumanEval_117_select_words.json by 55 workers
+ 41%|█████████████████████████████▏                                          | 64/158 [11:27<18:48, 12.00s/it]running cached_eval_script on /tmp/HumanEval_72_will_it_fly.json by 55 workers
+ 41%|█████████████████████████████▌                                          | 65/158 [11:38<17:50, 11.51s/it]running cached_eval_script on /tmp/HumanEval_55_fib.json by 55 workers
+ 42%|██████████████████████████████                                          | 66/158 [11:43<14:48,  9.66s/it]running cached_eval_script on /tmp/HumanEval_153_Strongest_Extension.json by 55 workers
+ 42%|██████████████████████████████▌                                         | 67/158 [11:57<16:31, 10.90s/it]running cached_eval_script on /tmp/HumanEval_119_match_parens.json by 55 workers
+ 43%|██████████████████████████████▉                                         | 68/158 [12:08<16:31, 11.02s/it]running cached_eval_script on /tmp/HumanEval_90_next_smallest.json by 55 workers
+ 44%|███████████████████████████████▍                                        | 69/158 [12:21<17:22, 11.71s/it]running cached_eval_script on /tmp/HumanEval_92_any_int.json by 55 workers
+ 44%|███████████████████████████████▉                                        | 70/158 [12:27<14:27,  9.86s/it]running cached_eval_script on /tmp/HumanEval_2_truncate_number.json by 55 workers
+ 45%|████████████████████████████████▎                                       | 71/158 [12:29<10:49,  7.47s/it]running cached_eval_script on /tmp/HumanEval_42_incr_list.json by 55 workers
+ 46%|████████████████████████████████▊                                       | 72/158 [12:34<09:47,  6.84s/it]running cached_eval_script on /tmp/HumanEval_150_x_or_y.json by 55 workers
+ 46%|█████████████████████████████████▎                                      | 73/158 [12:42<10:14,  7.23s/it]running cached_eval_script on /tmp/HumanEval_49_modp.json by 55 workers
+ 47%|█████████████████████████████████▋                                      | 74/158 [12:50<10:20,  7.39s/it]running cached_eval_script on /tmp/HumanEval_155_even_odd_count.json by 55 workers
+ 47%|██████████████████████████████████▏                                     | 75/158 [13:01<11:49,  8.55s/it]running cached_eval_script on /tmp/HumanEval_80_is_happy.json by 55 workers
+ 48%|██████████████████████████████████▋                                     | 76/158 [13:08<11:02,  8.08s/it]running cached_eval_script on /tmp/HumanEval_59_largest_prime_factor.json by 55 workers
+ 49%|███████████████████████████████████                                     | 77/158 [13:18<11:31,  8.54s/it]running cached_eval_script on /tmp/HumanEval_66_digitSum.json by 55 workers
+ 49%|███████████████████████████████████▌                                    | 78/158 [13:22<09:37,  7.22s/it]running cached_eval_script on /tmp/HumanEval_21_rescale_to_unit.json by 55 workers
+ 50%|████████████████████████████████████                                    | 79/158 [13:35<11:33,  8.77s/it]running cached_eval_script on /tmp/HumanEval_121_solution.json by 55 workers
+ 51%|████████████████████████████████████▍                                   | 80/158 [13:38<09:20,  7.18s/it]running cached_eval_script on /tmp/HumanEval_68_pluck.json by 55 workers
+ 51%|████████████████████████████████████▉                                   | 81/158 [13:52<11:55,  9.29s/it]running cached_eval_script on /tmp/HumanEval_147_get_max_triples.json by 55 workers
+ 52%|█████████████████████████████████████▎                                  | 82/158 [14:01<11:41,  9.23s/it]running cached_eval_script on /tmp/HumanEval_110_exchange.json by 55 workers
+ 53%|█████████████████████████████████████▊                                  | 83/158 [14:11<11:48,  9.45s/it]running cached_eval_script on /tmp/HumanEval_47_median.json by 55 workers
+ 53%|██████████████████████████████████████▎                                 | 84/158 [14:24<12:41, 10.30s/it]running cached_eval_script on /tmp/HumanEval_82_prime_length.json by 55 workers
+ 54%|██████████████████████████████████████▋                                 | 85/158 [14:32<11:50,  9.74s/it]running cached_eval_script on /tmp/HumanEval_73_smallest_change.json by 55 workers
+ 54%|███████████████████████████████████████▏                                | 86/158 [14:59<17:58, 14.98s/it]running cached_eval_script on /tmp/HumanEval_133_sum_squares.json by 55 workers
+ 55%|███████████████████████████████████████▋                                | 87/158 [15:09<15:48, 13.36s/it]running cached_eval_script on /tmp/HumanEval_141_file_name_check.json by 55 workers
+ 56%|████████████████████████████████████████                                | 88/158 [15:20<14:52, 12.75s/it]running cached_eval_script on /tmp/HumanEval_40_triples_sum_to_zero.json by 55 workers
+ 56%|████████████████████████████████████████▌                               | 89/158 [15:32<14:13, 12.37s/it]running cached_eval_script on /tmp/HumanEval_127_intersection.json by 55 workers
+ 57%|█████████████████████████████████████████                               | 90/158 [15:44<13:58, 12.32s/it]running cached_eval_script on /tmp/HumanEval_1_separate_paren_groups.json by 55 workers
+ 58%|█████████████████████████████████████████▍                              | 91/158 [16:11<18:47, 16.83s/it]running cached_eval_script on /tmp/HumanEval_152_compare.json by 55 workers
+ 58%|█████████████████████████████████████████▉                              | 92/158 [16:14<13:59, 12.71s/it]running cached_eval_script on /tmp/HumanEval_83_starts_one_ends.json by 55 workers
+ 59%|██████████████████████████████████████████▍                             | 93/158 [16:24<12:56, 11.94s/it]running cached_eval_script on /tmp/HumanEval_134_check_if_last_char_is_a_letter.json by 55 workers
+ 59%|██████████████████████████████████████████▊                             | 94/158 [16:34<11:51, 11.12s/it]running cached_eval_script on /tmp/HumanEval_124_valid_date.json by 55 workers
+ 60%|███████████████████████████████████████████▎                            | 95/158 [16:45<11:37, 11.08s/it]running cached_eval_script on /tmp/HumanEval_108_count_nums.json by 55 workers
+ 61%|███████████████████████████████████████████▋                            | 96/158 [16:56<11:30, 11.14s/it]running cached_eval_script on /tmp/HumanEval_86_anti_shuffle.json by 55 workers
+ 61%|████████████████████████████████████████████▏                           | 97/158 [17:04<10:29, 10.32s/it]running cached_eval_script on /tmp/HumanEval_48_is_palindrome.json by 55 workers
+ 62%|████████████████████████████████████████████▋                           | 98/158 [17:07<08:04,  8.08s/it]running cached_eval_script on /tmp/HumanEval_118_get_closest_vowel.json by 55 workers
+ 63%|█████████████████████████████████████████████                           | 99/158 [17:18<08:44,  8.90s/it]running cached_eval_script on /tmp/HumanEval_31_is_prime.json by 55 workers
+ 63%|████████████████████████████████████████████▉                          | 100/158 [17:25<08:03,  8.33s/it]running cached_eval_script on /tmp/HumanEval_144_simplify.json by 55 workers
+ 64%|█████████████████████████████████████████████▍                         | 101/158 [17:35<08:18,  8.75s/it]running cached_eval_script on /tmp/HumanEval_78_hex_key.json by 55 workers
+ 65%|█████████████████████████████████████████████▊                         | 102/158 [17:42<07:52,  8.43s/it]running cached_eval_script on /tmp/HumanEval_143_words_in_sentence.json by 55 workers
+ 65%|██████████████████████████████████████████████▎                        | 103/158 [17:50<07:32,  8.23s/it]running cached_eval_script on /tmp/HumanEval_111_histogram.json by 55 workers
+ 66%|██████████████████████████████████████████████▋                        | 104/158 [18:04<09:01, 10.02s/it]running cached_eval_script on /tmp/HumanEval_87_get_row.json by 55 workers
+ 66%|███████████████████████████████████████████████▏                       | 105/158 [18:27<12:08, 13.74s/it]running cached_eval_script on /tmp/HumanEval_123_get_odd_collatz.json by 55 workers
+ 67%|███████████████████████████████████████████████▋                       | 106/158 [18:55<15:35, 17.99s/it]running cached_eval_script on /tmp/HumanEval_135_can_arrange.json by 55 workers
+ 68%|████████████████████████████████████████████████                       | 107/158 [19:05<13:19, 15.67s/it]running cached_eval_script on /tmp/HumanEval_19_sort_numbers.json by 55 workers
+ 68%|████████████████████████████████████████████████▌                      | 108/158 [19:11<10:43, 12.88s/it]running cached_eval_script on /tmp/HumanEval_65_circular_shift.json by 55 workers
+ 69%|████████████████████████████████████████████████▉                      | 109/158 [19:21<09:49, 12.02s/it]running cached_eval_script on /tmp/HumanEval_142_sum_squares.json by 55 workers
+ 70%|█████████████████████████████████████████████████▍                     | 110/158 [19:26<07:55,  9.91s/it]running cached_eval_script on /tmp/HumanEval_94_skjkasdkd.json by 55 workers
+ 70%|█████████████████████████████████████████████████▉                     | 111/158 [19:38<08:12, 10.47s/it]running cached_eval_script on /tmp/HumanEval_8_sum_product.json by 55 workers
+ 71%|██████████████████████████████████████████████████▎                    | 112/158 [19:45<07:11,  9.39s/it]running cached_eval_script on /tmp/HumanEval_102_choose_num.json by 55 workers
+ 72%|██████████████████████████████████████████████████▊                    | 113/158 [19:55<07:05,  9.45s/it]running cached_eval_script on /tmp/HumanEval_136_largest_smallest_integers.json by 55 workers
+ 72%|███████████████████████████████████████████████████▏                   | 114/158 [20:11<08:32, 11.66s/it]running cached_eval_script on /tmp/HumanEval_16_count_distinct_characters.json by 55 workers
+ 73%|███████████████████████████████████████████████████▋                   | 115/158 [20:16<06:44,  9.42s/it]running cached_eval_script on /tmp/HumanEval_100_make_a_pile.json by 55 workers
+ 73%|████████████████████████████████████████████████████▏                  | 116/158 [21:01<14:08, 20.21s/it]running cached_eval_script on /tmp/HumanEval_128_prod_signs.json by 55 workers
+ 74%|████████████████████████████████████████████████████▌                  | 117/158 [21:15<12:34, 18.39s/it]running cached_eval_script on /tmp/HumanEval_114_minSubArraySum.json by 55 workers
+ 75%|█████████████████████████████████████████████████████                  | 118/158 [21:24<10:19, 15.48s/it]running cached_eval_script on /tmp/HumanEval_15_string_sequence.json by 55 workers
+ 75%|█████████████████████████████████████████████████████▍                 | 119/158 [21:30<08:14, 12.69s/it]running cached_eval_script on /tmp/HumanEval_154_cycpattern_check.json by 55 workers
+ 76%|█████████████████████████████████████████████████████▉                 | 120/158 [21:51<09:43, 15.34s/it]running cached_eval_script on /tmp/HumanEval_57_monotonic.json by 55 workers
+ 77%|██████████████████████████████████████████████████████▎                | 121/158 [22:01<08:24, 13.63s/it]running cached_eval_script on /tmp/HumanEval_12_longest.json by 55 workers
+ 77%|██████████████████████████████████████████████████████▊                | 122/158 [22:09<07:12, 12.00s/it]running cached_eval_script on /tmp/HumanEval_52_below_threshold.json by 55 workers
+ 78%|███████████████████████████████████████████████████████▎               | 123/158 [22:11<05:13,  8.96s/it]running cached_eval_script on /tmp/HumanEval_75_is_multiply_prime.json by 55 workers
+ 78%|███████████████████████████████████████████████████████▋               | 124/158 [22:29<06:39, 11.76s/it]running cached_eval_script on /tmp/HumanEval_30_get_positive.json by 55 workers
+ 79%|████████████████████████████████████████████████████████▏              | 125/158 [22:35<05:28,  9.96s/it]running cached_eval_script on /tmp/HumanEval_33_sort_third.json by 55 workers
+ 80%|████████████████████████████████████████████████████████▌              | 126/158 [22:48<05:44, 10.76s/it]running cached_eval_script on /tmp/HumanEval_6_parse_nested_parens.json by 55 workers
+ 80%|█████████████████████████████████████████████████████████              | 127/158 [22:59<05:39, 10.94s/it]running cached_eval_script on /tmp/HumanEval_45_triangle_area.json by 55 workers
+ 81%|█████████████████████████████████████████████████████████▌             | 128/158 [23:01<04:09,  8.33s/it]running cached_eval_script on /tmp/HumanEval_97_multiply.json by 55 workers
+ 82%|█████████████████████████████████████████████████████████▉             | 129/158 [23:09<03:55,  8.14s/it]running cached_eval_script on /tmp/HumanEval_4_mean_absolute_deviation.json by 55 workers
+ 82%|██████████████████████████████████████████████████████████▍            | 130/158 [23:19<04:04,  8.74s/it]running cached_eval_script on /tmp/HumanEval_58_common.json by 55 workers
+ 83%|██████████████████████████████████████████████████████████▊            | 131/158 [23:31<04:21,  9.68s/it]running cached_eval_script on /tmp/HumanEval_156_int_to_mini_roman.json by 55 workers
+ 84%|███████████████████████████████████████████████████████████▎           | 132/158 [23:50<05:20, 12.32s/it]running cached_eval_script on /tmp/HumanEval_67_fruit_distribution.json by 55 workers
+ 84%|███████████████████████████████████████████████████████████▊           | 133/158 [23:58<04:41, 11.25s/it]running cached_eval_script on /tmp/HumanEval_112_reverse_delete.json by 55 workers
+ 85%|████████████████████████████████████████████████████████████▏          | 134/158 [24:10<04:32, 11.37s/it]running cached_eval_script on /tmp/HumanEval_13_greatest_common_divisor.json by 55 workers
+ 85%|████████████████████████████████████████████████████████████▋          | 135/158 [24:15<03:36,  9.41s/it]running cached_eval_script on /tmp/HumanEval_116_sort_array.json by 55 workers
+ 86%|█████████████████████████████████████████████████████████████          | 136/158 [24:31<04:09, 11.34s/it]running cached_eval_script on /tmp/HumanEval_28_concatenate.json by 55 workers
+ 87%|█████████████████████████████████████████████████████████████▌         | 137/158 [24:33<03:01,  8.64s/it]running cached_eval_script on /tmp/HumanEval_149_sorted_list_sum.json by 55 workers
+ 87%|██████████████████████████████████████████████████████████████         | 138/158 [24:46<03:17,  9.89s/it]running cached_eval_script on /tmp/HumanEval_7_filter_by_substring.json by 55 workers
+ 88%|██████████████████████████████████████████████████████████████▍        | 139/158 [24:49<02:28,  7.83s/it]running cached_eval_script on /tmp/HumanEval_99_closest_integer.json by 55 workers
+ 89%|██████████████████████████████████████████████████████████████▉        | 140/158 [24:57<02:21,  7.84s/it]running cached_eval_script on /tmp/HumanEval_64_vowels_count.json by 55 workers
+ 89%|███████████████████████████████████████████████████████████████▎       | 141/158 [25:03<02:06,  7.45s/it]running cached_eval_script on /tmp/HumanEval_158_find_max.json by 55 workers
+ 90%|███████████████████████████████████████████████████████████████▊       | 142/158 [25:16<02:25,  9.10s/it]running cached_eval_script on /tmp/HumanEval_162_string_to_md5.json by 55 workers
+ 91%|████████████████████████████████████████████████████████████████▎      | 143/158 [25:27<02:24,  9.60s/it]running cached_eval_script on /tmp/HumanEval_44_change_base.json by 55 workers
+ 91%|████████████████████████████████████████████████████████████████▋      | 144/158 [25:35<02:08,  9.15s/it]running cached_eval_script on /tmp/HumanEval_157_right_angle_triangle.json by 55 workers
+ 92%|█████████████████████████████████████████████████████████████████▏     | 145/158 [25:40<01:40,  7.76s/it]running cached_eval_script on /tmp/HumanEval_81_numerical_letter_grade.json by 55 workers
+ 92%|█████████████████████████████████████████████████████████████████▌     | 146/158 [25:52<01:49,  9.14s/it]running cached_eval_script on /tmp/HumanEval_5_intersperse.json by 55 workers
+ 93%|██████████████████████████████████████████████████████████████████     | 147/158 [25:58<01:30,  8.22s/it]running cached_eval_script on /tmp/HumanEval_146_specialFilter.json by 55 workers
+ 94%|██████████████████████████████████████████████████████████████████▌    | 148/158 [26:09<01:29,  8.97s/it]running cached_eval_script on /tmp/HumanEval_60_sum_to_n.json by 55 workers
+ 94%|██████████████████████████████████████████████████████████████████▉    | 149/158 [26:10<01:00,  6.74s/it]running cached_eval_script on /tmp/HumanEval_26_remove_duplicates.json by 55 workers
+ 95%|███████████████████████████████████████████████████████████████████▍   | 150/158 [26:19<00:58,  7.32s/it]running cached_eval_script on /tmp/HumanEval_163_generate_integers.json by 55 workers
+ 96%|███████████████████████████████████████████████████████████████████▊   | 151/158 [26:30<00:59,  8.45s/it]running cached_eval_script on /tmp/HumanEval_9_rolling_max.json by 55 workers
+ 96%|████████████████████████████████████████████████████████████████████▎  | 152/158 [26:42<00:56,  9.36s/it]running cached_eval_script on /tmp/HumanEval_3_below_zero.json by 55 workers
+ 97%|████████████████████████████████████████████████████████████████████▊  | 153/158 [26:47<00:40,  8.19s/it]running cached_eval_script on /tmp/HumanEval_69_search.json by 55 workers
+ 97%|█████████████████████████████████████████████████████████████████████▏ | 154/158 [27:06<00:45, 11.50s/it]running cached_eval_script on /tmp/HumanEval_61_correct_bracketing.json by 55 workers
+ 98%|█████████████████████████████████████████████████████████████████████▋ | 155/158 [27:14<00:31, 10.35s/it]running cached_eval_script on /tmp/HumanEval_37_sort_even.json by 55 workers
+ 99%|██████████████████████████████████████████████████████████████████████ | 156/158 [27:27<00:22, 11.09s/it]running cached_eval_script on /tmp/HumanEval_54_same_chars.json by 55 workers
+ 99%|██████████████████████████████████████████████████████████████████████▌| 157/158 [27:35<00:10, 10.31s/it]running cached_eval_script on /tmp/HumanEval_56_correct_bracketing.json by 55 workers
+100%|███████████████████████████████████████████████████████████████████████| 158/158 [27:43<00:00, 10.53s/it]
+computing pass@k
+*.results.json stored in: /tmp
+computed pass@k
+evaluation results:
+{
+  "multiple-java": {
+    "pass@1": 0.35284810126582267,
+    "pass@10": 0.6600937523546747,
+    "pass@100": 0.792795068114936
+  },
+  "config": {
+    "prefix": "",
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_k": 0,
+    "top_p": 0.8,
+    "n_samples": 200,
+    "eos": "<|endoftext|>",
+    "seed": 0,
+    "model": "codellama/CodeLlama-13b-Python-hf",
+    "modeltype": "causal",
+    "peft_model": null,
+    "revision": null,
+    "token": false,
+    "trust_remote_code": true,
+    "tasks": "multiple-java",
+    "instruction_tokens": null,
+    "batch_size": 10,
+    "max_length_generation": 1024,
+    "precision": "bf16",
+    "load_in_8bit": false,
+    "load_in_4bit": false,
+    "left_padding": false,
+    "limit": 158,
+    "limit_start": 0,
+    "save_every_k_tasks": 20,
+    "postprocess": true,
+    "allow_code_execution": true,
+    "generation_only": false,
+    "load_generations_path": "./runpod/codellama-13b-python/java/improve/t0.7-p0.8-k0-batch10/CodeLlama-13b-Python-hf-temp0.7-p0.8-k0-bf16-n200-batch10-maxlen1024-java-generations-0-158_multiple-java.json",
+    "load_data_path": null,
+    "metric_output_path": "./runpod/codellama-13b-python/java/improve/t0.7-p0.8-k0-batch10/CodeLlama-13b-Python-hf-temp0.7-p0.8-k0-bf16-n200-batch10-maxlen1024-java-generations-0-158_multiple-java-eval-0-158-evaluation_results.json",
+    "save_generations": false,
+    "load_generations_intermediate_paths": null,
+    "save_generations_path": "generations.json",
+    "save_references": false,
+    "save_references_path": "references.json",
+    "prompt": "prompt",
+    "max_memory_per_gpu": null,
+    "check_references": false
+  }
+}
+evaluation results were saved at ./runpod/codellama-13b-python/java/improve/t0.7-p0.8-k0-batch10/CodeLlama-13b-Python-hf-temp0.7-p0.8-k0-bf16-n200-batch10-maxlen1024-java-generations-0-158_multiple-java-eval-0-158-evaluation_results.json

@@ -1,0 +1,86 @@
+11823499
+Age:
+21 min.
+Remaining:
+9 days
+Quebec, CA
+4x RTX A400082.6  TFLOPS
+m:23736
+host:113050
+unverified
+44.2/64.0 GB
+165.7 GB/s
+X10DRG
+PCIE 3.0, 4x
+3.0 GB/s
+Xeon® E5-2690 v4
+32.0/56 cpu
+2/147 GB
+Western SAMSUNG
+2427 MB/s26.0/27.9 GB
+707.3 Mbps794.4 MbpsMax CUDA: 12.2
+GPU: 23% 41C , CPU: 3% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+$0.264/hr
+
+root@C.11823499:/workspace/bigcode-evaluation-harness$ AUTHOR="codellama"
+MODEL_NAME="CodeLlama-13b-Python-hf"
+max_length=1024
+
+temperature=0.8
+top_k=0
+top_p=0.95
+batch_size=25
+
+BASE_DIR=./runpod/$MODEL_NAME/$lang/improve/t$temperature-p$top_p-k$top_k-batch$batch_size
+mkdir -p $BASE_DIR
+
+n_samples=200
+seed=0
+precision=bf16
+lang=java
+
+limit_start=30
+limit=10
+eval_limit_start=0
+eval_limit=50
+
+save_every_k_tasks=1 # after completing k dataset's tasks
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
+
+common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
+generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
+generations_path="$BASE_DIR/$generations_name.json"
+
+python main.py --model "$AUTHOR/$MODEL_NAME" \
+    --tasks multiple-$lang \
+    --max_length_generation $max_length \
+    --temperature $temperature \
+    --max_memory_per_gpu autot \SE_DIR/$common_name-generations-${limit_start}-${limit}.json" \
+Selected Tasks: ['multiple-java']
+Loading model in bf16
+Loading model in auto mode
+config.json: 100%|███████████████████████████████████████████████████████████████████████████| 589/589 [00:00<00:00, 2.56MB/s]
+model.safetensors.index.json: 100%|██████████████████████████████████████████████████████| 31.4k/31.4k [00:00<00:00, 56.4MB/s]
+model-00001-of-00003.safetensors: 100%|██████████████████████████████████████████████████| 9.95G/9.95G [04:48<00:00, 34.5MB/s]
+model-00002-of-00003.safetensors: 100%|██████████████████████████████████████████████████| 9.90G/9.90G [04:41<00:00, 35.1MB/s]
+model-00003-of-00003.safetensors: 100%|██████████████████████████████████████████████████| 6.18G/6.18G [02:46<00:00, 37.1MB/s]
+Downloading shards: 100%|██████████████████████████████████████████████████████████████████████| 3/3 [12:18<00:00, 246.17s/it]
+Loading checkpoint shards: 100%|████████████████████████████████████████████████████████████████| 3/3 [00:06<00:00,  2.29s/it]
+generation_config.json: 100%|█████████████████████████████████████████████████████████████████| 116/116 [00:00<00:00, 921kB/s]
+tokenizer_config.json: 100%|█████████████████████████████████████████████████████████████████| 749/749 [00:00<00:00, 4.20MB/s]
+tokenizer.model: 100%|█████████████████████████████████████████████████████████████████████| 500k/500k [00:00<00:00, 2.32MB/s]
+tokenizer.json: 100%|████████████████████████████████████████████████████████████████████| 1.84M/1.84M [00:00<00:00, 28.9MB/s]
+special_tokens_map.json: 100%|███████████████████████████████████████████████████████████████| 411/411 [00:00<00:00, 2.43MB/s]
+generation only mode
+Downloading builder script: 100%|████████████████████████████████████████████████████████| 4.05k/4.05k [00:00<00:00, 23.5MB/s]
+Downloading metadata: 100%|████████████████████████████████████████████████████████████████| 478k/478k [00:00<00:00, 17.4MB/s]
+Downloading readme: 100%|████████████████████████████████████████████████████████████████| 99.6k/99.6k [00:00<00:00, 11.3MB/s]
+Downloading data: 321kB [00:00, 88.3MB/s]                                                                                     
+Generating test split: 100%|███████████████████████████████████████████████████████| 158/158 [00:00<00:00, 5055.27 examples/s]
+number of problems for this task is 10
+task range: 31->40
+200 completions required for each task
+25 completion/prompt
+8 batch/task
+80 batches (iterations) required for 10 tasks
+  2%|██▏                                                                                     | 2/80 [02:00<1:15:04, 57.75s/it]

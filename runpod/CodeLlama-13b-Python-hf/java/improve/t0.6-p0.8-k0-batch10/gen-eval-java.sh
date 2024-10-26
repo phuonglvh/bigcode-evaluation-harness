@@ -2,20 +2,22 @@
 
 set -euox
 
-AUTHOR="THUDM"
-MODEL_NAME="codegeex2-6b"
+AUTHOR="codellama"
+MODEL_NAME="CodeLlama-13b-Python-hf"
 max_length=1024
 
-temperature=0.2
+temperature=0.6
 top_k=0
-top_p=0.95
-num_return_sequences=1
-batch_size=$num_return_sequences
+top_p=0.8
+batch_size=10
 
-n_samples=1 # pass@1 only
+BASE_DIR=./runpod/$MODEL_NAME/$lang/improve/t$temperature-p$top_p-k$top_k-batch$batch_size
+mkdir -p $BASE_DIR
+
+n_samples=200
 seed=0
 precision=bf16
-lang=py
+lang=java
 
 limit_start=0
 limit=158
@@ -25,14 +27,11 @@ eval_limit=158
 save_every_k_tasks=1 # after completing k dataset's tasks
 save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
-BASE_DIR=./runpod/$MODEL_NAME/$lang/improve/pass@1/t$temperature-p$top_p-k$top_k-batch$batch_size-n$n_samples
-
-mkdir -p $BASE_DIR
-
 common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
 generations_path="$BASE_DIR/$generations_name.json"
 
+# use case: gen from beginning
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
     --max_length_generation $max_length \
@@ -49,9 +48,9 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --save_generations \
     --save_generations_path "$BASE_DIR/$common_name-generations-${limit_start}-${limit}.json" \
     --save_references \
+    --generation_only \
     --limit_start $limit_start \
     --limit $limit \
-    --metric_output_path "$BASE_DIR/$generations_name-eval-${eval_limit_start}-${eval_limit}-evaluation_results.json" \
     --max_memory_per_gpu auto
 
 # use case: load intermediate generations
@@ -60,7 +59,7 @@ intermediate_generations_path+="_intermediate.json"
 
 echo $generations_path
 echo $intermediate_generations_path
-python main.py --model "$AUTHOR/$MODEL_NAME" \
+accelerate launch main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
     --max_length_generation $max_length \
     --temperature $temperature \

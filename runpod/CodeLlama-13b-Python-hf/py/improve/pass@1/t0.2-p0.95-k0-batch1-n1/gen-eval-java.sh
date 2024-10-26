@@ -2,8 +2,8 @@
 
 set -euox
 
-AUTHOR="THUDM"
-MODEL_NAME="codegeex2-6b"
+AUTHOR="codellama"
+MODEL_NAME="CodeLlama-13b-Python-hf"
 max_length=1024
 
 temperature=0.2

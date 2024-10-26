@@ -1,0 +1,134 @@
+AUTHOR="codellama"
+MODEL_NAME="CodeLlama-13b-Python-hf"
+max_length=1024
+
+temperature=0.8
+top_p=0
+top_k=0
+
+BASE_DIR=./runpod/$MODEL_NAME/$lang/improve/t$temperature-p$top_p-k$top_k
+mkdir -p $BASE_DIR
+
+n_samples=200
+seed=0
+precision=bf16
+lang=java
+batch_size=10
+
+limit_start=30
+limit=15
+eval_limit_start=0
+eval_limit=50
+
+save_every_k_tasks=1 # after completing k dataset's tasks
+save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+
+common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
+generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
+generations_path="$BASE_DIR/$generations_name.json"
+
+python main.py --model "$AUTHOR/$MODEL_NAME" \
+    --tasks multiple-$lang \
+    --max_length_generation $max_length \
+    --temperature $temperature \
+    --top_p $top_p \
+    --top_k $top_k \
+    --seed $seed \
+    --n_samples $n_samples \
+    --batch_size $batch_size \
+    --precision $precision \
+    --limit $limit$limit_start \SE_DIR/$common_name-generations-${limit_start}-${limit}.json" \
+Selected Tasks: ['multiple-java']
+Loading model in bf16
+config.json: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 589/589 [00:00<00:00, 2.63MB/s]
+model.safetensors.index.json: 100%|███████████████████████████████████████████████████████████████████████████████████████████| 31.4k/31.4k [00:00<00:00, 64.2MB/s]
+model-00001-of-00003.safetensors: 100%|████████████████████████████████████████████████████████████████████████████████████████| 9.95G/9.95G [00:28<00:00, 354MB/s]
+model-00002-of-00003.safetensors: 100%|███████████████████████████████████████████████████████████████████████████████████████| 9.90G/9.90G [02:43<00:00, 60.4MB/s]
+model-00003-of-00003.safetensors: 100%|███████████████████████████████████████████████████████████████████████████████████████| 6.18G/6.18G [01:38<00:00, 62.9MB/s]
+Downloading shards: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [04:50<00:00, 96.99s/it]
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:03<00:00,  1.32s/it]
+generation_config.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 116/116 [00:00<00:00, 711kB/s]
+tokenizer_config.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 749/749 [00:00<00:00, 5.82MB/s]
+tokenizer.model: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████| 500k/500k [00:00<00:00, 9.54MB/s]
+tokenizer.json: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.84M/1.84M [00:00<00:00, 41.6MB/s]
+special_tokens_map.json: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████| 411/411 [00:00<00:00, 2.37MB/s]
+generation only mode
+/opt/conda/lib/python3.10/site-packages/datasets/load.py:1429: FutureWarning: The repository for nuprl/MultiPL-E contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/nuprl/MultiPL-E
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+Downloading builder script: 100%|█████████████████████████████████████████████████████████████████████████████████████████████| 4.05k/4.05k [00:00<00:00, 18.6MB/s]
+Downloading metadata: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 478k/478k [00:00<00:00, 43.9MB/s]
+Downloading readme: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 99.6k/99.6k [00:00<00:00, 6.98MB/s]
+Downloading data: 321kB [00:00, 55.7MB/s]                                                                                                                          
+Generating test split: 100%|███████████████████████████████████████████████████████████████████████████████████████████| 158/158 [00:00<00:00, 12759.69 examples/s]
+Downloading builder script: 100%|█████████████████████████████████████████████████████████████████████████████████████████████| 4.05k/4.05k [00:00<00:00, 19.5MB/s]
+Downloading metadata: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 478k/478k [00:00<00:00, 29.8MB/s]
+Downloading readme: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 99.6k/99.6k [00:00<00:00, 37.0MB/s]
+number of problems for this task is 15
+task range: 31->45
+200 completions required for each task
+10 completion/prompt
+20 batch/task
+300 batches (iterations) required for 15 tasks
+  6%|███████▉                                                                                                                     | 19/300 [03:08<46:14,  9.87s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+ 13%|████████████████▎                                                                                                            | 39/300 [06:19<41:20,  9.50s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+ 20%|████████████████████████▌                                                                                                    | 59/300 [08:45<28:57,  7.21s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+ 26%|████████████████████████████████▉                                                                                            | 79/300 [10:01<13:20,  3.62s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+ 33%|█████████████████████████████████████████▎                                                                                   | 99/300 [11:31<15:13,  4.55s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+ 40%|████████████████████████████████████████████████▍                                                                         | 119/300 [19:48<1:17:48, 25.79s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+ 46%|█████████████████████████████████████████████████████████▍                                                                  | 139/300 [21:48<13:23,  4.99s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+ 53%|█████████████████████████████████████████████████████████████████▋                                                          | 159/300 [25:09<24:09, 10.28s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+ 60%|█████████████████████████████████████████████████████████████████████████▉                                                  | 179/300 [26:28<07:21,  3.65s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+ 66%|██████████████████████████████████████████████████████████████████████████████████▎                                         | 199/300 [31:39<27:10, 16.14s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+ 73%|██████████████████████████████████████████████████████████████████████████████████████████▌                                 | 219/300 [34:42<11:52,  8.80s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+ 80%|██████████████████████████████████████████████████████████████████████████████████████████████████▊                         | 239/300 [35:37<02:28,  2.43s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+ 86%|███████████████████████████████████████████████████████████████████████████████████████████████████████████                 | 259/300 [38:42<06:32,  9.58s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+ 93%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████▎        | 279/300 [40:09<01:26,  4.10s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌| 299/300 [46:40<00:20, 20.35s/it]intermediate generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java_intermediate.json
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 300/300 [47:01<00:00,  9.40s/it]
+generations were saved at ./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15_multiple-java.json
+references were saved at references_multiple-java.json
+evaluation results:
+{
+  "config": {
+    "prefix": "",
+    "do_sample": true,
+    "temperature": 0.8,
+    "top_k": 0,
+    "top_p": 0.0,
+    "n_samples": 200,
+    "eos": "<|endoftext|>",
+    "seed": 0,
+    "model": "codellama/CodeLlama-13b-Python-hf",
+    "modeltype": "causal",
+    "peft_model": null,
+    "revision": null,
+    "token": false,
+    "trust_remote_code": true,
+    "tasks": "multiple-java",
+    "instruction_tokens": null,
+    "batch_size": 10,
+    "max_length_generation": 1024,
+    "precision": "bf16",
+    "load_in_8bit": false,
+    "load_in_4bit": false,
+    "limit": 15,
+    "limit_start": 30,
+    "save_every_k_tasks": 20,
+    "postprocess": true,
+    "allow_code_execution": true,
+    "generation_only": true,
+    "load_generations_path": null,
+    "load_data_path": null,
+    "metric_output_path": "evaluation_results.json",
+    "save_generations": true,
+    "load_generations_intermediate_paths": null,
+    "save_generations_path": "./runpod/codellama-13b-python/java/improve/t0.8-p0-k0/CodeLlama-13b-Python-hf-temp0.8-p0-k0-bf16-n200-batch10-maxlen1024-java-generations-30-15.json",
+    "save_references": true,
+    "save_references_path": "references.json",
+    "prompt": "prompt",
+    "max_memory_per_gpu": null,
+    "check_references": false
+  }
+}

@@ -25,7 +25,7 @@ eval_limit=158
 save_every_k_tasks=1 # after completing k dataset's tasks
 save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
-BASE_DIR=./runpod/codellama-13b-python/java/improve/pass@1/t$temperature-p$top_p-k$top_k-batch$batch_size-n$n_samples
+BASE_DIR=./runpod/$MODEL_NAME/$lang/improve/pass@1/t$temperature-p$top_p-k$top_k-batch$batch_size-n$n_samples
 
 mkdir -p $BASE_DIR
 
