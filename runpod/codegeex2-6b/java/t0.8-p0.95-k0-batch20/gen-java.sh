@@ -5,6 +5,7 @@ huggingface-cli login
 BASE_DIR="${BASE_DIR:-.}"
 AUTHOR="THUDM"
 MODEL_NAME="codegeex2-6b"
+
 max_length=1024
 temperature=0.8
 top_p=0.95
@@ -43,6 +44,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
 BASE_DIR="${BASE_DIR:-.}"
 AUTHOR="THUDM"
 MODEL_NAME="codegeex2-6b"
+
 max_length=1024
 temperature=0.8
 top_p=0.95
@@ -81,6 +83,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
 BASE_DIR="${BASE_DIR:-.}"
 AUTHOR="THUDM"
 MODEL_NAME="codegeex2-6b"
+
 max_length=1024
 temperature=0.8
 top_p=0.95
@@ -119,6 +122,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
 # FULL
 AUTHOR="THUDM"
 MODEL_NAME="codegeex2-6b"
+
 max_length=1024
 temperature=0.8
 top_p=0.95

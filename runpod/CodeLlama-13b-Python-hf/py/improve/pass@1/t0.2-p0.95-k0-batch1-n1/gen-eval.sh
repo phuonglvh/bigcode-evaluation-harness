@@ -4,9 +4,9 @@ set -euox
 
 AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
-max_length=1024
 
-temperature=0.1
+max_length=1024
+temperature=0.2
 top_k=0
 top_p=0.95
 num_return_sequences=1

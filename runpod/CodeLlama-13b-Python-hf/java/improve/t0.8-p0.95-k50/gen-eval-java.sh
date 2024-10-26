@@ -4,8 +4,8 @@ set -euox
 
 AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
-max_length=1024
 
+max_length=1024
 temperature=0.8
 top_p=0.95
 top_k=50

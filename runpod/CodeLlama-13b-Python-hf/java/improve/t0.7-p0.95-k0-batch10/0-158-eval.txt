@@ -254,8 +254,8 @@ Saved 158 problems in /tmp for evaluation, each problem has 200 completions
  18%|███████████████                                                                   | 29/158 [06:10<28:01, 13.03s/it]running cached_eval_script on /tmp/HumanEval_126_is_sorted.json by 55 workers
 root@C.13102685:/workspace/bigcode-evaluation-harness$ AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
-max_length=1024
 
+max_length=1024
 temperature=0.7
 top_k=0
 top_p=0.95

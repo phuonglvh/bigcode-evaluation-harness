@@ -6,6 +6,7 @@ BASE_DIR="${BASE_DIR:-.}"
 
 AUTHOR="bigcode"
 MODEL_NAME="starcoder"
+
 max_length=1024
 temperature=0.8
 top_p=0.95
@@ -45,6 +46,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
 BASE_DIR="${BASE_DIR:-.}"
 AUTHOR="bigcode"
 MODEL_NAME="starcoder"
+
 max_length=1024
 temperature=0.8
 top_p=0.95
@@ -83,6 +85,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
 BASE_DIR="${BASE_DIR:-.}"
 AUTHOR="bigcode"
 MODEL_NAME="starcoder"
+
 max_length=1024
 temperature=0.8
 top_p=0.95
@@ -120,6 +123,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
 
 AUTHOR="bigcode"
 MODEL_NAME="starcoder"
+
 max_length=1024
 temperature=0.8
 top_p=0.95

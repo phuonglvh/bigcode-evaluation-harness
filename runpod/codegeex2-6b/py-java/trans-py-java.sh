@@ -9,6 +9,7 @@ BASE_DIR="${BASE_DIR:-.}"
 source_generations_path=""
 AUTHOR="THUDM"
 MODEL_NAME="codegeex2-6b"
+
 max_length=1024
 temperature=0.8
 top_p=0.95
@@ -49,6 +50,7 @@ python code_to_code_trans.py --model "$AUTHOR/$MODEL_NAME" \
 source_generations_path=""
 AUTHOR="THUDM"
 MODEL_NAME="codegeex2-6b"
+
 max_length=1024
 temperature=0.8
 top_p=0.95

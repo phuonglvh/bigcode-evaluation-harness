@@ -1,7 +1,7 @@
 root@C.11823896:/workspace/bigcode-evaluation-harness$ AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
-max_length=1024
 
+max_length=1024
 temperature=0.8
 top_p=0.95
 top_k=0
@@ -52,8 +52,8 @@ task range: 21->30
  70%|████████████████████████████████████████████████████████▎                        | 139/200 [17:16<13:03, 12.85s/it]
 root@C.11823896:/workspace/bigcode-evaluation-harness$ AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
-max_length=1024
 
+max_length=1024
 temperature=0.8
 top_p=0.95
 top_k=0

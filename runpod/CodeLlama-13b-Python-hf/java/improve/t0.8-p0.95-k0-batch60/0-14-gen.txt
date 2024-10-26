@@ -1,7 +1,7 @@
 root@C.11874045:/workspace/bigcode-evaluation-harness$ AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
-max_length=1024
 
+max_length=1024
 temperature=0.8
 top_k=0
 top_p=0.95
@@ -89,8 +89,8 @@ torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.09 GiB. GPU
 root@C.11874045:/workspace/bigcode-evaluation-harness$ 
 root@C.11874045:/workspace/bigcode-evaluation-harness$ AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
-max_length=1024
 
+max_length=1024
 temperature=0.8
 top_k=0
 top_p=0.95
@@ -117,8 +117,8 @@ generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lan
 generations_path="$BASE_DIR/$generations_name.json"
 root@C.11874045:/workspace/bigcode-evaluation-harness$ AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
-max_length=1024
 
+max_length=1024
 temperature=0.8
 top_k=0
 top_p=0.95

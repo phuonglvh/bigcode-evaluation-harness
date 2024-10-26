@@ -2,8 +2,8 @@ root@C.13102168:/workspace/bigcode-evaluation-harness/runpod/codellama-13b-pytho
 n/java/improve/t0.8-p0.9-k0-batch10$ cd /workspace/bigcode-evaluation-harness/
 root@C.13102168:/workspace/bigcode-evaluation-harness$ AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
-max_length=1024
 
+max_length=1024
 temperature=0.8
 top_k=0
 top_p=0.9

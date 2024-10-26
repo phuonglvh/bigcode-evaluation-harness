@@ -3,6 +3,7 @@
 BASE_DIR="${BASE_DIR:-.}"
 AUTHOR="mistralai"
 MODEL_NAME="Mistral-7B-v0.1"
+
 max_length=1024
 temperature=0.8
 top_p=0.95

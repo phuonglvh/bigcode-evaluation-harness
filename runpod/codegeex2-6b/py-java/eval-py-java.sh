@@ -9,6 +9,7 @@ BASE_DIR="${BASE_DIR:-.}"
 # source_generations_path="/workspace/bigcode-evaluation-harness/runpod/codellama-13b-python/CodeLlama-13b-Python-hf-temp0.8-p0.95-bf16-n200-batch32-maxlen512-py-generations_multiple-py.json"
 AUTHOR="THUDM"
 MODEL_NAME="codegeex2-6b"
+
 max_length=1024
 temperature=0.8
 top_p=0.95

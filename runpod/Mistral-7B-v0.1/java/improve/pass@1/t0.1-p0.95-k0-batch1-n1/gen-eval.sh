@@ -2,11 +2,11 @@
 
 set -euox
 
-AUTHOR="THUDM"
-MODEL_NAME="codegeex2-6b"
-max_length=1024
+AUTHOR="mistralai"
+MODEL_NAME="Mistral-7B-v0.1"
 
-temperature=0.2
+max_length=1024
+temperature=0.1
 top_k=0
 top_p=0.95
 num_return_sequences=1
@@ -15,7 +15,7 @@ batch_size=$num_return_sequences
 n_samples=1 # pass@1 only
 seed=0
 precision=bf16
-lang=py
+lang=java
 
 limit_start=0
 limit=158

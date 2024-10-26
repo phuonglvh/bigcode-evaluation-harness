@@ -4,8 +4,8 @@ set -euox
 
 AUTHOR="THUDM"
 MODEL_NAME="codegeex2-6b"
-max_length=1024
 
+max_length=1024
 temperature=0.8
 top_p=0.95
 top_k=0

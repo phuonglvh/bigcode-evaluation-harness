@@ -2,11 +2,11 @@
 
 set -euox
 
-AUTHOR="THUDM"
-MODEL_NAME="codegeex2-6b"
-max_length=1024
+AUTHOR="mistralai"
+MODEL_NAME="Mistral-7B-v0.1"
 
-temperature=0.3
+max_length=1024
+temperature=0.2
 top_k=0
 top_p=0.95
 num_return_sequences=1
@@ -28,6 +28,7 @@ save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 BASE_DIR=./runpod/$MODEL_NAME/$lang/improve/pass@1/t$temperature-p$top_p-k$top_k-batch$batch_size-n$n_samples
 
 mkdir -p $BASE_DIR
+rm -rf /tmp/* /var/tmp/*
 
 common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"

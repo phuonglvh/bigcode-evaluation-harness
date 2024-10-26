@@ -4,6 +4,7 @@ BASE_DIR="${BASE_DIR:-.}"
 
 AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
+
 max_length=1024
 temperature=0.8
 top_p=0.95
@@ -43,6 +44,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
 
 AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
+
 max_length=1024
 temperature=0.8
 top_p=0.95
@@ -82,6 +84,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
 
 AUTHOR="codellama"
 MODEL_NAME="CodeLlama-13b-Python-hf"
+
 max_length=1024
 temperature=0.8
 top_p=0.95
