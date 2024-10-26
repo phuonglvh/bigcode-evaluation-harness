@@ -1,6 +1,6 @@
 13346623
 Age:
-27 min.
+2h 0m
 Remaining:
 1 mon, 4d
 Bulgaria, BG
@@ -17,8 +17,8 @@ AMD Ryzen 9 5900X 12-Core Processor
 24.0/24 cpu
 1/64 GB
 MSI M482 2TB
-5930 MB/s52.0/65.3 GB
+5494 MB/s62.0/65.3 GB
 543.8 Mbps892.6 MbpsMax CUDA: 12.2
-GPU: 0% 47C , CPU: 1% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
-starcoder 15.5B 70GB
+GPU: 0% 48C , CPU: 0% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+10min fast starcoder 15.5B 70GB
 $0.242/hr

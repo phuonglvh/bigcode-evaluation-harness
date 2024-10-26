@@ -31,6 +31,7 @@ rm -rf /tmp/* /var/tmp/*
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
+    --token \
     --max_length_generation $max_length \
     --do_sample $do_sample \
     --seed $seed \
