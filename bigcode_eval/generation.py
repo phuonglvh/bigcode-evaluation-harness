@@ -52,7 +52,7 @@ def parallel_generations(
         intermediate_generations: Optional[List[Optional[List[Optional[str]]]]] = None,
         intermediate_save_generations_path: Optional[str] = None,
 ):
-    print(f'parallel_generations args={args}')
+    print(f'parallel_generations args={vars(args)}')
 
     if args.load_generations_path:
         # load generated code

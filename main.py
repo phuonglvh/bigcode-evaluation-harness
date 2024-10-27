@@ -248,7 +248,7 @@ def main():
     args = parse_args()
     verify_args(args)
     
-    print(f'parsed args={args}')
+    print(f'parsed args={vars(args)}')
     
     transformers.logging.set_verbosity_error()
     datasets.logging.set_verbosity_error()
