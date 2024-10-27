@@ -13,7 +13,7 @@ num_return_sequences=1
 batch_size=$num_return_sequences
 
 n_samples=1 # pass@1 only
-# seed=0
+seed=10
 precision=bf16
 lang=py
 
@@ -30,7 +30,7 @@ BASE_DIR=./runpod/$MODEL_NAME/$lang/improve/pass@1/t$temperature-p$top_p-k$top_k
 mkdir -p $BASE_DIR
 rm -rf /tmp/* /var/tmp/*
 
-common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
+common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-seed$seed-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
@@ -40,6 +40,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --temperature $temperature \
     --top_p $top_p \
     --top_k $top_k \
+    --seed $seed \
     --n_samples $n_samples \
     --batch_size $batch_size \
     --precision $precision \

@@ -82,7 +82,7 @@ def parallel_generations(
     
     for arg in ['temperature', 'top_p', 'top_k']:
         if hasattr(args, arg):
-            gen_kwargs[arg] = args.get(arg)
+            gen_kwargs[arg] = args[arg]
         
     print(f'gen_kwargs={gen_kwargs}')
     
