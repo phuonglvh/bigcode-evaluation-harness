@@ -10,7 +10,7 @@ do_sample=False
 num_return_sequences=1
 batch_size=$num_return_sequences
 n_samples=1
-seed=0
+seed=10
 precision=bf16
 lang=java
 
@@ -22,7 +22,7 @@ eval_limit=158
 save_every_k_tasks=1 # after completing k dataset's tasks
 save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
-common_name="$MODEL_NAME-do_sample$do_sample-$precision-n$n_samples-maxlen$max_length-$lang"
+common_name="$MODEL_NAME-do_sample$do_sample-$precision-n$n_samples-seed$seed-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
 
 BASE_DIR=./runpod/$MODEL_NAME/$lang/do_sample$do_sample
