@@ -52,6 +52,8 @@ def parallel_generations(
         intermediate_generations: Optional[List[Optional[List[Optional[str]]]]] = None,
         intermediate_save_generations_path: Optional[str] = None,
 ):
+    print(f'parallel_generations args={args}')
+
     if args.load_generations_path:
         # load generated code
         with open(args.load_generations_path) as fp:
@@ -69,6 +71,7 @@ def parallel_generations(
         print(f'loaded tasks (0-based indexing): {from_idx} - {to_idx - 1}')
         return selected_gens
 
+    print(f'set_seed({args.seed}, device_specific=True)')
     set_seed(args.seed, device_specific=True)
 
     # Setup generation settings
@@ -79,13 +82,8 @@ def parallel_generations(
         "top_k": args.top_k,
         "max_length": args.max_length_generation,
     }
-
-    if not args.do_sample:
-        del gen_kwargs['temperature']
-        del gen_kwargs['top_k']
-        del gen_kwargs['top_p']
         
-        warnings.warn(f'`do_sample` was set to `{args.do_sample}` so `temperature`, `top_p`, `top_k` were programmatically unset')
+    print(f'gen_kwargs={gen_kwargs}')
     
     stopping_criteria = []
     # The input_length / start_length set to 0 for now will be adjusted later

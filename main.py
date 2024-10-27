@@ -237,10 +237,19 @@ def verify_args(args):
     if generation_only and load_generations_path:
         warnings.warn(
             f'evaluation only mode but results will not be saved at {metric_output_path} due to args.generation_only is True')
+        
+    if not args.do_sample:
+        for arg in ['temperature', 'top_k', 'top_p']:
+            if hasattr(args, arg):
+                delattr(args, arg)
+                warnings.warn(f'`args.do_sample` was set to `{args.do_sample}` so `args.{arg}` was programmatically unset')        
 
 def main():
     args = parse_args()
     verify_args(args)
+    
+    print(f'parsed args={args}')
+    
     transformers.logging.set_verbosity_error()
     datasets.logging.set_verbosity_error()
 
