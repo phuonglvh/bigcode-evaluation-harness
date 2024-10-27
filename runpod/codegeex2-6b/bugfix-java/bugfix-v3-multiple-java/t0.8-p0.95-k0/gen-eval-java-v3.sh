@@ -15,7 +15,7 @@ mkdir -p $BASE_DIR
 
 source_n_samples=200
 n_samples=1
-seed=0
+# seed=0
 precision=bf16
 lang=java
 source_batch_size=10
@@ -46,7 +46,6 @@ python bugfix_main.py --model "$AUTHOR/$MODEL_NAME" \
     --temperature $temperature \
     --top_p $top_p \
     --top_k $top_k \
-    --seed $seed \
     --n_samples $n_samples \
     --batch_size $batch_size \
     --precision $precision \

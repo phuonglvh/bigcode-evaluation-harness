@@ -11,7 +11,7 @@ do_sample=False
 num_return_sequences=1
 batch_size=$num_return_sequences
 n_samples=1
-seed=0
+# seed=0
 precision=bf16
 lang=java
 
@@ -34,7 +34,6 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
     --max_length_generation $max_length \
     --do_sample $do_sample \
-    --seed $seed \
     --n_samples $n_samples \
     --batch_size $batch_size \
     --precision $precision \

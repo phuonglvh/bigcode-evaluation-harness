@@ -10,7 +10,7 @@ do_sample=False
 num_return_sequences=1
 batch_size=$num_return_sequences
 n_samples=1
-seed=0
+seed=555
 precision=bf16
 lang=py
 
