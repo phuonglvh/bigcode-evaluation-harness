@@ -13,7 +13,7 @@ num_return_sequences=1
 batch_size=$num_return_sequences
 
 n_samples=1 # pass@1 only
-seed=111
+seed=5
 precision=bf16
 lang=py
 
