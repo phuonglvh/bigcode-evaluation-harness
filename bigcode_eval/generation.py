@@ -77,11 +77,12 @@ def parallel_generations(
     # Setup generation settings
     gen_kwargs = {
         "do_sample": args.do_sample,
-        "temperature": args.temperature,
-        "top_p": args.top_p,
-        "top_k": args.top_k,
         "max_length": args.max_length_generation,
     }
+    
+    for arg in ['temperature', 'top_p', 'top_k']:
+        if hasattr(args, arg):
+            gen_kwargs[arg] = args.get(arg)
         
     print(f'gen_kwargs={gen_kwargs}')
     
