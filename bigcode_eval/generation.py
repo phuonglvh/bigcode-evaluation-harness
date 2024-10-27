@@ -8,7 +8,7 @@ from torch.utils.data.dataloader import DataLoader
 from transformers import StoppingCriteria, StoppingCriteriaList
 
 from bigcode_eval.utils import TokenizedDataset, complete_code
-
+import warnings
 
 class EndOfFunctionCriteria(StoppingCriteria):
     """Custom `StoppingCriteria` which checks if all generated functions in the batch are completed."""
@@ -79,6 +79,14 @@ def parallel_generations(
         "top_k": args.top_k,
         "max_length": args.max_length_generation,
     }
+
+    if not args.do_sample:
+        del gen_kwargs['temperature']
+        del gen_kwargs['top_k']
+        del gen_kwargs['top_p']
+        
+        warnings.warn(f'`do_sample` was set to `{args.do_sample}` so `temperature`, `top_p`, `top_k` were programmatically unset')
+    
     stopping_criteria = []
     # The input_length / start_length set to 0 for now will be adjusted later
     # Check if the task has a custom check_fn method for the stopping criteria
