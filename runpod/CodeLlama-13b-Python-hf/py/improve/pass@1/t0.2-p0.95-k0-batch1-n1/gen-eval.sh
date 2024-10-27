@@ -13,7 +13,7 @@ num_return_sequences=1
 batch_size=$num_return_sequences
 
 n_samples=1 # pass@1 only
-# seed=0
+seed=0
 precision=bf16
 lang=py
 
@@ -25,7 +25,7 @@ eval_limit=158
 save_every_k_tasks=1 # after completing k dataset's tasks
 save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
-common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
+common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-seed$seed-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
 
 BASE_DIR=./runpod/$MODEL_NAME/$lang/improve/pass@1/t$temperature-p$top_p-k$top_k-batch$batch_size-n$n_samples
@@ -39,6 +39,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --temperature $temperature \
     --top_p $top_p \
     --top_k $top_k \
+    --seed $seed \
     --n_samples $n_samples \
     --batch_size $batch_size \
     --precision $precision \
