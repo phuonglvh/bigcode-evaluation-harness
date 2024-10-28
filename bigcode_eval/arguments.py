@@ -17,6 +17,9 @@ class EvalArguments:
         default=True,
         metadata={"help": "Sample from the language model's output distribution."},
     )
+    num_beams: Optional[int] = field(
+        default=None, metadata={"help": "number of hypotheses to keep track of."}
+    )
     temperature: Optional[float] = field(
         default=0.2, metadata={"help": "Sampling temperature used for generation."}
     )
