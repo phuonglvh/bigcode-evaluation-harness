@@ -84,7 +84,7 @@ def parallel_generations(
         if hasattr(args, arg):
             gen_kwargs[arg] = vars(args)[arg]
         
-    if args.num_beams > 0:
+    if args.num_beams and args.num_beams > 0:
         gen_kwargs['num_beams'] = args.num_beams
     
     print(f'gen_kwargs={gen_kwargs}')
