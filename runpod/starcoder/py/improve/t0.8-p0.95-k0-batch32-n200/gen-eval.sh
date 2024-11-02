@@ -3,11 +3,11 @@
 AUTHOR="bigcode"
 MODEL_NAME="starcoder"
 
-max_length=1024
+max_length=512
 temperature=0.8
 top_k=0
 top_p=0.95
-num_return_sequences=20
+num_return_sequences=32
 batch_size=$num_return_sequences
 
 n_samples=200
@@ -23,13 +23,13 @@ eval_limit=158
 save_every_k_tasks=1 # after completing k dataset's tasks
 save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
-BASE_DIR=./runpod/$MODEL_NAME/$lang/improve/pass@1/t$temperature-p$top_p-k$top_k-batch$batch_size-n$n_samples
-
-mkdir -p $BASE_DIR
-rm -rf /tmp/* /var/tmp/*
+BASE_DIR=./runpod/$MODEL_NAME/$lang/improve/t$temperature-p$top_p-k$top_k-batch$batch_size-n$n_samples
 
 common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-seed$seed-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
+
+mkdir -p $BASE_DIR
+rm -rf /tmp/* /var/tmp/*
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
@@ -54,7 +54,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --max_memory_per_gpu auto
 
 full_language=python
-generations_path="$BASE_DIR/$generations_name.json"
+generations_path="$(realpath $BASE_DIR)/$generations_name.json"
 
 # BLEU score
 bleu_predictions_path="$(realpath $BASE_DIR)/$common_name-bleu-predictions_multiple-$lang.txt"

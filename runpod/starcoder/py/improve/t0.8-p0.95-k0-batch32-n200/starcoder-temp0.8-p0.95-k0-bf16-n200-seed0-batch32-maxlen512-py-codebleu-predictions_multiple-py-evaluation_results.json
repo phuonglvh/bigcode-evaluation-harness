@@ -1,0 +1,7 @@
+{
+    "ngram_match": 0.6033,
+    "weighted_ngram_match": 0.6417,
+    "syntax_match": 0.3549,
+    "dataflow_match": 0.4168,
+    "CodeBLEU": 0.5042
+}
