@@ -52,12 +52,12 @@ full_language=python
 generations_path="$BASE_DIR/$generations_name.json"
 
 # BLEU score
-bleu_predictions_path=$(realpath "$BASE_DIR/$common_name-bleu-predictions_multiple-$lang.txt")
+bleu_predictions_path="$(realpath $BASE_DIR)/$common_name-bleu-predictions_multiple-$lang.txt"
 python utils/generations_to_codexglue_bleu.py \
     --load_generations_path "$generations_path" \
     --save_predictions_format_path "$bleu_predictions_path"
 
-bleu_references_path=$(realpath "$BASE_DIR/$common_name-bleu-references_multiple-$lang.jsonl")
+bleu_references_path="$(realpath $BASE_DIR)/$common_name-bleu-references_multiple-$lang.jsonl"
 python utils/human_eval_x_to_codexglue_bleu.py \
     --language $full_language \
     --load_generations_path "$generations_path" \
@@ -68,12 +68,12 @@ python utils/human_eval_x_to_codexglue_bleu.py \
 )
 
 # CodeBLEU score
-codebleu_predictions_path=$(realpath "$BASE_DIR/$common_name-codebleu-predictions_multiple-$lang.txt")
+codebleu_predictions_path="$(realpath $BASE_DIR)/$common_name-codebleu-predictions_multiple-$lang.txt)"
 python utils/generations_to_codexglue_codebleu.py \
     --load_generations_path "$generations_path" \
     --save_predictions_format_path "$codebleu_predictions_path"
 
-codebleu_references_path=$(realpath "$BASE_DIR/$common_name-codebleu-references_multiple-$lang.txt")
+codebleu_references_path="$(realpath $BASE_DIR)/$common_name-codebleu-references_multiple-$lang.txt)"
 python utils/human_eval_x_to_codexglue_codebleu.py \
     --language $full_language \
     --load_generations_path "$generations_path" \
