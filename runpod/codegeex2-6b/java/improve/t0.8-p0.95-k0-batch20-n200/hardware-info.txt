@@ -1,0 +1,32 @@
+1x RTX A4000
+20.6 TFLOPS
+15.5/16.0 GB gpu
+Xeon® E5-2687W v3
+10.0/20 cpu
+15/26 GB ram
+Samsung SSD 870
+13.0/14.4 GB disk
+GPU: 92% 49C , CPU: 11%
+$0.122/hr
+batch_size=10
+==> OUT OF MEMORY
+
+======
+RTX 3090 24GB
+min 14GB RAM
+disk 15GB
+$0.202/hr
+batch_size=30
+
+=========
+1x RTX 3090
+35.3 TFLOPS
+23.0/24.0 GB
+Xeon® E5-2698 v3
+16.0/64 cpu
+14/32 GB ram
+13.0/14.4 GB disk
+GPU: 100% 69C, CPU: 6%
+codegeex2-6b: gen-java
+$0.193/hr 
+batch_size=20
