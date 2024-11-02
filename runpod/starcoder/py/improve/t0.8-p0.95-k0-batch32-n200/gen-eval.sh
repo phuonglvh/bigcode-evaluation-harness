@@ -13,7 +13,7 @@ batch_size=$num_return_sequences
 n_samples=200
 seed=0
 precision=bf16
-lang=java
+lang=py
 
 limit_start=0
 limit=158
@@ -53,7 +53,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --metric_output_path "$BASE_DIR/$generations_name-eval-${eval_limit_start}-${eval_limit}-evaluation_results.json" \
     --max_memory_per_gpu auto
 
-full_language=java
+full_language=python
 generations_path="$BASE_DIR/$generations_name.json"
 
 # BLEU score

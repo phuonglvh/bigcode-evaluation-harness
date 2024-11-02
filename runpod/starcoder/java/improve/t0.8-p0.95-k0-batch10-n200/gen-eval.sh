@@ -7,7 +7,7 @@ max_length=1024
 temperature=0.8
 top_k=0
 top_p=0.95
-num_return_sequences=20
+num_return_sequences=10
 batch_size=$num_return_sequences
 
 n_samples=200
