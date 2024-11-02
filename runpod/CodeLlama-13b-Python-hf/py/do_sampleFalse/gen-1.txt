@@ -604,9 +604,6 @@ evaluation results:
   "config": {
     "prefix": "",
     "do_sample": false,
-    "temperature": 0.2,
-    "top_k": 0,
-    "top_p": 0.95,
     "n_samples": 1,
     "eos": "<|endoftext|>",
     "seed": 10,
