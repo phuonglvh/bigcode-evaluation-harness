@@ -31,6 +31,10 @@ rm -rf /tmp/* /var/tmp/*
 common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-seed$seed-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
 
+# use case: load intermediate generations
+intermediate_generations_path="$BASE_DIR/$generations_name" 
+intermediate_generations_path+="_intermediate.json"
+
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
     --max_length_generation $max_length \
@@ -46,6 +50,7 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --save_every_k_tasks $save_every_k_iterations \
     --save_generations \
     --save_generations_path "$BASE_DIR/$common_name-generations-${limit_start}-${limit}.json" \
+    --load_generations_intermediate_paths "$intermediate_generations_path" \
     --save_references \
     --limit_start $limit_start \
     --limit $limit \
