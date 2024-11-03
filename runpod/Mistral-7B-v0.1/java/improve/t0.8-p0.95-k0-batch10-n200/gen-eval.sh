@@ -30,6 +30,27 @@ rm -rf /tmp/* /var/tmp/*
 
 common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-seed$seed-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
+generations_path="$BASE_DIR/$generations_name.json"
+
+rm -rf /tmp/* /var/tmp/*
+
+python main.py --model "$AUTHOR/$MODEL_NAME" \
+    --tasks multiple-$lang \
+    --max_length_generation $max_length \
+    --temperature $temperature \
+    --top_p $top_p \
+    --top_k $top_k \
+    --seed $seed \
+    --n_samples $n_samples \
+    --batch_size $batch_size \
+    --precision $precision \
+    --allow_code_execution \
+    --trust_remote_code \
+    --limit_start $eval_limit_start \
+    --limit $eval_limit \
+    --save_every_k_tasks $save_every_k_iterations \
+    --load_generations_path "$generations_path" \
+    --metric_output_path "$BASE_DIR/$generations_name-eval-${eval_limit_start}-${eval_limit}-evaluation_results.json"
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
     --tasks multiple-$lang \
