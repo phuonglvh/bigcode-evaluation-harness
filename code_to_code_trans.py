@@ -1,3 +1,4 @@
+from bigcode_eval import tasks
 import fnmatch
 import json
 import os
@@ -421,6 +422,8 @@ def main():
                 results[task] = evaluator.evaluate(
                     task, intermediate_generations=intermediate_generations
                 )
+                
+            save_task_translated_prompts(task, args)
 
     # Save all args and config
     results["config"] = vars(args)
@@ -436,6 +439,31 @@ def main():
                 f"evaluation results were saved at {args.metric_output_path}"
             )
 
+
+def save_task_translated_prompts(task_name, args):
+    translated_prompts_path = os.path.dirname(
+        args.save_references_path) + "/translated_prompts.json"
+    
+    print(f'Saving translated prompts at: {translated_prompts_path}')
+    
+    task = tasks.get_task(task_name, args)
+    dataset = task.get_dataset()
+      # if args.limit is None, use all samples
+      # if args.limit is used, make sure args.limit_start + args.limit <= len(dataset)
+    n_tasks = min(args.limit, len(dataset) -
+                  args.limit_start) if args.limit else len(dataset)
+       # when args.limit is None
+       # adjust n_tasks by args.limit_start to prevent out of bounds issues
+    if not args.limit:
+        n_tasks -= args.limit_start
+    prompts = [task.get_prompt(dataset[rowi]) for rowi in range(
+        args.limit_start, args.limit_start+n_tasks)]
+
+
+    with open(translated_prompts_path, "w") as f:
+        f.write(json.dumps(prompts))
+    
+    print(f'Saved translated prompts at: {translated_prompts_path}')
 
 if __name__ == "__main__":
     main()

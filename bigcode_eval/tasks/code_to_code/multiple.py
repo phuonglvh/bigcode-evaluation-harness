@@ -26,6 +26,7 @@ from bigcode_eval.tasks.custom_metrics.multiple_metrics.single_experiment_pass_k
     for_file
 from bigcode_eval.tasks.multiple import GeneralMultiPLE
 from datasets import Dataset, load_dataset
+from .utils import remove_py_docstring, remove_java_comments_before_first_public_static_func
 
 _CITATION = """
 @article{cassano2022scalable,
@@ -116,7 +117,7 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
 
     def __init__(self, language, **kwargs):
         assert language in LANGUAGE_ALIASES
-        super().__init__(language)
+        super().__init__(language, **kwargs)
         self.kwargs = kwargs
         self.translated_dataset: Dataset = None
 
@@ -125,9 +126,9 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
         assert target_lang_alias in LANGUAGE_ALIASES
         prompt = f'''code translation
 {MODEL_LANGUAGE_NAMES[source_lang_alias].capitalize()}:
-{source_code.rstrip()}
+{remove_py_docstring(source_code.rstrip())}
 {MODEL_LANGUAGE_NAMES[target_lang_alias].capitalize()}:
-{target_doc['prompt']}'''
+{remove_java_comments_before_first_public_static_func(target_doc['prompt'])}'''
         return prompt
 
     def get_dataset(self):
