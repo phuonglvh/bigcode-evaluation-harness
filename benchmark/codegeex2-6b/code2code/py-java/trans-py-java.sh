@@ -33,7 +33,7 @@ save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-seed$seed-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
 
-BASE_DIR=./benchmark/$MODEL_NAME/py-java/t$temperature-p$top_p-k$top_k-batch$batch_size-n$n_samples
+BASE_DIR=./benchmark/$MODEL_NAME/code2code/$source_lang-$lang/t$temperature-p$top_p-k$top_k-batch$batch_size-n$n_samples
 
 mkdir -p $BASE_DIR
 rm -rf /tmp/* /var/tmp/*
@@ -57,7 +57,6 @@ python code_to_code_trans.py --model "$AUTHOR/$MODEL_NAME" \
     --save_generations_path "$BASE_DIR/$common_name-generations-${limit_start}-${limit}.json" \
     --save_references \
     --save_references_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-references.json" \
-    --generation_only \
     --source_generations_path "$source_generations_path" \
     --source_lang $source_lang \
     --metric_output_path "$BASE_DIR/$generations_name-eval-${eval_limit_start}-${eval_limit}-evaluation_results.json" \
