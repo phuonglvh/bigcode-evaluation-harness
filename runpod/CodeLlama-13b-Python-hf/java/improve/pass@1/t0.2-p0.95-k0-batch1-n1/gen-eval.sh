@@ -13,7 +13,6 @@ num_return_sequences=1
 batch_size=$num_return_sequences
 
 n_samples=1 # pass@1 only
-seed=5
 precision=bf16
 lang=java
 
@@ -24,6 +23,12 @@ eval_limit=158
 
 save_every_k_tasks=1 # after completing k dataset's tasks
 save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
+
+# seed=0
+# seed=5
+seed=10
+# seed=15
+# seed=20
 
 common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-seed$seed-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"

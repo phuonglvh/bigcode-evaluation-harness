@@ -23,7 +23,7 @@ eval_limit=158
 save_every_k_tasks=1 # after completing k dataset's tasks
 save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
-temperature=0.3
+temperature=0.5
 # seed=0
 # seed=5
 seed=10
