@@ -441,11 +441,7 @@ def main():
 
 
 def save_task_translated_prompts(task_name, args):
-    save_generations_filename_no_ext = os.path.splitext(
-        os.path.basename(args.save_generations_path))[0]
-
-    translated_prompts_path = os.path.join(os.path.dirname(
-        args.save_generations_path), f'{save_generations_filename_no_ext}_{task_name}-translated_prompts.json')
+    translated_prompts_path = f"{os.path.splitext(args.save_generations_path)[0]}_{task_name}_translated-prompts.json"
     
     print(f'Saving translated prompts at: {translated_prompts_path}')
     
