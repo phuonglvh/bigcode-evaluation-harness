@@ -1,0 +1,112 @@
+AUTHOR="THUDM"
+MODEL_NAME="codegeex2-6b"
+max_length=1280
+
+temperature=0.8
+top_p=0.95
+top_k=0
+
+BASE_DIR=./benchmark/codegeex2-6b/bugfix-java/t$temperature-p$top_p-k$top_k
+mkdir -p $BASE_DIR
+
+source_n_samples=200
+n_samples=1
+seed=0
+precision=bf16
+lang=java
+source_batch_size=10
+batch_size=1
+
+eval_limit_start=0
+eval_limit=50
+
+limit_start=5
+limit=5
+gen_limit_start=$((limit_start*source_n_samples))
+gen_limit=$((limit*source_n_samples))
+source_generations_path='./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch10-maxlen1024-java-generations-0-50_multiple-java.json'
+# source_generations_path='./benchmark/codegeex2-6b/bugfix-java/test-java-gens.json'
+
+NUM_RETURN_SEQUENCES_PER_PROMPT=1
+batch_size=$NUM_RETURN_SEQUENCES_PER_PROMPT
+
+save_every_k_tasks=$source_n_samples
+save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+
+common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
+generations_name="$common_name-generations-${limit_start}-${limit}_bugfix-v2-multiple-$lang"
+mv $generations_path $flatten_generations_pathns_name-flatten.json"mit_start-$limit.json" \
+/opt/conda/lib/python3.10/site-packages/transformers/utils/generic.py:311: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  torch.utils._pytree._register_pytree_node(
+/opt/conda/lib/python3.10/site-packages/transformers/utils/generic.py:311: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  torch.utils._pytree._register_pytree_node(
+Selected Tasks: ['bugfix-v2-multiple-java']
+Loading model in bf16
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [00:08<00:00,  1.20s/it]
+/opt/conda/lib/python3.10/site-packages/transformers/utils/hub.py:374: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers.
+  warnings.warn(
+Not setting pad_token to eos_token
+generation only mode
+/opt/conda/lib/python3.10/site-packages/datasets/load.py:1429: FutureWarning: The repository for nuprl/MultiPL-E contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/nuprl/MultiPL-E
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+number of problems for this task is 1000
+task range: 1001->2000
+1 completions required for each task
+1 completion/prompt
+1 batch/task
+1000 batches (iterations) required for 1000 tasks
+ 20%|████████████████████████▍                                                                                                  | 199/1000 [11:07<56:27,  4.23s/it]intermediate generations were saved at ./benchmark/codegeex2-6b/bugfix-java/t0.8-p0.95-k0/codegeex2-6b-temp0.8-p0.95-k0-bf16-n1-batch1-maxlen1280-java-generations-5-5_bugfix-v2-multiple-java_intermediate.json
+ 40%|█████████████████████████████████████████████████                                                                          | 399/1000 [20:36<26:16,  2.62s/it]intermediate generations were saved at ./benchmark/codegeex2-6b/bugfix-java/t0.8-p0.95-k0/codegeex2-6b-temp0.8-p0.95-k0-bf16-n1-batch1-maxlen1280-java-generations-5-5_bugfix-v2-multiple-java_intermediate.json
+ 60%|█████████████████████████████████████████████████████████████████████████▋                                                 | 599/1000 [29:18<17:00,  2.54s/it]intermediate generations were saved at ./benchmark/codegeex2-6b/bugfix-java/t0.8-p0.95-k0/codegeex2-6b-temp0.8-p0.95-k0-bf16-n1-batch1-maxlen1280-java-generations-5-5_bugfix-v2-multiple-java_intermediate.json
+ 80%|██████████████████████████████████████████████████████████████████████████████████████████████████▎                        | 799/1000 [36:14<09:07,  2.72s/it]intermediate generations were saved at ./benchmark/codegeex2-6b/bugfix-java/t0.8-p0.95-k0/codegeex2-6b-temp0.8-p0.95-k0-bf16-n1-batch1-maxlen1280-java-generations-5-5_bugfix-v2-multiple-java_intermediate.json
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉| 999/1000 [50:38<00:04,  4.01s/it]intermediate generations were saved at ./benchmark/codegeex2-6b/bugfix-java/t0.8-p0.95-k0/codegeex2-6b-temp0.8-p0.95-k0-bf16-n1-batch1-maxlen1280-java-generations-5-5_bugfix-v2-multiple-java_intermediate.json
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [50:41<00:00,  3.04s/it]
+generations were saved at ./benchmark/codegeex2-6b/bugfix-java/t0.8-p0.95-k0/codegeex2-6b-temp0.8-p0.95-k0-bf16-n1-batch1-maxlen1280-java-generations-5-5_bugfix-v2-multiple-java.json
+references were saved at references_bugfix-v2-multiple-java.json
+evaluation results:
+{
+  "config": {
+    "prefix": "",
+    "do_sample": true,
+    "temperature": 0.8,
+    "top_k": 0,
+    "top_p": 0.95,
+    "n_samples": 1,
+    "eos": "<|endoftext|>",
+    "seed": 0,
+    "model": "THUDM/codegeex2-6b",
+    "modeltype": "causal",
+    "peft_model": null,
+    "revision": null,
+    "token": false,
+    "trust_remote_code": true,
+    "tasks": "bugfix-v2-multiple-java",
+    "instruction_tokens": null,
+    "batch_size": 1,
+    "max_length_generation": 1280,
+    "precision": "bf16",
+    "load_in_8bit": false,
+    "load_in_4bit": false,
+    "limit": 1000,
+    "limit_start": 1000,
+    "save_every_k_tasks": 200,
+    "postprocess": true,
+    "allow_code_execution": true,
+    "generation_only": true,
+    "load_generations_path": null,
+    "load_data_path": null,
+    "metric_output_path": "evaluation_results.json",
+    "save_generations": true,
+    "load_generations_intermediate_paths": null,
+    "save_generations_path": "./benchmark/codegeex2-6b/bugfix-java/t0.8-p0.95-k0/codegeex2-6b-temp0.8-p0.95-k0-bf16-n1-batch1-maxlen1280-java-generations-5-5.json",
+    "save_references": true,
+    "save_references_path": "references.json",
+    "prompt": "prompt",
+    "max_memory_per_gpu": null,
+    "check_references": false,
+    "source_generations_path": "./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch10-maxlen1024-java-generations-0-50_multiple-java.json",
+    "debug": false
+  }
+}

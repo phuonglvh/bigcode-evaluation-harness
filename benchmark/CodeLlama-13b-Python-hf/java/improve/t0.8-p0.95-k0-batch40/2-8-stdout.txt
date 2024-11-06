@@ -1,0 +1,102 @@
+AUTHOR="codellama"
+MODEL_NAME="CodeLlama-13b-Python-hf"
+
+max_length=1024
+temperature=0.8
+top_k=0
+top_p=0.95
+batch_size=40
+
+BASE_DIR=./benchmark/$MODEL_NAME/$lang/improve/t$temperature-p$top_p-k$top_k-batch$batch_size
+mkdir -p $BASE_DIR
+
+n_samples=200
+seed=0
+precision=bf16
+lang=java
+
+limit_start=2
+limit=8
+eval_limit_start=0
+eval_limit=50
+
+save_every_k_tasks=1 # after completing k dataset's tasks
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
+
+common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
+generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
+generations_path="$BASE_DIR/$generations_name.json"
+
+python main.py --model "$AUTHOR/$MODEL_NAME" \
+    --tasks multiple-$lang \
+    --max_length_generation $max_length \
+    --temperature $temperature \
+    --max_memory_per_gpu autot \SE_DIR/$common_name-generations-${limit_start}-${limit}.json" \
+Selected Tasks: ['multiple-java']
+Loading model in bf16
+Loading model in auto mode
+Loading checkpoint shards: 100%|████████████████████████████████████████████████████████████████| 3/3 [00:07<00:00,  2.42s/it]
+generation only mode
+number of problems for this task is 8
+task range: 3->10
+200 completions required for each task
+40 completion/prompt
+5 batch/task
+40 batches (iterations) required for 8 tasks
+ 10%|█████████                                                                                 | 4/40 [03:15<28:44, 47.90s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-2-8_multiple-java_intermediate.json
+ 22%|████████████████████▎                                                                     | 9/40 [04:46<10:28, 20.28s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-2-8_multiple-java_intermediate.json
+ 35%|███████████████████████████████▏                                                         | 14/40 [08:29<15:01, 34.69s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-2-8_multiple-java_intermediate.json
+ 48%|██████████████████████████████████████████▎                                              | 19/40 [12:36<17:53, 51.10s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-2-8_multiple-java_intermediate.json
+ 60%|█████████████████████████████████████████████████████▍                                   | 24/40 [14:46<07:33, 28.33s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-2-8_multiple-java_intermediate.json
+ 72%|████████████████████████████████████████████████████████████████▌                        | 29/40 [17:10<05:07, 27.92s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-2-8_multiple-java_intermediate.json
+ 85%|███████████████████████████████████████████████████████████████████████████▋             | 34/40 [21:47<04:06, 41.13s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-2-8_multiple-java_intermediate.json
+ 98%|██████████████████████████████████████████████████████████████████████████████████████▊  | 39/40 [24:54<00:35, 35.85s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-2-8_multiple-java_intermediate.json
+100%|█████████████████████████████████████████████████████████████████████████████████████████| 40/40 [25:35<00:00, 38.39s/it]
+audit_generations: verifying generations against dataset
+audit_generations: unknown_tasks []
+generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-2-8_multiple-java.json
+references were saved at references_multiple-java.json
+evaluation results:
+{
+  "config": {
+    "prefix": "",
+    "do_sample": true,
+    "temperature": 0.8,
+    "top_k": 0,
+    "top_p": 0.95,
+    "n_samples": 200,
+    "eos": "<|endoftext|>",
+    "seed": 0,
+    "model": "codellama/CodeLlama-13b-Python-hf",
+    "modeltype": "causal",
+    "peft_model": null,
+    "revision": null,
+    "token": false,
+    "trust_remote_code": true,
+    "tasks": "multiple-java",
+    "instruction_tokens": null,
+    "batch_size": 40,
+    "max_length_generation": 1024,
+    "precision": "bf16",
+    "load_in_8bit": false,
+    "load_in_4bit": false,
+    "left_padding": false,
+    "limit": 8,
+    "limit_start": 2,
+    "save_every_k_tasks": 5,
+    "postprocess": true,
+    "allow_code_execution": true,
+    "generation_only": true,
+    "load_generations_path": null,
+    "load_data_path": null,
+    "metric_output_path": "evaluation_results.json",
+    "save_generations": true,
+    "load_generations_intermediate_paths": null,
+    "save_generations_path": "./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-2-8.json",
+    "save_references": true,
+    "save_references_path": "references.json",
+    "prompt": "prompt",
+    "max_memory_per_gpu": "auto",
+    "check_references": false
+  }
+}

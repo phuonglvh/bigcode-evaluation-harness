@@ -155,9 +155,9 @@
                 "--save_every_k_tasks",
                 "20",
                 "--load_generations_path",
-                "./runpod/codellama-13b-python/java/CodeLlama-13b-Python-hf-temp0.8-p0.95-bf16-n200-batch10-maxlen1024-java-generations_multiple-java.json",
+                "./benchmark/codellama-13b-python/java/CodeLlama-13b-Python-hf-temp0.8-p0.95-bf16-n200-batch10-maxlen1024-java-generations_multiple-java.json",
                 "--metric_output_path",
-                "./runpod/codellama-13b-python/java/improve/t0.8-p0.95-k0/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch10-maxlen1024-java-generations-0-50_multiple-java-eval-0-2-evaluation_results.json",
+                "./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch10-maxlen1024-java-generations-0-50_multiple-java-eval-0-2-evaluation_results.json",
                 "--save_references"
             ],
             "justMyCode": false,
