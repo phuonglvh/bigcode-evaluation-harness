@@ -209,7 +209,7 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
                     raise Exception(f'no target task for source func name={src_func_name}')
                 
                 sub_target_task = target_lang_task.copy()
-                print(f'task name={sub_target_task['name']}')
+                print(f"task name={sub_target_task['name']}")
 
                 sub_target_task['original_prompt'] = sub_target_task["prompt"]
                 sub_target_task['prompt'] = self._get_prompt_translation(
