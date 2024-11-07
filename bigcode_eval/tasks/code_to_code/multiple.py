@@ -216,8 +216,7 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
                     target_lang_task, task_gen, source_lang, target_lang)
 
                 sub_target_task['original_name'] = sub_target_task["name"]
-                sub_target_task['name'] = f'{
-                    sub_target_task["original_name"]}_{gen_id}'
+                sub_target_task['name'] = f'{sub_target_task["original_name"]}_{gen_id}'
 
                 self.audit_translated_prompt(
                     task_gen, target_lang_task['prompt'])
