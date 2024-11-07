@@ -129,10 +129,35 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
         assert self.source_lang
         
         self.dataset['test'] = Dataset.from_list(json.load(open(os.path.join(
-            os.path.dirname(os.path.realpath(__file__)), 'datasets', f"humaneval-{self.source_lang}-{language}-reworded.json"), "r")))
+            os.path.dirname(os.path.realpath(__file__)), 'datasets', f"humaneval-{self.source_lang}-{language}-refined.json"), "r")))
+        
+        # {function_name -> task}
+        self.test_fnc_name_prompt_map = self.build_func_name_prompt_map(self.dataset['test'])
         
         self.stop_words = self.dataset["test"][0]["stop_tokens"] + ["<file_sep>"]
         self.translated_dataset: Dataset = None
+        
+    def build_func_name_prompt_map(self, test_dataset):
+        # build target {function_name -> task}
+        tgt_map = {}
+        
+        for tgt_task in test_dataset:
+            tgt_prompt = tgt_task['prompt']
+            try:
+                java_func_name = java.extract_function_name_from_prompt(
+                    tgt_prompt).lower()
+
+                if java_func_name in tgt_map:
+                    print(f'existing:{tgt_map[java_func_name]}')
+                    print(f'current:{tgt_prompt}')
+                    raise Exception(f'java_func_name={java_func_name} already exists')
+
+                tgt_map[java_func_name] = tgt_task
+            except Exception as ex:
+                print(ex)
+                print(tgt_prompt)
+                
+        return tgt_map
 
     def _get_prompt_translation(self, target_doc, source_code, source_lang_alias, target_lang_alias):
         assert source_lang_alias in LANGUAGE_ALIASES
@@ -171,22 +196,39 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
             open(source_generations_path, 'r'))  # [["generated code"]]
 
         translated_tasks = []
-
-        for task_gens, target_lang_task in zip(tasks_generations, target_lang_tasks):
+        
+        for task_gens in tasks_generations:
             for gen_id, task_gen in enumerate(task_gens):
+                src_func_name = py.extract_function_name_from_prompt(task_gen).replace('_', '').lower()
+
+                print(f'task func name={src_func_name}')
+                target_lang_task = self.test_fnc_name_prompt_map[src_func_name]
+                
+                if target_lang_task is None:
+                    print(f'no target task for source func name={src_func_name}')
+                    raise Exception(f'no target task for source func name={src_func_name}')
+                
                 sub_target_task = target_lang_task.copy()
+                print(f'task name={sub_target_task['name']}')
+
                 sub_target_task['original_prompt'] = sub_target_task["prompt"]
                 sub_target_task['prompt'] = self._get_prompt_translation(
                     target_lang_task, task_gen, source_lang, target_lang)
 
                 sub_target_task['original_name'] = sub_target_task["name"]
-                sub_target_task['name'] = f'{sub_target_task["original_name"]}_{gen_id}'
+                sub_target_task['name'] = f'{
+                    sub_target_task["original_name"]}_{gen_id}'
 
-                self.audit_translated_prompt(task_gen, target_lang_task['prompt'])
+                self.audit_translated_prompt(
+                    task_gen, target_lang_task['prompt'])
                 translated_tasks.append(sub_target_task)
 
-        with open('translated-dataset.json', 'w') as f:
+        translated_dataset_path = 'translated-dataset.json'
+        with open(translated_dataset_path, 'w') as f:
             json.dump(translated_tasks, f)
+            print(f'num of target_lang_tasks:{len(self.test_fnc_name_prompt_map.keys())}')
+            print(f'num of flatten translated_tasks:{len(translated_tasks)}')
+            print(f'saved translated dataset to {translated_dataset_path}')
 
         self.translated_dataset = Dataset.from_list(translated_tasks)
         return self.translated_dataset
