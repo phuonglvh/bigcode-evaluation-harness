@@ -129,13 +129,6 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
 {remove_py_docstring(source_code.rstrip())}
 {MODEL_LANGUAGE_NAMES[target_lang_alias].capitalize()}:
 {remove_java_comments_before_first_public_static_func(target_doc['prompt'])}'''
-
-        prompts = json.load(open('translated-prompts.json', 'r'))
-        prompts.append(prompt)
-
-        with open('translated-prompts.json', 'w') as f:
-            json.dump(prompts, f)
-
         return prompt
 
     def get_dataset(self):
@@ -168,6 +161,9 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
                 sub_target_task['name'] = f'{sub_target_task["original_name"]}_{gen_id}'
 
                 translated_tasks.append(sub_target_task)
+
+        with open('translated-prompts.json', 'w') as f:
+            json.dump(translated_tasks, f)
 
         self.translated_dataset = Dataset.from_list(translated_tasks)
         return self.translated_dataset
