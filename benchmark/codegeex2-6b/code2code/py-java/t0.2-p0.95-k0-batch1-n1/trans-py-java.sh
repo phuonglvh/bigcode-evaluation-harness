@@ -5,20 +5,22 @@ set -euox
 # Translate code2code
 # py to java
 source_generations_path="$(realpath .)/benchmark/CodeLlama-13b-Python-hf/py/improve/pass@1/t0.2-p0.95-k0-batch1-n1/CodeLlama-13b-Python-hf-temp0.2-p0.95-k0-bf16-n1-seed5-batch1-maxlen1024-py-generations-0-158_multiple-py.json"
+source_lang=py
+source_n_samples=1
 
 AUTHOR="THUDM"
 MODEL_NAME="codegeex2-6b"
 
-max_length=1024
 temperature=0.2
 top_p=0.95
 top_k=0
-n_samples=1 # always fixed to 1
-seed=0
+
+max_length=1024
+n_samples=1
+seed=20
 precision=bf16
 lang=java
-source_lang=py
-source_n_samples=1
+
 num_return_sequences=1
 batch_size=$num_return_sequences
 
@@ -31,6 +33,7 @@ save_every_k_tasks=$source_n_samples
 save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
 common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-seed$seed-batch$batch_size-maxlen$max_length-$lang"
+
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
 
 BASE_DIR=./benchmark/$MODEL_NAME/code2code/$source_lang-$lang/t$temperature-p$top_p-k$top_k-batch$batch_size-n$n_samples
@@ -56,7 +59,7 @@ python code_to_code_trans.py --model "$AUTHOR/$MODEL_NAME" \
     --save_generations \
     --save_generations_path "$BASE_DIR/$common_name-generations-${limit_start}-${limit}.json" \
     --save_references \
-    --save_references_path "$BASE_DIR/$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-references.json" \
+    --save_references_path "$BASE_DIR/$common_name-references-${limit_start}-${limit}.json" \
     --source_generations_path "$source_generations_path" \
     --source_lang $source_lang \
     --metric_output_path "$BASE_DIR/$generations_name-eval-${eval_limit_start}-${eval_limit}-evaluation_results.json" \
