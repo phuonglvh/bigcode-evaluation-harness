@@ -27,6 +27,11 @@ from bigcode_eval.tasks.custom_metrics.multiple_metrics.single_experiment_pass_k
 from bigcode_eval.tasks.multiple import GeneralMultiPLE
 from datasets import Dataset, load_dataset
 from .utils import remove_py_docstring, remove_java_comments_before_first_public_static_func
+import sys
+
+sys.path.append(os.path.abspath(os.path.join(
+    os.path.dirname(__file__), "../../../utils")))
+import java, py
 
 _CITATION = """
 @article{cassano2022scalable,
@@ -119,6 +124,14 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
         assert language in LANGUAGE_ALIASES
         super().__init__(language, **kwargs)
         self.kwargs = kwargs
+
+        self.source_lang = self.kwargs.get("source_lang", None)
+        assert self.source_lang
+        
+        self.dataset['test'] = Dataset.from_list(json.load(open(os.path.join(
+            os.path.dirname(os.path.realpath(__file__)), 'datasets', f"humaneval-{self.source_lang}-{language}-reworded.json"), "r")))
+        
+        self.stop_words = self.dataset["test"][0]["stop_tokens"] + ["<file_sep>"]
         self.translated_dataset: Dataset = None
 
     def _get_prompt_translation(self, target_doc, source_code, source_lang_alias, target_lang_alias):
@@ -130,18 +143,27 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
 {MODEL_LANGUAGE_NAMES[target_lang_alias].capitalize()}:
 {remove_java_comments_before_first_public_static_func(target_doc['prompt'])}'''
         return prompt
+    
+    def audit_translated_prompt(self, source_code, target_prompt):
+        py_func_name = py.extract_function_name_from_prompt(source_code).replace('_', '').lower()
+        java_func_name = java.extract_function_name_from_prompt(target_prompt).lower()
+        
+        if py_func_name != java_func_name:
+            raise ValueError(f"Formalized function names of source and target prompts do not match: {py_func_name} <> {java_func_name}")
 
     def get_dataset(self):
         """Returns the translated dataset for the task or an iterable of any object, that get_prompt can handle"""
         if self.translated_dataset:
             return self.translated_dataset
 
-        target_lang_tasks = self.dataset["test"]
+        target_lang_tasks = self.dataset['test']
+        
+        with open(f'MultiPL-E-{self.language}.json', 'w') as f:
+            json.dump([problem for problem in target_lang_tasks], f)
 
         source_lang = self.kwargs.get("source_lang", None)
         target_lang = self.language
-        source_generations_path = self.kwargs.get(
-            "source_generations_path", None)
+        source_generations_path = self.kwargs.get("source_generations_path", None)
 
         assert source_lang, source_generations_path
 
@@ -160,9 +182,10 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
                 sub_target_task['original_name'] = sub_target_task["name"]
                 sub_target_task['name'] = f'{sub_target_task["original_name"]}_{gen_id}'
 
+                self.audit_translated_prompt(task_gen, target_lang_task['prompt'])
                 translated_tasks.append(sub_target_task)
 
-        with open('translated-prompts.json', 'w') as f:
+        with open('translated-dataset.json', 'w') as f:
             json.dump(translated_tasks, f)
 
         self.translated_dataset = Dataset.from_list(translated_tasks)

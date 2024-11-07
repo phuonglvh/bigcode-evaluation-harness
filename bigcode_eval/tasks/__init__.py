@@ -101,7 +101,8 @@ def get_code_to_code_task(task_name, args=None):
         if "load_data_path" in inspect.signature(TRANSLATION_TASK_REGISTRY[task_name]).parameters:
             kwargs["load_data_path"] = args.load_data_path
         return TRANSLATION_TASK_REGISTRY[task_name](**kwargs)
-    except KeyError:
+    except KeyError as ex:
+        print(ex)
         print("Available tasks:")
         pprint(TRANSLATION_TASK_REGISTRY)
         raise KeyError(f"Missing task {task_name}")
