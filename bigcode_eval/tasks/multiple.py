@@ -104,7 +104,7 @@ class GeneralMultiPLE(Task):
         #     requires_execution=True,
         # )
         self.args = kwargs
-
+        
     def get_dataset(self) -> Dataset:
         """Returns dataset for the task or an iterable of any object, that get_prompt can handle"""
         return self.dataset["test"]

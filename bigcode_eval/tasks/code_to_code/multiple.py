@@ -27,11 +27,12 @@ from bigcode_eval.tasks.custom_metrics.multiple_metrics.single_experiment_pass_k
 from bigcode_eval.tasks.multiple import GeneralMultiPLE
 from datasets import Dataset, load_dataset
 from .utils import remove_py_docstring, remove_java_comments_before_first_public_static_func
+import warnings
 import sys
 
-sys.path.append(os.path.abspath(os.path.join(
-    os.path.dirname(__file__), "../../../utils")))
-import java, py
+# sys.path.append(os.path.abspath(os.path.join(
+#     os.path.dirname(__file__), "../../../utils")))
+from . import java, py
 
 _CITATION = """
 @article{cassano2022scalable,
@@ -176,6 +177,12 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
         if py_func_name != java_func_name:
             raise ValueError(f"Formalized function names of source and target prompts do not match: {py_func_name} <> {java_func_name}")
 
+    def get_reference(self, doc):
+        """Builds the reference solution for the doc (sample from the test dataset)."""
+        print(f'Code2CodeMultiPLE.get_reference: {doc["name"]}')
+        
+        return doc["tests"].replace("\n    }\n\n}\n", "\nSystem.out.println(\"All test cases passed\");\n    }\n\n}\n")
+
     def get_dataset(self):
         """Returns the translated dataset for the task or an iterable of any object, that get_prompt can handle"""
         if self.translated_dataset:
@@ -228,6 +235,11 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
             print(f'num of target_lang_tasks:{len(self.test_fnc_name_prompt_map.keys())}')
             print(f'num of flatten translated_tasks:{len(translated_tasks)}')
             print(f'saved translated dataset to {translated_dataset_path}')
+            
+        translated_prompts_path = 'translated-prompts.json'
+        with open(translated_prompts_path, 'w') as f:
+            json.dump([task['prompt'] for task in translated_tasks], f)
+            print(f'saved translated prompts to {translated_prompts_path}')
 
         self.translated_dataset = Dataset.from_list(translated_tasks)
         return self.translated_dataset
@@ -249,3 +261,80 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
 
         target_lang_prompt = self.get_dataset()[idx]['original_prompt'].strip()
         return target_lang_prompt + self._stop_at_stop_token(completion, self.stop_words)
+
+    def process_results(self, generations, references):
+        """Takes the list of LM generations and evaluates them against ground truth references,
+        returning the metric for the generations.
+        :param generations: list(list(str))
+            list of lists containing generations
+        :param references: list(str)
+            list of str containing refrences
+        """
+        print(f'executing Code2CodeMultiPLE.process_results')
+        
+        # get prompts and problem names
+        n_tasks = len(generations)
+        from_idx = self.args['limit_start']
+        to_idx = from_idx+n_tasks
+        selected_tasks = self.get_dataset().select(range(from_idx, to_idx)).to_list()
+        print(f'process_results of {len(selected_tasks)} selected problems:\n' +
+              '\n'.join(task['name'] for task in selected_tasks))
+
+        prompts_names = [
+            {"prompt": doc["prompt"], "name": doc["name"]}
+            for doc in selected_tasks
+        ]
+        # a common temp dir for all the problems
+        temp_dir = tempfile.gettempdir()
+        list_files = []
+        for (prompt_name, prompt_completions, reference) in zip(
+            prompts_names, generations, references
+        ):
+            prompt = prompt_name['prompt']
+            problem = {
+                "name": prompt_name["name"],
+                "language": self.language,
+                "prompt": prompt_name["prompt"],
+                "completions": prompt_completions,
+                "tests": reference,
+            }
+            
+            fist_completion = prompt_completions[0] if len(prompt_completions) > 0 else None
+            if fist_completion and prompt not in fist_completion:
+                warnings.warn(f"prompt mismatches generations[0]:\nprompt={prompt}\n\ngeneration={fist_completion}")
+                
+            # each problem is save in a json file
+            temp_file_name = os.path.join(temp_dir, f"{prompt_name['name']}.json")
+            list_files.append(temp_file_name)
+            with open(temp_file_name, "wt") as f:
+                json.dump(problem, f)
+            print(f'saved 1 problem in {temp_file_name}')
+        print(
+            f"Saved {len(list_files)} problems in {temp_dir} for evaluation, each problem has {len(generations[0])} completions"
+        )
+
+        # execute the problems to evaluate them
+        max_workers = cpu_count() - 1 if cpu_count() > 1 else 1
+        for file in tqdm(list_files):
+            evaluate_problem(temp_dir, file, max_workers)
+
+        # compute pass@k scores
+        print('computing pass@k')
+        print(f'*.results.json stored in: {temp_dir}')
+        result_array = np.array(
+            [for_file(p) for p in Path(temp_dir).glob("*.results.json")]
+        )
+        result = result_array.mean(axis=0)
+        name = (
+            temp_dir.split("/")[-1]
+            if temp_dir.split("/")[-1] != ""
+            else temp_dir.split("/")[-2]
+        )
+        results = {
+            f"pass@{k}": v
+            for k, v in zip([1, 10, 100], result)
+            if k <= len(generations[0])
+        }
+
+        print('computed pass@k')
+        return results

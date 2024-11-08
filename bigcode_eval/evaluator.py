@@ -8,6 +8,7 @@ from typing import List
 
 from bigcode_eval import tasks
 from bigcode_eval.generation import parallel_generations
+from bigcode_eval.tasks.code_to_code import py, java
 
 _WARNING = """
 ################################################################################
@@ -50,9 +51,10 @@ class Evaluator:
         # adjust n_tasks by args.limit_start to prevent out of bounds issues 
         if not self.args.limit:
             n_tasks -= self.args.limit_start
-        references = [task.get_reference(dataset[i]) for i in range(self.args.limit_start, self.args.limit_start+n_tasks)]
 
         if self.args.check_references:
+            if task_name == "code2code-py-java":
+                raise Exception("check_references is not implemented yet")
             if "get_solution" in inspect.signature(task.get_reference).parameters:
                 solutions = [[task.get_reference(dataset[i], get_solution=True)] for i in range(self.args.limit_start, self.args.limit_start+n_tasks)]
             else:
@@ -89,6 +91,24 @@ class Evaluator:
         audit_generations = getattr(task, 'audit_generations', None)
         if callable(audit_generations):
             task.audit_generations(generations)
+            
+        print(f'generate_text collecting references')
+        references = []
+        
+        for task_gens in generations:
+            first = task_gens[0]
+            java_func_name = java.extract_function_name_from_prompt(first).replace('_', '').lower()
+            assert java_func_name
+            
+            target_problem = task.test_fnc_name_prompt_map[java_func_name]
+
+            if target_problem is None:
+                print(f'no target problem for translated java func name={java_func_name}')
+                raise Exception(
+                    f'no target problem for translated java func name={java_func_name}')
+            
+            print(f'found reference of {target_problem["name"]}: {java_func_name}')
+            references.append(task.get_reference(target_problem))
 
         return generations, references
 
