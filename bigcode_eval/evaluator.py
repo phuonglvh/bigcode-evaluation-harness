@@ -95,20 +95,22 @@ class Evaluator:
         print(f'generate_text collecting references')
         references = []
         
-        for task_gens in generations:
-            first = task_gens[0]
-            java_func_name = java.extract_function_name_from_prompt(first).replace('_', '').lower()
-            assert java_func_name
-            
-            target_problem = task.test_fnc_name_prompt_map[java_func_name]
+        for gen_ith, problem_gens in enumerate(generations):
+            first_gen = problem_gens[0]
+            doc_id = task.identify_doc(first_gen)
+            assert doc_id
+            dataset_doc = task.get_doc(doc_id)
 
-            if target_problem is None:
-                print(f'no target problem for translated java func name={java_func_name}')
-                raise Exception(
-                    f'no target problem for translated java func name={java_func_name}')
+            if dataset_doc is None:
+                print(f"no dataset's doc for {doc_id}")
+                
+                dataset_doc = task.get_doc_by_dataset_id(gen_ith)
+                warnings.warn(f'found dataset doc for dataset_idx={gen_ith}, doc_id={doc_id}: {dataset_doc["name"]}')
+                if dataset_doc is None:
+                    raise Exception(f"no dataset's doc for problem#{gen_ith}, generation: {first_gen}")
             
-            print(f'found reference of {target_problem["name"]}: {java_func_name}')
-            references.append(task.get_reference(target_problem))
+            print(f'found reference of {dataset_doc["name"]}: {doc_id}')
+            references.append(task.get_reference(dataset_doc))
 
         return generations, references
 

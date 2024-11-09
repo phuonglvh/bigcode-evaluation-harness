@@ -2,7 +2,7 @@ import inspect
 from pprint import pprint
 
 from . import (apps, bug_fix, code_to_code, codexglue_code_to_text,
-               codexglue_text_to_text, conala, concode, ds1000, gsm, humaneval, humanevalplus,
+               codexglue_text_to_text, conala, concode, ds1000, gsm, humaneval, humanevalx, humanevalplus,
                humanevalpack, instruct_humaneval, instruct_wizard_humaneval,
                mbpp, mbppplus, multiple_enc_dec, multiple, parity, python_bugs, quixbugs,
                recode, santacoder_fim,
@@ -19,6 +19,7 @@ TASK_REGISTRY = {
     "concode": concode.Concode,
     **ds1000.create_all_tasks(),
     **humaneval.create_all_tasks(),
+    **humanevalx.create_all_tasks(),
     **humanevalplus.create_all_tasks(),
     **humanevalpack.create_all_tasks(),
     "mbpp": mbpp.MBPP,
@@ -84,7 +85,8 @@ def get_task(task_name, args=None):
         kwargs['limit_start'] = args.limit_start
         kwargs['limit'] = args.limit
         return TASK_REGISTRY[task_name](**kwargs)
-    except KeyError:
+    except KeyError as ex:
+        print(ex)
         print("Available tasks:")
         pprint(TASK_REGISTRY)
         raise KeyError(f"Missing task {task_name}")
@@ -92,8 +94,10 @@ def get_task(task_name, args=None):
 
 def get_code_to_code_task(task_name, args=None):
     try:
-        kwargs = {'source_lang': args.source_lang,
-                  'source_generations_path': args.source_generations_path}
+        kwargs = {
+            'source_lang': args.source_lang,
+            'source_generations_path': args.source_generations_path
+        }
         kwargs['limit_start'] = args.limit_start
         kwargs['limit'] = args.limit
         if "prompt" in inspect.signature(TRANSLATION_TASK_REGISTRY[task_name]).parameters:
