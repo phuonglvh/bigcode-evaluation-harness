@@ -17,7 +17,7 @@ top_k=0
 
 max_length=1024
 n_samples=1
-seed=20
+seed=15
 precision=bf16
 lang=java
 
@@ -63,4 +63,4 @@ python code_to_code_trans.py --model "$AUTHOR/$MODEL_NAME" \
     --source_generations_path "$source_generations_path" \
     --source_lang $source_lang \
     --metric_output_path "$BASE_DIR/$generations_name-eval-${eval_limit_start}-${eval_limit}-evaluation_results.json" \
-    --max_memory_per_gpu auto
+    --max_memory_per_gpu auto > "$BASE_DIR/$common_name-generations-${limit_start}-${limit}.log"

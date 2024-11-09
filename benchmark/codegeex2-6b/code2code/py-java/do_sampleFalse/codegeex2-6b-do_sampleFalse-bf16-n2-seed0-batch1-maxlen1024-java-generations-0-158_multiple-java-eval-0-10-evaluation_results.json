@@ -1,6 +1,6 @@
 {
   "code2code-multiple-java": {
-    "pass@1": 0.25316455696202533
+    "pass@1": 0.012658227848101266
   },
   "config": {
     "prefix": "",
@@ -28,9 +28,9 @@
     "postprocess": true,
     "allow_code_execution": true,
     "generation_only": false,
-    "load_generations_path": "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/codegeex-chat-pro-0-158_code2code-multiple-java-translated-codes.json",
+    "load_generations_path": "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/benchmark/codegeex2-6b/code2code/py-java/do_sampleFalse/codegeex2-6b-do_sampleFalse-bf16-n1-seed0-batch1-maxlen1024-java-generations-0-158_code2code-multiple-java-translated-codes.json",
     "load_data_path": null,
-    "metric_output_path": "./benchmark/codegeex2-6b/code2code/py-java/do_sampleFalse/codegeex2-6b-do_sampleFalse-bf16-n2-seed0-batch1-maxlen1024-java-generations-0-158_multiple-java-eval-0-158-evaluation_results.json",
+    "metric_output_path": "./benchmark/codegeex2-6b/code2code/py-java/do_sampleFalse/codegeex2-6b-do_sampleFalse-bf16-n2-seed0-batch1-maxlen1024-java-generations-0-158_multiple-java-eval-0-10-evaluation_results.json",
     "save_generations": true,
     "load_generations_intermediate_paths": null,
     "save_generations_path": "./benchmark/codegeex2-6b/code2code/py-java/do_sampleFalse/codegeex2-6b-do_sampleFalse-bf16-n2-seed0-batch1-maxlen1024-java-generations-0-158.json",

@@ -133,12 +133,12 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
             os.path.dirname(os.path.realpath(__file__)), 'datasets', f"humaneval-{self.source_lang}-{language}-refined.json"), "r")))
         
         # {function_name -> task}
-        self.test_fnc_name_prompt_map = self.build_func_name_prompt_map(self.dataset['test'])
+        self.problem_map = self.build_problem_map(self.dataset['test'])
         
         self.stop_words = self.dataset["test"][0]["stop_tokens"] + ["<file_sep>"]
         self.translated_dataset: Dataset = None
         
-    def build_func_name_prompt_map(self, test_dataset):
+    def build_problem_map(self, test_dataset):
         # build target {function_name -> task}
         tgt_map = {}
         
@@ -209,7 +209,7 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
                 src_func_name = py.extract_function_name_from_prompt(task_gen).replace('_', '').lower()
 
                 print(f'task func name={src_func_name}')
-                target_lang_task = self.test_fnc_name_prompt_map[src_func_name]
+                target_lang_task = self.problem_map[src_func_name]
                 
                 if target_lang_task is None:
                     print(f'no target task for source func name={src_func_name}')
@@ -232,7 +232,7 @@ class Code2CodeMultiPLE(GeneralMultiPLE):
         translated_dataset_path = 'translated-dataset.json'
         with open(translated_dataset_path, 'w') as f:
             json.dump(translated_tasks, f)
-            print(f'num of target_lang_tasks:{len(self.test_fnc_name_prompt_map.keys())}')
+            print(f'num of target_lang_tasks:{len(self.problem_map.keys())}')
             print(f'num of flatten translated_tasks:{len(translated_tasks)}')
             print(f'saved translated dataset to {translated_dataset_path}')
             
