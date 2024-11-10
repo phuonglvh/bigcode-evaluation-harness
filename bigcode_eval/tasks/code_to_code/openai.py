@@ -3,64 +3,21 @@ from concurrent.futures import ThreadPoolExecutor
 import requests
 import json
 import sseclient
+from bigcode_eval.tasks.openai import openai_chat_completions
 
 
-def codegeex_chat_pro_translate(source_code, target_language="Java"):
-    code_token = '7b4b2edb-04c7-42a8-b8cc-c26cc47bbf9d'
-
-    # Define the URL
-    url = 'https://codegeex.cn/prod/code/chatCodeSseV3/chat'
-
-    # Define the headers
-    headers = {
-        'accept': 'text/event-stream',
-        'accept-language': 'en-US',
-        'code-token': code_token,
-        'content-type': 'application/json',
-    }
-
-    # Define the body of the request
-    body = {
-        "lang": target_language,
-        "machineId": "0b5607b5252bf2b518f0a541db6c2b8ef6f1699fdda8fe1c3ce378854cf2add3",
-        "history": [],
-        "command": "translation",
-        "prompt": "",
-        "locale": "en",
-        "model": "codegeex-chat-pro",
-        "code": source_code
-    }
-
-    # Make the POST request
-    response = requests.post(url, json=body, headers=headers, stream=True)
-
-    # Check if the response is successful
-    if response.status_code != 200:
-        print(f"Request failed with status code: {response.status_code}")
-        print("Response body:", response.text)
-        return None
-
-    # Create an SSE client for processing the streaming response
-    client = sseclient.SSEClient(response)
-
-    translated_code = ""
-    for event in client.events():
-        try:
-            event_data = json.loads(event.data)
-            if event.event == "add":
-                translated_code += event_data.get("text", "")
-            elif event.event == "finish":
-                # If you want to do something with the finished translation, you can add it here
-                break
-        except json.JSONDecodeError:
-            print("Error decoding JSON:", event.data)
-
-    return translated_code
+def openai_translate(source_code, target_language="Java", model='gpt-4o'):
+    return openai_chat_completions(
+        [
+            {'role': 'system', 'content': 'You are a superb code translator.'},
+            {'role': 'user', 'content': source_code}
+        ], 'gpt-4o')
 
 
-def codegeex_chat_pro_translate_and_postprocess(translated_prompts_path, save_translations_path, limit_start=None, limit=None, parallel=False, max_workers=5):
+
+def openai_translate_and_postprocess(translated_prompts_path, save_translations_path, limit_start=None, limit=None, parallel=False, max_workers=5, **kwargs):
     prompts = json.load(open(translated_prompts_path, "r"))
-
+    
     translated_codes = []
 
     # Slice the prompts list based on the limit_start (optional), limit (optional)
@@ -81,7 +38,8 @@ def codegeex_chat_pro_translate_and_postprocess(translated_prompts_path, save_tr
 
     # Worker function
     def process_prompt(prompt):
-        translated_code = codegeex_chat_pro_translate(prompt)
+        translated_code = openai_translate(
+            prompt, target_language=target_language, model=kwargs.get('model', 'gpt-4o'))
         for text, new_text in replacements:
             translated_code = translated_code.replace(text, new_text)
 
@@ -99,7 +57,7 @@ def codegeex_chat_pro_translate_and_postprocess(translated_prompts_path, save_tr
         print(f'Translated {len(translated_codes)} prompts in parallel')
     else:
         for prompt in tqdm(selected_prompts, desc="Translating Prompts", unit="prompt"):
-            translated_code = codegeex_chat_pro_translate(prompt)
+            translated_code = openai_translate(prompt)
             for text, new_text in replacements:
                 translated_code = translated_code.replace(text, new_text)
 
@@ -111,3 +69,10 @@ def codegeex_chat_pro_translate_and_postprocess(translated_prompts_path, save_tr
     with open(save_translations_path, 'w') as f:
         f.write(json.dumps(translated_codes, indent=2))
         print(f'saved #{len(translated_codes)} translations to {save_translations_path}')
+
+
+if __name__ == "__main__":
+    print(openai_chat_completions([
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Who won the world series in 2020?"},
+    ]))

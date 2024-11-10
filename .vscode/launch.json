@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Problem",
+            "request": "launch",
+            "mainClass": "Problem",
+            "projectName": "bigcode-evaluation-harness_36af2b19"
+        },
+        {
             "name": "Python: Current Module",
             "type": "python",
             "request": "launch",
@@ -86,12 +93,7 @@
                 "--model",
                 "codeparrot/codeparrot-small",
                 "--tasks",
-                // "humaneval",
-                // "multiple-js",
-                // "multiple-java",
                 "multiple-py",
-                // "ds1000-numpy-completion",
-                // "concode",
                 "--max_length_generation",
                 "512",
                 "--temperature",
@@ -204,7 +206,7 @@
                 "--limit_start",
                 "0",
                 "--limit",
-                "1",
+                "2",
                 "--save_references",
                 "--save_references_path",
                 "${workspaceFolder}/benchmark/codeparrot-small/code2code/py-java/codeparrot-small-temp0.2-p0.95-bf16-n1-batch1-maxlen1024-java-references-0-1.json",
@@ -215,7 +217,30 @@
                 "--source_generations_path",
                 "${workspaceFolder}/benchmark/CodeLlama-13b-Python-hf/py/improve/pass@1/t0.2-p0.95-k0-batch1-n1/CodeLlama-13b-Python-hf-temp0.2-p0.95-k0-bf16-n1-seed5-batch1-maxlen1024-py-generations-0-158_multiple-py.json",
                 "--source_lang",
-                "py",
+                "py"
+            ]
+        },
+        {
+            "name": "eval: humaneval-x",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--model",
+                "THUDM/hanimeval-x-handcraft",
+                "--tasks",
+                "humanevalx-java",
+                "--allow_code_execution",
+                "--trust_remote_code",
+                "--limit_start",
+                "0",
+                "--limit",
+                "164",
+                "--load_generations_path",
+                "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/benchmark/humaneval-x-handcraft/humaneval-x/humaneval-x-handcraft-humaneval_python_java_prompts-translations-0-164.json",
+                "--metric_output_path",
+                "./benchmark/humanmeval-x-handcraft/humaneval-x/humaneval-x-handcraft-humaneval_python_java_prompts-translations-0-164-eval-0-164-evaluation_results.json",
             ]
         }
     ]

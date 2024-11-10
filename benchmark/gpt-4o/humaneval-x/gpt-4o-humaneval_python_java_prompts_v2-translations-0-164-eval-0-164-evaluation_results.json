@@ -1,6 +1,6 @@
 {
   "humanevalx-java": {
-    "pass@1": 1.0
+    "pass@1": 0.9146341463414634
   },
   "config": {
     "prefix": "",
@@ -12,7 +12,7 @@
     "n_samples": 1,
     "eos": "<|endoftext|>",
     "seed": 0,
-    "model": "THUDM/hanimeval-x-handcraft",
+    "model": "OpenAI/gpt-4o",
     "modeltype": "causal",
     "peft_model": null,
     "revision": null,
@@ -32,9 +32,9 @@
     "postprocess": true,
     "allow_code_execution": true,
     "generation_only": false,
-    "load_generations_path": "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/benchmark/humaneval-x-handcraft/humaneval-x/humaneval-x-handcraft-humaneval_python_java_prompts-translations-0-164.json",
+    "load_generations_path": "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/benchmark/openai/humaneval-x/gpt-4o-humaneval_python_java_prompts_v2-translations-0-164.json",
     "load_data_path": null,
-    "metric_output_path": "./benchmark/hanimeval-x-handcraft/humaneval-x/humaneval-x-handcraft-humaneval_python_java_prompts-translations-0-164-eval-0-164-evaluation_results.json",
+    "metric_output_path": "./benchmark/gpt-4o/humaneval-x/gpt-4o-humaneval_python_java_prompts_v2-translations-0-164-eval-0-164-evaluation_results.json",
     "save_generations": false,
     "load_generations_intermediate_paths": null,
     "save_generations_path": "generations.json",
