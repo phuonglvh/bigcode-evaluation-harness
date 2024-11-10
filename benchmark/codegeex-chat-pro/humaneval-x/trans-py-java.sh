@@ -6,14 +6,16 @@ export EVAL_JAVA_EXTRA_CLASSPATH_FOLDER=$PWD/build/java-bin
 
 # Translate code2code
 # py to java
-source_generations_path="$(realpath .)/benchmark/codegeex-chat-pro/humaneval-x/codegeex-chat-pro-humaneval_python_java_prompts-translations-0-164.json"
+prompt_version='v2'
+
+source_generations_path="$(realpath .)/benchmark/codegeex-chat-pro/humaneval-x/codegeex-chat-pro-humaneval_python_java_prompts_$prompt_version-translations-0-164.json"
 num_source_generations=164
-source_lang=py
+# source_lang=py
 
 AUTHOR="THUDM"
-MODEL_NAME="codegeex2-6b"
+MODEL_NAME="codegeex-chat-pro"
 
-lang=java
+# lang=java
 eval_limit_start=0
 eval_limit=$num_source_generations
 
@@ -22,7 +24,7 @@ filename=$(basename -- "$source_generations_path")
 # extension="${filename##*.}"
 generations_name="${filename%.*}"
 
-BASE_DIR=./benchmark/$MODEL_NAME/code2code/$source_lang-$lang/humaneval-x
+BASE_DIR=./benchmark/$MODEL_NAME/humaneval-x
 
 mkdir -p $BASE_DIR
 # rm -rf /tmp/* /var/tmp/*.json
