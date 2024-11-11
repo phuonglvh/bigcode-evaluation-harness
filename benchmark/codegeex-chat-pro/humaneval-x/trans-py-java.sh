@@ -4,16 +4,17 @@ set -euox
 
 export EVAL_JAVA_EXTRA_CLASSPATH_FOLDER=$PWD/build/java-bin
 
+AUTHOR="THUDM"
+MODEL_NAME="codegeex-chat-pro"
+
 # Translate code2code
 # py to java
-prompt_version='v2'
+prompt_version='v3'
 
-source_generations_path="$(realpath .)/benchmark/codegeex-chat-pro/humaneval-x/codegeex-chat-pro-humaneval_python_java_prompts_$prompt_version-translations-0-164.json"
+source_generations_path="$(realpath .)/benchmark/$MODEL_NAME/humaneval-x/$MODEL_NAME-humaneval_python_java_prompts_$prompt_version-translations-0-164.json"
 num_source_generations=164
 # source_lang=py
 
-AUTHOR="THUDM"
-MODEL_NAME="codegeex-chat-pro"
 
 # lang=java
 eval_limit_start=0
