@@ -6,8 +6,6 @@ import sseclient
 
 
 def codegeex_chat_pro_translate(source_code, target_language="Java"):
-    code_token = '7b4b2edb-04c7-42a8-b8cc-c26cc47bbf9d'
-
     # Define the URL
     url = 'https://codegeex.cn/prod/code/chatCodeSseV3/chat'
 
@@ -15,7 +13,7 @@ def codegeex_chat_pro_translate(source_code, target_language="Java"):
     headers = {
         'accept': 'text/event-stream',
         'accept-language': 'en-US',
-        'code-token': code_token,
+        'code-token': os.environ.get('CODEGEEX_CHAT_PRO_TOKEN'),
         'content-type': 'application/json',
     }
 
