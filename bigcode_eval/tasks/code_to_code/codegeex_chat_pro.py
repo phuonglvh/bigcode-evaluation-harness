@@ -3,6 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 import requests
 import json
 import sseclient
+import os
 
 
 def codegeex_chat_pro_translate(source_code, target_language="Java"):
