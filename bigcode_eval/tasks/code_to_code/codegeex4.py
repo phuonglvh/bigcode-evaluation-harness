@@ -43,7 +43,7 @@ def codegeex4_translate(prompt):
     headers = {
         'accept-language': 'en-US',
         'content-type': 'application/json',
-        'Authorization': f'Bearer {os.environ.get("ZHIPUAI_API_KEY", '3df252c70b96ea14a2f98bea30a305e3.ArFFZLsD7749V5vJ')}'
+        'Authorization': f'Bearer {os.environ.get("ZHIPUAI_API_KEY")}'
     }
 
     # Define the body of the request
