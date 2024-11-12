@@ -1,0 +1,16 @@
+{
+  "name": "Java_1_separateParenGroups",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other\n    Ignore any spaces in the input string.\n    >>> separateParenGroups(\"( ) (( )) (( )( ))\")\n    [\"()\", \"(())\", \"(()())\"]\n     */\n    public List<String> separateParenGroups(String paren_string) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.separateParenGroups(\"(()()) ((())) () ((())()())\").equals(Arrays.asList(\n                        \"(()())\", \"((()))\", \"()\", \"((())()())\"\n                )),\n                s.separateParenGroups(\"() (()) ((())) (((())))\").equals(Arrays.asList(\n                        \"()\", \"(())\", \"((()))\", \"(((())))\"\n                )),\n                s.separateParenGroups(\"(()(())((())))\").equals(Arrays.asList(\n                        \"(()(())((())))\"\n                )),\n                s.separateParenGroups(\"( ) (( )) (( )( ))\").equals(Arrays.asList(\"()\", \"(())\", \"(()())\"))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\n\nclass Problem {\n    public List<String> separateParenGroups(String paren_string) {\n        List<String> result = new ArrayList<>();\n        StringBuilder current_string = new StringBuilder();\n        int current_depth = 0;\n\n        for (char c : paren_string.toCharArray()) {\n            if (c == '(') {\n                current_depth++;\n                current_string.append(c);\n            } else if (c == ')') {\n                current_depth--;\n                current_string.append(c);\n\n                if (current_depth == 0) {\n                    result.add(current_string.toString());\n                    current_string.setLength(0);\n                }\n            }\n        }\n\n        return result;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.separateParenGroups(\"(()()) ((())) () ((())()())\").equals(Arrays.asList(\n                        \"(()())\", \"((()))\", \"()\", \"((())()())\"\n                )),\n                s.separateParenGroups(\"() (()) ((())) (((())))\").equals(Arrays.asList(\n                        \"()\", \"(())\", \"((()))\", \"(((())))\"\n                )),\n                s.separateParenGroups(\"(()(())((())))\").equals(Arrays.asList(\n                        \"(()(())((())))\"\n                )),\n                s.separateParenGroups(\"( ) (( )) (( )( ))\").equals(Arrays.asList(\"()\", \"(())\", \"(()())\"))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1731426564,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}

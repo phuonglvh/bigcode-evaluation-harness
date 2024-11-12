@@ -1,0 +1,16 @@
+{
+  "name": "Java_3_belowZero",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    You're given a list of deposit and withdrawal operations on a bank account that starts with\n    zero balance. Your task is to detect if at any point the balance of account fallls below zero, and\n    at that point function should return True. Otherwise it should return False.\n    >>> belowZero(Arrays.asList(1, 2, 3))\n    false\n    >>> belowZero(Arrays.asList(1, 2, -4, 5))\n    true\n     */\n    public boolean belowZero(List<Integer> operations) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                !s.belowZero(new ArrayList<>(Arrays.asList())),\n                !s.belowZero(new ArrayList<>(Arrays.asList(1, 2, -3, 1, 2, -3))),\n                s.belowZero(new ArrayList<>(Arrays.asList(1, 2, -4, 5, 6))),\n                !s.belowZero(new ArrayList<>(Arrays.asList(1, -1, 2, -2, 5, -5, 4, -4))),\n                s.belowZero(new ArrayList<>(Arrays.asList(1, -1, 2, -2, 5, -5, 4, -5))),\n                s.belowZero(new ArrayList<>(Arrays.asList(1, -2, 2, -2, 5, -5, 4, -4)))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public boolean belowZero(List<Integer> operations) {\n        int balance = 0;\n\n        for (int op : operations) {\n            balance += op;\n            if (balance < 0) {\n                return true;\n            }\n        }\n\n        return false;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                !s.belowZero(new ArrayList<>(Arrays.asList())),\n                !s.belowZero(new ArrayList<>(Arrays.asList(1, 2, -3, 1, 2, -3))),\n                s.belowZero(new ArrayList<>(Arrays.asList(1, 2, -4, 5, 6))),\n                !s.belowZero(new ArrayList<>(Arrays.asList(1, -1, 2, -2, 5, -5, 4, -4))),\n                s.belowZero(new ArrayList<>(Arrays.asList(1, -1, 2, -2, 5, -5, 4, -5))),\n                s.belowZero(new ArrayList<>(Arrays.asList(1, -2, 2, -2, 5, -5, 4, -4)))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1731425902,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}

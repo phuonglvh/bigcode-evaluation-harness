@@ -1,0 +1,16 @@
+{
+  "name": "Java_53_addTwoNumbers",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Add two numbers x and y\n    >>> addTwoNumbers(2, 3)\n    5\n    >>> addTwoNumbers(5, 7)\n    12\n     */\n    public int addTwoNumbers(int x, int y) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        Random rand = new Random(42);\n        List<Boolean> correct = Arrays.asList(\n                s.addTwoNumbers(0, 1) == 1,\n                s.addTwoNumbers(1, 0) == 1,\n                s.addTwoNumbers(2, 3) == 5,\n                s.addTwoNumbers(5, 7) == 12,\n                s.addTwoNumbers(7, 5) == 12\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n        for (int i = 0; i < 100; i++) {\n            int x = rand.nextInt(1000), y = rand.nextInt(1000);\n            if (s.addTwoNumbers(x, y) != x + y) {\n                throw new AssertionError();\n            }\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int add(int x, int y) {\n        return x + y;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        Random rand = new Random(42);\n        List<Boolean> correct = Arrays.asList(\n                s.addTwoNumbers(0, 1) == 1,\n                s.addTwoNumbers(1, 0) == 1,\n                s.addTwoNumbers(2, 3) == 5,\n                s.addTwoNumbers(5, 7) == 12,\n                s.addTwoNumbers(7, 5) == 12\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n        for (int i = 0; i < 100; i++) {\n            int x = rand.nextInt(1000), y = rand.nextInt(1000);\n            if (s.addTwoNumbers(x, y) != x + y) {\n                throw new AssertionError();\n            }\n        }\n    }\n}",
+      "timestamp": 1731425926,
+      "stdout": "",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp5oo2n03r.java:14: error: cannot find symbol\n                s.addTwoNumbers(0, 1) == 1,\n                 ^\n  symbol:   method addTwoNumbers(int,int)\n  location: variable s of type Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp5oo2n03r.java:15: error: cannot find symbol\n                s.addTwoNumbers(1, 0) == 1,\n                 ^\n  symbol:   method addTwoNumbers(int,int)\n  location: variable s of type Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp5oo2n03r.java:16: error: cannot find symbol\n                s.addTwoNumbers(2, 3) == 5,\n                 ^\n  symbol:   method addTwoNumbers(int,int)\n  location: variable s of type Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp5oo2n03r.java:17: error: cannot find symbol\n                s.addTwoNumbers(5, 7) == 12,\n                 ^\n  symbol:   method addTwoNumbers(int,int)\n  location: variable s of type Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp5oo2n03r.ja",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

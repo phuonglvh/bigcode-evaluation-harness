@@ -1,0 +1,16 @@
+{
+  "name": "Java_139_specialFactorial",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    The Brazilian factorial is defined as:\n    brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1!\n    where n > 0\n\n    For example:\n    >>> specialFactorial(4)\n    288\n\n    The function will receive an integer as input and should return the special\n    factorial of this integer.\n     */\n    public long specialFactorial(int n) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.specialFactorial(4) == 288,\n                s.specialFactorial(5) == 34560,\n                s.specialFactorial(7) == 125411328000L,\n                s.specialFactorial(1) == 1\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public long specialFactorial(int n) {\n        long fact_i = 1;\n        long special_fact = 1;\n        for (int i = 1; i <= n; i++) {\n            fact_i *= i;\n            special_fact *= fact_i;\n        }\n        return special_fact;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.specialFactorial(4) == 288,\n                s.specialFactorial(5) == 34560,\n                s.specialFactorial(7) == 125411328000L,\n                s.specialFactorial(1) == 1\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1731425968,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}
