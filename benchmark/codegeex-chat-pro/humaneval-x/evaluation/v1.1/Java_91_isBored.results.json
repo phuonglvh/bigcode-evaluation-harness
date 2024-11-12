@@ -1,0 +1,16 @@
+{
+  "name": "Java_91_isBored",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    You'll be given a string of words, and your task is to count the number\n    of boredoms. A boredom is a sentence that starts with the word \"I\".\n    Sentences are delimited by '.', '?' or '!'.\n\n    For example:\n    >>> isBored(\"Hello world\")\n    0\n    >>> isBored(\"The sky is blue. The sun is shining. I love this weather\")\n    1\n     */\n    public int isBored(String S) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.isBored(\"Hello world\") == 0,\n                s.isBored(\"Is the sky blue?\") == 0,\n                s.isBored(\"I love It !\") == 1,\n                s.isBored(\"bIt\") == 0,\n                s.isBored(\"I feel good today. I will be productive. will kill It\") == 2,\n                s.isBored(\"You and I are going for a walk\") == 0\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.regex.*;\n\nclass Problem {\n    public int isBored(String S) {\n        Pattern pattern = Pattern.compile(\"[.?!]\\\\s*\");\n        Matcher matcher = pattern.matcher(S);\n        String[] sentences = pattern.split(S);\n        int count = 0;\n        for (String sentence : sentences) {\n            if (sentence.length() >= 2 && sentence.substring(0, 2).equals(\"I \")) {\n                count++;\n            }\n        }\n        return count;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.isBored(\"Hello world\") == 0,\n                s.isBored(\"Is the sky blue?\") == 0,\n                s.isBored(\"I love It !\") == 1,\n                s.isBored(\"bIt\") == 0,\n                s.isBored(\"I feel good today. I will be productive. will kill It\") == 2,\n                s.isBored(\"You and I are going for a walk\") == 0\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1731429889,
+      "stdout": "",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpo974b4u0.java:20: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpo974b4u0.java:20: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}
