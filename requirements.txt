@@ -6,3 +6,4 @@ pyext==0.5 # avoid AttributeError: module 'inspect' has no attribute 'getargspec
 mosestokenizer==1.0.0
 huggingface_hub>=0.11.1
 fsspec<2023.10.0
+python-dotenv==1.0.1
