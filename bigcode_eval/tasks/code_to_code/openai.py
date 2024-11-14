@@ -39,7 +39,7 @@ def openai_translate_and_postprocess(translated_prompts_path, save_translations_
     # Worker function
     def process_prompt(prompt):
         translated_code = openai_translate(
-            prompt, target_language=target_language, model=kwargs.get('model', 'gpt-4o'))
+            prompt, target_language="Java", model=kwargs.get('model', 'gpt-4o'))
         for text, new_text in replacements:
             translated_code = translated_code.replace(text, new_text)
 

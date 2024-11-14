@@ -4,16 +4,16 @@ set -euox
 
 export EVAL_JAVA_EXTRA_CLASSPATH_FOLDER=$PWD/build/java-bin
 
+AUTHOR="OpenAI"
+MODEL_NAME="gpt-4o"
 # Translate code2code
 # py to java
-prompt_version='v2'
+prompt_version='v5'
 
-source_generations_path="$(realpath .)/benchmark/openai/gpt-4o/humaneval-x/gpt-4o-humaneval_python_java_prompts_${prompt_version}-translations-0-164.json"
+source_generations_path="$(realpath .)/benchmark/openai/$MODEL_NAME/humaneval-x/$MODEL_NAME-humaneval_python_java_prompts_${prompt_version}-translations-0-164.json"
 num_source_generations=164
 # source_lang=py
 
-AUTHOR="OpenAI"
-MODEL_NAME="gpt-4o"
 
 # lang=java
 eval_limit_start=0
