@@ -1,0 +1,23 @@
+11759336
+Age:
+10 min.
+Remaining:
+28 days
+Germany, DE
+1x RTX A600036.1  TFLOPS
+m:24749
+host:139742
+unverified
+0.5/48.0 GB
+611.2 GB/s
+Virtual Mainboard
+PCIE 4.0, 16x
+22.6 GB/s
+AMD EPYC 7402P 24-Core Processor
+6.0/24 cpu
+0/55 GB
+QEMU QEMU
+464 MB/s0.1/28.4 GB
+2108.8 Mbps6647.5 MbpsMax CUDA: 12.3
+GPU: 0% 25C , CPU: 0% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+$0.268/hr

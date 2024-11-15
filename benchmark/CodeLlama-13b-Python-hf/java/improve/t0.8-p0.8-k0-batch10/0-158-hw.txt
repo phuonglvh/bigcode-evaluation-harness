@@ -1,0 +1,23 @@
+13102364
+Age:
+19 hrs.
+Remaining:
+18 days
+Virginia, US
+2x RTX 309071.5  TFLOPS
+m:23970
+host:79766
+unverified
+0.6/48.0 GB
+767.3 GB/s
+H12SSL
+PCIE 4.0, 16x
+24.3 GB/s
+AMD EPYC 7542 32-Core Processor
+32.0/64 cpu
+0/258 GB
+WD_BLACK SN850X 4000GB
+5970 MB/s27.0/27.9 GB
+855.0 Mbps584.4 MbpsMax CUDA: 12.4
+GPU: 0% 29C , CPU: 0% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+$0.280/hr 

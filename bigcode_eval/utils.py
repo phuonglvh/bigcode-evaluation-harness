@@ -18,7 +18,7 @@ class TokenizedDataset(IterableDataset):
     Multiple copies of the same prompt are sent sequentially. See compute_code for more details.
     The prompt can either be:
     - one prompt: normal code completion
-    - two prompts: for infilling mode (prefix, suffix) or instructin-tuning mode (instruction, context)
+    - two prompts: for infilling mode (prefix, suffix) or instruction-tuning mode (instruction, context)
     """
 
     def __init__(
@@ -104,6 +104,13 @@ class TokenizedDataset(IterableDataset):
             max_length=self.max_length,
             return_token_type_ids=return_token_type_ids,
         )
+        
+        # from utils.java import build_java_public_static_func_with_empty_body
+        # with open('decoded_outputs.txt', 'w') as fp:
+        #     for task_id in range(self.n_tasks):
+        #         fp.write(build_java_public_static_func_with_empty_body(self.tokenizer.decode(
+        #             outputs.input_ids[task_id], skip_special_tokens=False, clean_up_tokenization_spaces=False)) + '\n')
+
         if self.has_encoder:
             outputs_encoder = self.tokenizer(
                 prompts_encoder,
@@ -240,7 +247,7 @@ def complete_code(
     **gen_kwargs,
 ):
     """Generate multiple codes for each task in the dataset using multiple GPUs with accelerate.
-    dataloader sends all the prompts from the evalution dataset to the model as the following:
+    dataloader sends all the prompts from the evaluation dataset to the model as the following:
     [p_0_0, p_0_1, ..., p_0_nc-1, p_1_0, ..., p_nt-1_nc-1] where nc is the number of copies of the prompt,
     and nt is the number of tasks. nc is such that num_samples(for each task)= nc * batch_size
     """

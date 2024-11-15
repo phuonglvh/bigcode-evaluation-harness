@@ -1,0 +1,16 @@
+{
+  "name": "Java_162_stringToMd5",
+  "language": "java",
+  "prompt": "import java.math.BigInteger;\nimport java.security.*;\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Given a string \"text\", return its md5 hash equivalent string with length being 32.\n    If \"text\" is an empty string, return Optional.empty().\n    \n    >>> stringToMd5(\"Hello world\") == \"3e25960a79dbc69b674cd4ec67a72c62\"\n     */\n    public Optional<String> stringToMd5(String text) throws NoSuchAlgorithmException {\n",
+  "tests": "\n    }\n    public static void main(String[] args) throws NoSuchAlgorithmException {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.stringToMd5(\"Hello world\").get().equals(\"3e25960a79dbc69b674cd4ec67a72c62\"),\n                s.stringToMd5(\"\").isEmpty(),\n                s.stringToMd5(\"A B C\").get().equals(\"0ef78513b0cb8cef12743f5aeb35f888\"),\n                s.stringToMd5(\"password\").get().equals(\"5f4dcc3b5aa765d61d8327deb882cf99\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.math.BigInteger;\nimport java.security.*;\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public Optional<String> stringToMd5(String text) throws NoSuchAlgorithmException {\n        if (text == null || text.isEmpty()) {\n            return Optional.empty();\n        }\n        MessageDigest md = MessageDigest.getInstance(\"MD5\");\n        byte[] messageDigest = md.digest(text.getBytes());\n        BigInteger no = new BigInteger(1, messageDigest);\n        String hashtext = no.toString(16);\n        while (hashtext.length() < 32) {\n            hashtext = \"0\" + hashtext;\n        }\n        return Optional.of(hashtext);\n\n    }\n    public static void main(String[] args) throws NoSuchAlgorithmException {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.stringToMd5(\"Hello world\").get().equals(\"3e25960a79dbc69b674cd4ec67a72c62\"),\n                s.stringToMd5(\"\").isEmpty(),\n                s.stringToMd5(\"A B C\").get().equals(\"0ef78513b0cb8cef12743f5aeb35f888\"),\n                s.stringToMd5(\"password\").get().equals(\"5f4dcc3b5aa765d61d8327deb882cf99\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1731422000,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}

@@ -26,6 +26,10 @@ class Task(ABC):
         self.requires_execution = requires_execution
         try:
             self.dataset = load_dataset(path=self.DATASET_PATH, name=self.DATASET_NAME)
+            
+            class_name = self.__class__.__name__
+            warn(f'{class_name} was invoked. However, it shouldn\'t have been. This might lead to `load_dataset` had been called twice (in subclass and {class_name}).')
+
         except Exception as e:
             warn(
                 f"Loading the dataset failed with {str(e)}. This task will use a locally downloaded dataset, not from the HF hub. \
@@ -40,6 +44,28 @@ class Task(ABC):
     def fewshot_examples(self):
         """Loads and returns the few-shot examples for the task if they exist."""
         pass
+    
+    def get_doc_by_dataset_id(self, idx):
+        """Get task's doc by its dataset's id.
+        :param idx: int
+            the index of the doc in the dataset
+        """
+        print(f'get_doc_by_dataset_id: {idx}')
+        return self.get_dataset()[idx]
+
+    def get_doc(self, doc_id):
+        """Get task's doc by its doc's id-like (can be name or id depending on the implementation).
+        :param doc_id: str
+            the generic identifier of the doc in the dataset
+        """
+        raise NotImplementedError()
+    
+    def identify_doc(self, generation):
+        """Get doc's generic identifier from the generation.
+        :param generation: str
+            the generation of the doc's prompt
+        """
+        raise NotImplementedError()
 
     @abstractmethod
     def get_prompt(self, doc):

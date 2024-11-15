@@ -1,0 +1,23 @@
+11778773
+Age:
+2m 25s
+Remaining:
+26 days
+Spain, ES
+3x RTX 3090 105.8  TFLOPS
+m:25503
+host:124171
+unverified
+?/72.0 GB
+766.4 GB/s
+X99
+PCIE 3.0, 4x
+3.0 GB/s
+Xeon® E5-2680 v4
+28.0/28 cpu
+?/0 GB
+1TB SSD
+1410 MB/s-1.0/27.9 GB
+528.0 Mbps646.6 MbpsMax CUDA: 12.2
+Status: 358d4515f414: Download complete
+$0.288/hr

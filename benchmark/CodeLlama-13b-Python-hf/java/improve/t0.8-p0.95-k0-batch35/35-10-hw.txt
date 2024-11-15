@@ -1,0 +1,23 @@
+11824135
+Age:
+1m 46s
+Remaining:
+5 days
+, US
+1x H100 SXM53.5  TFLOPS
+m:26325
+host:87250
+unverified
+0.5/79.6 GB
+2162.1 GB/s
+Motherboard
+PCIE 5.0, 16x
+40.3 GB/s
+CPU
+26.0/208 cpu
+0/227 GB
+Storage
+2739 MB/s0.9/27.9 GB
+1106.2 Mbps4075.1 MbpsMax CUDA: 12.2
+GPU: 0% 23C , CPU: 3% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+$0.474/hr

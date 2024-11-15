@@ -1,0 +1,1 @@
+["code translation\nPython:\ndef strlen(string: str) -> int:\n    return len(string)\nJava:\nimport java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\nclass Problem {\n    public static long strlen(String string) {"]

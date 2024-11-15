@@ -8,6 +8,7 @@ from typing import List
 
 from bigcode_eval import tasks
 from bigcode_eval.generation import parallel_generations
+from bigcode_eval.tasks.code_to_code import py, java
 
 _WARNING = """
 ################################################################################
@@ -50,9 +51,10 @@ class Evaluator:
         # adjust n_tasks by args.limit_start to prevent out of bounds issues 
         if not self.args.limit:
             n_tasks -= self.args.limit_start
-        references = [task.get_reference(dataset[i]) for i in range(self.args.limit_start, self.args.limit_start+n_tasks)]
 
         if self.args.check_references:
+            if task_name == "code2code-py-java":
+                raise Exception("check_references is not implemented yet")
             if "get_solution" in inspect.signature(task.get_reference).parameters:
                 solutions = [[task.get_reference(dataset[i], get_solution=True)] for i in range(self.args.limit_start, self.args.limit_start+n_tasks)]
             else:
@@ -85,6 +87,31 @@ class Evaluator:
             warnings.warn(
                 f"Number of tasks wasn't proportional to number of devices, we removed extra predictions to only keep nsamples={self.args.n_samples}"
             )
+            
+        audit_generations = getattr(task, 'audit_generations', None)
+        if callable(audit_generations):
+            task.audit_generations(generations)
+            
+        print(f'generate_text collecting references')
+        references = []
+        
+        for gen_ith, problem_gens in enumerate(generations):
+            first_gen = problem_gens[0]
+            doc_id = task.identify_doc(first_gen)
+            assert doc_id
+            dataset_doc = task.get_doc(doc_id)
+
+            if dataset_doc is None:
+                print(f"no dataset's doc for {doc_id}")
+                
+                dataset_doc = task.get_doc_by_dataset_id(gen_ith)
+                warnings.warn(f'found dataset doc for dataset_idx={gen_ith}, doc_id={doc_id}: {dataset_doc["name"]}')
+                if dataset_doc is None:
+                    raise Exception(f"no dataset's doc for problem#{gen_ith}, generation: {first_gen}")
+            
+            print(f'found reference of {dataset_doc["name"]}: {doc_id}')
+            references.append(task.get_reference(dataset_doc))
+
         return generations, references
 
     def evaluate(self, task_name, intermediate_generations=None):

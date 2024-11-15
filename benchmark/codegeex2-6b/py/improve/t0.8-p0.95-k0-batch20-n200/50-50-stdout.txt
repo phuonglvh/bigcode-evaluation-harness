@@ -1,0 +1,104 @@
+AUTHOR="THUDM"
+MODEL_NAME="codegeex2-6b"
+
+max_length=1024
+temperature=0.8
+top_p=0.95
+top_k=0
+n_samples=200
+batch_size=20
+seed=42
+precision=bf16
+lang=py
+limit_start=50
+limit=50
+
+python main.py --model "$AUTHOR/$MODEL_NAME" \
+    --tasks multiple-$lang \
+    --max_length_generation $max_length \
+    --temperature $temperature \
+    --top_p $top_p \
+    --top_k $top_k \
+    --seed $seed \
+    --n_samples $n_samples \
+    --batch_size $batch_size \
+    --precision $precision \
+    --allow_code_execution \
+    --trust_remote_code \
+    --save_every_k_tasks 10 \
+    --save_generations \
+    --save_generations_path "./$MODEL_NAME-temp$temperature-p$top_p-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang-generations-$limit_start-$limit.json" \
+    --save_references \
+    --generation_only \
+    --use_auth_token \
+    --limit_start $limit_start \
+    --limit $limit
+Selected Tasks: ['multiple-py']
+Loading model in bf16
+/usr/local/lib/python3.10/dist-packages/transformers/models/auto/auto_factory.py:479: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers.
+  warnings.warn(
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████| 7/7 [00:09<00:00,  1.35s/it]
+/usr/local/lib/python3.10/dist-packages/transformers/utils/hub.py:374: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/transformers/models/auto/tokenization_auto.py:640: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers.
+  warnings.warn(
+Not setting pad_token to eos_token
+generation mode only
+/usr/local/lib/python3.10/dist-packages/datasets/load.py:1429: FutureWarning: The repository for nuprl/MultiPL-E contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/nuprl/MultiPL-E
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+number of problems for this task is 50
+  2%|█▉                                                                                                        | 9/500 [06:57<6:40:55, 48.99s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+  4%|███▉                                                                                                     | 19/500 [15:03<6:24:59, 48.02s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+  6%|██████                                                                                                   | 29/500 [21:03<4:12:37, 32.18s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+  8%|████████▏                                                                                                | 39/500 [24:44<3:02:16, 23.72s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 10%|██████████▎                                                                                              | 49/500 [31:23<4:54:03, 39.12s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 12%|████████████▍                                                                                            | 59/500 [39:19<5:50:28, 47.68s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 14%|██████████████▍                                                                                          | 69/500 [47:27<6:00:19, 50.16s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 16%|████████████████▌                                                                                        | 79/500 [50:37<2:18:16, 19.71s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 18%|██████████████████▋                                                                                      | 89/500 [54:52<3:13:27, 28.24s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 20%|████████████████████▍                                                                                  | 99/500 [1:00:45<4:45:47, 42.76s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 22%|██████████████████████▏                                                                               | 109/500 [1:07:57<4:29:14, 41.32s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 24%|████████████████████████▎                                                                             | 119/500 [1:15:42<4:14:27, 40.07s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 26%|██████████████████████████▎                                                                           | 129/500 [1:18:27<1:14:35, 12.06s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 28%|████████████████████████████▎                                                                         | 139/500 [1:25:57<4:39:06, 46.39s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 30%|██████████████████████████████▍                                                                       | 149/500 [1:30:28<2:35:11, 26.53s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 32%|████████████████████████████████▍                                                                     | 159/500 [1:35:22<2:39:55, 28.14s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 34%|██████████████████████████████████▍                                                                   | 169/500 [1:39:35<2:49:24, 30.71s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 36%|████████████████████████████████████▌                                                                 | 179/500 [1:44:46<3:21:42, 37.70s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 38%|██████████████████████████████████████▌                                                               | 189/500 [1:49:59<1:46:13, 20.49s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 40%|████████████████████████████████████████▌                                                             | 199/500 [1:54:34<1:36:22, 19.21s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 42%|██████████████████████████████████████████▋                                                           | 209/500 [1:58:54<2:34:50, 31.92s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 44%|████████████████████████████████████████████▋                                                         | 219/500 [2:06:18<3:06:26, 39.81s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 46%|██████████████████████████████████████████████▋                                                       | 229/500 [2:15:25<4:05:51, 54.43s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 48%|████████████████████████████████████████████████▊                                                     | 239/500 [2:23:46<3:35:59, 49.65s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 50%|██████████████████████████████████████████████████▊                                                   | 249/500 [2:32:14<3:34:47, 51.34s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 52%|█████████████████████████████████████████████████████▊                                                  | 259/500 [2:33:38<21:38,  5.39s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 54%|██████████████████████████████████████████████████████▉                                               | 269/500 [2:37:04<1:31:20, 23.72s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 56%|████████████████████████████████████████████████████████▉                                             | 279/500 [2:44:35<2:30:04, 40.74s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 58%|██████████████████████████████████████████████████████████▉                                           | 289/500 [2:52:44<2:16:50, 38.91s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 60%|████████████████████████████████████████████████████████████▉                                         | 299/500 [3:00:19<2:31:36, 45.26s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 62%|███████████████████████████████████████████████████████████████                                       | 309/500 [3:08:39<2:41:03, 50.59s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 64%|█████████████████████████████████████████████████████████████████                                     | 319/500 [3:13:17<1:10:27, 23.35s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 66%|███████████████████████████████████████████████████████████████████                                   | 329/500 [3:16:28<1:02:13, 21.83s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 68%|█████████████████████████████████████████████████████████████████████▏                                | 339/500 [3:23:14<1:53:13, 42.20s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 69%|██████████████████████████████████████████████████████████████████████▊                               | 347/500 [3:28:35<1:37:57, 38.41s/it]https://youtu.be/G 70%|███████████████████████████████████████████████████████████████████████▏                              | 349/500 [3:29:57<1:40:48, 40.05s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 72%|█████████████████████████████████████████████████████████████████████████▏                            | 359/500 [3:36:41<1:24:01, 35.76s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 74%|███████████████████████████████████████████████████████████████████████████▎                          | 369/500 [3:42:43<1:35:51, 43.90s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 76%|█████████████████████████████████████████████████████████████████████████████▎                        | 379/500 [3:47:49<1:09:57, 34.69s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 78%|███████████████████████████████████████████████████████████████████████████████▎                      | 389/500 [3:54:20<1:20:32, 43.54s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 80%|█████████████████████████████████████████████████████████████████████████████████▍                    | 399/500 [4:02:01<1:17:11, 45.86s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 82%|█████████████████████████████████████████████████████████████████████████████████████                   | 409/500 [4:07:48<45:31, 30.01s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 84%|███████████████████████████████████████████████████████████████████████████████████████▏                | 419/500 [4:13:56<49:55, 36.98s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 86%|█████████████████████████████████████████████████████████████████████████████████████████▏              | 429/500 [4:21:20<50:56, 43.05s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 88%|███████████████████████████████████████████████████████████████████████████████████████████▎            | 439/500 [4:24:38<18:38, 18.34s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 90%|█████████████████████████████████████████████████████████████████████████████████████████████▍          | 449/500 [4:32:59<44:30, 52.36s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 92%|███████████████████████████████████████████████████████████████████████████████████████████████▍        | 459/500 [4:39:51<22:19, 32.67s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 94%|█████████████████████████████████████████████████████████████████████████████████████████████████▌      | 469/500 [4:46:58<21:27, 41.52s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 96%|███████████████████████████████████████████████████████████████████████████████████████████████████▋    | 479/500 [4:51:05<06:34, 18.77s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+ 98%|█████████████████████████████████████████████████████████████████████████████████████████████████████▋  | 489/500 [4:58:05<08:16, 45.15s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████▊| 499/500 [5:06:07<00:48, 48.93s/it]intermediate generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py_intermediate.json
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████| 500/500 [5:06:56<00:00, 36.83s/it]
+generations were saved at ./codegeex2-6b-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-py-generations-50-50_multiple-py.json
+references were saved at references_multiple-py.json

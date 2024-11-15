@@ -1,0 +1,46 @@
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [49:01<00:00, 14.71s/it]
+generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.9-k0/CodeLlama-13b-Python-hf-temp0.8-p0.9-k0-bf16-n200-batch10-maxlen1024-java-generations-30-10_multiple-java.json
+references were saved at references_multiple-java.json
+evaluation results:
+{
+  "config": {
+    "prefix": "",
+    "do_sample": true,
+    "temperature": 0.8,
+    "top_k": 0,
+    "top_p": 0.9,
+    "n_samples": 200,
+    "eos": "<|endoftext|>",
+    "seed": 0,
+    "model": "codellama/CodeLlama-13b-Python-hf",
+    "modeltype": "causal",
+    "peft_model": null,
+    "revision": null,
+    "token": false,
+    "trust_remote_code": true,
+    "tasks": "multiple-java",
+    "instruction_tokens": null,
+    "batch_size": 10,
+    "max_length_generation": 1024,
+    "precision": "bf16",
+    "load_in_8bit": false,
+    "load_in_4bit": false,
+    "limit": 10,
+    "limit_start": 30,
+    "save_every_k_tasks": 20,
+    "postprocess": true,
+    "allow_code_execution": true,
+    "generation_only": true,
+    "load_generations_path": null,
+    "load_data_path": null,
+    "metric_output_path": "evaluation_results.json",
+    "save_generations": true,
+    "load_generations_intermediate_paths": null,
+    "save_generations_path": "./benchmark/codellama-13b-python/java/improve/t0.8-p0.9-k0/CodeLlama-13b-Python-hf-temp0.8-p0.9-k0-bf16-n200-batch10-maxlen1024-java-generations-30-10.json",
+    "save_references": true,
+    "save_references_path": "references.json",
+    "prompt": "prompt",
+    "max_memory_per_gpu": null,
+    "check_references": false
+  }
+}

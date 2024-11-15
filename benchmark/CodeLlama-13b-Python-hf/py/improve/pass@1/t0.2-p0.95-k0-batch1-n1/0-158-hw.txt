@@ -1,0 +1,24 @@
+13344062
+Age:
+16 hrs.
+Remaining:
+1 mon, 5d
+Quebec, CA
+2x RTX 309071.0  TFLOPS
+m:20409
+host:50627
+unverified
+0.7/48.0 GB
+766.1 GB/s
+B550M DS3H AC
+PCIE 3.0, 16x
+12.6 GB/s
+AMD Ryzen 5 5600G with Radeon Graphics
+12.0/12 cpu
+1/64 GB
+Lexar SSD NM620 512GB
+1597 MB/s28.0/29.0 GB
+893.0 Mbps864.6 MbpsMax CUDA: 12.2
+GPU: 0% 51C , CPU: 9% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+fast gpu code llama 13b python
+$0.255/hr

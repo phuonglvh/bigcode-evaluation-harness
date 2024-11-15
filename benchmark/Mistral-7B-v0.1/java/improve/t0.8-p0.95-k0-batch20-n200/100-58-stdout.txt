@@ -1,0 +1,84 @@
+model-00002-of-00002.safetensors: 100%|███████████████████████████████████████████████████████████████████████████████████████| 4.54G/4.54G [02:12<00:00, 34.3MB/s]
+Downloading shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [07:04<00:00, 212.19s/it]
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:09<00:00,  4.85s/it]
+generation_config.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 116/116 [00:00<00:00, 666kB/s]
+tokenizer_config.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 967/967 [00:00<00:00, 12.6MB/s]
+tokenizer.model: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████| 493k/493k [00:00<00:00, 37.0MB/s]
+tokenizer.json: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.80M/1.80M [00:00<00:00, 3.79MB/s]
+special_tokens_map.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████| 72.0/72.0 [00:00<00:00, 1.03MB/s]
+generation only mode
+/opt/conda/lib/python3.10/site-packages/datasets/load.py:1429: FutureWarning: The repository for nuprl/MultiPL-E contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/nuprl/MultiPL-E
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+Downloading builder script: 100%|█████████████████████████████████████████████████████████████████████████████████████████████| 4.05k/4.05k [00:00<00:00, 8.50MB/s]
+Downloading metadata: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 478k/478k [00:00<00:00, 2.10MB/s]
+Downloading readme: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 99.6k/99.6k [00:00<00:00, 984kB/s]
+Downloading data: 321kB [00:00, 14.9MB/s]                                                                                                                          
+Generating test split: 100%|████████████████████████████████████████████████████████████████████████████████████████████| 158/158 [00:00<00:00, 4072.09 examples/s]
+Downloading builder script: 100%|█████████████████████████████████████████████████████████████████████████████████████████████| 4.05k/4.05k [00:00<00:00, 5.75MB/s]
+Downloading metadata: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 478k/478k [00:00<00:00, 1.49MB/s]
+Downloading readme: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████| 99.6k/99.6k [00:00<00:00, 743kB/s]
+number of problems for this task is 58
+task starting from 100/158
+200 completions required for each task
+20 completion/prompt
+10 batch/task
+580 batches (iterations) required for 58 tasks
+  8%|██████████▍                                                                                                                | 49/580 [14:33<3:20:12, 22.62s/it]intermediate generations were saved at ./benchmark/Mistral-7B-v0.1/java/Mistral-7B-v0.1-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-java-generations-100-100_multiple-java_intermediate.json
+ 17%|████████████████████▉                                                                                                      | 99/580 [30:51<2:47:21, 20.88s/it]intermediate generations were saved at ./benchmark/Mistral-7B-v0.1/java/Mistral-7B-v0.1-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-java-generations-100-100_multiple-java_intermediate.json
+ 26%|███████████████████████████████▊                                                                                            | 149/580 [40:13<51:40,  7.19s/it]intermediate generations were saved at ./benchmark/Mistral-7B-v0.1/java/Mistral-7B-v0.1-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-java-generations-100-100_multiple-java_intermediate.json
+ 34%|█████████████████████████████████████████▊                                                                                | 199/580 [51:03<1:24:34, 13.32s/it]intermediate generations were saved at ./benchmark/Mistral-7B-v0.1/java/Mistral-7B-v0.1-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-java-generations-100-100_multiple-java_intermediate.json
+ 43%|████████████████████████████████████████████████████▍                                                                     | 249/580 [1:00:29<27:05,  4.91s/it]intermediate generations were saved at ./benchmark/Mistral-7B-v0.1/java/Mistral-7B-v0.1-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-java-generations-100-100_multiple-java_intermediate.json
+ 52%|██████████████████████████████████████████████████████████████▉                                                           | 299/580 [1:12:20<39:45,  8.49s/it]intermediate generations were saved at ./benchmark/Mistral-7B-v0.1/java/Mistral-7B-v0.1-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-java-generations-100-100_multiple-java_intermediate.json
+ 60%|█████████████████████████████████████████████████████████████████████████▍                                                | 349/580 [1:28:27<21:09,  5.50s/it]intermediate generations were saved at ./benchmark/Mistral-7B-v0.1/java/Mistral-7B-v0.1-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-java-generations-100-100_multiple-java_intermediate.json
+ 69%|███████████████████████████████████████████████████████████████████████████████████▉                                      | 399/580 [1:38:50<33:24, 11.08s/it]intermediate generations were saved at ./benchmark/Mistral-7B-v0.1/java/Mistral-7B-v0.1-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-java-generations-100-100_multiple-java_intermediate.json
+ 77%|██████████████████████████████████████████████████████████████████████████████████████████████▍                           | 449/580 [1:49:28<26:09, 11.98s/it]intermediate generations were saved at ./benchmark/Mistral-7B-v0.1/java/Mistral-7B-v0.1-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-java-generations-100-100_multiple-java_intermediate.json
+ 86%|████████████████████████████████████████████████████████████████████████████████████████████████████████▉                 | 499/580 [2:00:44<11:18,  8.38s/it]intermediate generations were saved at ./benchmark/Mistral-7B-v0.1/java/Mistral-7B-v0.1-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-java-generations-100-100_multiple-java_intermediate.json
+ 95%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍      | 549/580 [2:11:00<05:51, 11.34s/it]intermediate generations were saved at ./benchmark/Mistral-7B-v0.1/java/Mistral-7B-v0.1-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-java-generations-100-100_multiple-java_intermediate.json
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 580/580 [2:18:44<00:00, 14.35s/it]
+generations were saved at ./benchmark/Mistral-7B-v0.1/java/Mistral-7B-v0.1-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-java-generations-100-100_multiple-java.json
+references were saved at references_multiple-java.json
+evaluation results:
+{
+  "config": {
+    "prefix": "",
+    "do_sample": true,
+    "temperature": 0.8,
+    "top_k": 0,
+    "top_p": 0.95,
+    "n_samples": 200,
+    "eos": "<|endoftext|>",
+    "seed": 0,
+    "model": "mistralai/Mistral-7B-v0.1",
+    "modeltype": "causal",
+    "peft_model": null,
+    "revision": null,
+    "token": false,
+    "trust_remote_code": true,
+    "tasks": "multiple-java",
+    "instruction_tokens": null,
+    "batch_size": 20,
+    "max_length_generation": 1024,
+    "precision": "bf16",
+    "load_in_8bit": false,
+    "load_in_4bit": false,
+    "limit": 100,
+    "limit_start": 100,
+    "save_every_k_tasks": 50,
+    "postprocess": true,
+    "allow_code_execution": true,
+    "generation_only": true,
+    "load_generations_path": null,
+    "load_data_path": null,
+    "metric_output_path": "evaluation_results.json",
+    "save_generations": true,
+    "load_generations_intermediate_paths": null,
+    "save_generations_path": "./benchmark/Mistral-7B-v0.1/java/Mistral-7B-v0.1-temp0.8-p0.95-bf16-n200-batch20-maxlen1024-java-generations-100-100.json",
+    "save_references": true,
+    "save_references_path": "references.json",
+    "prompt": "prompt",
+    "max_memory_per_gpu": null,
+    "check_references": false
+  }
+}

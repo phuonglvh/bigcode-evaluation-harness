@@ -1,6 +1,6 @@
 import json
+import os
 from math import ceil
-
 from typing import List, Optional
 
 from accelerate.utils import set_seed
@@ -8,7 +8,7 @@ from torch.utils.data.dataloader import DataLoader
 from transformers import StoppingCriteria, StoppingCriteriaList
 
 from bigcode_eval.utils import TokenizedDataset, complete_code
-
+import warnings
 
 class EndOfFunctionCriteria(StoppingCriteria):
     """Custom `StoppingCriteria` which checks if all generated functions in the batch are completed."""
@@ -52,26 +52,43 @@ def parallel_generations(
         intermediate_generations: Optional[List[Optional[List[Optional[str]]]]] = None,
         intermediate_save_generations_path: Optional[str] = None,
 ):
+    print(f'parallel_generations args={vars(args)}')
+
     if args.load_generations_path:
         # load generated code
         with open(args.load_generations_path) as fp:
+            if accelerator.is_main_process:
+                print(f'loading generations from "{os.path.abspath(args.load_generations_path)}"')
+
             generations = json.load(fp)
             if accelerator.is_main_process:
                 print(
                     f"generations loaded, {n_tasks} selected from {len(generations)} with {len(generations[0])} candidates"
                 )
-        return generations[:n_tasks]
+        from_idx = args.limit_start
+        to_idx = from_idx+n_tasks
+        selected_gens = generations[from_idx:to_idx]
+        print(f'loaded tasks (0-based indexing): {from_idx} - {to_idx - 1}')
+        return selected_gens
 
+    print(f'set_seed({args.seed}, device_specific=True)')
     set_seed(args.seed, device_specific=True)
 
     # Setup generation settings
     gen_kwargs = {
         "do_sample": args.do_sample,
-        "temperature": args.temperature,
-        "top_p": args.top_p,
-        "top_k": args.top_k,
         "max_length": args.max_length_generation,
     }
+    
+    for arg in ['temperature', 'top_p', 'top_k']:
+        if hasattr(args, arg):
+            gen_kwargs[arg] = vars(args)[arg]
+        
+    if args.num_beams and args.num_beams > 0:
+        gen_kwargs['num_beams'] = args.num_beams
+    
+    print(f'gen_kwargs={gen_kwargs}')
+    
     stopping_criteria = []
     # The input_length / start_length set to 0 for now will be adjusted later
     # Check if the task has a custom check_fn method for the stopping criteria
@@ -106,7 +123,14 @@ def parallel_generations(
         instruction_tokens = None
     if accelerator.is_main_process:
         print(f"number of problems for this task is {n_tasks}")
+        print(
+            f"task range: {args.limit_start + curr_sample_idx + 1}->{args.limit_start + curr_sample_idx + n_tasks}")
     n_copies = ceil(args.n_samples / args.batch_size)
+    print(f"{args.n_samples} completions required for each task")
+    print(f"{args.batch_size} completion/prompt")
+    print(f"{n_copies} batch/task")
+    print(
+        f"{n_copies*n_tasks} batches (iterations) required for {n_tasks} tasks")
 
     ds_tokenized = TokenizedDataset(
         task,

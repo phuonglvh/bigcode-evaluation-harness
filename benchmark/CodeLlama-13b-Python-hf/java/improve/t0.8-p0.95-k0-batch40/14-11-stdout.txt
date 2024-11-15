@@ -1,0 +1,105 @@
+root@C.11823495:/workspace/bigcode-evaluation-harness$ AUTHOR="codellama"
+MODEL_NAME="CodeLlama-13b-Python-hf"
+
+max_length=1024
+temperature=0.8
+top_k=0
+top_p=0.95
+batch_size=40
+
+BASE_DIR=./benchmark/$MODEL_NAME/$lang/improve/t$temperature-p$top_p-k$top_k-batch$batch_size
+mkdir -p $BASE_DIR
+
+n_samples=200
+seed=0
+precision=bf16
+lang=java
+
+limit_start=14
+limit=11
+eval_limit_start=0
+eval_limit=50
+
+save_every_k_tasks=1 # after completing k dataset's tasks
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
+
+common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
+generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
+generations_path="$BASE_DIR/$generations_name.json"
+
+python main.py --model "$AUTHOR/$MODEL_NAME" \
+    --tasks multiple-$lang \
+    --max_length_generation $max_length \
+    --temperature $temperature \
+    --max_memory_per_gpu autot \SE_DIR/$common_name-generations-${limit_start}-${limit}.json" \
+Selected Tasks: ['multiple-java']
+Loading model in bf16
+Loading model in auto mode
+Loading checkpoint shards: 100%|████████████████████████████████████████████████████████████████| 3/3 [00:06<00:00,  2.31s/it]
+generation only mode
+number of problems for this task is 11
+task range: 15->25
+200 completions required for each task
+40 completion/prompt
+5 batch/task
+55 batches (iterations) required for 11 tasks
+  7%|██████▌                                                                                   | 4/55 [01:55<24:30, 28.83s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-14-11_multiple-java_intermediate.json
+ 16%|██████████████▋                                                                           | 9/55 [05:25<34:21, 44.82s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-14-11_multiple-java_intermediate.json
+ 25%|██████████████████████▋                                                                  | 14/55 [06:21<09:28, 13.87s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-14-11_multiple-java_intermediate.json
+ 35%|██████████████████████████████▋                                                          | 19/55 [08:41<17:57, 29.92s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-14-11_multiple-java_intermediate.json
+ 44%|██████████████████████████████████████▊                                                  | 24/55 [10:22<10:59, 21.27s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-14-11_multiple-java_intermediate.json
+ 53%|██████████████████████████████████████████████▉                                          | 29/55 [11:45<07:42, 17.80s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-14-11_multiple-java_intermediate.json
+ 62%|███████████████████████████████████████████████████████                                  | 34/55 [12:39<04:36, 13.15s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-14-11_multiple-java_intermediate.json
+ 71%|███████████████████████████████████████████████████████████████                          | 39/55 [14:36<06:30, 24.40s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-14-11_multiple-java_intermediate.json
+ 80%|███████████████████████████████████████████████████████████████████████▏                 | 44/55 [15:20<01:50, 10.01s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-14-11_multiple-java_intermediate.json
+ 89%|███████████████████████████████████████████████████████████████████████████████▎         | 49/55 [17:04<01:46, 17.73s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-14-11_multiple-java_intermediate.json
+ 98%|███████████████████████████████████████████████████████████████████████████████████████▍ | 54/55 [19:19<00:26, 26.09s/it]intermediate generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-14-11_multiple-java_intermediate.json
+100%|█████████████████████████████████████████████████████████████████████████████████████████| 55/55 [19:50<00:00, 21.64s/it]
+audit_generations: verifying generations against dataset
+audit_generations: unknown_tasks []
+generations were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-14-11_multiple-java.json
+references were saved at references_multiple-java.json
+evaluation results:
+{
+  "config": {
+    "prefix": "",
+    "do_sample": true,
+    "temperature": 0.8,
+    "top_k": 0,
+    "top_p": 0.95,
+    "n_samples": 200,
+    "eos": "<|endoftext|>",
+    "seed": 0,
+    "model": "codellama/CodeLlama-13b-Python-hf",
+    "modeltype": "causal",
+    "peft_model": null,
+    "revision": null,
+    "token": false,
+    "trust_remote_code": true,
+    "tasks": "multiple-java",
+    "instruction_tokens": null,
+    "batch_size": 40,
+    "max_length_generation": 1024,
+    "precision": "bf16",
+    "load_in_8bit": false,
+    "load_in_4bit": false,
+    "left_padding": false,
+    "limit": 11,
+    "limit_start": 14,
+    "save_every_k_tasks": 5,
+    "postprocess": true,
+    "allow_code_execution": true,
+    "generation_only": true,
+    "load_generations_path": null,
+    "load_data_path": null,
+    "metric_output_path": "evaluation_results.json",
+    "save_generations": true,
+    "load_generations_intermediate_paths": null,
+    "save_generations_path": "./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k0-batch40/CodeLlama-13b-Python-hf-temp0.8-p0.95-k0-bf16-n200-batch40-maxlen1024-java-generations-14-11.json",
+    "save_references": true,
+    "save_references_path": "references.json",
+    "prompt": "prompt",
+    "max_memory_per_gpu": "auto",
+    "check_references": false
+  }
+}

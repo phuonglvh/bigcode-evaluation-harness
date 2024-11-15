@@ -14,9 +14,11 @@ import tempfile
 from multiprocessing import cpu_count
 from pathlib import Path
 from time import time
+from typing import List
+import warnings
 
 import numpy as np
-from datasets import load_dataset
+from datasets import load_dataset, Dataset
 from tqdm import tqdm
 
 from bigcode_eval.base import Task
@@ -24,6 +26,8 @@ from bigcode_eval.tasks.custom_metrics.multiple_metrics.evaluation import \
     evaluate_problem
 from bigcode_eval.tasks.custom_metrics.multiple_metrics.single_experiment_pass_k import \
     for_file
+from utils.java import java_detect_unknown_tasks
+from utils.py import py_detect_unknown_tasks
 
 _CITATION = """
 @article{cassano2022scalable,
@@ -86,19 +90,22 @@ class GeneralMultiPLE(Task):
         self.language = language
         self.DATASET_NAME = f"humaneval-{language}"
         # we need the dataset to get stop words for each language
-        self.dataset = load_dataset(
+        self.dataset: Dataset = load_dataset(
             GeneralMultiPLE.DATASET_PATH,
             self.DATASET_NAME,
             revision=self.DATASET_REVISION,
             trust_remote_code=kwargs.get('trust_remote_code')
         )
-        stop_words = self.dataset["test"][0]["stop_tokens"] + ["<file_sep>"]
-        super().__init__(
-            stop_words=stop_words,
-            requires_execution=True,
-        )
-
-    def get_dataset(self):
+        self.stop_words = self.dataset["test"][0]["stop_tokens"] + ["<file_sep>"]
+        self.requires_execution = True
+        # DO NOT CALL super __init__ to avoid nondeterministic dataset sort when `load_dataset` call twice
+        # super().__init__(
+        #     stop_words=stop_words,
+        #     requires_execution=True,
+        # )
+        self.args = kwargs
+        
+    def get_dataset(self) -> Dataset:
         """Returns dataset for the task or an iterable of any object, that get_prompt can handle"""
         return self.dataset["test"]
 
@@ -117,7 +124,6 @@ class GeneralMultiPLE(Task):
         # last string should be ""
         return "".join(string_list[:-2])
 
-
     def postprocess_generation(self, generation, idx):
         """Defines the postprocessing for a LM generation.
         :param generation: str
@@ -127,7 +133,7 @@ class GeneralMultiPLE(Task):
             (not used for this task)
         """
         prompt = self.get_prompt(self.get_dataset()[idx])
-        completion = generation[len(prompt) :]
+        completion = generation[len(prompt):]
         return prompt + self._stop_at_stop_token(completion, self.stop_words)
 
     def process_results(self, generations, references):
@@ -139,29 +145,42 @@ class GeneralMultiPLE(Task):
             list of str containing refrences
         """
         # get prompts and problem names
+        n_tasks = len(generations)
+        from_idx = self.args['limit_start']
+        to_idx = from_idx+n_tasks
+        selected_tasks = self.get_dataset().select(range(from_idx, to_idx)).to_list()
+        print(f'process_results of {len(selected_tasks)} selected problems:\n' +
+              '\n'.join(task['name'] for task in selected_tasks))
+
         prompts_names = [
             {"prompt": doc["prompt"], "name": doc["name"]}
-            for i, doc in enumerate(self.get_dataset())
-            if i < len(generations)
+            for doc in selected_tasks
         ]
         # a common temp dir for all the problems
         temp_dir = tempfile.gettempdir()
         list_files = []
-        for (prompt_name, generation, reference) in zip(
+        for (prompt_name, prompt_completions, reference) in zip(
             prompts_names, generations, references
         ):
+            prompt = prompt_name['prompt']
             problem = {
                 "name": prompt_name["name"],
                 "language": self.language,
                 "prompt": prompt_name["prompt"],
-                "completions": generation,
+                "completions": prompt_completions,
                 "tests": reference,
             }
+            
+            fist_completion = prompt_completions[0] if len(prompt_completions) > 0 else None
+            if fist_completion and prompt not in fist_completion:
+                warnings.warn(f"prompt mismatches generations[0]:\nprompt={prompt}\n\ngeneration={fist_completion}")
+                
             # each problem is save in a json file
             temp_file_name = os.path.join(temp_dir, f"{prompt_name['name']}.json")
             list_files.append(temp_file_name)
             with open(temp_file_name, "wt") as f:
                 json.dump(problem, f)
+            print(f'saved 1 problem in {temp_file_name}')
         print(
             f"Saved {len(list_files)} problems in {temp_dir} for evaluation, each problem has {len(generations[0])} completions"
         )
@@ -172,6 +191,8 @@ class GeneralMultiPLE(Task):
             evaluate_problem(temp_dir, file, max_workers)
 
         # compute pass@k scores
+        print('computing pass@k')
+        print(f'*.results.json stored in: {temp_dir}')
         result_array = np.array(
             [for_file(p) for p in Path(temp_dir).glob("*.results.json")]
         )
@@ -186,4 +207,22 @@ class GeneralMultiPLE(Task):
             for k, v in zip([1, 10, 100], result)
             if k <= len(generations[0])
         }
+
+        print('computed pass@k')
         return results
+
+    def audit_generations(self, generations: List[List[str]]):
+        print(f'audit_generations: verifying generations against dataset')
+        unknown_tasks = detect_unknown_tasks(
+            self.get_dataset(), self.language, generations, self.args['limit_start'])
+        print(f'audit_generations: unknown_tasks', unknown_tasks)
+
+
+def detect_unknown_tasks(dataset: Dataset, language_code: str, generations: List[List[str]], start_idx) -> List[str]:
+    if language_code == 'java':
+        return java_detect_unknown_tasks(dataset, generations, start_idx)
+
+    if language_code == 'py':
+        return py_detect_unknown_tasks(dataset, generations, start_idx)
+
+    return []

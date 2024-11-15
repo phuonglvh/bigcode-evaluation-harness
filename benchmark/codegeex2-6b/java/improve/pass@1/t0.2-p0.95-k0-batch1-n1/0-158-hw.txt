@@ -1,0 +1,23 @@
+13344299
+Age:
+10 min.
+Remaining:
+18 days
+Minnesota, US
+1x RTX 309035.5  TFLOPS
+m:14987
+host:81276
+verified
+0.3/24.0 GB
+760.1 GB/s
+PRIME X399
+PCIE 3.0, 8x
+6.3 GB/s
+AMD Ryzen Threadripper 2950X 16-Core Processor
+8.0/32 cpu
+1/32 GB
+Sabrent
+2599 MB/s15.0/16.0 GB
+865.3 Mbps866.7 MbpsMax CUDA: 12.4
+GPU: 0% 29C , CPU: 13% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+$0.160/hr 

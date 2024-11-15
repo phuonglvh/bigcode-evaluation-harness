@@ -1,0 +1,24 @@
+13347233
+Age:
+29 min.
+Remaining:
+3 days
+Lithuania, LT
+1x RTX A500027.5  TFLOPS
+m:23869
+host:53254
+verified
+14.3/24.0 GB
+627.8 GB/s
+Pro WS X299 SAGE II
+PCIE 3.0, 16x
+11.7 GB/s
+Core™ i9-10900X
+5.0/20 cpu
+15/32 GB
+CT4000P3PSSD8
+1382 MB/s17.0/17.0 GB
+557.4 Mbps866.3 MbpsMax CUDA: 12.4
+GPU: 72% 64C , CPU: 20% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+10min mistral 7b
+$0.138/hr

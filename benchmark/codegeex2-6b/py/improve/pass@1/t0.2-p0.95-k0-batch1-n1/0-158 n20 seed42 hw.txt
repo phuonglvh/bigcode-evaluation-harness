@@ -1,0 +1,23 @@
+13453446
+Age:
+39 min.
+Remaining:
+7 days
+St.-Petersburg, RU
+1x RTX 309035.3  TFLOPS
+m:18582
+host:104231
+unverified
+0.3/24.0 GB
+766.0 GB/s
+Pro WS WRX80E
+PCIE 4.0, 16x
+24.2 GB/s
+AMD Ryzen Threadripper PRO 5955WX 16-Cores
+8.0/32 cpu
+1/64 GB
+Samsung SSD 990 PRO 1TB
+3032 MB/s15.0/16.1 GB
+616.4 Mbps649.4 MbpsMax CUDA: 12.2
+GPU: 0% 46C , CPU: 13% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+$0.111/hr

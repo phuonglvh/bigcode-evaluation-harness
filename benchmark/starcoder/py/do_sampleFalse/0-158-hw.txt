@@ -1,0 +1,24 @@
+13346623
+Age:
+2h 0m
+Remaining:
+1 mon, 4d
+Bulgaria, BG
+2x RTX 309071.0  TFLOPS
+m:24389
+host:137977
+unverified
+0.6/48.0 GB
+762.4 GB/s
+ProArt B550
+PCIE 4.0, 8x
+12.8 GB/s
+AMD Ryzen 9 5900X 12-Core Processor
+24.0/24 cpu
+1/64 GB
+MSI M482 2TB
+5494 MB/s62.0/65.3 GB
+543.8 Mbps892.6 MbpsMax CUDA: 12.2
+GPU: 0% 48C , CPU: 0% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+10min fast starcoder 15.5B 70GB
+$0.242/hr

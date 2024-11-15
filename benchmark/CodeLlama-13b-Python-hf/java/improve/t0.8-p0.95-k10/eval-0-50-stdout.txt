@@ -1,0 +1,164 @@
+AUTHOR="codellama"
+MODEL_NAME="CodeLlama-13b-Python-hf"
+
+max_length=1024
+temperature=0.8
+top_p=0.95
+top_k=10
+
+BASE_DIR=./benchmark/$MODEL_NAME/$lang/improve/t$temperature-p$top_p-k$top_k
+mkdir -p $BASE_DIR
+
+n_samples=200
+seed=0
+precision=bf16
+lang=java
+batch_size=10
+
+# limit_start=0
+# limit=15
+# limit_start=15
+# limit=15
+# limit_start=30
+# limit=20
+limit_start=0
+limit=50
+eval_limit_start=0
+eval_limit=50
+
+save_every_k_tasks=1 # after completing k dataset's tasks
+save_every_k_iterations=$(($save_every_k_tasks*$n_samples/$batch_size))
+
+common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
+generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
+generations_path="$BASE_DIR/$generations_name.json"
+python main.py --model "$AUTHOR/$MODEL_NAME" \
+>     --tasks multiple-$lang \
+>     --max_length_generation $max_length \
+>     --temperature $temperature \
+>     --top_p $top_p \
+>     --top_k $top_k \
+>     --seed $seed \
+>     --n_samples $n_samples \
+>     --batch_size $batch_size \
+>     --precision $precision \
+>     --allow_code_execution \
+>     --trust_remote_code \
+>     --limit_start $eval_limit_start \
+>     --limit $eval_limit \
+>     --save_every_k_tasks $save_every_k_iterations \
+>     --load_generations_path "$generations_path" \
+>     --metric_output_path "$BASE_DIR/$generations_name-eval-${eval_limit_start}-${eval_limit}-evaluation_results.json"
+Detected kernel version 5.4.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+Selected Tasks: ['multiple-java']
+evaluation only mode
+/opt/conda/lib/python3.10/site-packages/datasets/load.py:1429: FutureWarning: The repository for nuprl/MultiPL-E contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/nuprl/MultiPL-E
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+loading generations from "/workspace/bigcode-evaluation-harness/benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k10/CodeLlama-13b-Python-hf-temp0.8-p0.95-k10-bf16-n200-batch10-maxlen1024-java-generations-0-50_multiple-java.json"
+generations loaded, 50 selected from 50 with 200 candidates
+Evaluating generations...
+Saved 50 problems in /tmp for evaluation, each problem has 200 completions
+  0%|                                                                                                                                       | 0/50 [00:00<?, ?it/s]running cached_eval_script on /tmp/HumanEval_23_strlen.json by 31 workers
+  2%|██▌                                                                                                                            | 1/50 [00:02<01:57,  2.40s/it]running cached_eval_script on /tmp/HumanEval_89_encrypt.json by 31 workers
+  4%|█████                                                                                                                          | 2/50 [00:14<06:33,  8.21s/it]running cached_eval_script on /tmp/HumanEval_95_check_dict_case.json by 31 workers
+  6%|███████▌                                                                                                                       | 3/50 [00:29<08:41, 11.10s/it]running cached_eval_script on /tmp/HumanEval_85_add.json by 31 workers
+  8%|██████████▏                                                                                                                    | 4/50 [00:38<08:04, 10.52s/it]running cached_eval_script on /tmp/HumanEval_140_fix_spaces.json by 31 workers
+ 10%|████████████▋                                                                                                                  | 5/50 [00:56<09:46, 13.04s/it]running cached_eval_script on /tmp/HumanEval_63_fibfib.json by 31 workers
+ 12%|███████████████▏                                                                                                               | 6/50 [01:07<09:05, 12.41s/it]running cached_eval_script on /tmp/HumanEval_151_double_the_difference.json by 31 workers
+ 14%|█████████████████▊                                                                                                             | 7/50 [01:21<09:22, 13.08s/it]running cached_eval_script on /tmp/HumanEval_22_filter_integers.json by 31 workers
+ 16%|████████████████████▎                                                                                                          | 8/50 [01:37<09:46, 13.97s/it]running cached_eval_script on /tmp/HumanEval_41_car_race_collision.json by 31 workers
+ 18%|██████████████████████▊                                                                                                        | 9/50 [01:46<08:29, 12.42s/it]running cached_eval_script on /tmp/HumanEval_17_parse_music.json by 31 workers
+ 20%|█████████████████████████▏                                                                                                    | 10/50 [02:15<11:41, 17.54s/it]running cached_eval_script on /tmp/HumanEval_79_decimal_to_binary.json by 31 workers
+ 22%|███████████████████████████▋                                                                                                  | 11/50 [02:22<09:12, 14.18s/it]running cached_eval_script on /tmp/HumanEval_14_all_prefixes.json by 31 workers
+ 24%|██████████████████████████████▏                                                                                               | 12/50 [02:30<07:44, 12.23s/it]running cached_eval_script on /tmp/HumanEval_53_add.json by 31 workers
+ 26%|████████████████████████████████▊                                                                                             | 13/50 [02:31<05:26,  8.83s/it]running cached_eval_script on /tmp/HumanEval_159_eat.json by 31 workers
+ 28%|███████████████████████████████████▎                                                                                          | 14/50 [02:45<06:19, 10.53s/it]running cached_eval_script on /tmp/HumanEval_115_max_fill.json by 31 workers
+ 30%|█████████████████████████████████████▊                                                                                        | 15/50 [03:13<09:12, 15.78s/it]running cached_eval_script on /tmp/HumanEval_160_do_algebra.json by 31 workers
+ 32%|████████████████████████████████████████▎                                                                                     | 16/50 [03:27<08:35, 15.17s/it]running cached_eval_script on /tmp/HumanEval_27_flip_case.json by 31 workers
+ 34%|██████████████████████████████████████████▊                                                                                   | 17/50 [03:39<07:50, 14.26s/it]running cached_eval_script on /tmp/HumanEval_105_by_length.json by 31 workers
+ 36%|█████████████████████████████████████████████▎                                                                                | 18/50 [03:54<07:47, 14.62s/it]running cached_eval_script on /tmp/HumanEval_25_factorize.json by 31 workers
+ 38%|███████████████████████████████████████████████▉                                                                              | 19/50 [04:24<09:48, 18.99s/it]running cached_eval_script on /tmp/HumanEval_96_count_up_to.json by 31 workers
+ 40%|██████████████████████████████████████████████████▍                                                                           | 20/50 [04:37<08:42, 17.42s/it]running cached_eval_script on /tmp/HumanEval_34_unique.json by 31 workers
+ 42%|████████████████████████████████████████████████████▉                                                                         | 21/50 [04:48<07:27, 15.43s/it]running cached_eval_script on /tmp/HumanEval_74_total_match.json by 31 workers
+ 44%|███████████████████████████████████████████████████████▍                                                                      | 22/50 [05:05<07:25, 15.90s/it]running cached_eval_script on /tmp/HumanEval_35_max_element.json by 31 workers
+ 46%|█████████████████████████████████████████████████████████▉                                                                    | 23/50 [05:16<06:24, 14.25s/it]running cached_eval_script on /tmp/HumanEval_132_is_nested.json by 31 workers
+ 48%|████████████████████████████████████████████████████████████▍                                                                 | 24/50 [05:25<05:31, 12.75s/it]running cached_eval_script on /tmp/HumanEval_113_odd_count.json by 31 workers
+ 50%|███████████████████████████████████████████████████████████████                                                               | 25/50 [05:41<05:40, 13.62s/it]running cached_eval_script on /tmp/HumanEval_109_move_one_ball.json by 31 workers
+ 52%|█████████████████████████████████████████████████████████████████▌                                                            | 26/50 [06:03<06:31, 16.32s/it]running cached_eval_script on /tmp/HumanEval_107_even_odd_palindrome.json by 31 workers
+ 54%|████████████████████████████████████████████████████████████████████                                                          | 27/50 [06:17<06:00, 15.65s/it]running cached_eval_script on /tmp/HumanEval_138_is_equal_to_sum_even.json by 31 workers
+ 56%|██████████████████████████████████████████████████████████████████████▌                                                       | 28/50 [06:28<05:09, 14.08s/it]running cached_eval_script on /tmp/HumanEval_62_derivative.json by 31 workers
+ 58%|█████████████████████████████████████████████████████████████████████████                                                     | 29/50 [06:41<04:51, 13.90s/it]running cached_eval_script on /tmp/HumanEval_126_is_sorted.json by 31 workers
+ 60%|███████████████████████████████████████████████████████████████████████████▌                                                  | 30/50 [06:56<04:41, 14.09s/it]running cached_eval_script on /tmp/HumanEval_161_solve.json by 31 workers
+ 62%|██████████████████████████████████████████████████████████████████████████████                                                | 31/50 [07:09<04:21, 13.76s/it]running cached_eval_script on /tmp/HumanEval_130_tri.json by 31 workers
+ 64%|████████████████████████████████████████████████████████████████████████████████▋                                             | 32/50 [07:24<04:15, 14.22s/it]running cached_eval_script on /tmp/HumanEval_36_fizz_buzz.json by 31 workers
+ 66%|███████████████████████████████████████████████████████████████████████████████████▏                                          | 33/50 [07:53<05:15, 18.53s/it]running cached_eval_script on /tmp/HumanEval_29_filter_by_prefix.json by 31 workers
+ 68%|█████████████████████████████████████████████████████████████████████████████████████▋                                        | 34/50 [08:01<04:09, 15.58s/it]running cached_eval_script on /tmp/HumanEval_84_solve.json by 31 workers
+ 70%|████████████████████████████████████████████████████████████████████████████████████████▏                                     | 35/50 [08:12<03:31, 14.07s/it]running cached_eval_script on /tmp/HumanEval_129_minPath.json by 31 workers
+ 72%|██████████████████████████████████████████████████████████████████████████████████████████▋                                   | 36/50 [08:22<03:00, 12.86s/it]running cached_eval_script on /tmp/HumanEval_98_count_upper.json by 31 workers
+ 74%|█████████████████████████████████████████████████████████████████████████████████████████████▏                                | 37/50 [08:34<02:44, 12.63s/it]running cached_eval_script on /tmp/HumanEval_120_maximum.json by 31 workers
+ 76%|███████████████████████████████████████████████████████████████████████████████████████████████▊                              | 38/50 [08:50<02:44, 13.69s/it]running cached_eval_script on /tmp/HumanEval_24_largest_divisor.json by 31 workers
+ 78%|██████████████████████████████████████████████████████████████████████████████████████████████████▎                           | 39/50 [09:13<03:01, 16.54s/it]running cached_eval_script on /tmp/HumanEval_88_sort_array.json by 31 workers
+ 80%|████████████████████████████████████████████████████████████████████████████████████████████████████▊                         | 40/50 [09:32<02:51, 17.13s/it]running cached_eval_script on /tmp/HumanEval_106_f.json by 31 workers
+ 82%|███████████████████████████████████████████████████████████████████████████████████████████████████████▎                      | 41/50 [09:58<02:57, 19.74s/it]running cached_eval_script on /tmp/HumanEval_77_iscube.json by 31 workers
+ 84%|█████████████████████████████████████████████████████████████████████████████████████████████████████████▊                    | 42/50 [10:24<02:54, 21.85s/it]running cached_eval_script on /tmp/HumanEval_93_encode.json by 31 workers
+ 86%|████████████████████████████████████████████████████████████████████████████████████████████████████████████▎                 | 43/50 [10:37<02:12, 18.99s/it]running cached_eval_script on /tmp/HumanEval_91_is_bored.json by 31 workers
+ 88%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████▉               | 44/50 [11:00<02:00, 20.17s/it]running cached_eval_script on /tmp/HumanEval_43_pairs_sum_to_zero.json by 31 workers
+ 90%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍            | 45/50 [11:14<01:32, 18.49s/it]running cached_eval_script on /tmp/HumanEval_71_triangle_area.json by 31 workers
+ 92%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉          | 46/50 [11:27<01:06, 16.66s/it]running cached_eval_script on /tmp/HumanEval_148_bf.json by 31 workers
+ 94%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍       | 47/50 [11:40<00:46, 15.64s/it]running cached_eval_script on /tmp/HumanEval_131_digits.json by 31 workers
+ 96%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉     | 48/50 [11:58<00:32, 16.27s/it]running cached_eval_script on /tmp/HumanEval_101_words_string.json by 31 workers
+ 98%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍  | 49/50 [12:10<00:15, 15.06s/it]running cached_eval_script on /tmp/HumanEval_18_how_many_times.json by 31 workers
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [12:35<00:00, 15.10s/it]
+computing pass@k
+computed pass@k
+evaluation results:
+{
+  "multiple-java": {
+    "pass@1": 0.2136392405063291,
+    "pass@10": 0.5169865664812461,
+    "pass@100": 0.7468148929881837
+  },
+  "config": {
+    "prefix": "",
+    "do_sample": true,
+    "temperature": 0.8,
+    "top_k": 10,
+    "top_p": 0.95,
+    "n_samples": 200,
+    "eos": "<|endoftext|>",
+    "seed": 0,
+    "model": "codellama/CodeLlama-13b-Python-hf",
+    "modeltype": "causal",
+    "peft_model": null,
+    "revision": null,
+    "token": false,
+    "trust_remote_code": true,
+    "tasks": "multiple-java",
+    "instruction_tokens": null,
+    "batch_size": 10,
+    "max_length_generation": 1024,
+    "precision": "bf16",
+    "load_in_8bit": false,
+    "load_in_4bit": false,
+    "limit": 50,
+    "limit_start": 0,
+    "save_every_k_tasks": 20,
+    "postprocess": true,
+    "allow_code_execution": true,
+    "generation_only": false,
+    "load_generations_path": "./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k10/CodeLlama-13b-Python-hf-temp0.8-p0.95-k10-bf16-n200-batch10-maxlen1024-java-generations-0-50_multiple-java.json",
+    "load_data_path": null,
+    "metric_output_path": "./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k10/CodeLlama-13b-Python-hf-temp0.8-p0.95-k10-bf16-n200-batch10-maxlen1024-java-generations-0-50_multiple-java-eval-0-50-evaluation_results.json",
+    "save_generations": false,
+    "load_generations_intermediate_paths": null,
+    "save_generations_path": "generations.json",
+    "save_references": false,
+    "save_references_path": "references.json",
+    "prompt": "prompt",
+    "max_memory_per_gpu": null,
+    "check_references": false
+  }
+}
+evaluation results were saved at ./benchmark/codellama-13b-python/java/improve/t0.8-p0.95-k10/CodeLlama-13b-Python-hf-temp0.8-p0.95-k10-bf16-n200-batch10-maxlen1024-java-generations-0-50_multiple-java-eval-0-50-evaluation_results.json

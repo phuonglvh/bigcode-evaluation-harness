@@ -61,7 +61,7 @@ def parse_args():
         help="Model revision to use",
     )
     parser.add_argument(
-        "--use_auth_token",
+        "--token",
         action="store_true",
         help="Use the token generated when running `huggingface-cli login` (necessary for private model).",
     )
@@ -229,8 +229,27 @@ def get_gpus_max_memory(max_memory, num_gpus):
     return max_memory
 
 
+def verify_args(args):
+    load_generations_path = args.load_generations_path
+    generation_only = args.generation_only
+    metric_output_path = args.metric_output_path
+
+    if generation_only and load_generations_path:
+        warnings.warn(
+            f'evaluation only mode but results will not be saved at {metric_output_path} due to args.generation_only is True')
+        
+    if not args.do_sample:
+        for arg in ['temperature', 'top_k', 'top_p']:
+            if hasattr(args, arg):
+                delattr(args, arg)
+                warnings.warn(f'`args.do_sample` was set to `{args.do_sample}` so `args.{arg}` was programmatically unset')        
+
 def main():
     args = parse_args()
+    verify_args(args)
+    
+    print(f'parsed args={vars(args)}')
+    
     transformers.logging.set_verbosity_error()
     datasets.logging.set_verbosity_error()
 
@@ -266,7 +285,7 @@ def main():
         model_kwargs = {
             "revision": args.revision,
             "trust_remote_code": args.trust_remote_code,
-            "token": args.use_auth_token,
+            "token": args.token,
         }
         if args.load_in_8bit:
             print("Loading model in 8bit")
@@ -324,7 +343,7 @@ def main():
                 args.model,
                 revision=args.revision,
                 trust_remote_code=args.trust_remote_code,
-                token=args.use_auth_token,
+                token=args.token,
                 padding_side="left",  
             )
         else:
@@ -333,7 +352,7 @@ def main():
                 args.model,
                 revision=args.revision,
                 trust_remote_code=args.trust_remote_code,
-                token=args.use_auth_token,
+                token=args.token,
                 truncation_side="left",
                 padding_side="right",  
             )
@@ -345,7 +364,7 @@ def main():
                 raise ValueError("No eos_token or bos_token found")
         try:
             tokenizer.pad_token = tokenizer.eos_token
-            
+
         # Some models like CodeGeeX2 have pad_token as a read-only property
         except AttributeError:
             print("Not setting pad_token to eos_token")
@@ -377,17 +396,21 @@ def main():
                 with open(args.load_generations_intermediate_paths[idx], "r") as f_in:
                     # intermediate_generations: list[list[str | None]] of len n_tasks
                     # where list[i] = generated codes or empty
+                    print(f'task {task}: loading intermediate generations from {args.load_generations_intermediate_paths}')
+                    
                     intermediate_generations = json.load(f_in)
+
+                    print(f'task {task}: loaded {len(intermediate_generations)} intermediate generations from {args.load_generations_intermediate_paths}')
 
             if args.generation_only:
                 if accelerator.is_main_process:
-                    print("generation mode only")
+                    print("generation only mode")
                 generations, references = evaluator.generate_text(
                     task, intermediate_generations=intermediate_generations
                 )
                 if accelerator.is_main_process:
                     save_generations_path = f"{os.path.splitext(args.save_generations_path)[0]}_{task}.json"
-                    save_references_path = f"references_{task}.json"
+                    save_references_path = f"{os.path.splitext(args.save_references_path)[0]}_{task}.json"
                     evaluator.save_json_files(
                         generations,
                         references,
@@ -399,16 +422,19 @@ def main():
                     task, intermediate_generations=intermediate_generations
                 )
 
-    # Save all args to config
+    # Save all args and config
     results["config"] = vars(args)
-    if not args.generation_only:
-        dumped = json.dumps(results, indent=2)
-        if accelerator.is_main_process:
-            print(dumped)
 
+    dumped = json.dumps(results, indent=2)
+    if accelerator.is_main_process:
+        print(f'evaluation results:\n{dumped}')
+
+    if not args.generation_only:
         with open(args.metric_output_path, "w") as f:
             f.write(dumped)
-
+            print(
+                f"evaluation results were saved at {args.metric_output_path}"
+            )
 
 if __name__ == "__main__":
     main()

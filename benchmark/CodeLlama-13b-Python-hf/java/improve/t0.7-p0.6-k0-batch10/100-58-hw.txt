@@ -1,0 +1,24 @@
+13244022
+Age:
+4h 30m
+Remaining:
+26 days
+Delaware, US
+2x RTX 309070.5  TFLOPS
+m:20723
+host:115337
+verified
+24.7/48.0 GB
+767.4 GB/s
+PRO Z790
+PCIE 4.0, 16x
+22.9 GB/s
+13th Gen Core™ i7-13700K
+24.0/24 cpu
+12/32 GB
+WDC WDS100T2B0C-00PXH0
+1982 MB/s28.0/27.9 GB
+869.7 Mbps901.5 MbpsMax CUDA: 12.4
+GPU: 7% 40C , CPU: 0% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+fast gpu
+$0.274/hr 

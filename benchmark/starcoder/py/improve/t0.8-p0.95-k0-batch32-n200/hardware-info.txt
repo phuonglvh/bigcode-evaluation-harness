@@ -1,0 +1,9 @@
+1x RTX A6000
+36.1 TFLOPS
+36/48.0 GB gpu
+Xeon® Gold 6248R
+6.0/48 cpu
+15 GB ram
+60.0/70.0 GB disk
+$0.564/hr
+batch 20

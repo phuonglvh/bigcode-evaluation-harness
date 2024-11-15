@@ -50,6 +50,7 @@ class MBPP(Task):
         MBPP prompt is built following to InCoder (Fried et al.) approach
         prompt = docstring that includes one test
         """
+        # Refer the original prompt here: https://github.com/google-research/google-research/tree/master/mbpp#evaluation-details
         description = doc["text"]
         test_example = doc["test_list"][0]
         prompt = f'"""\n{description}\n{test_example}\n"""\n'

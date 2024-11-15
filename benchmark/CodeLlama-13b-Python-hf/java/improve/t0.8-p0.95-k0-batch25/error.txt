@@ -1,0 +1,130 @@
+AUTHOR="codellama"
+MODEL_NAME="CodeLlama-13b-Python-hf"
+
+max_length=1024
+temperature=0.8
+top_k=0
+top_p=0.95
+batch_size=25
+
+BASE_DIR=./benchmark/$MODEL_NAME/$lang/improve/t$temperature-p$top_p-k$top_k-batch$batch_size
+mkdir -p $BASE_DIR
+
+n_samples=200
+seed=0
+precision=bf16
+lang=java
+
+limit_start=18
+limit=3
+eval_limit_start=0
+eval_limit=50
+
+save_every_k_tasks=1 # after completing k dataset's tasks
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
+
+common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
+generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
+generations_path="$BASE_DIR/$generations_name.json"
+
+python main.py --model "$AUTHOR/$MODEL_NAME" \
+    --tasks multiple-$lang \
+    --max_length_generation $max_length \
+    --temperature $temperature \
+    --max_memory_per_gpu autot \SE_DIR/$common_name-generations-${limit_start}-${limit}.json" \
+Selected Tasks: ['multiple-java']
+Loading model in bf16
+Loading model in auto mode
+Loading checkpoint shards: 100%|██████████████████████████████████████████████████████████| 3/3 [00:05<00:00,  1.75s/it]
+generation only mode
+number of problems for this task is 3
+task range: 19->21
+200 completions required for each task
+25 completion/prompt
+8 batch/task
+24 batches (iterations) required for 3 tasks
+  4%|███▍                                                                               | 1/24 [01:43<39:33, 103.18s/it]
+Traceback (most recent call last):
+  File "/workspace/bigcode-evaluation-harness/main.py", line 431, in <module>
+    main()
+  File "/workspace/bigcode-evaluation-harness/main.py", line 399, in main
+    generations, references = evaluator.generate_text(
+  File "/workspace/bigcode-evaluation-harness/bigcode_eval/evaluator.py", line 69, in generate_text
+    generations = parallel_generations(
+  File "/workspace/bigcode-evaluation-harness/bigcode_eval/generation.py", line 155, in parallel_generations
+    generations = complete_code(
+  File "/workspace/bigcode-evaluation-harness/bigcode_eval/utils.py", line 310, in complete_code
+    generated_tokens = model.generate(
+  File "/opt/conda/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/opt/conda/lib/python3.10/site-packages/transformers/generation/utils.py", line 1989, in generate
+    result = self._sample(
+  File "/opt/conda/lib/python3.10/site-packages/transformers/generation/utils.py", line 2969, in _sample
+    next_tokens = torch.multinomial(probs, num_samples=1).squeeze(1)
+RuntimeError: probability tensor contains either `inf`, `nan` or element < 0
+
+
+AUTHOR="codellama"
+MODEL_NAME="CodeLlama-13b-Python-hf"
+
+max_length=1024
+temperature=0.8
+top_k=0
+top_p=0.95
+batch_size=25
+
+BASE_DIR=./benchmark/$MODEL_NAME/$lang/improve/t$temperature-p$top_p-k$top_k-batch$batch_size
+mkdir -p $BASE_DIR
+
+n_samples=200
+seed=0
+precision=bf16
+lang=java
+
+# limit_start=18
+# limit=3
+limit_start=0
+limit=5
+eval_limit_start=0
+eval_limit=50
+
+save_every_k_tasks=1 # after completing k dataset's tasks
+save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
+
+common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-batch$batch_size-maxlen$max_length-$lang"
+generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
+generations_path="$BASE_DIR/$generations_name.json"
+
+python main.py --model "$AUTHOR/$MODEL_NAME" \
+    --tasks multiple-$lang \
+    --max_memory_per_gpu autot \SE_DIR/$common_name-generations-${limit_start}-${limit}.json" \
+Selected Tasks: ['multiple-java']
+Loading model in bf16
+Loading model in auto mode
+Loading checkpoint shards: 100%|██████████████████████████████████████████████████████████| 3/3 [00:05<00:00,  1.73s/it]
+generation only mode
+number of problems for this task is 5
+task range: 1->5
+200 completions required for each task
+25 completion/prompt
+8 batch/task
+40 batches (iterations) required for 5 tasks
+  0%|                                                                                            | 0/40 [00:08<?, ?it/s]
+Traceback (most recent call last):
+  File "/workspace/bigcode-evaluation-harness/main.py", line 431, in <module>
+    main()
+  File "/workspace/bigcode-evaluation-harness/main.py", line 399, in main
+    generations, references = evaluator.generate_text(
+  File "/workspace/bigcode-evaluation-harness/bigcode_eval/evaluator.py", line 69, in generate_text
+    generations = parallel_generations(
+  File "/workspace/bigcode-evaluation-harness/bigcode_eval/generation.py", line 155, in parallel_generations
+    generations = complete_code(
+  File "/workspace/bigcode-evaluation-harness/bigcode_eval/utils.py", line 310, in complete_code
+    generated_tokens = model.generate(
+  File "/opt/conda/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/opt/conda/lib/python3.10/site-packages/transformers/generation/utils.py", line 1989, in generate
+    result = self._sample(
+  File "/opt/conda/lib/python3.10/site-packages/transformers/generation/utils.py", line 2969, in _sample
+    next_tokens = torch.multinomial(probs, num_samples=1).squeeze(1)
+RuntimeError: probability tensor contains either `inf`, `nan` or element < 0

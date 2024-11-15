@@ -1,0 +1,24 @@
+11775336
+Age:
+1d 1h
+Remaining:
+25 days
+Spain, ES
+2x RTX 309070.5  TFLOPS
+m:25514
+host:124171
+unverified
+0.7/48.0 GB
+765.9 GB/s
+X99
+PCIE 3.0, 4x
+2.9 GB/s
+Xeon® E5-2680 v4
+18.7/28 cpu
+1/21 GB
+1TB SSD
+800 MB/s26.0/27.9 GB
+586.9 Mbps673.5 MbpsMax CUDA: 12.2
+GPU: 0% 47C , CPU: 0% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+0-25
+$0.194/hr

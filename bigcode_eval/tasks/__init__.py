@@ -1,10 +1,11 @@
 import inspect
 from pprint import pprint
 
-from . import (apps, codexglue_code_to_text, codexglue_text_to_text, conala,
-               concode, ds1000, gsm, humaneval, humanevalplus, humanevalpack,
-               instruct_humaneval, instruct_wizard_humaneval, mbpp, mbppplus, multiple_enc_dec,
-               multiple, parity, python_bugs, quixbugs, recode, santacoder_fim,
+from . import (apps, bug_fix, code_to_code, codexglue_code_to_text,
+               codexglue_text_to_text, conala, concode, ds1000, gsm, humaneval, humanevalx, humanevalplus,
+               humanevalpack, instruct_humaneval, instruct_wizard_humaneval,
+               mbpp, mbppplus, multiple_enc_dec, multiple, parity, python_bugs, quixbugs,
+               recode, santacoder_fim,
                studenteval, mercury)
 
 TASK_REGISTRY = {
@@ -18,6 +19,7 @@ TASK_REGISTRY = {
     "concode": concode.Concode,
     **ds1000.create_all_tasks(),
     **humaneval.create_all_tasks(),
+    **humanevalx.create_all_tasks(),
     **humanevalplus.create_all_tasks(),
     **humanevalpack.create_all_tasks(),
     "mbpp": mbpp.MBPP,
@@ -36,8 +38,43 @@ TASK_REGISTRY = {
 
 ALL_TASKS = sorted(list(TASK_REGISTRY))
 
+TRANSLATION_TASK_REGISTRY = {
+    **code_to_code.multiple.create_all_tasks(),
+}
+TRANSLATION_TASKS = sorted(list(TRANSLATION_TASK_REGISTRY))
+
+BUGFIX_TASK_REGISTRY = {
+    **bug_fix.multiple.create_all_tasks(),
+}
+BUGFIX_TASKS = sorted(list(BUGFIX_TASK_REGISTRY))
+
+BUGFIX_V2_TASK_REGISTRY = {
+    **bug_fix.multiple_v2.create_all_tasks(),
+}
+BUGFIX_V2_TASKS = sorted(list(BUGFIX_V2_TASK_REGISTRY))
+
+BUGFIX_V3_TASK_REGISTRY = {
+    **bug_fix.multiple_v3.create_all_tasks(),
+}
+BUGFIX_V3_TASKS = sorted(list(BUGFIX_V3_TASK_REGISTRY))
+
+ALL_TASK_SPECIFIC_ARGS = [
+    code_to_code.multiple.add_task_specific_args, bug_fix.multiple.add_task_specific_args, bug_fix.multiple_v2.add_task_specific_args, bug_fix.multiple_v3.add_task_specific_args]
+
 
 def get_task(task_name, args=None):
+    if task_name in TRANSLATION_TASKS:
+        return get_code_to_code_task(task_name, args)
+
+    if task_name in BUGFIX_TASKS:
+        return get_bugfix_task(task_name, args)
+
+    if task_name in BUGFIX_V2_TASKS:
+        return get_bugfix_v2_task(task_name, args)
+
+    if task_name in BUGFIX_V3_TASKS:
+        return get_bugfix_v3_task(task_name, args)
+
     try:
         args = args or {'trust_remote_code': False}
         kwargs = {'trust_remote_code': args.trust_remote_code}
@@ -45,8 +82,82 @@ def get_task(task_name, args=None):
             kwargs["prompt"] = args.prompt
         if "load_data_path" in inspect.signature(TASK_REGISTRY[task_name]).parameters:
             kwargs["load_data_path"] = args.load_data_path
+        kwargs['limit_start'] = args.limit_start
+        kwargs['limit'] = args.limit
         return TASK_REGISTRY[task_name](**kwargs)
-    except KeyError:
+    except KeyError as ex:
+        print(ex)
         print("Available tasks:")
         pprint(TASK_REGISTRY)
+        raise KeyError(f"Missing task {task_name}")
+
+
+def get_code_to_code_task(task_name, args=None):
+    try:
+        kwargs = {
+            'source_lang': args.source_lang,
+            'source_generations_path': args.source_generations_path
+        }
+        kwargs['limit_start'] = args.limit_start
+        kwargs['limit'] = args.limit
+        if "prompt" in inspect.signature(TRANSLATION_TASK_REGISTRY[task_name]).parameters:
+            kwargs["prompt"] = args.prompt
+        if "load_data_path" in inspect.signature(TRANSLATION_TASK_REGISTRY[task_name]).parameters:
+            kwargs["load_data_path"] = args.load_data_path
+        return TRANSLATION_TASK_REGISTRY[task_name](**kwargs)
+    except KeyError as ex:
+        print(ex)
+        print("Available tasks:")
+        pprint(TRANSLATION_TASK_REGISTRY)
+        raise KeyError(f"Missing task {task_name}")
+
+
+def get_bugfix_task(task_name, args=None):
+    try:
+        kwargs = {'debug': args.debug,
+                  'source_generations_path': args.source_generations_path}
+        kwargs['limit_start'] = args.limit_start
+        kwargs['limit'] = args.limit
+        if "prompt" in inspect.signature(BUGFIX_TASK_REGISTRY[task_name]).parameters:
+            kwargs["prompt"] = args.prompt
+        if "load_data_path" in inspect.signature(BUGFIX_TASK_REGISTRY[task_name]).parameters:
+            kwargs["load_data_path"] = args.load_data_path
+        return BUGFIX_TASK_REGISTRY[task_name](**kwargs)
+    except KeyError:
+        print("Available tasks:")
+        pprint(BUGFIX_TASK_REGISTRY)
+        raise KeyError(f"Missing task {task_name}")
+
+
+def get_bugfix_v2_task(task_name, args=None):
+    try:
+        kwargs = {'debug': args.debug,
+                  'source_generations_path': args.source_generations_path}
+        kwargs['limit_start'] = args.limit_start
+        kwargs['limit'] = args.limit
+        if "prompt" in inspect.signature(BUGFIX_V2_TASK_REGISTRY[task_name]).parameters:
+            kwargs["prompt"] = args.prompt
+        if "load_data_path" in inspect.signature(BUGFIX_V2_TASK_REGISTRY[task_name]).parameters:
+            kwargs["load_data_path"] = args.load_data_path
+        return BUGFIX_V2_TASK_REGISTRY[task_name](**kwargs)
+    except KeyError:
+        print("Available tasks:")
+        pprint(BUGFIX_V2_TASK_REGISTRY)
+        raise KeyError(f"Missing task {task_name}")
+
+
+def get_bugfix_v3_task(task_name, args=None):
+    try:
+        kwargs = {'debug': args.debug,
+                  'source_generations_path': args.source_generations_path}
+        kwargs['limit_start'] = args.limit_start
+        kwargs['limit'] = args.limit
+        if "prompt" in inspect.signature(BUGFIX_V3_TASK_REGISTRY[task_name]).parameters:
+            kwargs["prompt"] = args.prompt
+        if "load_data_path" in inspect.signature(BUGFIX_V3_TASK_REGISTRY[task_name]).parameters:
+            kwargs["load_data_path"] = args.load_data_path
+        return BUGFIX_V3_TASK_REGISTRY[task_name](**kwargs)
+    except KeyError:
+        print("Available tasks:")
+        pprint(BUGFIX_V3_TASK_REGISTRY)
         raise KeyError(f"Missing task {task_name}")

@@ -1,0 +1,23 @@
+13453122
+Age:
+3m 34s
+Remaining:
+3 mon.
+Quebec, CA
+1x RTX 309035.8  TFLOPS
+m:15501
+host:85323
+unverified
+0.3/24.0 GB
+766.0 GB/s
+X10DDW
+PCIE 3.0, 16x
+11.5 GB/s
+Xeon® E5-2630 v4
+20.0/40 cpu
+0/129 GB
+Samsung
+2340 MB/s3.5/29.0 GB
+2350.2 Mbps1469.9 MbpsMax CUDA: 12.2
+GPU: 0% 36C , CPU: 2% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+$0.121/hr

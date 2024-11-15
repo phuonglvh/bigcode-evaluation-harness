@@ -1,0 +1,16 @@
+{
+  "name": "Java_60_sumToN",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    sumToN is a function that sums numbers from 1 to n.\n    >>> sumToN(30)\n    465\n    >>> sumToN(100)\n    5050\n    >>> sumToN(5)\n    15\n    >>> sumToN(10)\n    55\n    >>> sumToN(1)\n    1\n     */\n    public int sumToN(int n) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.sumToN(1) == 1,\n                s.sumToN(6) == 21,\n                s.sumToN(11) == 66,\n                s.sumToN(30) == 465,\n                s.sumToN(100) == 5050\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.stream.IntStream;\n\nclass Problem {\n    public int sumToN(int n) {\n        return IntStream.rangeClosed(1, n).sum();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.sumToN(1) == 1,\n                s.sumToN(6) == 21,\n                s.sumToN(11) == 66,\n                s.sumToN(30) == 465,\n                s.sumToN(100) == 5050\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1731429875,
+      "stdout": "",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp3flt1en1.java:11: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp3flt1en1.java:11: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

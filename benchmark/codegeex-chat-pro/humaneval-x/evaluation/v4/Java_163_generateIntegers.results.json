@@ -1,0 +1,16 @@
+{
+  "name": "Java_163_generateIntegers",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Given two positive integers a and b, return the even digits between a\n    and b, in ascending order.\n\n    For example:\n    generateIntegers(2, 8) => [2, 4, 6, 8]\n    generateIntegers(8, 2) => [2, 4, 6, 8]\n    generateIntegers(10, 14) => []\n     */\n    public List<Integer> generateIntegers(int a, int b) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.generateIntegers(2, 10).equals(Arrays.asList(2, 4, 6, 8)),\n                s.generateIntegers(10, 2).equals(Arrays.asList(2, 4, 6, 8)),\n                s.generateIntegers(132, 2).equals(Arrays.asList(2, 4, 6, 8)),\n                s.generateIntegers(17, 89).equals(List.of())\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public List<Integer> generateIntegers(int a, int b) {\n        int lower = Math.max(2, Math.min(a, b));\n        int upper = Math.min(8, Math.max(a, b));\n\n        List<Integer> result = new ArrayList<>();\n        for (int i = lower; i <= upper; i++) {\n            if (i % 2 == 0) {\n                result.add(i);\n            }\n        }\n        return result;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.generateIntegers(2, 10).equals(Arrays.asList(2, 4, 6, 8)),\n                s.generateIntegers(10, 2).equals(Arrays.asList(2, 4, 6, 8)),\n                s.generateIntegers(132, 2).equals(Arrays.asList(2, 4, 6, 8)),\n                s.generateIntegers(17, 89).equals(List.of())\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1731425979,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}

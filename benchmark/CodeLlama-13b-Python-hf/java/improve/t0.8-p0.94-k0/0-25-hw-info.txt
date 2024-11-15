@@ -1,0 +1,23 @@
+11759064
+Age:
+11 min.
+Remaining:
+2 mon, 22d
+Quebec, CA
+2x RTX 309070.5  TFLOPS
+m:3792
+host:7945
+verified
+0.6/48.0 GB
+767.4 GB/s
+Pro WS WRX80E
+PCIE 3.0, 16x
+6.2 GB/s
+AMD Ryzen Threadripper PRO 3955WX 16-Cores
+9.1/32 cpu
+0/74 GB
+Sabrent Rocket 4.0 Plus
+3613 MB/s1.4/28.4 GB
+837.3 Mbps801.6 MbpsMax CUDA: 12.2
+GPU: 0% 49C , CPU: 0% Status: success, running pytorch/pytorch_2.2.0-cuda11.8-cudnn8-runtime/jupyter
+$0.365/hr 
