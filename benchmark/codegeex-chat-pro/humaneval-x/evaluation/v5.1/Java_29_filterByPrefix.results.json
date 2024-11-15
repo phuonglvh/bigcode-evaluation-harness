@@ -1,0 +1,16 @@
+{
+  "name": "Java_29_filterByPrefix",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\nimport java.util.stream.Collectors;\n\nclass Solution {\n    /**\n    Filter an input list of strings only for ones that start with a given prefix.\n    >>> filterByPrefix(List.of(), \"a\")\n    []\n    >>> filterByPrefix(Arrays.asList(\"abc\", \"bcd\", \"cde\", \"array\"), \"a\")\n    [\"abc\", \"array\"]\n     */\n    public List<String> filterByPrefix(List<String> strings, String prefix) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.filterByPrefix(new ArrayList<>(List.of()), \"john\").equals(List.of()),\n                s.filterByPrefix(new ArrayList<>(Arrays.asList(\"xxx\", \"asd\", \"xxy\", \"john doe\", \"xxxAAA\", \"xxx\")), \"xxx\").equals(Arrays.asList(\"xxx\", \"xxxAAA\", \"xxx\"))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public List<String> filterByPrefix(List<String> strings, String prefix) {\n        return strings.stream()\n                      .filter(x -> x.startsWith(prefix))\n                      .collect(Collectors.toList());\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.filterByPrefix(new ArrayList<>(List.of()), \"john\").equals(List.of()),\n                s.filterByPrefix(new ArrayList<>(Arrays.asList(\"xxx\", \"asd\", \"xxy\", \"john doe\", \"xxxAAA\", \"xxx\")), \"xxx\").equals(Arrays.asList(\"xxx\", \"xxxAAA\", \"xxx\"))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1731687098,
+      "stdout": "",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp1a4fehd0.java:9: error: cannot find symbol\n                      .collect(Collectors.toList());\n                               ^\n  symbol:   variable Collectors\n  location: class Problem\n1 error\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}
