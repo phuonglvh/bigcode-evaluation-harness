@@ -1,0 +1,16 @@
+{
+  "name": "Java_66_digitSum",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Write a function that takes a string as input and returns the sum of the upper characters only'\n    ASCII codes.\n\n    Examples:\n        digitSum(\"\") => 0\n        digitSum(\"abAB\") => 131\n        digitSum(\"abcCd\") => 67\n        digitSum(\"helloE\") => 69\n        digitSum(\"woArBld\") => 131\n        digitSum(\"aAaaaXa\") => 153\n     */\n    public int digitSum(String s) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.digitSum(\"\") == 0,\n                s.digitSum(\"abAB\") == 131,\n                s.digitSum(\"abcCd\") == 67,\n                s.digitSum(\"helloE\") == 69,\n                s.digitSum(\"woArBld\") == 131,\n                s.digitSum(\"aAaaaXa\") == 153,\n                s.digitSum(\" How are yOu?\") == 151,\n                s.digitSum(\"You arE Very Smart\") == 327\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int digitSum(String s) {\n        if (s.isEmpty()) return 0;\n        return s.chars().filter(Character::isUpperCase).sum();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.digitSum(\"\") == 0,\n                s.digitSum(\"abAB\") == 131,\n                s.digitSum(\"abcCd\") == 67,\n                s.digitSum(\"helloE\") == 69,\n                s.digitSum(\"woArBld\") == 131,\n                s.digitSum(\"aAaaaXa\") == 153,\n                s.digitSum(\" How are yOu?\") == 151,\n                s.digitSum(\"You arE Very Smart\") == 327\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1731685685,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}

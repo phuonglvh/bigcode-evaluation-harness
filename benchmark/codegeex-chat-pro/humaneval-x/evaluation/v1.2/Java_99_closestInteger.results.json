@@ -1,0 +1,16 @@
+{
+  "name": "Java_99_closestInteger",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Create a function that takes a value (string) representing a number\n    and returns the closest integer to it. If the number is equidistant\n    from two integers, round it away from zero.\n\n    Examples\n    >>> closest_integer(\"10\")\n    10\n    >>> closest_integer(\"15.3\")\n    15\n\n    Note:\n    Rounding away from zero means that if the given number is equidistant\n    from two integers, the one you should return is the one that is the\n    farthest from zero. For example closest_integer(\"14.5\") should\n    return 15 and closest_integer(\"-14.5\") should return -15.\n     */\n    public int closestInteger(String value) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.closestInteger(\"10\") == 10,\n                s.closestInteger(\"14.5\") == 15,\n                s.closestInteger(\"-15.5\") == -16,\n                s.closestInteger(\"15.3\") == 15,\n                s.closestInteger(\"0\") == 0\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.math.BigDecimal;\nimport java.math.RoundingMode;\n\nclass Problem {\n    public int closestInteger(String value) {\n        if (value.contains(\".\")) {\n            // remove trailing zeros\n            while (value.endsWith(\"0\")) {\n                value = value.substring(0, value.length() - 1);\n            }\n        }\n\n        BigDecimal num = new BigDecimal(value);\n        if (value.endsWith(\".5\")) {\n            if (num.compareTo(BigDecimal.ZERO) > 0) {\n                return num.setScale(0, RoundingMode.CEILING).intValue();\n            } else {\n                return num.setScale(0, RoundingMode.FLOOR).intValue();\n            }\n        } else if (value.length() > 0) {\n            return num.setScale(0, RoundingMode.HALF_UP).intValue();\n        } else {\n            return 0;\n        }\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.closestInteger(\"10\") == 10,\n                s.closestInteger(\"14.5\") == 15,\n                s.closestInteger(\"-15.5\") == -16,\n                s.closestInteger(\"15.3\") == 15,\n                s.closestInteger(\"0\") == 0\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1731685699,
+      "stdout": "",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpkyge6q5t.java:30: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpkyge6q5t.java:30: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

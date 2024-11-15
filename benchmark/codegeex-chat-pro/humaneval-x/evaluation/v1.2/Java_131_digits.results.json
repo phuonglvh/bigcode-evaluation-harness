@@ -1,0 +1,16 @@
+{
+  "name": "Java_131_digits",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Given a positive integer n, return the product of the odd digits.\n    Return 0 if all digits are even.\n    For example:\n    digits(1)  == 1\n    digits(4)  == 0\n    digits(235) == 15\n     */\n    public int digits(int n) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.digits(5) == 5,\n                s.digits(54) == 5,\n                s.digits(120) == 1,\n                s.digits(5014) == 5,\n                s.digits(98765) == 315,\n                s.digits(5576543) == 2625\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int digits(int n) {\n        int product = 1;\n        int odd_count = 0;\n        for (char digit : Integer.toString(n).toCharArray()) {\n            int int_digit = Character.getNumericValue(digit);\n            if (int_digit % 2 == 1) {\n                product = product * int_digit;\n                odd_count += 1;\n            }\n        }\n        if (odd_count == 0) {\n            return 0;\n        } else {\n            return product;\n        }\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.digits(5) == 5,\n                s.digits(54) == 5,\n                s.digits(120) == 1,\n                s.digits(5014) == 5,\n                s.digits(98765) == 315,\n                s.digits(5576543) == 2625\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1731685713,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}
