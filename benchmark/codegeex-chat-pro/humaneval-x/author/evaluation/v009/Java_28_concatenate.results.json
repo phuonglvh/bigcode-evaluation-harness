@@ -1,0 +1,16 @@
+{
+  "name": "Java_28_concatenate",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Concatenate list of strings into a single string\n    >>> concatenate(List.of())\n    \"\"\n    >>> concatenate(Arrays.asList(\"a\", \"b\", \"c\"))\n    \"abc\"\n     */\n    public String concatenate(List<String> strings) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.concatenate(new ArrayList<>(List.of())), \"\"),\n                Objects.equals(s.concatenate(new ArrayList<>(Arrays.asList(\"x\", \"y\", \"z\"))), \"xyz\"),\n                Objects.equals(s.concatenate(new ArrayList<>(Arrays.asList(\"x\", \"y\", \"z\", \"w\", \"k\"))), \"xyzwk\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.List;\nimport java.util.stream.Collectors;\n\nclass Problem {\n    public String concatenate(List<String> strings) {\n        return strings.stream().collect(Collectors.joining());\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.concatenate(new ArrayList<>(List.of())), \"\"),\n                Objects.equals(s.concatenate(new ArrayList<>(Arrays.asList(\"x\", \"y\", \"z\"))), \"xyz\"),\n                Objects.equals(s.concatenate(new ArrayList<>(Arrays.asList(\"x\", \"y\", \"z\", \"w\", \"k\"))), \"xyzwk\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732005997,
+      "stdout": "",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpsammytji.java:12: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpsammytji.java:13: error: cannot find symbol\n                Objects.equals(s.concatenate(new ArrayList<>(List.of())), \"\"),\n                ^\n  symbol:   variable Objects\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpsammytji.java:13: error: cannot find symbol\n                Objects.equals(s.concatenate(new ArrayList<>(List.of())), \"\"),\n                                                 ^\n  symbol:   class ArrayList\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpsammytji.java:14: error: cannot find symbol\n                Objects.equals(s.concatenate(new ArrayList<>(Arrays.asList(\"x\", \"y\", \"z\"))), \"xyz\"),\n                ^\n  symbol:   variable Objects\n  location: class Pro",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

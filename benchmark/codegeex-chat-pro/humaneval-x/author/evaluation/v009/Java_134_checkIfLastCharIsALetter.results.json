@@ -1,0 +1,16 @@
+{
+  "name": "Java_134_checkIfLastCharIsALetter",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Create a function that returns true if the last character\n    of a given string is an alphabetical character and is not\n    a part of a word, and false otherwise.\n    Note: \"word\" is a group of characters separated by space.\n\n    Examples:\n    checkIfLastCharIsALetter(\"apple pie\") -> false\n    checkIfLastCharIsALetter(\"apple pi e\") -> true\n    checkIfLastCharIsALetter(\"apple pi e \") -> false\n    checkIfLastCharIsALetter(\"\") -> false\n     */\n    public boolean checkIfLastCharIsALetter(String txt) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.checkIfLastCharIsALetter(\"apple\" ) == false,\n                s.checkIfLastCharIsALetter(\"apple pi e\" ) == true,\n                s.checkIfLastCharIsALetter(\"eeeee\" ) == false,\n                s.checkIfLastCharIsALetter(\"A\" ) == true,\n                s.checkIfLastCharIsALetter(\"Pumpkin pie \" ) == false,\n                s.checkIfLastCharIsALetter(\"Pumpkin pie 1\" ) == false,\n                s.checkIfLastCharIsALetter(\"\" ) == false,\n                s.checkIfLastCharIsALetter(\"eeeee e \" ) == false,\n                s.checkIfLastCharIsALetter(\"apple pie\" ) == false,\n                s.checkIfLastCharIsALetter(\"apple pi e \" ) == false\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public boolean checkIfLastCharIsALetter(String txt) {\n        String check = txt.split(\" \")[txt.split(\" \").length - 1];\n        return check.length() == 1 && (97 <= Character.toLowerCase(check.charAt(0)) && Character.toLowerCase(check.charAt(0)) <= 122);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.checkIfLastCharIsALetter(\"apple\" ) == false,\n                s.checkIfLastCharIsALetter(\"apple pi e\" ) == true,\n                s.checkIfLastCharIsALetter(\"eeeee\" ) == false,\n                s.checkIfLastCharIsALetter(\"A\" ) == true,\n                s.checkIfLastCharIsALetter(\"Pumpkin pie \" ) == false,\n                s.checkIfLastCharIsALetter(\"Pumpkin pie 1\" ) == false,\n                s.checkIfLastCharIsALetter(\"\" ) == false,\n                s.checkIfLastCharIsALetter(\"eeeee e \" ) == false,\n                s.checkIfLastCharIsALetter(\"apple pie\" ) == false,\n                s.checkIfLastCharIsALetter(\"apple pi e \" ) == false\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732006044,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(tmps_mztux7.java:26)\n",
+      "exit_code": 1,
+      "status": "Exception"
+    }
+  ]
+}
