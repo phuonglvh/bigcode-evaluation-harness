@@ -9,7 +9,9 @@ MODEL_NAME="codegeex-chat-pro"
 
 # Translate code2code
 # py to java
-prompt_version='v001'
+# prompt_version='v001'
+# prompt_version='v002'
+prompt_version='v003'
 
 source_generations_path="$(realpath .)/benchmark/$MODEL_NAME/humaneval-x/author/$MODEL_NAME-humaneval_python_java_prompts_$prompt_version-translations-0-164.json"
 num_source_generations=164

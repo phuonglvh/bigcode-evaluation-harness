@@ -27,7 +27,8 @@ def codegeex_chat_pro_translate(source_code, target_language="Java"):
         "prompt": "",
         "locale": "en",
         "model": "codegeex-chat-pro",
-        "code": source_code
+        "code": source_code,
+        "seed": 0
     }
 
     # Make the POST request
