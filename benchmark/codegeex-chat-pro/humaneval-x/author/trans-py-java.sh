@@ -11,8 +11,8 @@ MODEL_NAME="codegeex-chat-pro"
 # py to java
 # prompt_version='v001'
 # prompt_version='v002'
-prompt_version='v003'
-# prompt_version='v005'
+# prompt_version='v003'
+prompt_version='v005'
 
 source_generations_path="$(realpath .)/benchmark/$MODEL_NAME/humaneval-x/author/$MODEL_NAME-humaneval_python_java_prompts_$prompt_version-translations-0-164.json"
 num_source_generations=164
@@ -28,7 +28,7 @@ filename=$(basename -- "$source_generations_path")
 # extension="${filename##*.}"
 generations_name="${filename%.*}"
 
-BASE_DIR=./benchmark/$MODEL_NAME/humaneval-x
+BASE_DIR=./benchmark/$MODEL_NAME/humaneval-x/author
 
 mkdir -p $BASE_DIR
 # rm -rf /tmp/* /var/tmp/*.json
