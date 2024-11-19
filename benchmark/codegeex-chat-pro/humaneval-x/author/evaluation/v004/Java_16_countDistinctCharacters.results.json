@@ -1,0 +1,16 @@
+{
+  "name": "Java_16_countDistinctCharacters",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Given a string, find out how many distinct characters (regardless of case) does it consist of\n    >>> countDistinctCharacters(\"xyzXYZ\")\n    3\n    >>> countDistinctCharacters(\"Jerry\")\n    4\n     */\n    public int countDistinctCharacters(String string) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.countDistinctCharacters(\"\") == 0,\n                s.countDistinctCharacters(\"abcde\") == 5,\n                s.countDistinctCharacters(\"abcde\" + \"cade\" + \"CADE\") == 5,\n                s.countDistinctCharacters(\"aaaaAAAAaaaa\") == 1,\n                s.countDistinctCharacters(\"Jerry jERRY JeRRRY\") == 5\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.HashSet;\nimport java.util.Set;\n\nclass Problem {\n    public int countDistinctCharacters(String string) {\n        Set<Character> charSet = new HashSet<>();\n        for (char c : string.toLowerCase().toCharArray()) {\n            charSet.add(c);\n        }\n        return charSet.size();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.countDistinctCharacters(\"\") == 0,\n                s.countDistinctCharacters(\"abcde\") == 5,\n                s.countDistinctCharacters(\"abcde\" + \"cade\" + \"CADE\") == 5,\n                s.countDistinctCharacters(\"aaaaAAAAaaaa\") == 1,\n                s.countDistinctCharacters(\"Jerry jERRY JeRRRY\") == 5\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732029030,
+      "stdout": "",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpc_cy2emz.java:16: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpc_cy2emz.java:16: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}
