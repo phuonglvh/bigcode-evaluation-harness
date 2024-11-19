@@ -1,0 +1,16 @@
+{
+  "name": "Java_21_rescaleToUnit",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Given list of numbers (of at least two elements), apply a linear transform to that list,\n    such that the smallest number will become 0 and the largest will become 1\n    >>> rescaleToUnit(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0))\n    [0.0, 0.25, 0.5, 0.75, 1.0]\n     */\n    public List<Double> rescaleToUnit(List<Double> numbers) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.rescaleToUnit(new ArrayList<>(Arrays.asList(2.0, 49.9))).equals(Arrays.asList(0.0, 1.0)),\n                s.rescaleToUnit(new ArrayList<>(Arrays.asList(100.0, 49.9))).equals(Arrays.asList(1.0, 0.0)),\n                s.rescaleToUnit(new ArrayList<>(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0))).equals(Arrays.asList(0.0, 0.25, 0.5, 0.75, 1.0)),\n                s.rescaleToUnit(new ArrayList<>(Arrays.asList(2.0, 1.0, 5.0, 3.0, 4.0))).equals(Arrays.asList(0.25, 0.0, 1.0, 0.5, 0.75)),\n                s.rescaleToUnit(new ArrayList<>(Arrays.asList(12.0, 11.0, 15.0, 13.0, 14.0))).equals(Arrays.asList(0.25, 0.0, 1.0, 0.5, 0.75))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\n\nclass Problem {\n    public List<Double> rescaleToUnit(List<Double> numbers) {\n        double minNumber = Collections.min(numbers);\n        double maxNumber = Collections.max(numbers);\n        List<Double> rescaledNumbers = new ArrayList<>();\n        for (double x : numbers) {\n            rescaledNumbers.add((x - minNumber) / (maxNumber - minNumber));\n        }\n        return rescaledNumbers;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.rescaleToUnit(new ArrayList<>(Arrays.asList(2.0, 49.9))).equals(Arrays.asList(0.0, 1.0)),\n                s.rescaleToUnit(new ArrayList<>(Arrays.asList(100.0, 49.9))).equals(Arrays.asList(1.0, 0.0)),\n                s.rescaleToUnit(new ArrayList<>(Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0))).equals(Arrays.asList(0.0, 0.25, 0.5, 0.75, 1.0)),\n                s.rescaleToUnit(new ArrayList<>(Arrays.asList(2.0, 1.0, 5.0, 3.0, 4.0))).equals(Arrays.asList(0.25, 0.0, 1.0, 0.5, 0.75)),\n                s.rescaleToUnit(new ArrayList<>(Arrays.asList(12.0, 11.0, 15.0, 13.0, 14.0))).equals(Arrays.asList(0.25, 0.0, 1.0, 0.5, 0.75))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732002125,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}
