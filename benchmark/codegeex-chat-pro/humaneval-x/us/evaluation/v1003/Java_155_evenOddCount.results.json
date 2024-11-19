@@ -1,0 +1,16 @@
+{
+  "name": "Java_155_evenOddCount",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Given an integer. return a tuple that has the number of even and odd digits respectively.\n    \n     Example:\n        evenOddCount(-12) ==> (1, 1)\n        evenOddCount(123) ==> (1, 2)\n     */\n    public List<Integer> evenOddCount(int num) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.evenOddCount(7).equals(Arrays.asList(0, 1)),\n                s.evenOddCount(-78).equals(Arrays.asList(1, 1)),\n                s.evenOddCount(3452).equals(Arrays.asList(2, 2)),\n                s.evenOddCount(346211).equals(Arrays.asList(3, 3)),\n                s.evenOddCount(-345821).equals(Arrays.asList(3, 3)),\n                s.evenOddCount(-2).equals(Arrays.asList(1, 0)),\n                s.evenOddCount(-45347).equals(Arrays.asList(2, 3)),\n                s.evenOddCount(0).equals(Arrays.asList(1, 0))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\n\nclass Problem {\n    public List<Integer> evenOddCount(int num) {\n        int evenCount = 0;\n        int oddCount = 0;\n        String numStr = String.valueOf(Math.abs(num));\n        \n        for (int i = 0; i < numStr.length(); i++) {\n            int digit = Character.getNumericValue(numStr.charAt(i));\n            if (digit % 2 == 0) {\n                evenCount++;\n            } else {\n                oddCount++;\n            }\n        }\n        \n        return Arrays.asList(evenCount, oddCount);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.evenOddCount(7).equals(Arrays.asList(0, 1)),\n                s.evenOddCount(-78).equals(Arrays.asList(1, 1)),\n                s.evenOddCount(3452).equals(Arrays.asList(2, 2)),\n                s.evenOddCount(346211).equals(Arrays.asList(3, 3)),\n                s.evenOddCount(-345821).equals(Arrays.asList(3, 3)),\n                s.evenOddCount(-2).equals(Arrays.asList(1, 0)),\n                s.evenOddCount(-45347).equals(Arrays.asList(2, 3)),\n                s.evenOddCount(0).equals(Arrays.asList(1, 0))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732034274,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}

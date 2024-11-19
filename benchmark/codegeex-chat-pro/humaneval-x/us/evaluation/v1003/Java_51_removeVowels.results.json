@@ -1,0 +1,16 @@
+{
+  "name": "Java_51_removeVowels",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    removeVowels is a function that takes string and returns string without vowels.\n    >>> removeVowels(\"\")\n    \"\"\n    >>> removeVowels(\"abcdef\\nghijklm\")\n    \"bcdf\\nghjklm\"\n    >>> removeVowels(\"abcdef\")\n    \"bcdf\"\n    >>> removeVowels(\"aaaaa\")\n    \"\"\n    >>> removeVowels(\"aaBAA\")\n    \"B\"\n    >>> removeVowels(\"zbcd\")\n    \"zbcd\"\n     */\n    public String removeVowels(String text) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.removeVowels(\"\"), \"\"),\n                Objects.equals(s.removeVowels(\"abcdef\\nghijklm\"), \"bcdf\\nghjklm\"),\n                Objects.equals(s.removeVowels(\"fedcba\"), \"fdcb\"),\n                Objects.equals(s.removeVowels(\"eeeee\"), \"\"),\n                Objects.equals(s.removeVowels(\"acBAA\"), \"cB\"),\n                Objects.equals(s.removeVowels(\"EcBOO\"), \"cB\"),\n                Objects.equals(s.removeVowels(\"ybcd\"), \"ybcd\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public String removeVowels(String text) {\n        StringBuilder result = new StringBuilder();\n        for (char s : text.toCharArray()) {\n            if (s != 'a' && s != 'e' && s != 'i' && s != 'o' && s != 'u' &&\n                s != 'A' && s != 'E' && s != 'I' && s != 'O' && s != 'U') {\n                result.append(s);\n            }\n        }\n        return result.toString();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.removeVowels(\"\"), \"\"),\n                Objects.equals(s.removeVowels(\"abcdef\\nghijklm\"), \"bcdf\\nghjklm\"),\n                Objects.equals(s.removeVowels(\"fedcba\"), \"fdcb\"),\n                Objects.equals(s.removeVowels(\"eeeee\"), \"\"),\n                Objects.equals(s.removeVowels(\"acBAA\"), \"cB\"),\n                Objects.equals(s.removeVowels(\"EcBOO\"), \"cB\"),\n                Objects.equals(s.removeVowels(\"ybcd\"), \"ybcd\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732034215,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}
