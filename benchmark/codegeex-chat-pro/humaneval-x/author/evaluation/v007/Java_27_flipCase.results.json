@@ -1,0 +1,16 @@
+{
+  "name": "Java_27_flipCase",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    For a given string, flip lowercase characters to uppercase and uppercase to lowercase.\n    >>> flipCase(\"Hello\")\n    \"hELLO\"\n     */\n    public String flipCase(String string) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.flipCase(\"\"), \"\"),\n                Objects.equals(s.flipCase(\"Hello!\"), \"hELLO!\"),\n                Objects.equals(s.flipCase(\"These violent delights have violent ends\"), \"tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public String flipCase(String string) {\n        return string.swapCase();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.flipCase(\"\"), \"\"),\n                Objects.equals(s.flipCase(\"Hello!\"), \"hELLO!\"),\n                Objects.equals(s.flipCase(\"These violent delights have violent ends\"), \"tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732005757,
+      "stdout": "",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpm239426f.java:7: error: cannot find symbol\n        return string.swapCase();\n                     ^\n  symbol:   method swapCase()\n  location: variable string of type String\n1 error\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

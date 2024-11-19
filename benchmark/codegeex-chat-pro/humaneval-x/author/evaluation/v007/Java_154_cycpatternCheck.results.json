@@ -1,0 +1,16 @@
+{
+  "name": "Java_154_cycpatternCheck",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    You are given 2 words. You need to return true if the second word or any of its rotations is a substring in the first word\n    cycpatternCheck(\"abcd\",\"abd\") => false\n    cycpatternCheck(\"hello\",\"ell\") => true\n    cycpatternCheck(\"whassup\",\"psus\") => false\n    cycpatternCheck(\"abab\",\"baa\") => true\n    cycpatternCheck(\"efef\",\"eeff\") => false\n    cycpatternCheck(\"himenss\",\"simen\") => true\n     */\n    public boolean cycpatternCheck(String a, String b) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.cycpatternCheck(\"xyzw\", \"xyw\") == false,\n                s.cycpatternCheck(\"yello\", \"ell\") == true,\n                s.cycpatternCheck(\"whattup\", \"ptut\") == false,\n                s.cycpatternCheck(\"efef\", \"fee\") == true,\n                s.cycpatternCheck(\"abab\", \"aabb\") == false,\n                s.cycpatternCheck(\"winemtt\", \"tinem\") == true\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public boolean cycpatternCheck(String a, String b) {\n        int l = b.length();\n        String pat = b + b;\n        for (int i = 0; i <= a.length() - l; i++) {\n            for (int j = 0; j <= l; j++) {\n                if (a.substring(i, i + l).equals(pat.substring(j, j + l))) {\n                    return true;\n                }\n            }\n        }\n        return false;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.cycpatternCheck(\"xyzw\", \"xyw\") == false,\n                s.cycpatternCheck(\"yello\", \"ell\") == true,\n                s.cycpatternCheck(\"whattup\", \"ptut\") == false,\n                s.cycpatternCheck(\"efef\", \"fee\") == true,\n                s.cycpatternCheck(\"abab\", \"aabb\") == false,\n                s.cycpatternCheck(\"winemtt\", \"tinem\") == true\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732005811,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}
