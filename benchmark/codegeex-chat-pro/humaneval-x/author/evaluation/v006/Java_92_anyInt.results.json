@@ -1,0 +1,16 @@
+{
+  "name": "Java_92_anyInt",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Create a function that takes 3 numbers.\n    Returns true if one of the numbers is equal to the sum of the other two, and all numbers are integers.\n    Returns false in any other cases.\n\n    Examples\n    anyInt(5, 2, 7) -> true\n\n    anyInt(3, 2, 2) -> false\n\n    anyInt(3, -2, 1) -> true\n\n    anyInt(3.6, -2.2, 2) -> false\n     */\n    public boolean anyInt(Object x, Object y, Object z) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.anyInt(2, 3, 1) == true,\n                s.anyInt(2.5, 2, 3) == false,\n                s.anyInt(1.5, 5, 3.5) == false,\n                s.anyInt(2, 6, 2) == false,\n                s.anyInt(4, 2, 2) == true,\n                s.anyInt(2.2, 2.2, 2.2) == false,\n                s.anyInt(-4, 6, 2) == true,\n                s.anyInt(2, 1, 1) == true,\n                s.anyInt(3, 4, 7) == true,\n                s.anyInt(3.0, 4, 7) == false\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public boolean anyInt(Object x, Object y, Object z) {\n        if (x instanceof Integer && y instanceof Integer && z instanceof Integer) {\n            if ((x + y == z) || (x + z == y) || (y + z == x)) {\n                return true;\n            }\n            return false;\n        }\n        return false;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.anyInt(2, 3, 1) == true,\n                s.anyInt(2.5, 2, 3) == false,\n                s.anyInt(1.5, 5, 3.5) == false,\n                s.anyInt(2, 6, 2) == false,\n                s.anyInt(4, 2, 2) == true,\n                s.anyInt(2.2, 2.2, 2.2) == false,\n                s.anyInt(-4, 6, 2) == true,\n                s.anyInt(2, 1, 1) == true,\n                s.anyInt(3, 4, 7) == true,\n                s.anyInt(3.0, 4, 7) == false\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732004743,
+      "stdout": "",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpw3r1mhkv.java:8: error: bad operand types for binary operator '+'\n            if ((x + y == z) || (x + z == y) || (y + z == x)) {\n                   ^\n  first type:  Object\n  second type: Object\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpw3r1mhkv.java:8: error: bad operand types for binary operator '+'\n            if ((x + y == z) || (x + z == y) || (y + z == x)) {\n                                   ^\n  first type:  Object\n  second type: Object\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpw3r1mhkv.java:8: error: bad operand types for binary operator '+'\n            if ((x + y == z) || (x + z == y) || (y + z == x)) {\n                                                   ^\n  first type:  Object\n  second type: Object\n3 errors\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}
