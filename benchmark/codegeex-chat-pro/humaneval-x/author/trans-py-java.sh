@@ -14,8 +14,8 @@ MODEL_NAME="codegeex-chat-pro"
 # prompt_version='v003'
 # prompt_version='v005'
 # prompt_version='v006'
-prompt_version='v007'
-# prompt_version='v009'
+# prompt_version='v007'
+prompt_version='v009'
 
 source_generations_path="$(realpath .)/benchmark/$MODEL_NAME/humaneval-x/author/$MODEL_NAME-humaneval_python_java_prompts_$prompt_version-translations-0-164.json"
 num_source_generations=164
