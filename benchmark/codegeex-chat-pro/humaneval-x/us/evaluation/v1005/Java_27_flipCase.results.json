@@ -5,10 +5,10 @@
   "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.flipCase(\"\"), \"\"),\n                Objects.equals(s.flipCase(\"Hello!\"), \"hELLO!\"),\n                Objects.equals(s.flipCase(\"These violent delights have violent ends\"), \"tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
   "results": [
     {
-      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public String flipCase(String string) {\n        return string.toUpperCase().replaceAll(\"[A-Z]\", \"a\").replaceAll(\"[a-z]\", \"A\");\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.flipCase(\"\"), \"\"),\n                Objects.equals(s.flipCase(\"Hello!\"), \"hELLO!\"),\n                Objects.equals(s.flipCase(\"These violent delights have violent ends\"), \"tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732034662,
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public String flipCase(String string) {\n        return string.toUpperCase();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.flipCase(\"\"), \"\"),\n                Objects.equals(s.flipCase(\"Hello!\"), \"hELLO!\"),\n                Objects.equals(s.flipCase(\"These violent delights have violent ends\"), \"tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732118276,
       "stdout": "",
-      "stderr": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(tmppuvrk4_7.java:18)\n",
+      "stderr": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(tmp3r37ysno.java:18)\n",
       "exit_code": 1,
       "status": "Exception"
     }

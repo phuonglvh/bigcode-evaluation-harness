@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public String exchange(List<Integer> lst1, List<Integer> lst2) {\n        int odd = 0;\n        int even = 0;\n        for (int i : lst1) {\n            if (i % 2 == 1) {\n                odd += 1;\n            }\n        }\n        for (int i : lst2) {\n            if (i % 2 == 0) {\n                even += 1;\n            }\n        }\n        if (even >= odd) {\n            return \"YES\";\n        }\n        return \"NO\";\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.exchange(Arrays.asList(1, 2, 3, 4), Arrays.asList(1, 2, 3, 4)), \"YES\" ),\n                Objects.equals(s.exchange(Arrays.asList(1, 2, 3, 4), Arrays.asList(1, 5, 3, 4)), \"NO\" ),\n                Objects.equals(s.exchange(Arrays.asList(1, 2, 3, 4), Arrays.asList(2, 1, 4, 3)), \"YES\" ),\n                Objects.equals(s.exchange(Arrays.asList(5, 7, 3), Arrays.asList(2, 6, 4)), \"YES\" ),\n                Objects.equals(s.exchange(Arrays.asList(5, 7, 3), Arrays.asList(2, 6, 3)), \"NO\" ),\n                Objects.equals(s.exchange(Arrays.asList(3, 2, 6, 1, 8, 9), Arrays.asList(3, 5, 5, 1, 1, 1)), \"NO\" ),\n                Objects.equals(s.exchange(Arrays.asList(100, 200), Arrays.asList(200, 200)), \"YES\" )\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732034703,
+      "timestamp": 1732118334,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,
