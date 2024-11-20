@@ -1,0 +1,16 @@
+{
+  "name": "Java_28_concatenate",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Concatenate list of strings into a single string\n    >>> concatenate(List.of())\n    \"\"\n    >>> concatenate(Arrays.asList(\"a\", \"b\", \"c\"))\n    \"abc\"\n     */\n    public String concatenate(List<String> strings) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.concatenate(new ArrayList<>(List.of())), \"\"),\n                Objects.equals(s.concatenate(new ArrayList<>(Arrays.asList(\"x\", \"y\", \"z\"))), \"xyz\"),\n                Objects.equals(s.concatenate(new ArrayList<>(Arrays.asList(\"x\", \"y\", \"z\", \"w\", \"k\"))), \"xyzwk\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public String concatenate(List<String> strings) {\n        StringBuilder sb = new StringBuilder();\n        for (String s : strings) {\n            sb.append(s);\n        }\n        return sb.toString();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.concatenate(new ArrayList<>(List.of())), \"\"),\n                Objects.equals(s.concatenate(new ArrayList<>(Arrays.asList(\"x\", \"y\", \"z\"))), \"xyz\"),\n                Objects.equals(s.concatenate(new ArrayList<>(Arrays.asList(\"x\", \"y\", \"z\", \"w\", \"k\"))), \"xyzwk\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732036353,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}

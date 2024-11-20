@@ -1,0 +1,494 @@
+[
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public boolean hasCloseElements(List<Double> numbers, double threshold) {\n        for (int idx = 0; idx < numbers.size(); idx++) {\n            for (int idx2 = 0; idx2 < numbers.size(); idx2++) {\n                if (idx != idx2) {\n                    double distance = Math.abs(numbers.get(idx) - numbers.get(idx2));\n                    if (distance < threshold) {\n                        return true;\n                    }\n                }\n            }\n        }\n        return false;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<String> separateParenGroups(String paren_string) {\n        List<String> result = new ArrayList<>();\n        StringBuilder current_string = new StringBuilder();\n        int current_depth = 0;\n\n        for (char c : paren_string.toCharArray()) {\n            if (c == '(') {\n                current_depth++;\n                current_string.append(c);\n            } else if (c == ')') {\n                current_depth--;\n                current_string.append(c);\n\n                if (current_depth == 0) {\n                    result.add(current_string.toString());\n                    current_string.setLength(0);\n                }\n            }\n        }\n\n        return result;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public double truncateNumber(double number) {\n        return number % 1.0;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public boolean belowZero(List<Integer> operations) {\n        int balance = 0;\n\n        for (int op : operations) {\n            balance += op;\n            if (balance < 0) {\n                return true;\n            }\n        }\n\n        return false;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public double meanAbsoluteDeviation(List<Double> numbers) {\n        double sum = 0.0;\n        for (double num : numbers) {\n            sum += num;\n        }\n        double mean = sum / numbers.size();\n        double madSum = 0.0;\n        for (double num : numbers) {\n            madSum += Math.abs(num - mean);\n        }\n        return madSum / numbers.size();"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> intersperse(List<Integer> numbers, int delimiter) {\n        if (numbers.isEmpty()) {\n            return new ArrayList<>();\n        }\n\n        List<Integer> result = new ArrayList<>();\n\n        for (int i = 0; i < numbers.size() - 1; i++) {\n            result.add(numbers.get(i));\n            result.add(delimiter);\n        }\n\n        result.add(numbers.get(numbers.size() - 1));\n\n        return result;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> parseNestedParens(String paren_string) {\n        List<Integer> result = new ArrayList<>();\n        \n        for (String s : paren_string.split(\" \")) {\n            if (!s.isEmpty()) {\n                result.add(parseParenGroup(s));\n            }\n        }\n        return result;\n    }\n    \n    private int parseParenGroup(String s) {\n        int depth = 0;\n        int maxDepth = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '(') {\n                depth++;\n                maxDepth = Math.max(depth, maxDepth);\n            } else {\n                depth--;\n            }\n        }\n        return maxDepth;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.util.stream.Collectors;\n\nclass Solution {\n    public List<String> filterBySubstring(List<String> strings, String substring) {\n        return strings.stream().filter(x -> x.contains(substring)).collect(Collectors.toList());"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int[] sumProduct(List<Integer> numbers) {\n        int sum_value = 0;\n        int prod_value = 1;\n\n        for (int n : numbers) {\n            sum_value += n;\n            prod_value *= n;\n        }\n        return new int[]{sum_value, prod_value};"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> rollingMax(List<Integer> numbers) {\n        Integer runningMax = null;\n        List<Integer> result = new ArrayList<>();\n\n        for (Integer n : numbers) {\n            if (runningMax == null) {\n                runningMax = n;\n            } else {\n                runningMax = Math.max(runningMax, n);\n            }\n\n            result.add(runningMax);\n        }\n\n        return result;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Test if given string is a palindrome\n     */\n    public boolean isPalindrome(String string) {\n        int i = 0;\n        int j = string.length() - 1;\n        while (i < j) {\n            if (string.charAt(i) != string.charAt(j)) {\n                return false;\n            }\n            i++;\n            j--;\n        }\n        return true;\n    }\n\n    public String makePalindrome(String string) {\n        if (string.isEmpty()) {\n            return \"\";\n        }\n\n        int beginningOfSuffix = 0;\n\n        while (!isPalindrome(string.substring(beginningOfSuffix))) {\n            beginningOfSuffix++;\n        }\n\n        return string + new StringBuilder(string.substring(0, beginningOfSuffix)).reverse().toString();"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String stringXor(String a, String b) {\n        StringBuilder result = new StringBuilder();\n        \n        for (int i = 0; i < a.length(); i++) {\n            if (a.charAt(i) == b.charAt(i)) {\n                result.append('0');\n            } else {\n                result.append('1');\n            }\n        }\n        \n        return result.toString();"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public Optional<String> longest(List<String> strings) {\n        if (strings == null || strings.isEmpty()) {\n            return Optional.empty();\n        }\n\n        int maxlen = 0;\n        String longestString = null;\n        for (String s : strings) {\n            int len = s.length();\n            if (len > maxlen) {\n                maxlen = len;\n                longestString = s;\n            }\n        }\n        return Optional.ofNullable(longestString);"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int greatestCommonDivisor(int a, int b) {\n        while (b != 0) {\n            int temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<String> allPrefixes(String string) {\n        List<String> result = new ArrayList<>();\n\n        for (int i = 0; i < string.length(); i++) {\n            result.add(string.substring(0, i + 1));\n        }\n        return result;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String stringSequence(int n) {\n        StringBuilder sb = new StringBuilder();\n        for (int x = 0; x <= n; x++) {\n            sb.append(x);\n            if (x != n) {\n                sb.append(\" \");\n            }\n        }\n        return sb.toString();"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public int countDistinctCharacters(String string) {\n        Set<Character> distinctChars = new HashSet<>();\n        for (char c : string.toLowerCase().toCharArray()) {\n            distinctChars.add(c);\n        }\n        return distinctChars.size();"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> parseMusic(String musicString) {\n        Map<String, Integer> noteMap = new HashMap<>();\n        noteMap.put(\"o\", 4);\n        noteMap.put(\"o|\", 2);\n        noteMap.put(\".|\", 1);\n\n        List<Integer> result = new ArrayList<>();\n        String[] notes = musicString.split(\" \");\n        for (String note : notes) {\n            if (!note.isEmpty()) {\n                result.add(noteMap.get(note));\n            }\n        }\n        return result;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int howManyTimes(String string, String substring) {\n        int times = 0;\n\n        for (int i = 0; i <= string.length() - substring.length(); i++) {\n            if (string.substring(i, i + substring.length()).equals(substring)) {\n                times += 1;\n            }\n        }\n\n        return times;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String sortNumbers(String numbers) {\n        Map<String, Integer> valueMap = new HashMap<>();\n        valueMap.put(\"zero\", 0);\n        valueMap.put(\"one\", 1);\n        valueMap.put(\"two\", 2);\n        valueMap.put(\"three\", 3);\n        valueMap.put(\"four\", 4);\n        valueMap.put(\"five\", 5);\n        valueMap.put(\"six\", 6);\n        valueMap.put(\"seven\", 7);\n        valueMap.put(\"eight\", 8);\n        valueMap.put(\"nine\", 9);\n\n        List<String> numberList = new ArrayList<>(Arrays.asList(numbers.split(\" \")));\n        numberList.removeIf(String::isEmpty);\n\n        numberList.sort(Comparator.comparingInt(valueMap::get));\n\n        return String.join(\" \", numberList);"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Double> findClosestElements(List<Double> numbers) {\n        List<Double> closestPair = null;\n        Double distance = null;\n\n        for (int idx = 0; idx < numbers.size(); idx++) {\n            double elem = numbers.get(idx);\n            for (int idx2 = 0; idx2 < numbers.size(); idx2++) {\n                double elem2 = numbers.get(idx2);\n                if (idx != idx2) {\n                    if (distance == null) {\n                        distance = Math.abs(elem - elem2);\n                        List<Double> temp = new ArrayList<>(Arrays.asList(elem, elem2));\n                        Collections.sort(temp);\n                        closestPair = temp;\n                    } else {\n                        double newDistance = Math.abs(elem - elem2);\n                        if (newDistance < distance) {\n                            distance = newDistance;\n                            List<Double> temp = new ArrayList<>(Arrays.asList(elem, elem2));\n                            Collections.sort(temp);\n                            closestPair = temp;\n                        }\n                    }\n                }\n            }\n        }\n\n        return closestPair;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Double> rescaleToUnit(List<Double> numbers) {\n        double minNumber = Collections.min(numbers);\n        double maxNumber = Collections.max(numbers);\n        List<Double> rescaledNumbers = new ArrayList<>();\n        for (double x : numbers) {\n            rescaledNumbers.add((x - minNumber) / (maxNumber - minNumber));\n        }\n        return rescaledNumbers;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> filterIntegers(List<Object> values) {\n        List<Integer> result = new ArrayList<>();\n        for (Object value : values) {\n            if (value instanceof Integer) {\n                result.add((Integer) value);\n            }\n        }\n        return result;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int strlen(String string) {\n        return string.length();"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int largestDivisor(int n) {\n        for (int i = n - 1; i > 0; i--) {\n            if (n % i == 0) {\n                return i;\n            }\n        }\n        return 0;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> factorize(int n) {\n        List<Integer> fact = new ArrayList<>();\n        int i = 2;\n        while (i <= (int) Math.sqrt(n) + 1) {\n            if (n % i == 0) {\n                fact.add(i);\n                n /= i;\n            } else {\n                i += 1;\n            }\n        }\n\n        if (n > 1) {\n            fact.add(n);\n        }\n        return fact;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.util.stream.Collectors;\n\nclass Solution {\n    public List<Integer> removeDuplicates(List<Integer> numbers) {\n        Map<Integer, Long> counter = numbers.stream()\n                                            .collect(Collectors.groupingBy(e -> e, Collectors.counting()));\n        return numbers.stream()\n                      .filter(n -> counter.get(n) <= 1)\n                      .collect(Collectors.toList());"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String flipCase(String string) {\n        return string.toUpperCase().equals(string) ? string.toLowerCase() : string.toUpperCase();"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String concatenate(List<String> strings) {\n        StringBuilder sb = new StringBuilder();\n        for (String s : strings) {\n            sb.append(s);\n        }\n        return sb.toString();"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\nimport java.util.stream.Collectors;\n\nclass Solution {\n    public List<String> filterByPrefix(List<String> strings, String prefix) {\n        return strings.stream()\n                      .filter(x -> x.startsWith(prefix))\n                      .collect(Collectors.toList());"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\nimport java.util.stream.Collectors;\n\nclass Solution {\n    public List<Integer> getPositive(List<Integer> l) {\n        return l.stream().filter(e -> e > 0).collect(Collectors.toList());"
+  ],
+  [
+    "\n\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean isPrime(int n) {\n        if (n < 2) {\n            return false;\n        }\n        for (int k = 2; k < n - 1; k++) {\n            if (n % k == 0) {\n                return false;\n            }\n        }\n        return true;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Evaluates polynomial with coefficients xs at point x.\n    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n\n     */\n    public double poly(List<Double> xs, double x) {\n        double result = 0;\n        for (int i = 0; i < xs.size(); i++) {\n            result += xs.get(i) * Math.pow(x, i);\n        }\n        return result;\n    }\n    \n    public double findZero(List<Double> xs) {\n        double begin = -1.0;\n        double end = 1.0;\n        while (poly(xs, begin) * poly(xs, end) > 0) {\n            begin *= 2.0;\n            end *= 2.0;\n        }\n        while (end - begin > 1e-10) {\n            double center = (begin + end) / 2.0;\n            if (poly(xs, center) * poly(xs, begin) > 0) {\n                begin = center;\n            } else {\n                end = center;\n            }\n        }\n        return begin;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> sortThird(List<Integer> l) {\n        List<Integer> lCopy = new ArrayList<>(l);\n        List<Integer> thirdElements = new ArrayList<>();\n        \n        for (int i = 0; i < lCopy.size(); i += 3) {\n            thirdElements.add(lCopy.get(i));\n        }\n        \n        Collections.sort(thirdElements);\n        \n        for (int i = 0, j = 0; i < lCopy.size(); i += 3, j++) {\n            lCopy.set(i, thirdElements.get(j));\n        }\n        \n        return lCopy;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> unique(List<Integer> l) {\n        Set<Integer> set = new HashSet<>(l);\n        List<Integer> uniqueList = new ArrayList<>(set);\n        Collections.sort(uniqueList);\n        return uniqueList;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int maxElement(List<Integer> l) {\n        int m = l.get(0);\n        for (int e : l) {\n            if (e > m) {\n                m = e;\n            }\n        }\n        return m;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int fizzBuzz(int n) {\n        List<Integer> ns = new ArrayList<>();\n        for (int i = 0; i < n; i++) {\n            if (i % 11 == 0 || i % 13 == 0) {\n                ns.add(i);\n            }\n        }\n        String s = \"\";\n        for (int num : ns) {\n            s += num;\n        }\n        int ans = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '7') {\n                ans++;\n            }\n        }\n        return ans;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> sortEven(List<Integer> l) {\n        List<Integer> evens = new ArrayList<>();\n        List<Integer> odds = new ArrayList<>();\n        \n        for (int i = 0; i < l.size(); i += 2) {\n            evens.add(l.get(i));\n        }\n        for (int i = 1; i < l.size(); i += 2) {\n            odds.add(l.get(i));\n        }\n        \n        Collections.sort(evens);\n        \n        List<Integer> ans = new ArrayList<>();\n        for (int i = 0; i < odds.size(); i++) {\n            ans.add(evens.get(i));\n            ans.add(odds.get(i));\n        }\n        \n        if (evens.size() > odds.size()) {\n            ans.add(evens.get(evens.size() - 1));\n        }\n        \n        return ans;"
+  ],
+  [
+    "\n\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    returns encoded string by cycling groups of three characters.\n     */\n    public String encodeCyclic(String s) {\n        // split string to groups. Each of length 3.\n        List<String> groups = new ArrayList<>();\n        for (int i = 0; i < s.length(); i += 3) {\n            groups.add(s.substring(i, Math.min(i + 3, s.length())));\n        }\n        // cycle elements in each group. Unless group has fewer elements than 3.\n        for (int i = 0; i < groups.size(); i++) {\n            if (groups.get(i).length() == 3) {\n                groups.set(i, groups.get(i).substring(1) + groups.get(i).charAt(0));\n            }\n        }\n        return String.join(\"\", groups);\n    }\n\n    public String decodeCyclic(String s) {\n        return encodeCyclic(encodeCyclic(s));"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int primeFib(int n) {\n        boolean isPrime(int p) {\n            if (p < 2) {\n                return false;\n            }\n            for (int k = 2; k <= Math.min((int) Math.sqrt(p) + 1, p - 1); k++) {\n                if (p % k == 0) {\n                    return false;\n                }\n            }\n            return true;\n        }\n\n        List<Integer> f = new ArrayList<>(Arrays.asList(0, 1));\n        while (true) {\n            f.add(f.get(f.size() - 1) + f.get(f.size() - 2));\n            if (isPrime(f.get(f.size() - 1))) {\n                n -= 1;\n            }\n            if (n == 0) {\n                return f.get(f.size() - 1);\n            }\n        }"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public boolean triplesSumToZero(List<Integer> l) {\n        for (int i = 0; i < l.size(); i++) {\n            for (int j = i + 1; j < l.size(); j++) {\n                for (int k = j + 1; k < l.size(); k++) {\n                    if (l.get(i) + l.get(j) + l.get(k) == 0) {\n                        return true;\n                    }\n                }\n            }\n        }\n        return false;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int carRaceCollision(int n) {\n        return n * n;"
+  ],
+  [
+    "\n\nimport java.util.*;\nimport java.lang.*;\nimport java.util.stream.Collectors;\n\nclass Solution {\n    public List<Integer> incrList(List<Integer> l) {\n        return l.stream().map(e -> e + 1).collect(Collectors.toList());"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean pairsSumToZero(List<Integer> l) {\n        for (int i = 0; i < l.size(); i++) {\n            for (int j = i + 1; j < l.size(); j++) {\n                if (l.get(i) + l.get(j) == 0) {\n                    return true;\n                }\n            }\n        }\n        return false;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String changeBase(int x, int base) {\n        String ret = \"\";\n        while (x > 0) {\n            ret = Integer.toString(x % base) + ret;\n            x /= base;\n        }\n        return ret;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public double triangleArea(double a, double h) {\n        return a * h / 2.0;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public int fib4(int n) {\n        List<Integer> results = new ArrayList<>(Arrays.asList(0, 0, 2, 0));\n        if (n < 4) {\n            return results.get(n);\n        }\n\n        for (int i = 4; i <= n; i++) {\n            results.add(results.get(3) + results.get(2) + results.get(1) + results.get(0));\n            results.remove(0);\n        }\n\n        return results.get(3);"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public double median(List<Integer> l) {\n        Collections.sort(l);\n        if (l.size() % 2 == 1) {\n            return l.get(l.size() / 2);\n        } else {\n            return (l.get(l.size() / 2 - 1) + l.get(l.size() / 2)) / 2.0;\n        }"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean isPalindrome(String text) {\n        for (int i = 0; i < text.length(); i++) {\n            if (text.charAt(i) != text.charAt(text.length() - 1 - i)) {\n                return false;\n            }\n        }\n        return true;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int modp(int n, int p) {\n        int ret = 1;\n        for (int i = 0; i < n; i++) {\n            ret = (2 * ret) % p;\n        }\n        return ret;"
+  ],
+  [
+    "\n\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    returns encoded string by shifting every character by 5 in the alphabet.\n     */\n    public String encodeShift(String s) {\n        StringBuilder sb = new StringBuilder();\n        for (char ch : s.toCharArray()) {\n            sb.append((char) ('a' + ((ch + 5 - 'a') % 26)));\n        }\n        return sb.toString();\n    }\n\n    public String decodeShift(String s) {\n        StringBuilder sb = new StringBuilder();\n        for (char ch : s.toCharArray()) {\n            sb.append((char) ('a' + ((ch - 5 - 'a') % 26)));\n        }\n        return sb.toString();"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String removeVowels(String text) {\n        StringBuilder result = new StringBuilder();\n        for (char s : text.toCharArray()) {\n            if (s != 'a' && s != 'e' && s != 'i' && s != 'o' && s != 'u' &&\n                s != 'A' && s != 'E' && s != 'I' && s != 'O' && s != 'U') {\n                result.append(s);\n            }\n        }\n        return result.toString();"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public boolean belowThreshold(List<Integer> l, int t) {\n        for (int e : l) {\n            if (e >= t) {\n                return false;\n            }\n        }\n        return true;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int add(int x, int y) {\n        return x + y;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public boolean sameChars(String s0, String s1) {\n        Set<Character> set0 = new HashSet<>();\n        Set<Character> set1 = new HashSet<>();\n        \n        for (char c : s0.toCharArray()) {\n            set0.add(c);\n        }\n        \n        for (char c : s1.toCharArray()) {\n            set1.add(c);\n        }\n        \n        return set0.equals(set1);"
+  ],
+  [
+    "\n\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int fib(int n) {\n        if (n == 0) {\n            return 0;\n        }\n        if (n == 1) {\n            return 1;\n        }\n        return fib(n - 1) + fib(n - 2);"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean correctBracketing(String brackets) {\n        int depth = 0;\n        for (char b : brackets.toCharArray()) {\n            if (b == '<') {\n                depth += 1;\n            } else {\n                depth -= 1;\n            }\n            if (depth < 0) {\n                return false;\n            }\n        }\n        return depth == 0;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public boolean monotonic(List<Integer> l) {\n        List<Integer> sortedList = new ArrayList<>(l);\n        Collections.sort(sortedList);\n        List<Integer> reverseSortedList = new ArrayList<>(l);\n        Collections.sort(reverseSortedList, Collections.reverseOrder());\n        \n        return l.equals(sortedList) || l.equals(reverseSortedList);"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> common(List<Integer> l1, List<Integer> l2) {\n        Set<Integer> ret = new HashSet<>();\n        for (Integer e1 : l1) {\n            for (Integer e2 : l2) {\n                if (e1.equals(e2)) {\n                    ret.add(e1);\n                }\n            }\n        }\n        List<Integer> sortedList = new ArrayList<>(ret);\n        Collections.sort(sortedList);\n        return sortedList;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int largestPrimeFactor(int n) {\n        boolean isPrime(int k) {\n            if (k < 2) {\n                return false;\n            }\n            for (int i = 2; i < k - 1; i++) {\n                if (k % i == 0) {\n                    return false;\n                }\n            }\n            return true;\n        }\n        int largest = 1;\n        for (int j = 2; j <= n; j++) {\n            if (n % j == 0 && isPrime(j)) {\n                largest = Math.max(largest, j);\n            }\n        }\n        return largest;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int sumToN(int n) {\n        int sum = 0;\n        for (int i = 1; i <= n; i++) {\n            sum += i;\n        }\n        return sum;"
+  ],
+  [
+    "\n\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean correctBracketing(String brackets) {\n        int depth = 0;\n        for (char b : brackets.toCharArray()) {\n            if (b == '(') {\n                depth += 1;\n            } else {\n                depth -= 1;\n            }\n            if (depth < 0) {\n                return false;\n            }\n        }\n        return depth == 0;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> derivative(List<Integer> xs) {\n        List<Integer> result = new ArrayList<>();\n        for (int i = 1; i < xs.size(); i++) {\n            result.add(i * xs.get(i));\n        }\n        return result;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int fibfib(int n) {\n        if (n == 0) {\n            return 0;\n        }\n        if (n == 1) {\n            return 0;\n        }\n        if (n == 2) {\n            return 1;\n        }\n        return fibfib(n - 1) + fibfib(n - 2) + fibfib(n - 3);"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int vowelsCount(String s) {\n        String vowels = \"aeiouAEIOU\";\n        int n_vowels = 0;\n        for (char c : s.toCharArray()) {\n            if (vowels.indexOf(c) != -1) {\n                n_vowels++;\n            }\n        }\n        if (s.charAt(s.length() - 1) == 'y' || s.charAt(s.length() - 1) == 'Y') {\n            n_vowels++;\n        }\n        return n_vowels;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String circularShift(int x, int shift) {\n        String s = Integer.toString(x);\n        if (shift > s.length()) {\n            return new StringBuilder(s).reverse().toString();\n        } else {\n            return s.substring(s.length() - shift) + s.substring(0, s.length() - shift);\n        }"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int digitSum(String s) {\n        if (s.isEmpty()) return 0;\n        int sum = 0;\n        for (char c : s.toCharArray()) {\n            if (Character.isUpperCase(c)) {\n                sum += (int) c;\n            }\n        }\n        return sum;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public int fruitDistribution(String s, int n) {\n        List<Integer> lis = new ArrayList<>();\n        for (String i : s.split(\" \")) {\n            if (i.matches(\"\\\\d+\")) {\n                lis.add(Integer.parseInt(i));\n            }\n        }\n        int sum = 0;\n        for (int num : lis) {\n            sum += num;\n        }\n        return n - sum;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> pluck(List<Integer> arr) {\n        if (arr.isEmpty()) return new ArrayList<>();\n        List<Integer> evens = new ArrayList<>();\n        for (int x : arr) {\n            if (x % 2 == 0) {\n                evens.add(x);\n            }\n        }\n        if (evens.isEmpty()) return new ArrayList<>();\n        int min = Collections.min(evens);\n        int index = arr.indexOf(min);\n        List<Integer> result = new ArrayList<>();\n        result.add(min);\n        result.add(index);\n        return result;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int search(List<Integer> lst) {\n        int[] frq = new int[Collections.max(lst) + 1];\n        for (int i : lst) {\n            frq[i] += 1;\n        }\n\n        int ans = -1;\n        for (int i = 1; i < frq.length; i++) {\n            if (frq[i] >= i) {\n                ans = i;\n            }\n        }\n\n        return ans;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> strangeSortList(List<Integer> lst) {\n        List<Integer> res = new ArrayList<>();\n        boolean switchFlag = true;\n        while (!lst.isEmpty()) {\n            if (switchFlag) {\n                int min = Collections.min(lst);\n                res.add(min);\n                lst.remove(Integer.valueOf(min));\n            } else {\n                int max = Collections.max(lst);\n                res.add(max);\n                lst.remove(Integer.valueOf(max));\n            }\n            switchFlag = !switchFlag;\n        }\n        return res;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public double triangleArea(double a, double b, double c) {\n        if (a + b <= c || a + c <= b || b + c <= a) {\n            return -1;\n        }\n        double s = (a + b + c) / 2;\n        double area = Math.sqrt(s * (s - a) * (s - b) * (s - c));\n        area = Math.round(area * 100.0) / 100.0;\n        return area;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public boolean willItFly(List<Integer> q, int w) {\n        if (q.stream().mapToInt(Integer::intValue).sum() > w) {\n            return false;\n        }\n\n        int i = 0, j = q.size() - 1;\n        while (i < j) {\n            if (!q.get(i).equals(q.get(j))) {\n                return false;\n            }\n            i++;\n            j--;\n        }\n        return true;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int smallestChange(List<Integer> arr) {\n        int ans = 0;\n        for (int i = 0; i < arr.size() / 2; i++) {\n            if (!arr.get(i).equals(arr.get(arr.size() - i - 1))) {\n                ans += 1;\n            }\n        }\n        return ans;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<String> totalMatch(List<String> lst1, List<String> lst2) {\n        int l1 = 0;\n        for (String st : lst1) {\n            l1 += st.length();\n        }\n        \n        int l2 = 0;\n        for (String st : lst2) {\n            l2 += st.length();\n        }\n        \n        if (l1 <= l2) {\n            return lst1;\n        } else {\n            return lst2;\n        }"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean isMultiplyPrime(int a) {\n        boolean isPrime(int n) {\n            for (int j = 2; j < n; j++) {\n                if (n % j == 0) {\n                    return false;\n                }\n            }\n            return true;\n        }\n\n        for (int i = 2; i < 101; i++) {\n            if (!isPrime(i)) continue;\n            for (int j = 2; j < 101; j++) {\n                if (!isPrime(j)) continue;\n                for (int k = 2; k < 101; k++) {\n                    if (!isPrime(k)) continue;\n                    if (i * j * k == a) return true;\n                }\n            }\n        }\n        return false;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean isSimplePower(int x, int n) {\n        if (n == 1) {\n            return x == 1;\n        }\n        int power = 1;\n        while (power < x) {\n            power = power * n;\n        }\n        return power == x;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean iscube(int a) {\n        a = Math.abs(a);\n        return (int) Math.round(Math.pow(a, 1.0 / 3)) == a;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int hexKey(String num) {\n        String primes = \"2357BD\";\n        int total = 0;\n        for (int i = 0; i < num.length(); i++) {\n            if (primes.indexOf(num.charAt(i)) != -1) {\n                total += 1;\n            }\n        }\n        return total;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String decimalToBinary(int decimal) {\n        return \"db\" + Integer.toBinaryString(decimal) + \"db\";"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean isHappy(String s) {\n        if (s.length() < 3) {\n            return false;\n        }\n\n        for (int i = 0; i < s.length() - 2; i++) {\n            if (s.charAt(i) == s.charAt(i + 1) || s.charAt(i + 1) == s.charAt(i + 2) || s.charAt(i) == s.charAt(i + 2)) {\n                return false;\n            }\n        }\n        return true;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<String> numericalLetterGrade(List<Double> grades) {\n        List<String> letterGrade = new ArrayList<>();\n        for (Double gpa : grades) {\n            if (gpa == 4.0) {\n                letterGrade.add(\"A+\");\n            } else if (gpa > 3.7) {\n                letterGrade.add(\"A\");\n            } else if (gpa > 3.3) {\n                letterGrade.add(\"A-\");\n            } else if (gpa > 3.0) {\n                letterGrade.add(\"B+\");\n            } else if (gpa > 2.7) {\n                letterGrade.add(\"B\");\n            } else if (gpa > 2.3) {\n                letterGrade.add(\"B-\");\n            } else if (gpa > 2.0) {\n                letterGrade.add(\"C+\");\n            } else if (gpa > 1.7) {\n                letterGrade.add(\"C\");\n            } else if (gpa > 1.3) {\n                letterGrade.add(\"C-\");\n            } else if (gpa > 1.0) {\n                letterGrade.add(\"D+\");\n            } else if (gpa > 0.7) {\n                letterGrade.add(\"D\");\n            } else if (gpa > 0.0) {\n                letterGrade.add(\"D-\");\n            } else {\n                letterGrade.add(\"E\");\n            }\n        }\n        return letterGrade;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean primeLength(String string) {\n        int l = string.length();\n        if (l == 0 || l == 1) {\n            return false;\n        }\n        for (int i = 2; i < l; i++) {\n            if (l % i == 0) {\n                return false;\n            }\n        }\n        return true;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int startsOneEnds(int n) {\n        if (n == 1) return 1;\n        return 18 * (int) Math.pow(10, n - 2);"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String solve(int N) {\n        int sum = 0;\n        String numStr = Integer.toString(N);\n        for (int i = 0; i < numStr.length(); i++) {\n            sum += Character.getNumericValue(numStr.charAt(i));\n        }\n        return Integer.toBinaryString(sum);"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int add(List<Integer> lst) {\n        int sum = 0;\n        for (int i = 1; i < lst.size(); i += 2) {\n            if (lst.get(i) % 2 == 0) {\n                sum += lst.get(i);\n            }\n        }\n        return sum;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String antiShuffle(String s) {\n        StringBuilder result = new StringBuilder();\n        String[] words = s.split(\" \");\n        for (String word : words) {\n            char[] chars = word.toCharArray();\n            Arrays.sort(chars);\n            result.append(chars);\n            result.append(\" \");\n        }\n        return result.toString().trim();"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<List<Integer>> getRow(List<List<Integer>> lst, int x) {\n        List<List<Integer>> coords = new ArrayList<>();\n        for (int i = 0; i < lst.size(); i++) {\n            for (int j = 0; j < lst.get(i).size(); j++) {\n                if (lst.get(i).get(j) == x) {\n                    coords.add(Arrays.asList(i, j));\n                }\n            }\n        }\n        coords.sort((a, b) -> a.get(0).compareTo(b.get(0)));\n        coords.sort((a, b) -> b.get(1).compareTo(a.get(1)));\n        return coords;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> sortArray(List<Integer> array) {\n        if (array.size() == 0) {\n            return new ArrayList<>();\n        } else {\n            Collections.sort(array, (a, b) -> {\n                if ((array.get(0) + array.get(array.size() - 1)) % 2 == 0) {\n                    return b - a;\n                } else {\n                    return a - b;\n                }\n            });\n            return array;\n        }"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String encrypt(String s) {\n        String d = \"abcdefghijklmnopqrstuvwxyz\";\n        String out = \"\";\n        for (char c : s.toCharArray()) {\n            if (d.indexOf(c) != -1) {\n                out += d.charAt((d.indexOf(c) + 2 * 2) % 26);\n            } else {\n                out += c;\n            }\n        }\n        return out;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public Optional<Integer> nextSmallest(List<Integer> lst) {\n        Set<Integer> set = new TreeSet<>(lst);\n        List<Integer> sortedList = new ArrayList<>(set);\n        return sortedList.size() < 2 ? Optional.empty() : Optional.of(sortedList.get(1));"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int isBored(String S) {\n        String[] sentences = S.split(\"[.?!]\\\\s*\");\n        int count = 0;\n        for (String sentence : sentences) {\n            if (sentence.length() >= 2 && sentence.substring(0, 2).equals(\"I \")) {\n                count++;\n            }\n        }\n        return count;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean anyInt(Object x, Object y, Object z) {\n        if (x instanceof Integer && y instanceof Integer && z instanceof Integer) {\n            if (( (Integer)x + (Integer)y == (Integer)z ) || ( (Integer)x + (Integer)z == (Integer)y ) || ( (Integer)y + (Integer)z == (Integer)x )) {\n                return true;\n            }\n            return false;\n        }\n        return false;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public String encode(String message) {\n        String vowels = \"aeiouAEIOU\";\n        Map<Character, Character> vowelsReplace = new HashMap<>();\n        for (char c : vowels.toCharArray()) {\n            vowelsReplace.put(c, (char) (c + 2));\n        }\n        StringBuilder sb = new StringBuilder();\n        for (char c : message.toCharArray()) {\n            if (Character.isLowerCase(c)) {\n                sb.append(Character.toUpperCase(c));\n            } else {\n                sb.append(Character.toLowerCase(c));\n            }\n        }\n        StringBuilder result = new StringBuilder();\n        for (char c : sb.toString().toCharArray()) {\n            result.append(vowelsReplace.getOrDefault(c, c));\n        }\n        return result.toString();"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int skjkasdkd(List<Integer> lst) {\n        boolean isPrime(int n) {\n            for (int i = 2; i <= Math.sqrt(n); i++) {\n                if (n % i == 0) {\n                    return false;\n                }\n            }\n            return true;\n        }\n\n        int maxx = 0;\n        int i = 0;\n        while (i < lst.size()) {\n            if (lst.get(i) > maxx && isPrime(lst.get(i))) {\n                maxx = lst.get(i);\n            }\n            i += 1;\n        }\n        int result = 0;\n        while (maxx > 0) {\n            result += maxx % 10;\n            maxx /= 10;\n        }\n        return result;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public boolean checkDictCase(Map<Object, Object> dict) {\n        if (dict.keySet().size() == 0) {\n            return false;\n        } else {\n            String state = \"start\";\n            for (Object key : dict.keySet()) {\n                if (!(key instanceof String)) {\n                    state = \"mixed\";\n                    break;\n                }\n                if (state.equals(\"start\")) {\n                    if (((String) key).toUpperCase().equals(key)) {\n                        state = \"upper\";\n                    } else if (((String) key).toLowerCase().equals(key)) {\n                        state = \"lower\";\n                    } else {\n                        break;\n                    }\n                } else if ((state.equals(\"upper\") && !(((String) key).toUpperCase().equals(key))) || (state.equals(\"lower\") && !(((String) key).toLowerCase().equals(key)))) {\n                    state = \"mixed\";\n                    break;\n                } else {\n                    break;\n                }\n            }\n            return state.equals(\"upper\") || state.equals(\"lower\");\n        }"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> countUpTo(int n) {\n        List<Integer> primes = new ArrayList<>();\n        for (int i = 2; i < n; i++) {\n            boolean isPrime = true;\n            for (int j = 2; j < i; j++) {\n                if (i % j == 0) {\n                    isPrime = false;\n                    break;\n                }\n            }\n            if (isPrime) {\n                primes.add(i);\n            }\n        }\n        return primes;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int multiply(int a, int b) {\n        return Math.abs(a % 10) * Math.abs(b % 10);"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int countUpper(String s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i += 2) {\n            if (\"AEIOU\".indexOf(s.charAt(i)) != -1) {\n                count++;\n            }\n        }\n        return count;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.Math;\n\nclass Solution {\n    public int closestInteger(String value) {\n        if (value.contains(\".\")) {\n            // remove trailing zeros\n            while (value.charAt(value.length() - 1) == '0') {\n                value = value.substring(0, value.length() - 1);\n            }\n        }\n\n        double num = Double.parseDouble(value);\n        if (value.endsWith(\".5\")) {\n            if (num > 0) {\n                return (int) Math.ceil(num);\n            } else {\n                return (int) Math.floor(num);\n            }\n        } else if (value.length() > 0) {\n            return (int) Math.round(num);\n        } else {\n            return 0;\n        }"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> makeAPile(int n) {\n        List<Integer> result = new ArrayList<>();\n        for (int i = 0; i < n; i++) {\n            result.add(n + 2 * i);\n        }\n        return result;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<String> wordStrings(String s) {\n        if (s == null || s.isEmpty()) {\n            return new ArrayList<>();\n        }\n\n        StringBuilder sb = new StringBuilder();\n\n        for (char letter : s.toCharArray()) {\n            if (letter == ',') {\n                sb.append(' ');\n            } else {\n                sb.append(letter);\n            }\n        }\n\n        return Arrays.asList(sb.toString().split(\"\\\\s+\"));"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int chooseNum(int x, int y) {\n        if (x > y) {\n            return -1;\n        }\n        if (y % 2 == 0) {\n            return y;\n        }\n        if (x == y) {\n            return -1;\n        }\n        return y - 1;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public Object roundedAvg(int n, int m) {\n        if (m < n) {\n            return -1;\n        }\n        int summation = 0;\n        for (int i = n; i <= m; i++) {\n            summation += i;\n        }\n        return Integer.toBinaryString((int) Math.round((double) summation / (m - n + 1)));"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> uniqueDigits(List<Integer> x) {\n        List<Integer> oddDigitElements = new ArrayList<>();\n        for (int i : x) {\n            if (allDigitsOdd(i)) {\n                oddDigitElements.add(i);\n            }\n        }\n        Collections.sort(oddDigitElements);\n        return oddDigitElements;\n    }\n\n    private boolean allDigitsOdd(int num) {\n        while (num > 0) {\n            if (num % 2 == 0) {\n                return false;\n            }\n            num /= 10;\n        }\n        return true;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<String> byLength(List<Integer> arr) {\n        Map<Integer, String> dic = new HashMap<>();\n        dic.put(1, \"One\");\n        dic.put(2, \"Two\");\n        dic.put(3, \"Three\");\n        dic.put(4, \"Four\");\n        dic.put(5, \"Five\");\n        dic.put(6, \"Six\");\n        dic.put(7, \"Seven\");\n        dic.put(8, \"Eight\");\n        dic.put(9, \"Nine\");\n\n        Collections.sort(arr, Collections.reverseOrder());\n        List<String> new_arr = new ArrayList<>();\n        for (int var : arr) {\n            if (dic.containsKey(var)) {\n                new_arr.add(dic.get(var));\n            }\n        }\n        return new_arr;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> f(int n) {\n        List<Integer> ret = new ArrayList<>();\n        for (int i = 1; i <= n; i++) {\n            if (i % 2 == 0) {\n                int x = 1;\n                for (int j = 1; j <= i; j++) x *= j;\n                ret.add(x);\n            } else {\n                int x = 0;\n                for (int j = 1; j <= i; j++) x += j;\n                ret.add(x);\n            }\n        }\n        return ret;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> evenOddPalindrome(int n) {\n        int even_palindrome_count = 0;\n        int odd_palindrome_count = 0;\n\n        for (int i = 1; i <= n; i++) {\n            if (i % 2 == 1 && isPalindrome(i)) {\n                odd_palindrome_count += 1;\n            } else if (i % 2 == 0 && isPalindrome(i)) {\n                even_palindrome_count += 1;\n            }\n        }\n        List<Integer> result = new ArrayList<>();\n        result.add(even_palindrome_count);\n        result.add(odd_palindrome_count);\n        return result;\n    }\n\n    private boolean isPalindrome(int n) {\n        String str = Integer.toString(n);\n        String reversedStr = new StringBuilder(str).reverse().toString();\n        return str.equals(reversedStr);"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int countNums(List<Integer> arr) {\n        int count = 0;\n        for (int num : arr) {\n            if (digitsSum(num) > 0) {\n                count++;\n            }\n        }\n        return count;\n    }\n\n    private int digitsSum(int n) {\n        int neg = 1;\n        if (n < 0) {\n            n = -n;\n            neg = -1;\n        }\n        String str = Integer.toString(n);\n        int[] digits = new int[str.length()];\n        for (int i = 0; i < str.length(); i++) {\n            digits[i] = Character.getNumericValue(str.charAt(i));\n        }\n        digits[0] = digits[0] * neg;\n        int sum = 0;\n        for (int digit : digits) {\n            sum += digit;\n        }\n        return sum;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public boolean moveOneBall(List<Integer> arr) {\n        if (arr.size() == 0) {\n            return true;\n        }\n        List<Integer> sortedArray = new ArrayList<>(arr);\n        Collections.sort(sortedArray);\n        List<Integer> myArr = new ArrayList<>(arr.subList(arr.indexOf(Collections.min(arr)), arr.size()));\n        myArr.addAll(arr.subList(0, arr.indexOf(Collections.min(arr))));\n        for (int i = 0; i < arr.size(); i++) {\n            if (!myArr.get(i).equals(sortedArray.get(i))) {\n                return false;\n            }\n        }\n        return true;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String exchange(List<Integer> lst1, List<Integer> lst2) {\n        int odd = 0;\n        int even = 0;\n        for (int i : lst1) {\n            if (i % 2 == 1) {\n                odd += 1;\n            }\n        }\n        for (int i : lst2) {\n            if (i % 2 == 0) {\n                even += 1;\n            }\n        }\n        if (even >= odd) {\n            return \"YES\";\n        }\n        return \"NO\";"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public Map<String, Integer> histogram(String test) {\n        Map<String, Integer> dict1 = new HashMap<>();\n        List<String> list1 = Arrays.asList(test.split(\" \"));\n        int t = 0;\n\n        for (String i : list1) {\n            if (Collections.frequency(list1, i) > t && !i.isEmpty()) {\n                t = Collections.frequency(list1, i);\n            }\n        }\n        if (t > 0) {\n            for (String i : list1) {\n                if (Collections.frequency(list1, i) == t) {\n                    dict1.put(i, t);\n                }\n            }\n        }\n        return dict1;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Object> reverseDelete(String s, String c) {\n        StringBuilder sb = new StringBuilder();\n        for (char charac : s.toCharArray()) {\n            if (c.indexOf(charac) == -1) {\n                sb.append(charac);\n            }\n        }\n        String result = sb.toString();\n        String reversed = sb.reverse().toString();\n        boolean isPalindrome = result.equals(reversed);\n        List<Object> output = new ArrayList<>();\n        output.add(result);\n        output.add(isPalindrome);\n        return output;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<String> oddCount(List<String> lst) {\n        List<String> res = new ArrayList<>();\n        for (String arr : lst) {\n            int n = 0;\n            for (char d : arr.toCharArray()) {\n                if ((int)d % 2 == 1) {\n                    n++;\n                }\n            }\n            res.add(\"the number of odd elements \" + n + \"n the str\" + n + \"ng \" + n + \" of the \" + n + \"nput.\");\n        }\n        return res;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int minSubArraySum(List<Integer> nums) {\n        int max_sum = 0;\n        int s = 0;\n        for (int num : nums) {\n            s += -num;\n            if (s < 0) {\n                s = 0;\n            }\n            max_sum = Math.max(s, max_sum);\n        }\n        if (max_sum == 0) {\n            max_sum = Collections.max(nums.stream().mapToInt(i -> -i).boxed().collect(Collectors.toList()));\n        }\n        int min_sum = -max_sum;\n        return min_sum;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int maxFill(List<List<Integer>> grid, int capacity) {\n        int sum = 0;\n        for (List<Integer> arr : grid) {\n            sum += Math.ceil((double) arr.stream().mapToInt(Integer::intValue).sum() / capacity);\n        }\n        return sum;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> sortArray(List<Integer> arr) {\n        Collections.sort(arr);\n        Collections.sort(arr, new Comparator<Integer>() {\n            @Override\n            public int compare(Integer x, Integer y) {\n                int bx = Integer.bitCount(x);\n                int by = Integer.bitCount(y);\n                return Integer.compare(bx, by);\n            }\n        });\n        return arr;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<String> selectWords(String s, int n) {\n        List<String> result = new ArrayList<>();\n        for (String word : s.split(\" \")) {\n            int nConsonants = 0;\n            for (int i = 0; i < word.length(); i++) {\n                if (!\"aeiouAEIOU\".contains(String.valueOf(word.charAt(i)))) {\n                    nConsonants++;\n                }\n            }\n            if (nConsonants == n) {\n                result.add(word);\n            }\n        }\n        return result;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public String getClosestVowel(String word) {\n        if (word.length() < 3) {\n            return \"\";\n        }\n\n        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));\n        for (int i = word.length() - 2; i > 0; i--) {\n            if (vowels.contains(word.charAt(i))) {\n                if (!vowels.contains(word.charAt(i + 1)) && !vowels.contains(word.charAt(i - 1))) {\n                    return String.valueOf(word.charAt(i));\n                }\n            }\n        }\n        return \"\";"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String matchParens(List<String> lst) {\n        boolean check(String s) {\n            int val = 0;\n            for (char i : s.toCharArray()) {\n                if (i == '(') {\n                    val = val + 1;\n                } else {\n                    val = val - 1;\n                }\n                if (val < 0) {\n                    return false;\n                }\n            }\n            return val == 0;\n        }\n\n        String S1 = lst.get(0) + lst.get(1);\n        String S2 = lst.get(1) + lst.get(0);\n        return (check(S1) || check(S2)) ? \"Yes\" : \"No\";"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> maximum(List<Integer> arr, int k) {\n        if (k == 0) {\n            return new ArrayList<>();\n        }\n        Collections.sort(arr);\n        return arr.subList(arr.size() - k, arr.size());"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int solution(List<Integer> lst) {\n        int sum = 0;\n        for (int i = 0; i < lst.size(); i++) {\n            if (i % 2 == 0 && lst.get(i) % 2 == 1) {\n                sum += lst.get(i);\n            }\n        }\n        return sum;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int addElements(List<Integer> arr, int k) {\n        int sum = 0;\n        for (int i = 0; i < k && i < arr.size(); i++) {\n            if (String.valueOf(arr.get(i)).length() <= 2) {\n                sum += arr.get(i);\n            }\n        }\n        return sum;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> getOddCollatz(int n) {\n        List<Integer> oddCollatz = new ArrayList<>();\n        if (n % 2 != 0) {\n            oddCollatz.add(n);\n        }\n        while (n > 1) {\n            if (n % 2 == 0) {\n                n = n / 2;\n            } else {\n                n = n * 3 + 1;\n                if (n % 2 == 1) {\n                    oddCollatz.add(n);\n                }\n            }\n        }\n        Collections.sort(oddCollatz);\n        return oddCollatz;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean validDate(String date) {\n        try {\n            date = date.strip();\n            String[] parts = date.split(\"-\");\n            int month = Integer.parseInt(parts[0]);\n            int day = Integer.parseInt(parts[1]);\n            int year = Integer.parseInt(parts[2]);\n\n            if (month < 1 || month > 12) {\n                return false;\n            }\n            if ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && (day < 1 || day > 31)) {\n                return false;\n            }\n            if ((month == 4 || month == 6 || month == 9 || month == 11) && (day < 1 || day > 30)) {\n                return false;\n            }\n            if (month == 2 && (day < 1 || day > 29)) {\n                return false;\n            }\n        } catch (Exception e) {\n            return false;\n        }\n\n        return true;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public Object splitWords(String txt) {\n        if (txt.contains(\" \")) {\n            return Arrays.asList(txt.split(\" \"));\n        } else if (txt.contains(\",\")) {\n            return Arrays.asList(txt.replace(',', ' ').split(\" \"));\n        } else {\n            int count = 0;\n            for (char c : txt.toCharArray()) {\n                if (Character.isLowerCase(c) && (int) c % 2 == 0) {\n                    count++;\n                }\n            }\n            return count;\n        }"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean isSorted(List<Integer> lst) {\n        Map<Integer, Integer> countDigit = new HashMap<>();\n        for (int i : lst) {\n            countDigit.put(i, countDigit.getOrDefault(i, 0) + 1);\n            if (countDigit.get(i) > 2) {\n                return false;\n            }\n        }\n        for (int i = 1; i < lst.size(); i++) {\n            if (lst.get(i - 1) > lst.get(i)) {\n                return false;\n            }\n        }\n        return true;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String intersection(List<Integer> interval1, List<Integer> interval2) {\n        int l = Math.max(interval1.get(0), interval2.get(0));\n        int r = Math.min(interval1.get(1), interval2.get(1));\n        int length = r - l;\n        if (length > 0 && isPrime(length)) {\n            return \"YES\";\n        }\n        return \"NO\";\n    }\n\n    private boolean isPrime(int num) {\n        if (num == 1 || num == 0) {\n            return false;\n        }\n        if (num == 2) {\n            return true;\n        }\n        for (int i = 2; i < num; i++) {\n            if (num % i == 0) {\n                return false;\n            }\n        }\n        return true;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public Optional<Integer> prodSigns(List<Integer> arr) {\n        if (arr == null || arr.isEmpty()) {\n            return Optional.empty();\n        }\n        int prod = arr.contains(0) ? 0 : (int) Math.pow(-1, arr.stream().filter(x -> x < 0).count());\n        return Optional.of(prod * arr.stream().mapToInt(Math::abs).sum());"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> minPath(List<List<Integer>> grid, int k) {\n        int n = grid.size();\n        int val = n * n + 1;\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                if (grid.get(i).get(j) == 1) {\n                    List<Integer> temp = new ArrayList<>();\n                    if (i != 0) {\n                        temp.add(grid.get(i - 1).get(j));\n                    }\n                    if (j != 0) {\n                        temp.add(grid.get(i).get(j - 1));\n                    }\n                    if (i != n - 1) {\n                        temp.add(grid.get(i + 1).get(j));\n                    }\n                    if (j != n - 1) {\n                        temp.add(grid.get(i).get(j + 1));\n                    }\n                    val = Collections.min(temp);\n                }\n            }\n        }\n\n        List<Integer> ans = new ArrayList<>();\n        for (int i = 0; i < k; i++) {\n            if (i % 2 == 0) {\n                ans.add(1);\n            } else {\n                ans.add(val);\n            }\n        }\n        return ans;"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> tri(int n) {\n        if (n == 0) {\n            return Arrays.asList(1);\n        }\n        List<Integer> myTri = new ArrayList<>(Arrays.asList(1, 3));\n        for (int i = 2; i <= n; i++) {\n            if (i % 2 == 0) {\n                myTri.add(i / 2 + 1);\n            } else {\n                myTri.add(myTri.get(i - 1) + myTri.get(i - 2) + (i + 3) / 2);\n            }\n        }\n        return myTri;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int digits(int n) {\n        int product = 1;\n        int odd_count = 0;\n        String numStr = Integer.toString(n);\n        for (int i = 0; i < numStr.length(); i++) {\n            int int_digit = Character.getNumericValue(numStr.charAt(i));\n            if (int_digit % 2 == 1) {\n                product = product * int_digit;\n                odd_count++;\n            }\n        }\n        if (odd_count == 0) {\n            return 0;\n        } else {\n            return product;\n        }"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean isNested(String string) {\n        List<Integer> openingBracketIndex = new ArrayList<>();\n        List<Integer> closingBracketIndex = new ArrayList<>();\n        for (int i = 0; i < string.length(); i++) {\n            if (string.charAt(i) == '[') {\n                openingBracketIndex.add(i);\n            } else {\n                closingBracketIndex.add(i);\n            }\n        }\n        Collections.reverse(closingBracketIndex);\n        int cnt = 0;\n        int i = 0;\n        int l = closingBracketIndex.size();\n        for (int idx : openingBracketIndex) {\n            if (i < l && idx < closingBracketIndex.get(i)) {\n                cnt += 1;\n                i += 1;\n            }\n        }\n        return cnt >= 2;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int sumSquares(List<Double> lst) {\n        int squared = 0;\n        for (Double i : lst) {\n            squared += Math.ceil(i) * Math.ceil(i);\n        }\n        return squared;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean checkIfLastCharIsALetter(String txt) {\n        String check = txt.split(\" \")[txt.split(\" \").length - 1];\n        return check.length() == 1 && (97 <= Character.toLowerCase(check.charAt(0)) && Character.toLowerCase(check.charAt(0)) <= 122);"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public int canArrange(List<Integer> arr) {\n        int ind = -1;\n        int i = 1;\n        while (i < arr.size()) {\n            if (arr.get(i) < arr.get(i - 1)) {\n                ind = i;\n            }\n            i += 1;\n        }\n        return ind;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Optional<Integer>> largestSmallestIntegers(List<Integer> lst){\n        List<Integer> smallest = new ArrayList<>();\n        List<Integer> largest = new ArrayList<>();\n        \n        for (int num : lst) {\n            if (num < 0) {\n                smallest.add(num);\n            } else if (num > 0) {\n                largest.add(num);\n            }\n        }\n        \n        Optional<Integer> smallestMax = smallest.isEmpty() ? Optional.empty() : Optional.of(Collections.max(smallest));\n        Optional<Integer> largestMin = largest.isEmpty() ? Optional.empty() : Optional.of(Collections.min(largest));\n        \n        return Arrays.asList(smallestMax, largestMin);"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public Optional<Object> compareOne(Object a, Object b) {\n        Object tempA = a;\n        Object tempB = b;\n        if (tempA instanceof String) {\n            tempA = ((String) tempA).replace(',', '.');\n        }\n        if (tempB instanceof String) {\n            tempB = ((String) tempB).replace(',', '.');\n        }\n        if (Float.parseFloat(tempA.toString()) == Float.parseFloat(tempB.toString())) {\n            return Optional.empty();\n        }\n        return Optional.of(Float.parseFloat(tempA.toString()) > Float.parseFloat(tempB.toString()) ? a : b);"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean isEqualToSumEven(int n) {\n        return n % 2 == 0 && n >= 8;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public long specialFactorial(int n) {\n        long fact_i = 1;\n        long special_fact = 1;\n        for (int i = 1; i <= n; i++) {\n            fact_i *= i;\n            special_fact *= fact_i;\n        }\n        return special_fact;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String fixSpaces(String text) {\n        StringBuilder new_text = new StringBuilder();\n        int i = 0;\n        int start = 0, end = 0;\n        while (i < text.length()) {\n            if (text.charAt(i) == ' ') {\n                end++;\n            } else {\n                if (end - start > 2) {\n                    new_text.append(\"-\").append(text.charAt(i));\n                } else if (end - start > 0) {\n                    for (int j = 0; j < end - start; j++) {\n                        new_text.append(\"_\");\n                    }\n                    new_text.append(text.charAt(i));\n                } else {\n                    new_text.append(text.charAt(i));\n                }\n                start = i + 1;\n                end = i + 1;\n            }\n            i++;\n        }\n        if (end - start > 2) {\n            new_text.append(\"-\");\n        } else if (end - start > 0) {\n            new_text.append(\"_\");\n        }\n        return new_text.toString();"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public String filenameCheck(String file_name) {\n        List<String> suf = Arrays.asList(\"txt\", \"exe\", \"dll\");\n        String[] lst = file_name.split(\"\\\\.\");\n        if (lst.length != 2) {\n            return \"No\";\n        }\n        if (!suf.contains(lst[1])) {\n            return \"No\";\n        }\n        if (lst[0].isEmpty()) {\n            return \"No\";\n        }\n        if (!Character.isLetter(lst[0].charAt(0))) {\n            return \"No\";\n        }\n        long t = lst[0].chars().filter(Character::isDigit).count();\n        if (t > 3) {\n            return \"No\";\n        }\n        return \"Yes\";"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public int sumSquares(List<Integer> lst) {\n        List<Integer> result = new ArrayList<>();\n        for (int i = 0; i < lst.size(); i++) {\n            if (i % 3 == 0) {\n                result.add(lst.get(i) * lst.get(i));\n            } else if (i % 4 == 0 && i % 3 != 0) {\n                result.add(lst.get(i) * lst.get(i) * lst.get(i));\n            } else {\n                result.add(lst.get(i));\n            }\n        }\n        int sum = 0;\n        for (int num : result) {\n            sum += num;\n        }\n        return sum;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String wordsInSentence(String sentence) {\n        List<String> new_lst = new ArrayList<>();\n        for (String word : sentence.split(\" \")) {\n            int flg = 0;\n            if (word.length() == 1) {\n                flg = 1;\n            }\n            for (int i = 2; i < word.length(); i++) {\n                if (word.length() % i == 0) {\n                    flg = 1;\n                }\n            }\n            if (flg == 0 || word.length() == 2) {\n                new_lst.add(word);\n            }\n        }\n        return String.join(\" \", new_lst);"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean simplify(String x, String n) {\n        String[] a = x.split(\"/\");\n        String[] c = n.split(\"/\");\n        int numerator = Integer.parseInt(a[0]) * Integer.parseInt(c[0]);\n        int denom = Integer.parseInt(a[1]) * Integer.parseInt(c[1]);\n        return (numerator / denom == (double) numerator / denom);"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> orderByPoints(List<Integer> nums) {\n        Collections.sort(nums, new Comparator<Integer>() {\n            public int compare(Integer a, Integer b) {\n                return Integer.compare(digitsSum(a), digitsSum(b));\n            }\n        });\n        return nums;\n    }\n\n    private int digitsSum(int n) {\n        int neg = 1;\n        if (n < 0) {\n            n = -n;\n            neg = -1;\n        }\n        String str = Integer.toString(n);\n        int sum = 0;\n        for (char c : str.toCharArray()) {\n            sum += Character.getNumericValue(c);\n        }\n        return sum * neg;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int specialFilter(List<Integer> nums) {\n        int count = 0;\n        for (int num : nums) {\n            if (num > 10) {\n                int[] odd_digits = {1, 3, 5, 7, 9};\n                String number_as_string = String.valueOf(num);\n                if (Arrays.stream(odd_digits).anyMatch(i -> i == Character.getNumericValue(number_as_string.charAt(0))) &&\n                    Arrays.stream(odd_digits).anyMatch(i -> i == Character.getNumericValue(number_as_string.charAt(number_as_string.length() - 1)))) {\n                    count++;\n                }\n            }\n        }\n        return count;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int getMaxTriples(int n) {\n        List<Integer> A = new ArrayList<>();\n        for (int i = 1; i <= n; i++) {\n            A.add(i * i - i + 1);\n        }\n        List<List<Integer>> ans = new ArrayList<>();\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j < n; j++) {\n                for (int k = j + 1; k < n; k++) {\n                    if ((A.get(i) + A.get(j) + A.get(k)) % 3 == 0) {\n                        List<Integer> temp = new ArrayList<>();\n                        temp.add(A.get(i));\n                        temp.add(A.get(j));\n                        temp.add(A.get(k));\n                        ans.add(temp);\n                    }\n                }\n            }\n        }\n        return ans.size();"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<String> bf(String planet1, String planet2) {\n        String[] planetNames = {\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"};\n        List<String> planetList = Arrays.asList(planetNames);\n        \n        if (!planetList.contains(planet1) || !planetList.contains(planet2) || planet1.equals(planet2)) {\n            return new ArrayList<>();\n        }\n        \n        int planet1Index = planetList.indexOf(planet1);\n        int planet2Index = planetList.indexOf(planet2);\n        \n        if (planet1Index < planet2Index) {\n            return planetList.subList(planet1Index + 1, planet2Index);\n        } else {\n            return planetList.subList(planet2Index + 1, planet1Index);\n        }"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<String> listSort(List<String> lst) {\n        Collections.sort(lst);\n        List<String> new_lst = new ArrayList<>();\n        for (String i : lst) {\n            if (i.length() % 2 == 0) {\n                new_lst.add(i);\n            }\n        }\n        Collections.sort(new_lst, Comparator.comparingInt(String::length));\n        return new_lst;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int xOrY(int n, int x, int y) {\n        if (n == 1) {\n            return y;\n        }\n        for (int i = 2; i < n; i++) {\n            if (n % i == 0) {\n                return y;\n            }\n        }\n        return x;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int doubleTheDifference(List<Object> lst) {\n        int sum = 0;\n        for (Object obj : lst) {\n            if (obj instanceof Integer) {\n                int i = (int) obj;\n                if (i > 0 && i % 2 != 0) {\n                    sum += i * i;\n                }\n            }\n        }\n        return sum;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> compare(List<Integer> game, List<Integer> guess) {\n        List<Integer> result = new ArrayList<>();\n        for (int i = 0; i < game.size(); i++) {\n            result.add(Math.abs(game.get(i) - guess.get(i)));\n        }\n        return result;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String StrongestExtension(String class_name, List<String> extensions) {\n        String strong = extensions.get(0);\n        int my_val = (int) strong.chars().filter(Character::isUpperCase).count() - (int) strong.chars().filter(Character::isLowerCase).count();\n        for (String s : extensions) {\n            int val = (int) s.chars().filter(Character::isUpperCase).count() - (int) s.chars().filter(Character::isLowerCase).count();\n            if (val > my_val) {\n                strong = s;\n                my_val = val;\n            }\n        }\n        String ans = class_name + \".\" + strong;\n        return ans;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean cycpatternCheck(String a, String b) {\n        int l = b.length();\n        String pat = b + b;\n        for (int i = 0; i <= a.length() - l; i++) {\n            for (int j = 0; j <= l; j++) {\n                if (a.substring(i, i + l).equals(pat.substring(j, j + l))) {\n                    return true;\n                }\n            }\n        }\n        return false;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> evenOddCount(int num) {\n        int even_count = 0;\n        int odd_count = 0;\n        for (char c : String.valueOf(Math.abs(num)).toCharArray()) {\n            if ((c - '0') % 2 == 0) {\n                even_count++;\n            } else {\n                odd_count++;\n            }\n        }\n        return Arrays.asList(even_count, odd_count);"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String intToMiniRoman(int number) {\n        int[] num = {1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};\n        String[] sym = {\"I\", \"IV\", \"V\", \"IX\", \"X\", \"XL\", \"L\", \"XC\", \"C\", \"CD\", \"D\", \"CM\", \"M\"};\n        int i = 12;\n        StringBuilder res = new StringBuilder();\n        while (number > 0) {\n            int div = number / num[i];\n            number %= num[i];\n            while (div > 0) {\n                res.append(sym[i]);\n                div--;\n            }\n            i--;\n        }\n        return res.toString().toLowerCase();"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean rightAngleTriangle(int a, int b, int c) {\n        return a*a == b*b + c*c || b*b == a*a + c*c || c*c == a*a + b*b;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String findMax(List<String> words) {\n        Collections.sort(words, new Comparator<String>() {\n            @Override\n            public int compare(String o1, String o2) {\n                int setCompare = Integer.compare(new HashSet<Character>(o2.chars().mapToObj(c -> (char) c).collect(Collectors.toSet())).size(),\n                        new HashSet<Character>(o1.chars().mapToObj(c -> (char) c).collect(Collectors.toSet())).size());\n                if (setCompare != 0) {\n                    return setCompare;\n                } else {\n                    return o1.compareTo(o2);\n                }\n            }\n        });\n        return words.get(0);"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> eat(int number, int need, int remaining) {\n        if (need <= remaining) {\n            return Arrays.asList(number + need, remaining - need);\n        } else {\n            return Arrays.asList(number + remaining, 0);\n        }"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public int doAlgebra(List<String> operator, List<Integer> operand) {\n        String expression = String.valueOf(operand.get(0));\n        for (int i = 0; i < operator.size(); i++) {\n            expression += operator.get(i) + operand.get(i + 1);\n        }\n        return eval(expression);\n    }\n\n    private int eval(String expression) {\n        return new Object() {\n            int pos = -1, ch;\n\n            void nextChar() {\n                ch = (++pos < expression.length()) ? expression.charAt(pos) : -1;\n            }\n\n            boolean eat(int charToEat) {\n                while (ch == ' ') nextChar();\n                if (ch == charToEat) {\n                    nextChar();\n                    return true;\n                }\n                return false;\n            }\n\n            int parse() {\n                nextChar();\n                int x = parseExpression();\n                if (pos < expression.length()) throw new RuntimeException(\"Unexpected: \" + (char) ch);\n                return x;\n            }\n\n            int parseExpression() {\n                int x = parseTerm();\n                for (;;) {\n                    if (eat('+')) x += parseTerm(); \n                    else if (eat('-')) x -= parseTerm(); \n                    else return x;\n                }\n            }\n\n            int parseTerm() {\n                int x = parseFactor();\n                for (;;) {\n                    if (eat('*')) x *= parseFactor(); \n                    else if (eat('/')) x /= parseFactor(); \n                    else return x;\n                }\n            }\n\n            int parseFactor() {\n                if (eat('+')) return parseFactor(); \n                if (eat('-')) return -parseFactor();\n\n                int x;\n                int startPos = this.pos;\n                if (eat('(')) { \n                    x = parseExpression(); \n                    eat(')'); \n                } else if ((ch >= '0' && ch <= '9') || ch == '.') { \n                    while ((ch >= '0' && ch <= '9') || ch == '.') nextChar();\n                    x = Integer.parseInt(expression.substring(startPos, this.pos));\n                } else {\n                    throw new RuntimeException(\"Unexpected: \" + (char) ch);\n                }\n\n                return x;\n            }\n        }.parse();"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public String solve(String s) {\n        int flg = 0;\n        int idx = 0;\n        char[] new_str = s.toCharArray();\n        for (char i : new_str) {\n            if (Character.isLetter(i)) {\n                new_str[idx] = Character.isUpperCase(i) ? Character.toLowerCase(i) : Character.toUpperCase(i);\n                flg = 1;\n            }\n            idx += 1;\n        }\n        s = new String(new_str);\n        if (flg == 0) {\n            return new StringBuilder(s).reverse().toString();\n        }\n        return s;"
+  ],
+  [
+    "\nimport java.math.BigInteger;\nimport java.security.*;\n\nclass Solution {\n    public Optional<String> stringToMd5(String text) throws NoSuchAlgorithmException {\n        if (text == null) {\n            return Optional.empty();\n        }\n        MessageDigest md = MessageDigest.getInstance(\"MD5\");\n        md.update(text.getBytes());\n        byte[] digest = md.digest();\n        BigInteger no = new BigInteger(1, digest);\n        String hashtext = no.toString(16);\n        while (hashtext.length() < 32) {\n            hashtext = \"0\" + hashtext;\n        }\n        return Optional.of(hashtext);"
+  ],
+  [
+    "\nimport java.util.*;\n\nclass Solution {\n    public List<Integer> generateIntegers(int a, int b) {\n        int lower = Math.max(2, Math.min(a, b));\n        int upper = Math.min(8, Math.max(a, b));\n\n        List<Integer> result = new ArrayList<>();\n        for (int i = lower; i <= upper; i++) {\n            if (i % 2 == 0) {\n                result.add(i);\n            }\n        }\n        return result;"
+  ]
+]
