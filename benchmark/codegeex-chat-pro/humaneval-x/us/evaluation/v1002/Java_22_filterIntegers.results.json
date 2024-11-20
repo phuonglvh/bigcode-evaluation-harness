@@ -1,0 +1,16 @@
+{
+  "name": "Java_22_filterIntegers",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Filter given list of any values only for integers\n    >>> filter_integers(Arrays.asList('a', 3.14, 5))\n    [5]\n    >>> filter_integers(Arrays.asList(1, 2, 3, \"abc\", Map.of(), List.of()))\n    [1, 2, 3]\n     */\n    public List<Integer> filterIntegers(List<Object> values) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.filterIntegers(new ArrayList<>(List.of())).equals(List.of()),\n                s.filterIntegers(new ArrayList<>(Arrays.asList(4, Map.of(), List.of(), 23.2, 9, \"adasd\"))).equals(Arrays.asList(4, 9)),\n                s.filterIntegers(new ArrayList<>(Arrays.asList(3, 'c', 3, 3, 'a', 'b'))).equals(Arrays.asList(3, 3, 3))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public List<Integer> filterIntegers(List<Object> values) {\n        List<Integer> result = new ArrayList<>();\n        for (Object value : values) {\n            if (value instanceof Integer) {\n                result.add((Integer) value);\n            }\n        }\n        return result;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.filterIntegers(new ArrayList<>(List.of())).equals(List.of()),\n                s.filterIntegers(new ArrayList<>(Arrays.asList(4, Map.of(), List.of(), 23.2, 9, \"adasd\"))).equals(Arrays.asList(4, 9)),\n                s.filterIntegers(new ArrayList<>(Arrays.asList(3, 'c', 3, 3, 'a', 'b'))).equals(Arrays.asList(3, 3, 3))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732116632,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}

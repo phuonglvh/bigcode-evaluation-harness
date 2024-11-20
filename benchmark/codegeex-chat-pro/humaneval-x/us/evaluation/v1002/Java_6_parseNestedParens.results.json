@@ -1,0 +1,16 @@
+{
+  "name": "Java_6_parseNestedParens",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Input to this function is a string represented multiple groups for nested parentheses separated by spaces.\n    For each of the group, output the deepest level of nesting of parentheses.\n    E.g. (()()) has maximum two levels of nesting while ((())) has three.\n\n    >>> parseNestedParens(\"(()()) ((())) () ((())()())\")\n    [2, 3, 1, 3]\n     */\n    public List<Integer> parseNestedParens(String paren_string) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.parseNestedParens(\"(()()) ((())) () ((())()())\").equals(Arrays.asList(2, 3, 1, 3)),\n                s.parseNestedParens(\"() (()) ((())) (((())))\").equals(Arrays.asList(1, 2, 3, 4)),\n                s.parseNestedParens(\"(()(())((())))\").equals(Arrays.asList(4))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\n\nclass Problem {\n    public List<Integer> parseNestedParens(String paren_string) {\n        List<Integer> result = new ArrayList<>();\n        String[] groups = paren_string.split(\" \");\n        \n        for (String s : groups) {\n            if (!s.isEmpty()) {\n                result.add(parseParenGroup(s));\n            }\n        }\n        \n        return result;\n    }\n    \n    private int parseParenGroup(String s) {\n        int depth = 0;\n        int maxDepth = 0;\n        \n        for (char c : s.toCharArray()) {\n            if (c == '(') {\n                depth++;\n                maxDepth = Math.max(depth, maxDepth);\n            } else {\n                depth--;\n            }\n        }\n        \n        return maxDepth;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.parseNestedParens(\"(()()) ((())) () ((())()())\").equals(Arrays.asList(2, 3, 1, 3)),\n                s.parseNestedParens(\"() (()) ((())) (((())))\").equals(Arrays.asList(1, 2, 3, 4)),\n                s.parseNestedParens(\"(()(())((())))\").equals(Arrays.asList(4))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732116624,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}
