@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public int canArrange(List<Integer> arr) {\n        int ind = -1;\n        int i = 1;\n        while (i < arr.size()) {\n            if (arr.get(i) < arr.get(i - 1)) {\n                ind = i;\n            }\n            i += 1;\n        }\n        return ind;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.canArrange(Arrays.asList(1, 2, 4, 3, 5)) == 3,\n                s.canArrange(Arrays.asList(1, 2, 4, 5)) == -1,\n                s.canArrange(Arrays.asList(1, 4, 2, 5, 6, 7, 8, 9, 10)) == 2,\n                s.canArrange(Arrays.asList(4, 8, 5, 7, 3)) == 4,\n                s.canArrange(List.of()) == -1\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732034511,
+      "timestamp": 1732117568,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

@@ -5,12 +5,12 @@
   "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.digits(5) == 5,\n                s.digits(54) == 5,\n                s.digits(120) == 1,\n                s.digits(5014) == 5,\n                s.digits(98765) == 315,\n                s.digits(5576543) == 2625\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
   "results": [
     {
-      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int digits(int n) {\n        int product = 1;\n        int odd_count = 0;\n        String numStr = Integer.toString(n);\n        for (int i = 0; i < numStr.length(); i++) {\n            int int_digit = Character.getNumericValue(numStr.charAt(i));\n            if (int_digit % 2 == 1) {\n                product = product * int_digit;\n                odd_count += 1;\n            }\n        }\n        if (odd_count == 0) {\n            return 0;\n        } else {\n            return product;\n        }\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.digits(5) == 5,\n                s.digits(54) == 5,\n                s.digits(120) == 1,\n                s.digits(5014) == 5,\n                s.digits(98765) == 315,\n                s.digits(5576543) == 2625\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732034509,
+      "program": "\nclass Problem {\n    public int digits(int n) {\n        int product = 1;\n        int odd_count = 0;\n        String numStr = Integer.toString(n);\n        for (int i = 0; i < numStr.length(); i++) {\n            int int_digit = Character.getNumericValue(numStr.charAt(i));\n            if (int_digit % 2 == 1) {\n                product = product * int_digit;\n                odd_count++;\n            }\n        }\n        if (odd_count == 0) {\n            return 0;\n        } else {\n            return product;\n        }\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.digits(5) == 5,\n                s.digits(54) == 5,\n                s.digits(120) == 1,\n                s.digits(5014) == 5,\n                s.digits(98765) == 315,\n                s.digits(5576543) == 2625\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732117566,
       "stdout": "",
-      "stderr": "",
-      "exit_code": 0,
-      "status": "OK"
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp0miz2m7v.java:23: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp0miz2m7v.java:23: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
     }
   ]
 }

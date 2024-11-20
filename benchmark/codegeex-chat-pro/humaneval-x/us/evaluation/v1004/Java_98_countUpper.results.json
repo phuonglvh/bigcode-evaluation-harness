@@ -5,12 +5,12 @@
   "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.countUpper(\"aBCdEf\")  == 1,\n                s.countUpper(\"abcdefg\") == 0,\n                s.countUpper(\"dBBE\") == 0,\n                s.countUpper(\"B\")  == 0,\n                s.countUpper(\"U\")  == 1,\n                s.countUpper(\"\") == 0,\n                s.countUpper(\"EEEE\") == 2\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
   "results": [
     {
-      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int countUpper(String s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i += 2) {\n            if (\"AEIOU\".indexOf(s.charAt(i)) != -1) {\n                count++;\n            }\n        }\n        return count;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.countUpper(\"aBCdEf\")  == 1,\n                s.countUpper(\"abcdefg\") == 0,\n                s.countUpper(\"dBBE\") == 0,\n                s.countUpper(\"B\")  == 0,\n                s.countUpper(\"U\")  == 1,\n                s.countUpper(\"\") == 0,\n                s.countUpper(\"EEEE\") == 2\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732034491,
+      "program": "\nclass Problem {\n    public int countUpper(String s) {\n        int count = 0;\n        for (int i = 0; i < s.length(); i += 2) {\n            if (\"AEIOU\".indexOf(s.charAt(i)) != -1) {\n                count++;\n            }\n        }\n        return count;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.countUpper(\"aBCdEf\")  == 1,\n                s.countUpper(\"abcdefg\") == 0,\n                s.countUpper(\"dBBE\") == 0,\n                s.countUpper(\"B\")  == 0,\n                s.countUpper(\"U\")  == 1,\n                s.countUpper(\"\") == 0,\n                s.countUpper(\"EEEE\") == 2\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732117553,
       "stdout": "",
-      "stderr": "",
-      "exit_code": 0,
-      "status": "OK"
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp3ye681g6.java:15: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp3ye681g6.java:15: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
     }
   ]
 }

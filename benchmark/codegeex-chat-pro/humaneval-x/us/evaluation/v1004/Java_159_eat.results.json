@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public List<Integer> eat(int number, int need, int remaining) {\n        if (need <= remaining) {\n            return Arrays.asList(number + need, remaining - need);\n        } else {\n            return Arrays.asList(number + remaining, 0);\n        }\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.eat(5, 6, 10).equals(Arrays.asList(11, 4)),\n                s.eat(4, 8, 9).equals(Arrays.asList(12, 1)),\n                s.eat(1, 10, 10).equals(Arrays.asList(11, 0)),\n                s.eat(2, 11, 5).equals(Arrays.asList(7, 0)),\n                s.eat(4, 5, 7).equals(Arrays.asList(9, 2)),\n                s.eat(4, 5, 1).equals(Arrays.asList(5, 0))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732034524,
+      "timestamp": 1732117582,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

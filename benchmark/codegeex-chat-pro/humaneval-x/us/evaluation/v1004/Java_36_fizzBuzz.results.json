@@ -5,12 +5,12 @@
   "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.fizzBuzz(50) == 0,\n                s.fizzBuzz(78) == 2,\n                s.fizzBuzz(79) == 3,\n                s.fizzBuzz(100) == 3,\n                s.fizzBuzz(200) == 6,\n                s.fizzBuzz(4000) == 192,\n                s.fizzBuzz(10000) == 639,\n                s.fizzBuzz(100000) == 8026\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
   "results": [
     {
-      "program": "\nimport java.util.ArrayList;\nimport java.util.List;\n\nclass Problem {\n    public int fizzBuzz(int n) {\n        List<Integer> ns = new ArrayList<>();\n        for (int i = 0; i < n; i++) {\n            if (i % 11 == 0 || i % 13 == 0) {\n                ns.add(i);\n            }\n        }\n        String s = \"\";\n        for (int num : ns) {\n            s += num;\n        }\n        int ans = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '7') {\n                ans++;\n            }\n        }\n        return ans;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.fizzBuzz(50) == 0,\n                s.fizzBuzz(78) == 2,\n                s.fizzBuzz(79) == 3,\n                s.fizzBuzz(100) == 3,\n                s.fizzBuzz(200) == 6,\n                s.fizzBuzz(4000) == 192,\n                s.fizzBuzz(10000) == 639,\n                s.fizzBuzz(100000) == 8026\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732034458,
+      "program": "\nimport java.util.*;\n\nclass Problem {\n    public int fizzBuzz(int n) {\n        List<Integer> ns = new ArrayList<>();\n        for (int i = 0; i < n; i++) {\n            if (i % 11 == 0 || i % 13 == 0) {\n                ns.add(i);\n            }\n        }\n        String s = String.join(\"\", ns.stream().map(String::valueOf).toArray(String[]::new));\n        int ans = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '7') {\n                ans++;\n            }\n        }\n        return ans;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.fizzBuzz(50) == 0,\n                s.fizzBuzz(78) == 2,\n                s.fizzBuzz(79) == 3,\n                s.fizzBuzz(100) == 3,\n                s.fizzBuzz(200) == 6,\n                s.fizzBuzz(4000) == 192,\n                s.fizzBuzz(10000) == 639,\n                s.fizzBuzz(100000) == 8026\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732117527,
       "stdout": "",
-      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp1ommsnzt.java:28: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n1 error\n",
-      "exit_code": 1,
-      "status": "SyntaxError"
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
     }
   ]
 }

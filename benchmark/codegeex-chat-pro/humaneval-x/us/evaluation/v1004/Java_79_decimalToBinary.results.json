@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public String decimalToBinary(int decimal) {\n        return \"db\" + Integer.toBinaryString(decimal) + \"db\";\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.decimalToBinary(0), \"db0db\"),\n                Objects.equals(s.decimalToBinary(32), \"db100000db\"),\n                Objects.equals(s.decimalToBinary(103), \"db1100111db\"),\n                Objects.equals(s.decimalToBinary(15), \"db1111db\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732034482,
+      "timestamp": 1732117545,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,
