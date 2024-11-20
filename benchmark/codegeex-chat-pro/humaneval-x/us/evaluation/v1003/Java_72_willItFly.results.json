@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public boolean willItFly(List<Integer> q, int w) {\n        if (q.stream().mapToInt(Integer::intValue).sum() > w) {\n            return false;\n        }\n\n        int i = 0, j = q.size() - 1;\n        while (i < j) {\n            if (!q.get(i).equals(q.get(j))) {\n                return false;\n            }\n            i++;\n            j--;\n        }\n        return true;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.willItFly(new ArrayList<>(Arrays.asList(3, 2, 3)), 9),\n                !s.willItFly(new ArrayList<>(Arrays.asList(1, 2)), 5),\n                s.willItFly(new ArrayList<>(List.of(3)), 5),\n                !s.willItFly(new ArrayList<>(Arrays.asList(3, 2, 3)), 1),\n                !s.willItFly(new ArrayList<>(Arrays.asList(1, 2, 3)), 6),\n                s.willItFly(new ArrayList<>(List.of(5)), 5)\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732034227,
+      "timestamp": 1732116349,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

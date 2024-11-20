@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int carRaceCollision(int n) {\n        return n * n;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.carRaceCollision(2) == 4,\n                s.carRaceCollision(3) == 9,\n                s.carRaceCollision(4) == 16,\n                s.carRaceCollision(8) == 64,\n                s.carRaceCollision(10) == 100\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732034208,
+      "timestamp": 1732116333,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

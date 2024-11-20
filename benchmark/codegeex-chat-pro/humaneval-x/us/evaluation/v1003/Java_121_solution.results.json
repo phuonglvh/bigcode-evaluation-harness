@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public int solution(List<Integer> lst) {\n        int sum = 0;\n        for (int i = 0; i < lst.size(); i++) {\n            if (i % 2 == 0 && lst.get(i) % 2 == 1) {\n                sum += lst.get(i);\n            }\n        }\n        return sum;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.solution(Arrays.asList(5, 8, 7, 1)) == 12,\n                s.solution(Arrays.asList(3, 3, 3, 3, 3)) == 9,\n                s.solution(Arrays.asList(30, 13, 24, 321)) == 0,\n                s.solution(Arrays.asList(5, 9)) == 5,\n                s.solution(Arrays.asList(2, 4, 8)) == 0,\n                s.solution(Arrays.asList(30, 13, 23, 32)) == 23,\n                s.solution(Arrays.asList(3, 13, 2, 9)) == 3\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732034254,
+      "timestamp": 1732116376,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

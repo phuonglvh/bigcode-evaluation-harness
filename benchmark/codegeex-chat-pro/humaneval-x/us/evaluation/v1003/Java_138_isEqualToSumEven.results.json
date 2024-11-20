@@ -5,12 +5,12 @@
   "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.isEqualToSumEven(4) == false,\n                s.isEqualToSumEven(6) == false,\n                s.isEqualToSumEven(8) == true,\n                s.isEqualToSumEven(10) == true,\n                s.isEqualToSumEven(11) == false,\n                s.isEqualToSumEven(12) == true,\n                s.isEqualToSumEven(13) == false,\n                s.isEqualToSumEven(16) == true\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
   "results": [
     {
-      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public boolean isEqualToSumEven(int n) {\n        return n % 2 == 0 && n >= 8;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.isEqualToSumEven(4) == false,\n                s.isEqualToSumEven(6) == false,\n                s.isEqualToSumEven(8) == true,\n                s.isEqualToSumEven(10) == true,\n                s.isEqualToSumEven(11) == false,\n                s.isEqualToSumEven(12) == true,\n                s.isEqualToSumEven(13) == false,\n                s.isEqualToSumEven(16) == true\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732034264,
+      "program": "\nclass Problem {\n    public boolean isEqualToSumEven(int n) {\n        return n % 2 == 0 && n >= 8;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.isEqualToSumEven(4) == false,\n                s.isEqualToSumEven(6) == false,\n                s.isEqualToSumEven(8) == true,\n                s.isEqualToSumEven(10) == true,\n                s.isEqualToSumEven(11) == false,\n                s.isEqualToSumEven(12) == true,\n                s.isEqualToSumEven(13) == false,\n                s.isEqualToSumEven(16) == true\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732116386,
       "stdout": "",
-      "stderr": "",
-      "exit_code": 0,
-      "status": "OK"
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp7m5nhlh8.java:9: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp7m5nhlh8.java:9: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
     }
   ]
 }

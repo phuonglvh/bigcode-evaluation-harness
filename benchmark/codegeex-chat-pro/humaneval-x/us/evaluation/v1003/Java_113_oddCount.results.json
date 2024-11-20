@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public List<String> oddCount(List<String> lst) {\n        List<String> res = new ArrayList<>();\n        for (String arr : lst) {\n            int n = 0;\n            for (char d : arr.toCharArray()) {\n                if ((int)d % 2 == 1) {\n                    n++;\n                }\n            }\n            res.add(\"the number of odd elements \" + n + \"n the str\" + n + \"ng \" + n + \" of the \" + n + \"nput.\");\n        }\n        return res;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.oddCount(List.of(\"1234567\" )).equals(List.of(\"the number of odd elements 4n the str4ng 4 of the 4nput.\" )),\n                s.oddCount(Arrays.asList(\"3\", \"11111111\" )).equals(Arrays.asList(\"the number of odd elements 1n the str1ng 1 of the 1nput.\", \"the number of odd elements 8n the str8ng 8 of the 8nput.\" )),\n                s.oddCount(Arrays.asList(\"271\", \"137\", \"314\" )).equals(Arrays.asList(\n                        \"the number of odd elements 2n the str2ng 2 of the 2nput.\",\n                        \"the number of odd elements 3n the str3ng 3 of the 3nput.\",\n                        \"the number of odd elements 2n the str2ng 2 of the 2nput.\"\n                ))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732034250,
+      "timestamp": 1732116372,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

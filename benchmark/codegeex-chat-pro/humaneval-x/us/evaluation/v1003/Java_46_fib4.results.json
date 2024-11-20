@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public int fib4(int n) {\n        List<Integer> results = new ArrayList<>(Arrays.asList(0, 0, 2, 0));\n        if (n < 4) {\n            return results.get(n);\n        }\n\n        for (int i = 4; i <= n; i++) {\n            results.add(results.get(3) + results.get(2) + results.get(1) + results.get(0));\n            results.remove(0);\n        }\n\n        return results.get(3);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.fib4(5) == 4,\n                s.fib4(8) == 28,\n                s.fib4(10) == 104,\n                s.fib4(12) == 386\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732034212,
+      "timestamp": 1732116336,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,
