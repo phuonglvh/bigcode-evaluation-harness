@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int fib(int n) {\n        if (n == 0) {\n            return 0;\n        }\n        if (n == 1) {\n            return 1;\n        }\n        return fib(n - 1) + fib(n - 2);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.fib(10) == 55,\n                s.fib(1) == 1,\n                s.fib(8) == 21,\n                s.fib(11) == 89,\n                s.fib(12) == 144\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732003494,
+      "timestamp": 1732115061,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

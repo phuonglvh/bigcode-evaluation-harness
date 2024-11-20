@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public boolean belowZero(List<Integer> operations) {\n        int balance = 0;\n\n        for (int op : operations) {\n            balance += op;\n            if (balance < 0) {\n                return true;\n            }\n        }\n\n        return false;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                !s.belowZero(new ArrayList<>(Arrays.asList())),\n                !s.belowZero(new ArrayList<>(Arrays.asList(1, 2, -3, 1, 2, -3))),\n                s.belowZero(new ArrayList<>(Arrays.asList(1, 2, -4, 5, 6))),\n                !s.belowZero(new ArrayList<>(Arrays.asList(1, -1, 2, -2, 5, -5, 4, -4))),\n                s.belowZero(new ArrayList<>(Arrays.asList(1, -1, 2, -2, 5, -5, 4, -5))),\n                s.belowZero(new ArrayList<>(Arrays.asList(1, -2, 2, -2, 5, -5, 4, -4)))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732003471,
+      "timestamp": 1732115020,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

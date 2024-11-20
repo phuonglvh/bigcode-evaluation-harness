@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int howManyTimes(String string, String substring) {\n        int times = 0;\n\n        for (int i = 0; i <= string.length() - substring.length(); i++) {\n            if (string.substring(i, i + substring.length()).equals(substring)) {\n                times += 1;\n            }\n        }\n\n        return times;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.howManyTimes(\"\", \"x\") == 0,\n                s.howManyTimes(\"xyxyxyx\", \"x\") == 4,\n                s.howManyTimes(\"cacacacac\", \"cac\") == 4,\n                s.howManyTimes(\"john doe\", \"john\") == 1\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732003477,
+      "timestamp": 1732115033,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

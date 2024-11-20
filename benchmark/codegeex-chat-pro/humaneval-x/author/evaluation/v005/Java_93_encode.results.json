@@ -6,9 +6,9 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public String encode(String message) {\n        String vowels = \"aeiouAEIOU\";\n        Map<Character, Character> vowelsReplace = new HashMap<>();\n        for (char c : vowels.toCharArray()) {\n            vowelsReplace.put(c, (char) (c + 2));\n        }\n        message = new StringBuilder(message).reverse().toString();\n        StringBuilder encodedMessage = new StringBuilder();\n        for (char c : message.toCharArray()) {\n            encodedMessage.append(vowelsReplace.getOrDefault(c, c));\n        }\n        return encodedMessage.toString();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.encode(\"TEST\"), \"tgst\"),\n                Objects.equals(s.encode(\"Mudasir\"), \"mWDCSKR\"),\n                Objects.equals(s.encode(\"YES\"), \"ygs\"),\n                Objects.equals(s.encode(\"This is a message\"), \"tHKS KS C MGSSCGG\"),\n                Objects.equals(s.encode(\"I DoNt KnOw WhAt tO WrItE\"), \"k dQnT kNqW wHcT Tq wRkTg\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732003512,
+      "timestamp": 1732115091,
       "stdout": "",
-      "stderr": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(tmp_36wkw3i.java:29)\n",
+      "stderr": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(tmphjjtsedx.java:29)\n",
       "exit_code": 1,
       "status": "Exception"
     }

@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public boolean monotonic(List<Integer> l) {\n        List<Integer> sortedList = new ArrayList<>(l);\n        Collections.sort(sortedList);\n        List<Integer> reverseSortedList = new ArrayList<>(l);\n        Collections.sort(reverseSortedList, Collections.reverseOrder());\n        \n        return l.equals(sortedList) || l.equals(reverseSortedList);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.monotonic(new ArrayList<>(Arrays.asList(1, 2, 4, 10))),\n                s.monotonic(new ArrayList<>(Arrays.asList(1, 2, 4, 20))),\n                !s.monotonic(new ArrayList<>(Arrays.asList(1, 20, 4, 10))),\n                s.monotonic(new ArrayList<>(Arrays.asList(4, 1, 0, -10))),\n                s.monotonic(new ArrayList<>(Arrays.asList(4, 1, 1, 0))),\n                !s.monotonic(new ArrayList<>(Arrays.asList(1, 2, 3, 2, 5, 60))),\n                s.monotonic(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 60))),\n                s.monotonic(new ArrayList<>(Arrays.asList(9, 9, 9, 9)))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732003495,
+      "timestamp": 1732115063,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

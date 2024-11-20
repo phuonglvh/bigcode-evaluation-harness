@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.util.stream.Collectors;\n\nclass Problem {\n    public List<String> filterBySubstring(List<String> strings, String substring) {\n        return strings.stream().filter(x -> x.contains(substring)).collect(Collectors.toList());\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.filterBySubstring(new ArrayList<>(List.of()), \"john\").equals(List.of()),\n                s.filterBySubstring(new ArrayList<>(Arrays.asList(\"xxx\", \"asd\", \"xxy\", \"john doe\", \"xxxAAA\", \"xxx\")), \"xxx\").equals(Arrays.asList(\"xxx\", \"xxxAAA\", \"xxx\")),\n                s.filterBySubstring(new ArrayList<>(Arrays.asList(\"xxx\", \"asd\", \"aaaxxy\", \"john doe\", \"xxxAAA\", \"xxx\")), \"xx\").equals(Arrays.asList(\"xxx\", \"aaaxxy\", \"xxxAAA\", \"xxx\")),\n                s.filterBySubstring(new ArrayList<>(Arrays.asList(\"grunt\", \"trumpet\", \"prune\", \"gruesome\")), \"run\").equals(Arrays.asList(\"grunt\", \"prune\"))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732003472,
+      "timestamp": 1732115024,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

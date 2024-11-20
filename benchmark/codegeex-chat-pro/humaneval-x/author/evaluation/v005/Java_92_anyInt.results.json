@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public boolean anyInt(Object x, Object y, Object z) {\n        if (x instanceof Integer && y instanceof Integer && z instanceof Integer) {\n            if (( (Integer) x + (Integer) y == (Integer) z ) || ( (Integer) x + (Integer) z == (Integer) y ) || ( (Integer) y + (Integer) z == (Integer) x )) {\n                return true;\n            }\n            return false;\n        }\n        return false;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.anyInt(2, 3, 1) == true,\n                s.anyInt(2.5, 2, 3) == false,\n                s.anyInt(1.5, 5, 3.5) == false,\n                s.anyInt(2, 6, 2) == false,\n                s.anyInt(4, 2, 2) == true,\n                s.anyInt(2.2, 2.2, 2.2) == false,\n                s.anyInt(-4, 6, 2) == true,\n                s.anyInt(2, 1, 1) == true,\n                s.anyInt(3, 4, 7) == true,\n                s.anyInt(3.0, 4, 7) == false\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732003511,
+      "timestamp": 1732115090,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

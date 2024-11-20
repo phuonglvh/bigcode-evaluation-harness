@@ -6,9 +6,9 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public boolean iscube(int a) {\n        a = Math.abs(a);\n        return (int) Math.round(Math.pow(a, 1.0 / 3)) == a;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.iscube(1),\n                !s.iscube(2),\n                s.iscube(-1),\n                s.iscube(64),\n                !s.iscube(180),\n                s.iscube(1000),\n                s.iscube(0),\n                !s.iscube(1729)\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732003505,
+      "timestamp": 1732115079,
       "stdout": "",
-      "stderr": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(tmpz4p27ab1.java:24)\n",
+      "stderr": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(tmpew1iwsnu.java:24)\n",
       "exit_code": 1,
       "status": "Exception"
     }

@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public List<Integer> intersperse(List<Integer> numbers, int delimiter) {\n        if (numbers.isEmpty()) {\n            return new ArrayList<>();\n        }\n\n        List<Integer> result = new ArrayList<>();\n\n        for (int i = 0; i < numbers.size() - 1; i++) {\n            result.add(numbers.get(i));\n            result.add(delimiter);\n        }\n\n        result.add(numbers.get(numbers.size() - 1));\n\n        return result;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.intersperse(new ArrayList<>(List.of()), 7).equals(List.of()),\n                s.intersperse(new ArrayList<>(Arrays.asList(5, 6, 3, 2)), 8).equals(Arrays.asList(5, 8, 6, 8, 3, 8, 2)),\n                s.intersperse(new ArrayList<>(Arrays.asList(2, 2, 2)), 2).equals(Arrays.asList(2, 2, 2, 2, 2))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732003471,
+      "timestamp": 1732115022,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

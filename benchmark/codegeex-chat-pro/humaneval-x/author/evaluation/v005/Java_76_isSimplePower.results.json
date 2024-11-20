@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public boolean isSimplePower(int x, int n) {\n        if (n == 1) {\n            return x == 1;\n        }\n        int power = 1;\n        while (power < x) {\n            power = power * n;\n        }\n        return power == x;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.isSimplePower(1, 4),\n                s.isSimplePower(2, 2),\n                s.isSimplePower(8, 2),\n                !s.isSimplePower(3, 2),\n                !s.isSimplePower(3, 1),\n                !s.isSimplePower(5, 3),\n                s.isSimplePower(16, 2),\n                !s.isSimplePower(143214, 16),\n                s.isSimplePower(4, 2),\n                s.isSimplePower(9, 3),\n                s.isSimplePower(16, 4),\n                !s.isSimplePower(24, 2),\n                !s.isSimplePower(128, 4),\n                !s.isSimplePower(12, 6),\n                s.isSimplePower(1, 1),\n                s.isSimplePower(1, 12)\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732003504,
+      "timestamp": 1732115078,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

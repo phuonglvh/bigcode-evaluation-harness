@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int startsOneEnds(int n) {\n        if (n == 1) return 1;\n        return 18 * (int) Math.pow(10, n - 2);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.startsOneEnds(1) == 1,\n                s.startsOneEnds(2) == 18,\n                s.startsOneEnds(3) == 180,\n                s.startsOneEnds(4) == 1800,\n                s.startsOneEnds(5) == 18000\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732003507,
+      "timestamp": 1732115084,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

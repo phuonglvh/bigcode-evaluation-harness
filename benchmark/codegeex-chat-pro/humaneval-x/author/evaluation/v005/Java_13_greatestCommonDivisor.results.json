@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int greatestCommonDivisor(int a, int b) {\n        while (b != 0) {\n            int temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.greatestCommonDivisor(3, 7) == 1,\n                s.greatestCommonDivisor(10, 15) == 5,\n                s.greatestCommonDivisor(49, 14) == 7,\n                s.greatestCommonDivisor(144, 60) == 12\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732003475,
+      "timestamp": 1732115029,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

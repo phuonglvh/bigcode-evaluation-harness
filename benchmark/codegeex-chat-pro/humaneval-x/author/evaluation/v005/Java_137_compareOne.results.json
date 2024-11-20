@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public Optional<Object> compareOne(Object a, Object b) {\n        Object tempA = a;\n        Object tempB = b;\n        if (tempA instanceof String) {\n            tempA = ((String) tempA).replace(',', '.');\n        }\n        if (tempB instanceof String) {\n            tempB = ((String) tempB).replace(',', '.');\n        }\n        if (Float.parseFloat(tempA.toString()) == Float.parseFloat(tempB.toString())) {\n            return Optional.empty();\n        }\n        return Optional.of(Float.parseFloat(tempA.toString()) > Float.parseFloat(tempB.toString()) ? a : b);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                (int) s.compareOne(1, 2).get() == 2,\n                (double) s.compareOne(1, 2.5).get() == 2.5,\n                (int) s.compareOne(2, 3).get() == 3,\n                (int) s.compareOne(5, 6).get() == 6,\n                (String) s.compareOne(1, \"2,3\").get() == \"2,3\",\n                (String) s.compareOne(\"5,1\", \"6\").get() == \"6\",\n                (String) s.compareOne(\"1\", \"2\").get() == \"2\",\n                s.compareOne(\"1\", 1).isEmpty()\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732003532,
+      "timestamp": 1732115124,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,
