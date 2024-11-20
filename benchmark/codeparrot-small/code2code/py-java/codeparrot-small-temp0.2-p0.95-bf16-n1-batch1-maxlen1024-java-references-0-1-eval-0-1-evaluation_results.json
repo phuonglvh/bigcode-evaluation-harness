@@ -33,16 +33,16 @@
     "generation_only": false,
     "load_generations_path": null,
     "load_data_path": null,
-    "metric_output_path": "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/benchmark/codeparrot-small/code2code/py-java/codeparrot-small-temp0.2-p0.95-bf16-n1-batch1-maxlen1024-java-references-0-1-eval-0-1-evaluation_results.json",
+    "metric_output_path": "./benchmark/codeparrot-small/code2code/py-java/codeparrot-small-temp0.2-p0.95-bf16-n1-batch1-maxlen1024-java-references-0-1-eval-0-1-evaluation_results.json",
     "save_generations": true,
     "load_generations_intermediate_paths": null,
-    "save_generations_path": "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/benchmark/codeparrot-small/code2code/py-java/codeparrot-small-temp0.2-p0.95-bf16-n1-batch1-maxlen1024-java-translations-0-1.json",
+    "save_generations_path": "./benchmark/codeparrot-small/code2code/py-java/codeparrot-small-temp0.2-p0.95-bf16-n1-batch1-maxlen1024-java-translations-0-1.json",
     "save_references": true,
-    "save_references_path": "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/benchmark/codeparrot-small/code2code/py-java/codeparrot-small-temp0.2-p0.95-bf16-n1-batch1-maxlen1024-java-references-0-1.json",
+    "save_references_path": "./benchmark/codeparrot-small/code2code/py-java/codeparrot-small-temp0.2-p0.95-bf16-n1-batch1-maxlen1024-java-references-0-1.json",
     "prompt": "prompt",
     "max_memory_per_gpu": "auto",
     "check_references": false,
-    "source_generations_path": "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/benchmark/CodeLlama-13b-Python-hf/py/improve/pass@1/t0.2-p0.95-k0-batch1-n1/CodeLlama-13b-Python-hf-temp0.2-p0.95-k0-bf16-n1-seed5-batch1-maxlen1024-py-generations-0-158_multiple-py.json",
+    "source_generations_path": "./benchmark/CodeLlama-13b-Python-hf/py/improve/pass@1/t0.2-p0.95-k0-batch1-n1/CodeLlama-13b-Python-hf-temp0.2-p0.95-k0-bf16-n1-seed5-batch1-maxlen1024-py-generations-0-158_multiple-py.json",
     "source_lang": "py"
   }
 }

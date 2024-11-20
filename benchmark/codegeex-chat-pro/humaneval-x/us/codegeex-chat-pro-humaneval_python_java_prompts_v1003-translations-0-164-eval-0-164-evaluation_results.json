@@ -32,7 +32,7 @@
     "postprocess": true,
     "allow_code_execution": true,
     "generation_only": false,
-    "load_generations_path": "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/benchmark/codegeex-chat-pro/humaneval-x/us/codegeex-chat-pro-humaneval_python_java_prompts_v1003-translations-0-164.json",
+    "load_generations_path": "./benchmark/codegeex-chat-pro/humaneval-x/us/codegeex-chat-pro-humaneval_python_java_prompts_v1003-translations-0-164.json",
     "load_data_path": null,
     "metric_output_path": "./benchmark/codegeex-chat-pro/humaneval-x/us/codegeex-chat-pro-humaneval_python_java_prompts_v1003-translations-0-164-eval-0-164-evaluation_results.json",
     "save_generations": false,

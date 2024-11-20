@@ -1,6 +1,6 @@
 {
   "humanevalx-java": {
-    "pass@1": 0.09146341463414634
+    "pass@1": 0.8353658536585366
   },
   "config": {
     "prefix": "",
@@ -12,7 +12,7 @@
     "n_samples": 1,
     "eos": "<|endoftext|>",
     "seed": 0,
-    "model": "OpenAI/gpt-4o",
+    "model": "THUDM/codegeex-chat-pro",
     "modeltype": "causal",
     "peft_model": null,
     "revision": null,
@@ -32,9 +32,9 @@
     "postprocess": true,
     "allow_code_execution": true,
     "generation_only": false,
-    "load_generations_path": "./benchmark/openai/gpt-4o/humaneval-x/gpt-4o-humaneval_python_java_prompts_v5-translations-0-164.json",
+    "load_generations_path": "./benchmark/codegeex-chat-pro/humaneval-x/author/codegeex-chat-pro-humaneval_python_java_prompts_v002-translations-0-164.json",
     "load_data_path": null,
-    "metric_output_path": "./benchmark/gpt-4o/humaneval-x/gpt-4o-humaneval_python_java_prompts_v5-translations-0-164-eval-0-164-evaluation_results.json",
+    "metric_output_path": "./benchmark/codegeex-chat-pro/humaneval-x/author/codegeex-chat-pro-humaneval_python_java_prompts_v002-translations-0-164-eval-0-164-evaluation_results.json",
     "save_generations": false,
     "load_generations_intermediate_paths": null,
     "save_generations_path": "generations.json",
