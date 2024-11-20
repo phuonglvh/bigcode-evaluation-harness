@@ -1,0 +1,16 @@
+{
+  "name": "Java_161_solve",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    You are given a string s.\n    if s[i] is a letter, reverse its case from lower to upper or vise versa,\n    otherwise keep it as it is.\n    If the string contains no letters, reverse the string.\n    The function should return the resulted string.\n    Examples\n    solve(\"1234\") = \"4321\"\n    solve(\"ab\") = \"AB\"\n    solve(\"#a@C\") = \"#A@c\"\n     */\n    public String solve(String s) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.solve(\"AsDf\"), \"aSdF\"),\n                Objects.equals(s.solve(\"1234\"), \"4321\"),\n                Objects.equals(s.solve(\"ab\"), \"AB\"),\n                Objects.equals(s.solve(\"#a@C\"), \"#A@c\"),\n                Objects.equals(s.solve(\"#AsdfW^45\"), \"#aSDFw^45\"),\n                Objects.equals(s.solve(\"#6@2\"), \"2@6#\"),\n                Objects.equals(s.solve(\"#$a^D\"), \"#$A^d\"),\n                Objects.equals(s.solve(\"#ccc\"), \"#CCC\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\n\nclass Problem {\n    public String solve(String s) {\n        int flg = 0;\n        int idx = 0;\n        char[] new_str = s.toCharArray();\n        for (char i : new_str) {\n            if (Character.isLetter(i)) {\n                new_str[idx] = Character.isUpperCase(i) ? Character.toLowerCase(i) : Character.toUpperCase(i);\n                flg = 1;\n            }\n            idx++;\n        }\n        s = new String(new_str);\n        if (flg == 0) {\n            return new StringBuilder(s).reverse().toString();\n        }\n        return s;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.solve(\"AsDf\"), \"aSdF\"),\n                Objects.equals(s.solve(\"1234\"), \"4321\"),\n                Objects.equals(s.solve(\"ab\"), \"AB\"),\n                Objects.equals(s.solve(\"#a@C\"), \"#A@c\"),\n                Objects.equals(s.solve(\"#AsdfW^45\"), \"#aSDFw^45\"),\n                Objects.equals(s.solve(\"#6@2\"), \"2@6#\"),\n                Objects.equals(s.solve(\"#$a^D\"), \"#$A^d\"),\n                Objects.equals(s.solve(\"#ccc\"), \"#CCC\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732119293,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}
