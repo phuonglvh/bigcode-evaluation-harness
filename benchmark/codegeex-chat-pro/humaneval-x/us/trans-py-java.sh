@@ -10,9 +10,9 @@ MODEL_NAME="codegeex-chat-pro"
 # Translate code2code
 # py to java
 # prompt_version='v1001'
-prompt_version='v1002'
+# prompt_version='v1002'
 # prompt_version='v1003'
-# prompt_version='v1004'
+prompt_version='v1004'
 # prompt_version='v1005'
 # prompt_version='v1006'
 # prompt_version='v1007'
