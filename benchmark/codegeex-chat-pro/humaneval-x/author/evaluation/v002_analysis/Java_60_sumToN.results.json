@@ -5,8 +5,8 @@
   "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.sumToN(1) == 1,\n                s.sumToN(6) == 21,\n                s.sumToN(11) == 66,\n                s.sumToN(30) == 465,\n                s.sumToN(100) == 5050\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
   "results": [
     {
-      "program": "import java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\n\nimport java.util.stream.IntStream;\n\nclass Problem {\n    public int sumToN(int n) {\n        return IntStream.rangeClosed(1, n).sum();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.sumToN(1) == 1,\n                s.sumToN(6) == 21,\n                s.sumToN(11) == 66,\n                s.sumToN(30) == 465,\n                s.sumToN(100) == 5050\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732065035,
+      "program": "import java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\n\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int sumToN(int n) {\n        return (n * (n + 1)) / 2;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.sumToN(1) == 1,\n                s.sumToN(6) == 21,\n                s.sumToN(11) == 66,\n                s.sumToN(30) == 465,\n                s.sumToN(100) == 5050\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732065511,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

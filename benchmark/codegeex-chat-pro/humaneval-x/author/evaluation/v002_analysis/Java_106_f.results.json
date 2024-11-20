@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "import java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\nclass Problem {\n    public List<Integer> f(int n) {\n        List<Integer> ret = new ArrayList<>();\n        for (int i = 1; i <= n; i++) {\n            if (i % 2 == 0) {\n                int x = 1;\n                for (int j = 1; j <= i; j++) {\n                    x *= j;\n                }\n                ret.add(x);\n            } else {\n                int x = 0;\n                for (int j = 1; j <= i; j++) {\n                    x += j;\n                }\n                ret.add(x);\n            }\n        }\n        return ret;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.f(5).equals(Arrays.asList(1, 2, 6, 24, 15)),\n                s.f(7).equals(Arrays.asList(1, 2, 6, 24, 15, 720, 28)),\n                s.f(1).equals(List.of(1)),\n                s.f(3).equals(Arrays.asList(1, 2, 6))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732065055,
+      "timestamp": 1732065534,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

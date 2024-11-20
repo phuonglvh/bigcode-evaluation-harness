@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "import java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\nclass Problem {\n    public List<String> allPrefixes(String string) {\n        List<String> result = new ArrayList<>();\n\n        for (int i = 0; i < string.length(); i++) {\n            result.add(string.substring(0, i + 1));\n        }\n        return result;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.allPrefixes(\"\").equals(List.of()),\n                s.allPrefixes(\"asdfgh\").equals(Arrays.asList(\"a\", \"as\", \"asd\", \"asdf\", \"asdfg\", \"asdfgh\")),\n                s.allPrefixes(\"WWW\").equals(Arrays.asList(\"W\", \"WW\", \"WWW\"))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732065014,
+      "timestamp": 1732065489,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

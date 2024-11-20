@@ -6,9 +6,9 @@
   "results": [
     {
       "program": "import java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\n\nimport java.util.ArrayList;\nimport java.util.Collections;\nimport java.util.List;\n\nclass Problem {\n    public List<Integer> getOddCollatz(int n) {\n        List<Integer> oddCollatz = new ArrayList<>();\n        if (n % 2 != 0) {\n            oddCollatz.add(n);\n        }\n        while (n > 1) {\n            if (n % 2 == 0) {\n                n = n / 2;\n            } else {\n                n = n * 3 + 1;\n                if (n % 2 != 0) {\n                    oddCollatz.add(n);\n                }\n            }\n        }\n        Collections.sort(oddCollatz);\n        return oddCollatz;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.getOddCollatz(14).equals(Arrays.asList(1, 5, 7, 11, 13, 17)),\n                s.getOddCollatz(5).equals(Arrays.asList(1, 5)),\n                s.getOddCollatz(12).equals(Arrays.asList(1, 3, 5)),\n                s.getOddCollatz(1).equals(List.of(1))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732065063,
+      "timestamp": 1732065542,
       "stdout": "",
-      "stderr": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(tmp6f_2no1w.java:42)\n",
+      "stderr": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(tmp5pk7nax7.java:42)\n",
       "exit_code": 1,
       "status": "Exception"
     }

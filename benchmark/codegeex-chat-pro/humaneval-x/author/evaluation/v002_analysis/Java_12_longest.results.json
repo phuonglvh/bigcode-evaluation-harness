@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "import java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\n\nimport java.util.List;\nimport java.util.Optional;\n\nclass Problem {\n    public Optional<String> longest(List<String> strings) {\n        if (strings == null || strings.isEmpty()) {\n            return Optional.empty();\n        }\n\n        int maxlen = 0;\n        String longestString = null;\n        for (String s : strings) {\n            if (s.length() > maxlen) {\n                maxlen = s.length();\n                longestString = s;\n            }\n        }\n        return Optional.ofNullable(longestString);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.longest(new ArrayList<>(List.of())).isEmpty(),\n                Objects.equals(s.longest(new ArrayList<>(Arrays.asList(\"x\", \"y\", \"z\"))).get(), \"x\"),\n                Objects.equals(s.longest(new ArrayList<>(Arrays.asList(\"x\", \"yyy\", \"zzzz\", \"www\", \"kkkk\", \"abc\"))).get(), \"zzzz\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732065013,
+      "timestamp": 1732065488,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

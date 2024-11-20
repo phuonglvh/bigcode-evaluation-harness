@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "import java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\n\nimport java.util.*;\nimport java.util.stream.Collectors;\n\nclass Problem {\n    public List<Integer> removeDuplicates(List<Integer> numbers) {\n        Map<Integer, Long> countMap = numbers.stream()\n                                             .collect(Collectors.groupingBy(e -> e, Collectors.counting()));\n        return numbers.stream()\n                      .filter(n -> countMap.get(n) <= 1)\n                      .collect(Collectors.toList());\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.removeDuplicates(new ArrayList<>(List.of())).equals(List.of()),\n                s.removeDuplicates(new ArrayList<>(Arrays.asList(1, 2, 3, 4))).equals(Arrays.asList(1, 2, 3, 4)),\n                s.removeDuplicates(new ArrayList<>(Arrays.asList(1, 2, 3, 2, 4, 3, 5))).equals(Arrays.asList(1, 4, 5))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732065020,
+      "timestamp": 1732065494,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

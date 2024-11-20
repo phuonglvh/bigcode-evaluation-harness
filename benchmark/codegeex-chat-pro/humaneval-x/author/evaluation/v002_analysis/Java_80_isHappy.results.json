@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "import java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\n\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public boolean isHappy(String s) {\n        if (s.length() < 3) {\n            return false;\n        }\n\n        for (int i = 0; i < s.length() - 2; i++) {\n            if (s.charAt(i) == s.charAt(i + 1) || s.charAt(i + 1) == s.charAt(i + 2) || s.charAt(i) == s.charAt(i + 2)) {\n                return false;\n            }\n        }\n        return true;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                !s.isHappy(\"a\"),\n                !s.isHappy(\"aa\"),\n                s.isHappy(\"abcd\"),\n                !s.isHappy(\"aabb\"),\n                s.isHappy(\"adb\"),\n                !s.isHappy(\"xyy\"),\n                s.isHappy(\"iopaxpoi\"),\n                !s.isHappy(\"iopaxioi\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732065044,
+      "timestamp": 1732065522,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

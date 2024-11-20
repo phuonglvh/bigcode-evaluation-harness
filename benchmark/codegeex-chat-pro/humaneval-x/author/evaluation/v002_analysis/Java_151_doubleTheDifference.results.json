@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "import java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\n\nimport java.util.*;\n\nclass Problem {\n    public int doubleTheDifference(List<Object> lst) {\n        int sum = 0;\n        for (Object obj : lst) {\n            if (obj instanceof Integer) {\n                int i = (Integer) obj;\n                if (i > 0 && i % 2 != 0) {\n                    sum += i * i;\n                }\n            }\n        }\n        return sum;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.doubleTheDifference(List.of()) == 0,\n                s.doubleTheDifference(Arrays.asList(5, 4)) == 25,\n                s.doubleTheDifference(Arrays.asList(0.1, 0.2, 0.3)) == 0,\n                s.doubleTheDifference(Arrays.asList(-10, -20, -30)) == 0,\n                s.doubleTheDifference(Arrays.asList(-1, -2, 8)) == 0,\n                s.doubleTheDifference(Arrays.asList(0.2, 3, 5)) == 34\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n        List<Object> lst = new ArrayList<>();\n        for (int i = -99; i < 100; i += 2) {\n            lst.add(i);\n        }\n        int odd_sum = lst.stream().filter(i -> i instanceof Integer p && p % 2 != 0 && p > 0).map(i -> (Integer) i * (Integer) i).reduce(Integer::sum).orElse(0);\n        assert s.doubleTheDifference(lst) == odd_sum;\n    }\n}",
-      "timestamp": 1732065077,
+      "timestamp": 1732065557,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

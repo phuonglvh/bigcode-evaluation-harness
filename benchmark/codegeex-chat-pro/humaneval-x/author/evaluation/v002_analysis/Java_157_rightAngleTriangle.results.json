@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "import java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\n\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public boolean rightAngleTriangle(int a, int b, int c) {\n        return a*a == b*b + c*c || b*b == a*a + c*c || c*c == a*a + b*b;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.rightAngleTriangle(3, 4, 5) == true,\n                s.rightAngleTriangle(1, 2, 3) == false,\n                s.rightAngleTriangle(10, 6, 8) == true,\n                s.rightAngleTriangle(2, 2, 2) == false,\n                s.rightAngleTriangle(7, 24, 25) == true,\n                s.rightAngleTriangle(10, 5, 7) == false,\n                s.rightAngleTriangle(5, 12, 13) == true,\n                s.rightAngleTriangle(15, 8, 17) == true,\n                s.rightAngleTriangle(48, 55, 73) == true,\n                s.rightAngleTriangle(1, 1, 1) == false,\n                s.rightAngleTriangle(2, 2, 10) == false\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732065079,
+      "timestamp": 1732065559,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "import java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\n\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int fibfib(int n) {\n        if (n == 0) {\n            return 0;\n        }\n        if (n == 1) {\n            return 0;\n        }\n        if (n == 2) {\n            return 1;\n        }\n        return fibfib(n - 1) + fibfib(n - 2) + fibfib(n - 3);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.fibfib(2) == 1,\n                s.fibfib(1) == 0,\n                s.fibfib(5) == 4,\n                s.fibfib(8) == 24,\n                s.fibfib(10) == 81,\n                s.fibfib(12) == 274,\n                s.fibfib(14) == 927\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732065036,
+      "timestamp": 1732065513,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

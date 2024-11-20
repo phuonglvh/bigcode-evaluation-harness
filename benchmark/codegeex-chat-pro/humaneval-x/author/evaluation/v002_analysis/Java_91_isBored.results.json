@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "import java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\n\nimport java.util.regex.*;\n\nclass Problem {\n    public int isBored(String S) {\n        Pattern pattern = Pattern.compile(\"[.?!]\\\\s*\");\n        Matcher matcher = pattern.matcher(S);\n        String[] sentences = pattern.split(S);\n        int count = 0;\n        for (String sentence : sentences) {\n            if (sentence.length() >= 2 && sentence.substring(0, 2).equals(\"I \")) {\n                count++;\n            }\n        }\n        return count;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.isBored(\"Hello world\") == 0,\n                s.isBored(\"Is the sky blue?\") == 0,\n                s.isBored(\"I love It !\") == 1,\n                s.isBored(\"bIt\") == 0,\n                s.isBored(\"I feel good today. I will be productive. will kill It\") == 2,\n                s.isBored(\"You and I are going for a walk\") == 0\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732065049,
+      "timestamp": 1732065527,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

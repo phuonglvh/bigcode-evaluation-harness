@@ -6,9 +6,9 @@
   "results": [
     {
       "program": "import java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\n\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    /**\n    returns encoded string by shifting every character by 5 in the alphabet.\n     */\n    public String encodeShift(String s) {\n        StringBuilder sb = new StringBuilder();\n        for (char ch : s.toCharArray()) {\n            sb.append((char) ('a' + ((ch + 5 - 'a') % 26)));\n        }\n        return sb.toString();\n    }\n\n    public String decodeShift(String s) {\n        StringBuilder sb = new StringBuilder();\n        for (char ch : s.toCharArray()) {\n            sb.append((char) ('a' + ((ch - 5 - 'a') % 26)));\n        }\n        return sb.toString();\n\n    }\n    static char[] letters = \"abcdefghijklmnopqrstuvwxyz\".toCharArray();\n    static Random rand = new Random(42);\n\n    public static String random_string(int length) {\n        StringBuilder sb = new StringBuilder();\n        for (int i = 0; i < length; i++) {\n            sb.append(letters[rand.nextInt(26)]);\n        }\n        return sb.toString();\n    }\n\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        for (int i = 0; i < 100; i++) {\n            String str = random_string(rand.nextInt(10) + 10);\n            String encode_str = s.encodeShift(str);\n            if (!s.decodeShift(encode_str).equals(str)) {\n                throw new AssertionError();\n            }\n        }\n    }\n}",
-      "timestamp": 1732065031,
+      "timestamp": 1732065507,
       "stdout": "",
-      "stderr": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(tmpr_parojq.java:49)\n",
+      "stderr": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(tmps0s_kgmh.java:49)\n",
       "exit_code": 1,
       "status": "Exception"
     }
