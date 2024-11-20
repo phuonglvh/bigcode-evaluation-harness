@@ -1,0 +1,16 @@
+{
+  "name": "Java_24_largestDivisor",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    For a given number n, find the largest number that divides n evenly, smaller than n\n    >>> largestDivisor(15)\n    5\n     */\n    public int largestDivisor(int n) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.largestDivisor(3) == 1,\n                s.largestDivisor(7) == 1,\n                s.largestDivisor(10) == 5,\n                s.largestDivisor(100) == 50,\n                s.largestDivisor(49) == 7\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "import java.util.*;\nimport java.lang.reflect.*;\nimport org.javatuples.*;\nimport java.security.*;\nimport java.math.*;\nimport java.io.*;\nimport java.util.stream.*;\n\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int largestDivisor(int n) {\n        for (int i = n - 1; i > 0; i--) {\n            if (n % i == 0) {\n                return i;\n            }\n        }\n        return 0;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.largestDivisor(3) == 1,\n                s.largestDivisor(7) == 1,\n                s.largestDivisor(10) == 5,\n                s.largestDivisor(100) == 50,\n                s.largestDivisor(49) == 7\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732065019,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}
