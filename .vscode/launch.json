@@ -238,7 +238,7 @@
                 "--limit",
                 "164",
                 "--load_generations_path",
-                "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/benchmark/humaneval-x-handcraft/humaneval-x/humaneval-x-handcraft-humaneval_python_java_prompts-translations-0-164.json",
+                "${workspaceFolder}/benchmark/humaneval-x-handcraft/humaneval-x/humaneval-x-handcraft-humaneval_python_java_prompts-translations-0-164.json",
                 "--metric_output_path",
                 "./benchmark/humanmeval-x-handcraft/humaneval-x/humaneval-x-handcraft-humaneval_python_java_prompts-translations-0-164-eval-0-164-evaluation_results.json",
             ]
