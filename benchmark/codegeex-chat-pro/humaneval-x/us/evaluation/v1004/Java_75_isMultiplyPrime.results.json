@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public boolean isMultiplyPrime(int a) {\n        for (int i = 2; i <= 100; i++) {\n            if (!isPrime(i)) continue;\n            for (int j = 2; j <= 100; j++) {\n                if (!isPrime(j)) continue;\n                for (int k = 2; k <= 100; k++) {\n                    if (!isPrime(k)) continue;\n                    if (i * j * k == a) return true;\n                }\n            }\n        }\n        return false;\n    }\n\n    private boolean isPrime(int n) {\n        for (int j = 2; j < n; j++) {\n            if (n % j == 0) {\n                return false;\n            }\n        }\n        return true;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                !s.isMultiplyPrime(5),\n                s.isMultiplyPrime(30),\n                s.isMultiplyPrime(8),\n                !s.isMultiplyPrime(10),\n                s.isMultiplyPrime(125),\n                s.isMultiplyPrime(3 * 5 * 7),\n                !s.isMultiplyPrime(3 * 6 * 7),\n                !s.isMultiplyPrime(9 * 9 * 9),\n                !s.isMultiplyPrime(11 * 9 * 9),\n                s.isMultiplyPrime(11 * 13 * 7)\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732117544,
+      "timestamp": 1732158142,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    /**\n    Test if given string is a palindrome\n     */\n    public boolean isPalindrome(String string) {\n        int i = 0;\n        int j = string.length() - 1;\n        while (i < j) {\n            if (string.charAt(i) != string.charAt(j)) {\n                return false;\n            }\n            i++;\n            j--;\n        }\n        return true;\n    }\n\n    public String makePalindrome(String string) {\n        if (string.isEmpty()) {\n            return \"\";\n        }\n\n        int beginningOfSuffix = 0;\n\n        while (!isPalindrome(string.substring(beginningOfSuffix))) {\n            beginningOfSuffix++;\n        }\n\n        return string + new StringBuilder(string.substring(0, beginningOfSuffix)).reverse().toString();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.makePalindrome(\"\"), \"\"),\n                Objects.equals(s.makePalindrome(\"x\"), \"x\"),\n                Objects.equals(s.makePalindrome(\"xyz\"), \"xyzyx\"),\n                Objects.equals(s.makePalindrome(\"xyx\"), \"xyx\"),\n                Objects.equals(s.makePalindrome(\"jerry\"), \"jerryrrej\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732117514,
+      "timestamp": 1732158114,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

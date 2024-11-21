@@ -6,9 +6,9 @@
   "results": [
     {
       "program": "\nclass Problem {\n    public int carRaceCollision(int n) {\n        return n * n;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.carRaceCollision(2) == 4,\n                s.carRaceCollision(3) == 9,\n                s.carRaceCollision(4) == 16,\n                s.carRaceCollision(8) == 64,\n                s.carRaceCollision(10) == 100\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732117529,
+      "timestamp": 1732158127,
       "stdout": "",
-      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmphgalldz3.java:9: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmphgalldz3.java:9: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp87cm2xs7.java:9: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp87cm2xs7.java:9: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
       "exit_code": 1,
       "status": "SyntaxError"
     }

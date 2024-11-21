@@ -6,9 +6,9 @@
   "results": [
     {
       "program": "\nclass Problem {\n    public int startsOneEnds(int n) {\n        if (n == 1) return 1;\n        return 18 * (int) Math.pow(10, n - 2);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.startsOneEnds(1) == 1,\n                s.startsOneEnds(2) == 18,\n                s.startsOneEnds(3) == 180,\n                s.startsOneEnds(4) == 1800,\n                s.startsOneEnds(5) == 18000\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732117547,
+      "timestamp": 1732158145,
       "stdout": "",
-      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp6efyv851.java:10: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp6efyv851.java:10: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpvae36rgq.java:10: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpvae36rgq.java:10: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
       "exit_code": 1,
       "status": "SyntaxError"
     }

@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int digitSum(String s) {\n        if (s.isEmpty()) return 0;\n        int sum = 0;\n        for (char c : s.toCharArray()) {\n            if (Character.isUpperCase(c)) {\n                sum += (int) c;\n            }\n        }\n        return sum;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.digitSum(\"\") == 0,\n                s.digitSum(\"abAB\") == 131,\n                s.digitSum(\"abcCd\") == 67,\n                s.digitSum(\"helloE\") == 69,\n                s.digitSum(\"woArBld\") == 131,\n                s.digitSum(\"aAaaaXa\") == 153,\n                s.digitSum(\" How are yOu?\") == 151,\n                s.digitSum(\"You arE Very Smart\") == 327\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732117539,
+      "timestamp": 1732158138,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

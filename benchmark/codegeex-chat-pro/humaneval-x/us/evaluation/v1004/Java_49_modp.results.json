@@ -5,12 +5,12 @@
   "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.modp(3, 5) == 3,\n                s.modp(1101, 101) == 2,\n                s.modp(0, 101) == 1,\n                s.modp(3, 11) == 8,\n                s.modp(100, 101) == 1,\n                s.modp(30, 5) == 4,\n                s.modp(31, 5) == 3\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
   "results": [
     {
-      "program": "\nclass Problem {\n    public int modp(int n, int p) {\n        int ret = 1;\n        for (int i = 0; i < n; i++) {\n            ret = (2 * ret) % p;\n        }\n        return ret;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.modp(3, 5) == 3,\n                s.modp(1101, 101) == 2,\n                s.modp(0, 101) == 1,\n                s.modp(3, 11) == 8,\n                s.modp(100, 101) == 1,\n                s.modp(30, 5) == 4,\n                s.modp(31, 5) == 3\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732117532,
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int modp(int n, int p) {\n        int ret = 1;\n        for (int i = 0; i < n; i++) {\n            ret = (2 * ret) % p;\n        }\n        return ret;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.modp(3, 5) == 3,\n                s.modp(1101, 101) == 2,\n                s.modp(0, 101) == 1,\n                s.modp(3, 11) == 8,\n                s.modp(100, 101) == 1,\n                s.modp(30, 5) == 4,\n                s.modp(31, 5) == 3\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732158131,
       "stdout": "",
-      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp66x0o9fi.java:13: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp66x0o9fi.java:13: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
-      "exit_code": 1,
-      "status": "SyntaxError"
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
     }
   ]
 }

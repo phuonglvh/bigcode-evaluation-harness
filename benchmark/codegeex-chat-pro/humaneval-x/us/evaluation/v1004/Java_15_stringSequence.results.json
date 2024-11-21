@@ -6,9 +6,9 @@
   "results": [
     {
       "program": "\nimport java.util.stream.Collectors;\nimport java.util.stream.IntStream;\n\nclass Problem {\n    public String stringSequence(int n) {\n        return IntStream.range(0, n + 1)\n                        .mapToObj(String::valueOf)\n                        .collect(Collectors.joining(\" \"));\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.stringSequence(0).equals(\"0\"),\n                s.stringSequence(3).equals(\"0 1 2 3\"),\n                s.stringSequence(10).equals(\"0 1 2 3 4 5 6 7 8 9 10\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732117516,
+      "timestamp": 1732158116,
       "stdout": "",
-      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp0fu0v49u.java:14: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmp0fu0v49u.java:14: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpd8ql_uzo.java:14: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpd8ql_uzo.java:14: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
       "exit_code": 1,
       "status": "SyntaxError"
     }

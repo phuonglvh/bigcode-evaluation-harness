@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public int countDistinctCharacters(String string) {\n        Set<Character> charSet = new HashSet<>();\n        for (char c : string.toLowerCase().toCharArray()) {\n            charSet.add(c);\n        }\n        return charSet.size();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.countDistinctCharacters(\"\") == 0,\n                s.countDistinctCharacters(\"abcde\") == 5,\n                s.countDistinctCharacters(\"abcde\" + \"cade\" + \"CADE\") == 5,\n                s.countDistinctCharacters(\"aaaaAAAAaaaa\") == 1,\n                s.countDistinctCharacters(\"Jerry jERRY JeRRRY\") == 5\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732117517,
+      "timestamp": 1732158116,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

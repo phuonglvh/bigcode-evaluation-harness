@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public int fruitDistribution(String s, int n) {\n        List<Integer> lis = new ArrayList<>();\n        for (String i : s.split(\" \")) {\n            if (i.matches(\"\\\\d+\")) {\n                lis.add(Integer.parseInt(i));\n            }\n        }\n        int sum = 0;\n        for (int num : lis) {\n            sum += num;\n        }\n        return n - sum;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.fruitDistribution(\"5 apples and 6 oranges\",19) == 8,\n                s.fruitDistribution(\"5 apples and 6 oranges\",21) == 10,\n                s.fruitDistribution(\"0 apples and 1 oranges\",3) == 2,\n                s.fruitDistribution(\"1 apples and 0 oranges\",3) == 2,\n                s.fruitDistribution(\"2 apples and 3 oranges\",100) == 95,\n                s.fruitDistribution(\"2 apples and 3 oranges\",5) == 0,\n                s.fruitDistribution(\"1 apples and 100 oranges\",120) == 19\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732117540,
+      "timestamp": 1732158138,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

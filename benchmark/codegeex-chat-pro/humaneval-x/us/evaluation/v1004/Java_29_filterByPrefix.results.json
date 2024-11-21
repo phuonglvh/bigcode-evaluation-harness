@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.util.stream.Collectors;\n\nclass Problem {\n    public List<String> filterByPrefix(List<String> strings, String prefix) {\n        return strings.stream()\n                      .filter(x -> x.startsWith(prefix))\n                      .collect(Collectors.toList());\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.filterByPrefix(new ArrayList<>(List.of()), \"john\").equals(List.of()),\n                s.filterByPrefix(new ArrayList<>(Arrays.asList(\"xxx\", \"asd\", \"xxy\", \"john doe\", \"xxxAAA\", \"xxx\")), \"xxx\").equals(Arrays.asList(\"xxx\", \"xxxAAA\", \"xxx\"))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732117523,
+      "timestamp": 1732158122,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,
