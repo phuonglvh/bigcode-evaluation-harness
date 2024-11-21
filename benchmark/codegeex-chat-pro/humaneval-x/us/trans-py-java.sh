@@ -12,11 +12,12 @@ MODEL_NAME="codegeex-chat-pro"
 # prompt_version='v1001'
 # prompt_version='v1002'
 # prompt_version='v1003'
-# prompt_version='v1004'
+prompt_version='v1004'
 # prompt_version='v1005'
 # prompt_version='v1006'
 # prompt_version='v1008'
-prompt_version='v1009'
+# prompt_version='v1009'
+# prompt_version='v2002'
 
 source_generations_path="$(realpath .)/benchmark/$MODEL_NAME/humaneval-x/us/$MODEL_NAME-humaneval_python_java_prompts_$prompt_version-translations-0-164.json"
 num_source_generations=164
