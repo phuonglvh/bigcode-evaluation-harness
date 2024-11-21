@@ -1,0 +1,16 @@
+{
+  "name": "Java_16_countDistinctCharacters",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Given a string, find out how many distinct characters (regardless of case) does it consist of\n    >>> countDistinctCharacters(\"xyzXYZ\")\n    3\n    >>> countDistinctCharacters(\"Jerry\")\n    4\n     */\n    public int countDistinctCharacters(String string) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.countDistinctCharacters(\"\") == 0,\n                s.countDistinctCharacters(\"abcde\") == 5,\n                s.countDistinctCharacters(\"abcde\" + \"cade\" + \"CADE\") == 5,\n                s.countDistinctCharacters(\"aaaaAAAAaaaa\") == 1,\n                s.countDistinctCharacters(\"Jerry jERRY JeRRRY\") == 5\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\n// language: Java\nimport java.util.*;\n\nclass Problem {\n    public int countDistinctCharacters(String string) {\n        Set<Character> distinctChars = new HashSet<>();\n        for (char c : string.toLowerCase().toCharArray()) {\n            distinctChars.add(c);\n        }\n        return distinctChars.size();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.countDistinctCharacters(\"\") == 0,\n                s.countDistinctCharacters(\"abcde\") == 5,\n                s.countDistinctCharacters(\"abcde\" + \"cade\" + \"CADE\") == 5,\n                s.countDistinctCharacters(\"aaaaAAAAaaaa\") == 1,\n                s.countDistinctCharacters(\"Jerry jERRY JeRRRY\") == 5\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732197953,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}
