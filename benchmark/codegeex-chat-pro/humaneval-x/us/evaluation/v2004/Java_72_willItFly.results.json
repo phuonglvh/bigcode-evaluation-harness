@@ -1,0 +1,16 @@
+{
+  "name": "Java_72_willItFly",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Write a function that returns True if the object q will fly, and False otherwise.\n    The object q will fly if it's balanced (it is a palindromic list) and the sum of its elements is less than or equal the maximum possible weight w.\n\n    Example:\n    willItFly(Arrays.asList(1, 2), 5) -> false\n    # 1+2 is less than the maximum possible weight, but it's unbalanced.\n\n    willItFly(Arrays.asList(3, 2, 3), 1) -> false\n    # it's balanced, but 3+2+3 is more than the maximum possible weight.\n\n    willItFly(Arrays.asList(3, 2, 3), 9) -> true\n    # 3+2+3 is less than the maximum possible weight, and it's balanced.\n\n    willItFly(Arrays.asList(3), 5) -> true\n    # 3 is less than the maximum possible weight, and it's balanced.\n     */\n    public boolean willItFly(List<Integer> q, int w) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.willItFly(new ArrayList<>(Arrays.asList(3, 2, 3)), 9),\n                !s.willItFly(new ArrayList<>(Arrays.asList(1, 2)), 5),\n                s.willItFly(new ArrayList<>(List.of(3)), 5),\n                !s.willItFly(new ArrayList<>(Arrays.asList(3, 2, 3)), 1),\n                !s.willItFly(new ArrayList<>(Arrays.asList(1, 2, 3)), 6),\n                s.willItFly(new ArrayList<>(List.of(5)), 5)\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\n\nclass Problem {\n    public boolean willItFly(List<Integer> q, int w) {\n        if (q.stream().mapToInt(Integer::intValue).sum() > w) {\n            return false;\n        }\n\n        int i = 0, j = q.size() - 1;\n        while (i < j) {\n            if (!q.get(i).equals(q.get(j))) {\n                return false;\n            }\n            i++;\n            j--;\n        }\n        return true;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.willItFly(new ArrayList<>(Arrays.asList(3, 2, 3)), 9),\n                !s.willItFly(new ArrayList<>(Arrays.asList(1, 2)), 5),\n                s.willItFly(new ArrayList<>(List.of(3)), 5),\n                !s.willItFly(new ArrayList<>(Arrays.asList(3, 2, 3)), 1),\n                !s.willItFly(new ArrayList<>(Arrays.asList(1, 2, 3)), 6),\n                s.willItFly(new ArrayList<>(List.of(5)), 5)\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732199778,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}
