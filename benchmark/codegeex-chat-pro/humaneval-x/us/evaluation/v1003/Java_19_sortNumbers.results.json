@@ -6,9 +6,9 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public String sortNumbers(String numbers) {\n        Map<String, Integer> valueMap = new HashMap<>();\n        valueMap.put(\"zero\", 0);\n        valueMap.put(\"one\", 1);\n        valueMap.put(\"two\", 2);\n        valueMap.put(\"three\", 3);\n        valueMap.put(\"four\", 4);\n        valueMap.put(\"five\", 5);\n        valueMap.put(\"six\", 6);\n        valueMap.put(\"seven\", 7);\n        valueMap.put(\"eight\", 8);\n        valueMap.put(\"nine\", 9);\n\n        List<String> numberList = Arrays.asList(numbers.split(\" \"));\n        numberList.removeIf(String::isEmpty);\n\n        numberList.sort((a, b) -> valueMap.get(a) - valueMap.get(b));\n\n        return String.join(\" \", numberList);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.sortNumbers(\"\").equals(\"\"),\n                s.sortNumbers(\"three\").equals(\"three\"),\n                s.sortNumbers(\"three five nine\").equals(\"three five nine\"),\n                s.sortNumbers(\"five zero four seven nine eight\").equals(\"zero four five seven eight nine\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732116321,
+      "timestamp": 1732160212,
       "stdout": "",
-      "stderr": "Exception in thread \"main\" java.lang.UnsupportedOperationException: remove\n\tat java.base/java.util.Iterator.remove(Iterator.java:102)\n\tat java.base/java.util.Collection.removeIf(Collection.java:582)\n\tat Problem.sortNumbers(tmphwx970l2.java:19)\n\tat Problem.main(tmphwx970l2.java:29)\n",
+      "stderr": "Exception in thread \"main\" java.lang.UnsupportedOperationException: remove\n\tat java.base/java.util.Iterator.remove(Iterator.java:102)\n\tat java.base/java.util.Collection.removeIf(Collection.java:582)\n\tat Problem.sortNumbers(tmps0auttf2.java:19)\n\tat Problem.main(tmps0auttf2.java:29)\n",
       "exit_code": 1,
       "status": "Exception"
     }

@@ -5,12 +5,12 @@
   "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.fibfib(2) == 1,\n                s.fibfib(1) == 0,\n                s.fibfib(5) == 4,\n                s.fibfib(8) == 24,\n                s.fibfib(10) == 81,\n                s.fibfib(12) == 274,\n                s.fibfib(14) == 927\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
   "results": [
     {
-      "program": "\nclass Problem {\n    public int fibfib(int n) {\n        if (n == 0) {\n            return 0;\n        }\n        if (n == 1) {\n            return 0;\n        }\n        if (n == 2) {\n            return 1;\n        }\n        return fibfib(n - 1) + fibfib(n - 2) + fibfib(n - 3);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.fibfib(2) == 1,\n                s.fibfib(1) == 0,\n                s.fibfib(5) == 4,\n                s.fibfib(8) == 24,\n                s.fibfib(10) == 81,\n                s.fibfib(12) == 274,\n                s.fibfib(14) == 927\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732116344,
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int fibfib(int n) {\n        if (n == 0) {\n            return 0;\n        }\n        if (n == 1) {\n            return 0;\n        }\n        if (n == 2) {\n            return 1;\n        }\n        return fibfib(n - 1) + fibfib(n - 2) + fibfib(n - 3);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.fibfib(2) == 1,\n                s.fibfib(1) == 0,\n                s.fibfib(5) == 4,\n                s.fibfib(8) == 24,\n                s.fibfib(10) == 81,\n                s.fibfib(12) == 274,\n                s.fibfib(14) == 927\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732160232,
       "stdout": "",
-      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmprx1z9ykq.java:18: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmprx1z9ykq.java:18: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
-      "exit_code": 1,
-      "status": "SyntaxError"
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
     }
   ]
 }

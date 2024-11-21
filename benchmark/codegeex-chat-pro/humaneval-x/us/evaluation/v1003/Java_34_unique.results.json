@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public List<Integer> unique(List<Integer> l) {\n        Set<Integer> set = new HashSet<>(l);\n        List<Integer> uniqueList = new ArrayList<>(set);\n        Collections.sort(uniqueList);\n        return uniqueList;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.unique(new ArrayList<>(Arrays.asList(5, 3, 5, 2, 3, 3, 9, 0, 123))).equals(Arrays.asList(0, 2, 3, 5, 9, 123))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732116330,
+      "timestamp": 1732160219,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

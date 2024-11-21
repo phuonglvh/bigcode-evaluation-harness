@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public String circularShift(int x, int shift) {\n        String s = Integer.toString(x);\n        if (shift > s.length()) {\n            return new StringBuilder(s).reverse().toString();\n        } else {\n            return s.substring(s.length() - shift) + s.substring(0, s.length() - shift);\n        }\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.circularShift(100, 2).equals(\"001\"),\n                s.circularShift(12, 2).equals(\"12\"),\n                s.circularShift(97, 8).equals(\"79\"),\n                s.circularShift(12, 1).equals(\"21\"),\n                s.circularShift(11, 101).equals(\"11\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732116346,
+      "timestamp": 1732160233,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

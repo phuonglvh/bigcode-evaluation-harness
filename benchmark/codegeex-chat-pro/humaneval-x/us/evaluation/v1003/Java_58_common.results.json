@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public List<Integer> common(List<Integer> l1, List<Integer> l2) {\n        Set<Integer> ret = new HashSet<>();\n        for (Integer e1 : l1) {\n            for (Integer e2 : l2) {\n                if (e1.equals(e2)) {\n                    ret.add(e1);\n                }\n            }\n        }\n        List<Integer> sortedList = new ArrayList<>(ret);\n        Collections.sort(sortedList);\n        return sortedList;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.common(new ArrayList<>(Arrays.asList(1, 4, 3, 34, 653, 2, 5)), new ArrayList<>(Arrays.asList(5, 7, 1, 5, 9, 653, 121))).equals(Arrays.asList(1, 5, 653)),\n                s.common(new ArrayList<>(Arrays.asList(5, 3, 2, 8)), new ArrayList<>(Arrays.asList(3, 2))).equals(Arrays.asList(2, 3)),\n                s.common(new ArrayList<>(Arrays.asList(4, 3, 2, 8)), new ArrayList<>(Arrays.asList(3, 2, 4))).equals(Arrays.asList(2, 3, 4)),\n                s.common(new ArrayList<>(Arrays.asList(4, 3, 2, 8)), new ArrayList<>(List.of())).equals(List.of())\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732116342,
+      "timestamp": 1732160230,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

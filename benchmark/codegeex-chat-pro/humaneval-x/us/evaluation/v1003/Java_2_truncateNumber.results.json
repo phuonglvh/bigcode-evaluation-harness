@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public double truncateNumber(double number) {\n        return number % 1.0;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n            s.truncateNumber(3.5) == 0.5,\n            Math.abs(s.truncateNumber(1.33) - 0.33) < 1e-6,\n            Math.abs(s.truncateNumber(123.456) - 0.456) < 1e-6\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732116312,
+      "timestamp": 1732160203,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

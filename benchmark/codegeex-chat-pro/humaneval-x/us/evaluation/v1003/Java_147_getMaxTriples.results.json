@@ -6,9 +6,9 @@
   "results": [
     {
       "program": "\nimport java.util.ArrayList;\nimport java.util.List;\n\nclass Problem {\n    public int getMaxTriples(int n) {\n        int[] A = new int[n];\n        for (int i = 0; i < n; i++) {\n            A[i] = (i + 1) * (i + 1) - (i + 1) + 1;\n        }\n        List<int[]> ans = new ArrayList<>();\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j < n; j++) {\n                for (int k = j + 1; k < n; k++) {\n                    if ((A[i] + A[j] + A[k]) % 3 == 0) {\n                        ans.add(new int[]{A[i], A[j], A[k]});\n                    }\n                }\n            }\n        }\n        return ans.size();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.getMaxTriples(5) == 1,\n                s.getMaxTriples(6) == 4,\n                s.getMaxTriples(10) == 36,\n                s.getMaxTriples(100) == 53361\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732116391,
+      "timestamp": 1732160269,
       "stdout": "",
-      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpldw9xu07.java:26: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n1 error\n",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmprncva0xr.java:26: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n1 error\n",
       "exit_code": 1,
       "status": "SyntaxError"
     }

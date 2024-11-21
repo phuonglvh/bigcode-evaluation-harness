@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\n\nclass Problem {\n    public List<Integer> pluck(List<Integer> arr) {\n        if (arr.isEmpty()) return new ArrayList<>();\n        List<Integer> evens = new ArrayList<>();\n        for (int num : arr) {\n            if (num % 2 == 0) {\n                evens.add(num);\n            }\n        }\n        if (evens.isEmpty()) return new ArrayList<>();\n        int min = Collections.min(evens);\n        int index = arr.indexOf(min);\n        List<Integer> result = new ArrayList<>();\n        result.add(min);\n        result.add(index);\n        return result;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.pluck(new ArrayList<>(Arrays.asList(4, 2, 3))).equals(Arrays.asList(2, 1)),\n                s.pluck(new ArrayList<>(Arrays.asList(1, 2, 3))).equals(Arrays.asList(2, 1)),\n                s.pluck(new ArrayList<>(List.of())).equals(List.of()),\n                s.pluck(new ArrayList<>(Arrays.asList(5, 0, 3, 0, 4, 2))).equals(Arrays.asList(0, 1)),\n                s.pluck(new ArrayList<>(Arrays.asList(1, 2, 3, 0, 5, 3))).equals(Arrays.asList(0, 3)),\n                s.pluck(new ArrayList<>(Arrays.asList(5, 4, 8, 4, 8))).equals(Arrays.asList(4, 1)),\n                s.pluck(new ArrayList<>(Arrays.asList(7, 6, 7, 1))).equals(Arrays.asList(6, 1)),\n                s.pluck(new ArrayList<>(Arrays.asList(7, 9, 7, 1))).equals(List.of())\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732116347,
+      "timestamp": 1732160235,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,

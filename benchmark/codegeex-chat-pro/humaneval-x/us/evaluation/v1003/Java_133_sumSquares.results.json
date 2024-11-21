@@ -6,7 +6,7 @@
   "results": [
     {
       "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public int sumSquares(List<Double> lst) {\n        int squared = 0;\n        for (Double i : lst) {\n            squared += Math.ceil(i) * Math.ceil(i);\n        }\n        return squared;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.sumSquares(Arrays.asList(1., 2., 3.)) == 14,\n                s.sumSquares(Arrays.asList(1.0, 2., 3.)) == 14,\n                s.sumSquares(Arrays.asList(1., 3., 5., 7.)) == 84,\n                s.sumSquares(Arrays.asList(1.4, 4.2, 0.)) == 29,\n                s.sumSquares(Arrays.asList(-2.4, 1., 1.)) == 6,\n                s.sumSquares(Arrays.asList(100., 1., 15., 2.)) == 10230,\n                s.sumSquares(Arrays.asList(10000., 10000.)) == 200000000,\n                s.sumSquares(Arrays.asList(-1.4, 4.6, 6.3)) == 75,\n                s.sumSquares(Arrays.asList(-1.4, 17.9, 18.9, 19.9)) == 1086,\n                s.sumSquares(List.of(0.)) == 0,\n                s.sumSquares(List.of(-1.)) == 1,\n                s.sumSquares(Arrays.asList(-1., 1., 0.)) == 2\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
-      "timestamp": 1732116383,
+      "timestamp": 1732160263,
       "stdout": "",
       "stderr": "",
       "exit_code": 0,
