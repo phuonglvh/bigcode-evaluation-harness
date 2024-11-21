@@ -1,0 +1,16 @@
+{
+  "name": "Java_86_antiShuffle",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Write a function that takes a string and returns an ordered version of it.\n    Ordered version of string, is a string where all words (separated by space)\n    are replaced by a new word where all the characters arranged in\n    ascending order based on ascii value.\n    Note: You should keep the order of words and blank spaces in the sentence.\n\n    For example:\n    antiShuffle(\"Hi\") returns \"Hi\"\n    antiShuffle(\"hello\") returns \"ehllo\"\n    antiShuffle(\"Hello World!!!\") returns \"Hello !!!Wdlor\"\n     */\n    public String antiShuffle(String s) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.antiShuffle(\"Hi\"), \"Hi\"),\n                Objects.equals(s.antiShuffle(\"hello\"), \"ehllo\"),\n                Objects.equals(s.antiShuffle(\"number\"), \"bemnru\"),\n                Objects.equals(s.antiShuffle(\"abcd\"), \"abcd\"),\n                Objects.equals(s.antiShuffle(\"Hello World!!!\"), \"Hello !!!Wdlor\"),\n                Objects.equals(s.antiShuffle(\"\"), \"\"),\n                Objects.equals(s.antiShuffle(\"Hi. My name is Mister Robot. How are you?\"), \".Hi My aemn is Meirst .Rboot How aer ?ouy\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\n\n// language: Java\nimport java.util.*;\n\nclass Problem {\n    public String antiShuffle(String s) {\n        StringBuilder result = new StringBuilder();\n        String[] words = s.split(\" \");\n        \n        for (String word : words) {\n            char[] chars = word.toCharArray();\n            Arrays.sort(chars);\n            result.append(chars);\n            result.append(\" \");\n        }\n        \n        return result.toString().trim();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                Objects.equals(s.antiShuffle(\"Hi\"), \"Hi\"),\n                Objects.equals(s.antiShuffle(\"hello\"), \"ehllo\"),\n                Objects.equals(s.antiShuffle(\"number\"), \"bemnru\"),\n                Objects.equals(s.antiShuffle(\"abcd\"), \"abcd\"),\n                Objects.equals(s.antiShuffle(\"Hello World!!!\"), \"Hello !!!Wdlor\"),\n                Objects.equals(s.antiShuffle(\"\"), \"\"),\n                Objects.equals(s.antiShuffle(\"Hi. My name is Mister Robot. How are you?\"), \".Hi My aemn is Meirst .Rboot How aer ?ouy\")\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732201114,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}

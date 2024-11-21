@@ -1,0 +1,16 @@
+{
+  "name": "Java_7_filterBySubstring",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Filter an input list of strings only for ones that contain given substring\n    >>> filterBySubstring(List.of(), \"a\")\n    []\n    >>> filterBySubstring(Arrays.asList(\"abc\", \"bacd\", \"cde\", \"array\"), \"a\")\n    [\"abc\", \"bacd\", \"array\"]\n     */\n    public List<String> filterBySubstring(List<String> strings, String substring) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.filterBySubstring(new ArrayList<>(List.of()), \"john\").equals(List.of()),\n                s.filterBySubstring(new ArrayList<>(Arrays.asList(\"xxx\", \"asd\", \"xxy\", \"john doe\", \"xxxAAA\", \"xxx\")), \"xxx\").equals(Arrays.asList(\"xxx\", \"xxxAAA\", \"xxx\")),\n                s.filterBySubstring(new ArrayList<>(Arrays.asList(\"xxx\", \"asd\", \"aaaxxy\", \"john doe\", \"xxxAAA\", \"xxx\")), \"xx\").equals(Arrays.asList(\"xxx\", \"aaaxxy\", \"xxxAAA\", \"xxx\")),\n                s.filterBySubstring(new ArrayList<>(Arrays.asList(\"grunt\", \"trumpet\", \"prune\", \"gruesome\")), \"run\").equals(Arrays.asList(\"grunt\", \"prune\"))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\n\n// language: Java\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public List<String> filterBySubstring(List<String> strings, String substring) {\n        List<String> result = new ArrayList<>();\n        for (String s : strings) {\n            if (s.contains(substring)) {\n                result.add(s);\n            }\n        }\n        return result;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.filterBySubstring(new ArrayList<>(List.of()), \"john\").equals(List.of()),\n                s.filterBySubstring(new ArrayList<>(Arrays.asList(\"xxx\", \"asd\", \"xxy\", \"john doe\", \"xxxAAA\", \"xxx\")), \"xxx\").equals(Arrays.asList(\"xxx\", \"xxxAAA\", \"xxx\")),\n                s.filterBySubstring(new ArrayList<>(Arrays.asList(\"xxx\", \"asd\", \"aaaxxy\", \"john doe\", \"xxxAAA\", \"xxx\")), \"xx\").equals(Arrays.asList(\"xxx\", \"aaaxxy\", \"xxxAAA\", \"xxx\")),\n                s.filterBySubstring(new ArrayList<>(Arrays.asList(\"grunt\", \"trumpet\", \"prune\", \"gruesome\")), \"run\").equals(Arrays.asList(\"grunt\", \"prune\"))\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732201076,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}

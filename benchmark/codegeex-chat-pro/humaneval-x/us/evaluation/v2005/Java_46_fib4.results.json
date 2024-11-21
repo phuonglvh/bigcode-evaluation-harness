@@ -1,0 +1,16 @@
+{
+  "name": "Java_46_fib4",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    The Fib4 number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:\n    fib4(0) -> 0\n    fib4(1) -> 0\n    fib4(2) -> 2\n    fib4(3) -> 0\n    fib4(n) -> fib4(n-1) + fib4(n-2) + fib4(n-3) + fib4(n-4).\n    Please write a function to efficiently compute the n-th element of the fib4 number sequence.  Do not use recursion.\n    >>> fib4(5)\n    4\n    >>> fib4(6)\n    8\n    >>> fib4(7)\n    14\n     */\n    public int fib4(int n) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.fib4(5) == 4,\n                s.fib4(8) == 28,\n                s.fib4(10) == 104,\n                s.fib4(12) == 386\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\n\nclass Problem {\n    public int fib4(int n) {\n        List<Integer> results = new ArrayList<>(Arrays.asList(0, 0, 2, 0));\n        if (n < 4) {\n            return results.get(n);\n        }\n\n        for (int i = 4; i <= n; i++) {\n            results.add(results.get(3) + results.get(2) + results.get(1) + results.get(0));\n            results.remove(0);\n        }\n\n        return results.get(3);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.fib4(5) == 4,\n                s.fib4(8) == 28,\n                s.fib4(10) == 104,\n                s.fib4(12) == 386\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732201095,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}
