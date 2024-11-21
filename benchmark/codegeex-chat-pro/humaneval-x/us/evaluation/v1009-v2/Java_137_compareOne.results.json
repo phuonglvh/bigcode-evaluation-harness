@@ -1,0 +1,16 @@
+{
+  "name": "Java_137_compareOne",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Create a function that takes integers, floats, or strings representing\n    real numbers, and returns the larger variable in its given variable type.\n    Return None if the values are equal.\n    Note: If a real number is represented as a string, the floating point might be . or ,\n\n    compareOne(1, 2.5) -> Optional.of(2.5)\n    compareOne(1, \"2,3\") -> Optional.of(\"2,3\")\n    compareOne(\"5,1\", \"6\") -> Optional.of(\"6\")\n    compareOne(\"1\", 1) -> Optional.empty()\n     */\n    public Optional<Object> compareOne(Object a, Object b) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                (int) s.compareOne(1, 2).get() == 2,\n                (double) s.compareOne(1, 2.5).get() == 2.5,\n                (int) s.compareOne(2, 3).get() == 3,\n                (int) s.compareOne(5, 6).get() == 6,\n                (String) s.compareOne(1, \"2,3\").get() == \"2,3\",\n                (String) s.compareOne(\"5,1\", \"6\").get() == \"6\",\n                (String) s.compareOne(\"1\", \"2\").get() == \"2\",\n                s.compareOne(\"1\", 1).isEmpty()\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nimport java.util.*;\nimport java.lang.*;\n\nclass Problem {\n    public Optional<Object> compareOne(Object a, Object b) {\n        Object tempA = a;\n        Object tempB = b;\n        if (tempA instanceof String) {\n            tempA = ((String) tempA).replace(',', '.');\n        }\n        if (tempB instanceof String) {\n            tempB = ((String) tempB).replace(',', '.');\n        }\n        if (Float.parseFloat(tempA.toString()) == Float.parseFloat(tempB.toString())) {\n            return Optional.empty();\n        }\n        return Optional.of(Float.parseFloat(tempA.toString()) > Float.parseFloat(tempB.toString()) ? a : b);\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                (int) s.compareOne(1, 2).get() == 2,\n                (double) s.compareOne(1, 2.5).get() == 2.5,\n                (int) s.compareOne(2, 3).get() == 3,\n                (int) s.compareOne(5, 6).get() == 6,\n                (String) s.compareOne(1, \"2,3\").get() == \"2,3\",\n                (String) s.compareOne(\"5,1\", \"6\").get() == \"6\",\n                (String) s.compareOne(\"1\", \"2\").get() == \"2\",\n                s.compareOne(\"1\", 1).isEmpty()\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732154572,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}
