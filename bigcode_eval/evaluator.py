@@ -97,9 +97,12 @@ class Evaluator:
         
         for gen_ith, problem_gens in enumerate(generations):
             first_gen = problem_gens[0]
-            doc_id = task.identify_doc(first_gen)
-            assert doc_id
-            dataset_doc = task.get_doc(doc_id)
+            try:
+                doc_id = task.identify_doc(first_gen)
+                assert doc_id
+                dataset_doc = task.get_doc(doc_id)
+            except Exception as e:
+                print(f"failed to identify doc for generation: {first_gen}")
 
             if dataset_doc is None:
                 print(f"no dataset's doc for {doc_id}")
