@@ -1,0 +1,16 @@
+{
+  "name": "Java_45_triangleArea",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Given length of a side and high return area for a triangle.\n    >>> triangleArea(5, 3)\n    7.5\n     */\n    public double triangleArea(double a, double h) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.triangleArea(5, 3) == 7.5,\n                s.triangleArea(2, 2) == 2.0,\n                s.triangleArea(10, 8) == 40.0\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nclass Problem {\n    public double triangleArea(double a, double h) {\n        return a * h / 2.0;\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.triangleArea(5, 3) == 7.5,\n                s.triangleArea(2, 2) == 2.0,\n                s.triangleArea(10, 8) == 40.0\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732155218,
+      "stdout": "",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpg5ktmf6k.java:9: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpg5ktmf6k.java:9: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

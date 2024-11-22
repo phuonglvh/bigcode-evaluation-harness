@@ -1,0 +1,16 @@
+{
+  "name": "Java_23_strlen",
+  "language": "java",
+  "prompt": "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Return length of given string\n    >>> strlen(\"\")\n    0\n    >>> strlen(\"abc\")\n    3\n     */\n    public int strlen(String string) {\n",
+  "tests": "\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.strlen(\"\") == 0,\n                s.strlen(\"x\") == 1,\n                s.strlen(\"asdasnakj\") == 9\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+  "results": [
+    {
+      "program": "\nclass Problem {\n    public int strlen(String string) {\n        return string.length();\n\n    }\n    public static void main(String[] args) {\n        Problem s = new Problem();\n        List<Boolean> correct = Arrays.asList(\n                s.strlen(\"\") == 0,\n                s.strlen(\"x\") == 1,\n                s.strlen(\"asdasnakj\") == 9\n        );\n        if (correct.contains(false)) {\n            throw new AssertionError();\n        }\n    }\n}",
+      "timestamp": 1732155207,
+      "stdout": "",
+      "stderr": "/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpdxyr0kg1.java:9: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n        ^\n  symbol:   class List\n  location: class Problem\n/var/folders/lb/nqc5cbfd3yb2jjr65__gy1gm0000gn/T/tmpdxyr0kg1.java:9: error: cannot find symbol\n        List<Boolean> correct = Arrays.asList(\n                                ^\n  symbol:   variable Arrays\n  location: class Problem\n2 errors\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}
