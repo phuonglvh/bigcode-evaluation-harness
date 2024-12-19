@@ -40,7 +40,7 @@ def codegeex_chat_pro_translate(source_code, target_language="Java"):
         print("Response body:", response.text)
         return None
 
-    # Create an SSE client for processing the streaming response
+    # Create an Standard-Stream-Event client for processing the streaming response
     client = sseclient.SSEClient(response)
 
     translated_code = ""
