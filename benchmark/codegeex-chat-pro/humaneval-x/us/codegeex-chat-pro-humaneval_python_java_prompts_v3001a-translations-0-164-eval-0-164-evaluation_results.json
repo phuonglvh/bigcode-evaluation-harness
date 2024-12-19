@@ -1,6 +1,6 @@
 {
   "humanevalx-java": {
-    "pass@1": 0.823170731707317
+    "pass@1": 0.8414634146341463
   },
   "config": {
     "prefix": "",
@@ -32,9 +32,9 @@
     "postprocess": true,
     "allow_code_execution": true,
     "generation_only": false,
-    "load_generations_path": "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/benchmark/codegeex-chat-pro/humaneval-x/us/codegeex-chat-pro-humaneval_python_java_prompts_v3001-translations-0-164.json",
+    "load_generations_path": "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/benchmark/codegeex-chat-pro/humaneval-x/us/codegeex-chat-pro-humaneval_python_java_prompts_v3001a-translations-0-164.json",
     "load_data_path": null,
-    "metric_output_path": "./benchmark/codegeex-chat-pro/humaneval-x/us/codegeex-chat-pro-humaneval_python_java_prompts_v3001-translations-0-164-eval-0-164-evaluation_results.json",
+    "metric_output_path": "./benchmark/codegeex-chat-pro/humaneval-x/us/codegeex-chat-pro-humaneval_python_java_prompts_v3001a-translations-0-164-eval-0-164-evaluation_results.json",
     "save_generations": false,
     "load_generations_intermediate_paths": null,
     "save_generations_path": "generations.json",
