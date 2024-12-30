@@ -30,7 +30,7 @@ MODEL_NAME="codegeex-chat-pro"
 # prompt_version='v3001c'
 # prompt_version='v3001d'
 # prompt_version='v3001e'
-prompt_version='v3001f'
+# prompt_version='v3001f' # RULE-COMB-019
 # prompt_version='v3002'
 # prompt_version='v3002a'
 # prompt_version='v3002b'
@@ -47,6 +47,7 @@ prompt_version='v3001f'
 # prompt_version='vRULE-COMB-011'
 
 # prompt_version='vRULE-COMB-013'
+prompt_version='vRULE-COMB-019-2'
 
 
 source_generations_path="$(realpath .)/benchmark/$MODEL_NAME/humaneval-x/us/$MODEL_NAME-humaneval_python_java_prompts_$prompt_version-translations-0-164.json"

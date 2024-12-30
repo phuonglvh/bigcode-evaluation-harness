@@ -12,7 +12,7 @@ client = OpenAI(
 )
 
 
-def openai_chat_completions(messages, model="gpt-4o-mini"):
+def openai_chat_completions(messages, model="gpt-4o"):
     return client.chat.completions.create(
         model=model,
         messages=messages,

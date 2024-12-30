@@ -3,15 +3,15 @@ from concurrent.futures import ThreadPoolExecutor
 import requests
 import json
 import sseclient
-from bigcode_eval.tasks.openai import openai_chat_completions
+from bigcode_eval.tasks.openaigpt import openai_chat_completions
 
 
 def openai_translate(source_code, target_language="Java", model='gpt-4o'):
     return openai_chat_completions(
         [
-            {'role': 'system', 'content': 'You are a superb code translator.'},
+            # {'role': 'system', 'content': 'You are a superb code translator.'},
             {'role': 'user', 'content': source_code}
-        ], 'gpt-4o')
+        ], model or 'gpt-4o')
 
 
 
@@ -32,6 +32,7 @@ def openai_translate_and_postprocess(translated_prompts_path, save_translations_
     replacements = [
         ('```', ''),
         ('java\n', ''),
+        ('// language: Java\n', ''),
         ("\n    }\n}\n", ''),
         ("public class", "class")
     ]
@@ -48,21 +49,14 @@ def openai_translate_and_postprocess(translated_prompts_path, save_translations_
 
     if parallel:
         print(f"Using parallel processing with #{max_workers} workers")
-        # Using ThreadPoolExecutor to parallelize the loop
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            # Map the worker function to selected_prompts and collect results
-            translated_codes = list(executor.map(
-                process_prompt, selected_prompts))
+            # Wrap the executor.map call with tqdm for progress display
+            translated_codes = list(tqdm(executor.map(process_prompt, selected_prompts), total=len(selected_prompts), desc="Translating Prompts", unit="prompt"))
 
         print(f'Translated {len(translated_codes)} prompts in parallel')
     else:
         for prompt in tqdm(selected_prompts, desc="Translating Prompts", unit="prompt"):
-            translated_code = openai_translate(prompt)
-            for text, new_text in replacements:
-                translated_code = translated_code.replace(text, new_text)
-
-            translated_code = java_imports + '\n' + translated_code
-            translated_codes.append([translated_code])
+            translated_codes.append(process_prompt(prompt))
 
         print(f'Translated {len(translated_codes)} prompts in serial')
 

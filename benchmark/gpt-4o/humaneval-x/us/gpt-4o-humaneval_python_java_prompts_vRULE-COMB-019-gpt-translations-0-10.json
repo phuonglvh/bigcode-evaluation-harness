@@ -1,0 +1,32 @@
+[
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean hasCloseElements(List<Double> numbers, double threshold) {\n        // Iterate over the list with two nested loops to compare every element with every other\n        for (int idx = 0; idx < numbers.size(); idx++) {\n            double elem = numbers.get(idx);\n            for (int idx2 = 0; idx2 < numbers.size(); idx2++) {\n                double elem2 = numbers.get(idx2);\n                // Ensure we are not comparing an element with itself\n                if (idx != idx2) {\n                    // Calculate the absolute difference\n                    double distance = Math.abs(elem - elem2);\n                    // Check if the distance is less than the threshold\n                    if (distance < threshold) {\n                        return true;\n                    }\n                }\n            }\n        }\n        // If no such pair is found, return false\n        return false;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<String> separateParenGroups(String paren_string) {\n        List<String> result = new ArrayList<>();\n        StringBuilder currentString = new StringBuilder();\n        int currentDepth = 0;\n        \n        for (char c : paren_string.toCharArray()) {\n            if (c == '(') {\n                currentDepth += 1;\n                currentString.append(c);\n            } else if (c == ')') {\n                currentDepth -= 1;\n                currentString.append(c);\n                \n                if (currentDepth == 0) {\n                    result.add(currentString.toString());\n                    currentString.setLength(0); // Clear the StringBuilder\n                }\n            }\n        }\n        \n        return result;"
+  ],
+  [
+    "\n\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public double truncateNumber(double number) {\n        return number % 1.0;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public boolean belowZero(List<Integer> operations) {\n        int balance = 0;\n\n        for (int op : operations) {\n            balance += op;\n            if (balance < 0) {\n                return true;\n            }\n        }\n\n        return false;\n"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public double meanAbsoluteDeviation(List<Double> numbers) {\n        // Step 1: Compute the mean of the numbers\n        double sum = 0.0;\n        for (double num : numbers) {\n            sum += num;\n        }\n        double mean = sum / numbers.size();\n\n        // Step 2: Compute the sum of the absolute deviations from the mean\n        double deviationSum = 0.0;\n        for (double num : numbers) {\n            deviationSum += Math.abs(num - mean);\n        }\n\n        // Step 3: Compute the mean absolute deviation\n        return deviationSum / numbers.size();\n"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> intersperse(List<Integer> numbers, int delimiter) {\n        // Check if the input list is empty\n        if (numbers == null || numbers.isEmpty()) {\n            return new ArrayList<>(); // Return an empty list\n        }\n\n        List<Integer> result = new ArrayList<>(); // Initialize the result list\n\n        // Iterate over the numbers list except the last element\n        for (int i = 0; i < numbers.size() - 1; i++) {\n            result.add(numbers.get(i)); // Add the current number\n            result.add(delimiter); // Add the delimiter\n        }\n\n        // Add the last number without adding a delimiter after it\n        result.add(numbers.get(numbers.size() - 1));\n\n        return result; // Return the resulting list"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> parseNestedParens(String paren_string) {\n        List<Integer> result = new ArrayList<>();\n        String[] groups = paren_string.split(\" \");\n\n        for (String group : groups) {\n            if (!group.isEmpty()) {\n                result.add(parseParenGroup(group));\n            }\n        }\n        \n        return result;\n    }\n\n    private int parseParenGroup(String s) {\n        int depth = 0;\n        int maxDepth = 0;\n        for (char c : s.toCharArray()) {\n            if (c == '(') {\n                depth++;\n                maxDepth = Math.max(depth, maxDepth);\n            } else {\n                depth--;\n            }\n        }\n        return maxDepth;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<String> filterBySubstring(List<String> strings, String substring) {\n        // Create a new list to store strings containing the substring\n        List<String> result = new ArrayList<>();\n\n        // Iterate over each string in the input list\n        for (String str : strings) {\n            // Check if the current string contains the substring\n            if (str.contains(substring)) {\n                // Add the string to the result list if it contains the substring\n                result.add(str);\n            }\n        }\n\n        // Return the list of strings containing the substring\n        return result;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> sumProduct(List<Integer> numbers) {\n        int sumValue = 0;\n        int prodValue = 1;\n\n        for (int n : numbers) {\n            sumValue += n;\n            prodValue *= n;\n        }\n\n        List<Integer> result = new ArrayList<>();\n        result.add(sumValue);\n        result.add(prodValue);\n\n        return result;"
+  ],
+  [
+    "\nimport java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    public List<Integer> rollingMax(List<Integer> numbers) {\n        Integer runningMax = null;  // Use Integer to allow null value\n        List<Integer> result = new ArrayList<>();\n\n        for (Integer n : numbers) {\n            if (runningMax == null) {\n                runningMax = n;\n            } else {\n                runningMax = Math.max(runningMax, n);  // Use Math.max for maximum\n            }\n            result.add(runningMax);  // Add the running max to the result list\n        }\n\n        return result;  // Return the resulting list"
+  ]
+]
