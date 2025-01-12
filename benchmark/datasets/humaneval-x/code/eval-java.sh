@@ -1,0 +1,1 @@
+CP=".:/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/build/java-bin/*"; javac -cp "$CP" "$JAVA_FILENAME.java" && java -cp "$CP" "$JAVA_FILENAME"; rm *.class
