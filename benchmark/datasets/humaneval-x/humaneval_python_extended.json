@@ -30,5 +30,13 @@
         "test": "def check(connect_postgres):\n    # Test connection parameters\n    conn = connect_postgres(\n        'localhost', 5432, 'postgres', 'password', 'postgres')\n    assert conn is not None\n\n    # Test connection by executing a simple query\n    cur = conn.cursor()\n    cur.execute('SELECT 1')\n    assert cur.fetchone() == (1,)\n    cur.close()\n    conn.close()\n\ncheck(connect_postgres)",
         "declaration": "import psycopg2\n\n\ndef connect_postgres(host, port, username, password, database) -> psycopg2.extensions.connection:",
         "example_test": "def check(connect_postgres):\n    conn = connect_postgres('localhost', 5432, 'postgres', 'password', 'postgres')\n    assert conn is not None\n    conn.close()\n\ncheck(connect_postgres)"
+    },
+    {
+        "task_id": "Python/168",
+        "prompt": "import tkinter as tk\n\ndef create_form():\n    \"\"\"\n    Create a simple login form with fields for username and password, and a submit button.\n    When the submit button is pressed, 'Submitted!' is printed to the console.\n    \"\"\"",
+        "canonical_solution": "    window = tk.Tk()\n    window.title('Login Form')\n\n    username_label = tk.Label(window, text='Username:')\n    username_label.grid(row=0, column=0)\n    username_entry = tk.Entry(window)\n    username_entry.grid(row=0, column=1)\n\n    password_label = tk.Label(window, text='Password:')\n    password_label.grid(row=1, column=0)\n    password_entry = tk.Entry(window, show='*')\n    password_entry.grid(row=1, column=1)\n\n    submit_button = tk.Button(window, text='Submit', command=lambda: print('Submitted!'))\n    submit_button.grid(row=2, columnspan=2)\n\n    # auto close after xs\n    window.after(10000, window.destroy)\n    window.mainloop()",
+        "test": "import tkinter as tk\n\n# Test if the form can be created\ndef test_create_form():\n    try:\n        create_form()\n        assert True  # If no exception is thrown, the form is created successfully\n    except Exception as e:\n        print(f'Error: {e}')\n        assert False\n\ntest_create_form()",
+        "declaration": "import tkinter as tk\n\ndef create_form():",
+        "example_test": "import tkinter as tk\n\n# Test if the form can be created\ndef test_create_form():\n    try:\n        create_form()\n        assert True  # If no exception is thrown, the form is created successfully\n    except Exception as e:\n        print(f'Error: {e}')\n        assert False\n\ntest_create_form()"
     }
 ]
