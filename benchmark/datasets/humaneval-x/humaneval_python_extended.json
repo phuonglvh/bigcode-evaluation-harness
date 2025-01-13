@@ -38,5 +38,13 @@
         "test": "import tkinter as tk\n\n# Test if the form can be created\ndef test_create_form():\n    try:\n        create_form()\n        assert True  # If no exception is thrown, the form is created successfully\n    except Exception as e:\n        print(f'Error: {e}')\n        assert False\n\ntest_create_form()",
         "declaration": "import tkinter as tk\n\ndef create_form():",
         "example_test": "import tkinter as tk\n\n# Test if the form can be created\ndef test_create_form():\n    try:\n        create_form()\n        assert True  # If no exception is thrown, the form is created successfully\n    except Exception as e:\n        print(f'Error: {e}')\n        assert False\n\ntest_create_form()"
+    },
+    {
+        "task_id": "Python/169",
+        "prompt": "def numDistinct(s: str, t: str) -> int:\n    \"\"\"\n    Given two strings s and t, return the number of distinct subsequences of s which equals t.\n\n    A subsequence is a sequence that can be derived from another sequence by deleting some or no elements \n    without changing the order of the remaining elements.\n\n    The function should return the number of distinct subsequences of s which equals t.\n\n    Example 1:\n    Input: s = \"rabbbit\", t = \"rabbit\"\n    Output: 3\n\n    Example 2:\n    Input: s = \"babgbag\", t = \"bag\"\n    Output: 5\n\n    Constraints:\n    - 1 <= s.length, t.length <= 1000\n    - s and t consist of English letters (lowercase and uppercase).\n    \"\"\"",
+        "canonical_solution": "    m, n = len(s), len(t)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n\n    for i in range(m + 1):\n        dp[i][n] = 1\n\n    for sIndex in range(m - 1, -1, -1):\n        for tIndex in range(n - 1, -1, -1):\n            dp[sIndex][tIndex] = dp[sIndex + 1][tIndex]\n\n            if s[sIndex] == t[tIndex]:\n                dp[sIndex][tIndex] += dp[sIndex + 1][tIndex + 1]\n\n    return dp[0][0]",
+        "test": "def check(numDistinct):\n    assert numDistinct(\"rabbbit\", \"rabbit\") == 3\n    assert numDistinct(\"babgbag\", \"bag\") == 5\n    assert numDistinct(\"\", \"\") == 1\n    assert numDistinct(\"a\", \"a\") == 1\n    assert numDistinct(\"a\", \"b\") == 0\n\ncheck(numDistinct)",
+        "declaration": "def numDistinct(s: str, t: str) -> int:",
+        "example_test": "def check(numDistinct):\n    assert numDistinct(\"rabbbit\", \"rabbit\") == 3\n    assert numDistinct(\"babgbag\", \"bag\") == 5\n    assert numDistinct(\"\", \"\") == 1\n    assert numDistinct(\"a\", \"a\") == 1\n    assert numDistinct(\"a\", \"b\") == 0\n\ncheck(numDistinct)"
     }
 ]
