@@ -4,6 +4,8 @@ from datasets import load_dataset, Dataset
 def build_java_public_static_func_with_empty_body(prompt: str) -> str:
     # return prompt[(prompt.index('public static ')):(prompt.index(') {') + 3)] + '}'
     # humaneval-x only
+    prompt = prompt[prompt.index("class Solution"):]
+    
     pattern_1 = ') {'
     pattern_2 = '){'
     pattern_3 = ') throws'
@@ -14,15 +16,17 @@ def build_java_public_static_func_with_empty_body(prompt: str) -> str:
         return prompt[(prompt.rindex('public ')):ending_idx] + '}'
     elif pattern_2 in prompt:
         ending_idx = prompt.rindex(pattern_2) + len(pattern_2)
-        return prompt[(prompt.rindex('public ')):ending_idx] + '}'
+        return prompt[(prompt.rindex('public ')):(ending_idx + len(pattern_2))] + ' }'
     elif pattern_3 in prompt:
         ending_idx = prompt.rindex(pattern_3)
-        return prompt[(prompt.rindex('public ')):ending_idx] + '{ }'
+        return prompt[(prompt.rindex('public ')):(ending_idx + len(pattern_3))] + ' { }'
     else:
         raise ValueError('Cannot find the end of the function body')
 
 def extract_function_name_from_prompt(prompt: str) -> str:
     func = build_java_public_static_func_with_empty_body(prompt)
+    print(f'prompt="{prompt}"')
+    print(f'func="{func}"')
     prefixes = ['public static', 'public']
     start_idx = 0
     prefix = None
