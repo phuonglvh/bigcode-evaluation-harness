@@ -6,7 +6,6 @@ class Country:
         self.name = name
         self.independent = independent
 
-
 def get_independent_countries() -> List[Country]:
     """Call the REST API at https://restcountries.com/v3.1/independent?status=true&fields=name,independent with GET and return the list of independent countries.
     >>> get_independent_countries()
@@ -24,7 +23,6 @@ def get_independent_countries() -> List[Country]:
         countries.append(country)
 
     return countries
-    
 
 def check(get_independent_countries):
     countries = get_independent_countries()

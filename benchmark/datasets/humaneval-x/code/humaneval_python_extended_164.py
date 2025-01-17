@@ -12,5 +12,4 @@ def check(write_hello_world):
         content = file.read()
     assert content == 'Hello world'
 
-
 check(write_hello_world)
