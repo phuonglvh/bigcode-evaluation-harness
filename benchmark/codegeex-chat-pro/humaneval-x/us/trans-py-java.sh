@@ -50,11 +50,11 @@ MODEL_NAME="codegeex-chat-pro"
 prompt_version='vRULE-COMB-019-2'
 
 
-source_generations_path="$(realpath .)/benchmark/$MODEL_NAME/humaneval-x/us/$MODEL_NAME-humaneval_python_java_prompts_$prompt_version-translations-0-164.json"
-num_source_generations=164
+# num_source_generations=164
+prompt_version='v3001f'
+num_source_generations=148 # assume NL -> Python by GPT-4o (90.02%)
+source_generations_path="$(realpath .)/benchmark/$MODEL_NAME/humaneval-x/us/$MODEL_NAME-humaneval_python_java_prompts_$prompt_version-translations-0-$num_source_generations.json"
 # source_lang=py
-
-
 # lang=java
 eval_limit_start=0
 eval_limit=$num_source_generations
