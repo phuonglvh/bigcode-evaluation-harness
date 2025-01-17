@@ -2,7 +2,7 @@ import inspect
 from pprint import pprint
 
 from . import (apps, bug_fix, code_to_code, codexglue_code_to_text,
-               codexglue_text_to_text, conala, concode, ds1000, gsm, humaneval, humanevalx, humanevalplus,
+               codexglue_text_to_text, conala, concode, ds1000, gsm, humaneval, humanevalx, humanevalx_extended, humanevalplus,
                humanevalpack, instruct_humaneval, instruct_wizard_humaneval,
                mbpp, mbppplus, multiple_enc_dec, multiple, parity, python_bugs, quixbugs,
                recode, santacoder_fim,
@@ -20,6 +20,7 @@ TASK_REGISTRY = {
     **ds1000.create_all_tasks(),
     **humaneval.create_all_tasks(),
     **humanevalx.create_all_tasks(),
+    # **humanevalx_extended.create_all_tasks(),
     **humanevalplus.create_all_tasks(),
     **humanevalpack.create_all_tasks(),
     "mbpp": mbpp.MBPP,
