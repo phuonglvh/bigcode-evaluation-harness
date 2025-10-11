@@ -5,5 +5,23 @@
         "postprocess"
     ],
     "Codegeex.CompletionDelay": 0.4,
-    "Codegeex.RepoIndex": true
+    "Codegeex.RepoIndex": true,
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-17",
+            "path": "/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home",
+            "default": true
+        },
+    ],
+    "java.project.sourcePaths": [
+        "."
+    ],
+    "java.project.referencedLibraries": [
+        "build/java-bin/json-20250107.jar",
+        "build/java-bin/postgresql-42.2.23.jar",
+        "build/java-bin/gson-2.11.0.jar",
+        "build/java-bin/javatuples-1.2.jar",
+        "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/build/java-bin/javatuples-1.2.jar",
+        "/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/build/java-bin/gson-2.11.0.jar"
+    ]
 }

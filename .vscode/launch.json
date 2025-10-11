@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "HumanEvalJavaExtended164",
+            "request": "launch",
+            "mainClass": "HumanEvalJavaExtended164",
+            "projectName": "bigcode-evaluation-harness_36af2b19"
+        },
+        {
+            "type": "java",
+            "name": "HumanEvalJavaExtended166",
+            "request": "launch",
+            "mainClass": "HumanEvalJavaExtended166",
+            "projectName": "bigcode-evaluation-harness_36af2b19"
+        },
+        {
+            "type": "java",
+            "name": "HumanEvalJavaExtended165",
+            "request": "launch",
+            "mainClass": "HumanEvalJavaExtended165",
+            "projectName": "bigcode-evaluation-harness_36af2b19"
+        },
+        {
+            "type": "java",
             "name": "Problem",
             "request": "launch",
             "mainClass": "Problem",
@@ -240,7 +261,7 @@
                 "--load_generations_path",
                 "${workspaceFolder}/benchmark/humaneval-x-handcraft/humaneval-x/humaneval-x-handcraft-humaneval_python_java_prompts-translations-0-164.json",
                 "--metric_output_path",
-                "./benchmark/humanmeval-x-handcraft/humaneval-x/humaneval-x-handcraft-humaneval_python_java_prompts-translations-0-164-eval-0-164-evaluation_results.json",
+                "./benchmark/humanmeval-x-handcraft/humaneval-x/humaneval-x-handcraft-humaneval_python_java_prompts-translations-0-164-eval-0-164-evaluation_results.json"
             ]
         }
     ]
