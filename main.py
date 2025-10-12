@@ -433,7 +433,7 @@ def main():
         with open(args.metric_output_path, "w") as f:
             f.write(dumped)
             print(
-                f"evaluation results were saved at {args.metric_output_path}"
+                f'evaluation results were saved at "{os.path.abspath(args.metric_output_path)}"'
             )
 
 if __name__ == "__main__":

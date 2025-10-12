@@ -71,6 +71,7 @@ class GeneralHumanEvalX(Task):
         self.k = kwargs.get('k', [1, 10, 100])
         self.num_workers = kwargs.get('num_workers', 16)
         self.timeout = kwargs.get('timeout', 3.0)
+        self.strip_prompt = kwargs.get('strip_prompt', False)
         
         self.language_extractor_map = {
             'python': py.extract_function_name_from_prompt,
@@ -91,8 +92,11 @@ class GeneralHumanEvalX(Task):
         
         self.dataset['test'].add_column('name', [problem['task_id'] for problem in self.dataset['test']])
         
-        json_problems = json.load(open(
-            '/Users/phuonglvh/projects/2170558-thesis-automatic-code-generation-using-machine-learning/bigcode-evaluation-harness/benchmark/datasets/humaneval-x/humanevalx-java-refined.json', 'r'))
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        ds_json_path = os.path.abspath(os.path.join(current_dir, "../../", f"benchmark/datasets/humaneval-x/humanevalx-{self.language}-refined.json"))
+        
+        json_problems = json.load(open(ds_json_path, 'r'))
+        print(f'loaded {len(json_problems)} problems from "{ds_json_path}"')
         
         
         print('adding name to test dataset by using task_id')

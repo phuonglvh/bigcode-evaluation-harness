@@ -2,8 +2,8 @@
 
 set -euox
 
-AUTHOR="codellama"
-MODEL_NAME="CodeLlama-13b-Python-hf"
+AUTHOR="Qwen"
+MODEL_NAME="Qwen2.5-Coder-32B-Instruct"
 
 max_length=1024
 temperature=0.2
@@ -39,7 +39,7 @@ mkdir -p $BASE_DIR
 rm -rf /tmp/* /var/tmp/*
 
 python main.py --model "$AUTHOR/$MODEL_NAME" \
-    --tasks multiple-$lang \
+    --tasks humanevalx-$lang \
     --max_length_generation $max_length \
     --temperature $temperature \
     --top_p $top_p \
