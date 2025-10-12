@@ -186,6 +186,7 @@ class GeneralHumanEvalX(Task):
             index of doc in the dataset to which the generation belongs
             (not used for Humaneval-Task)
         """
+        zero_idx = idx-1
         prompt = None
         try:
             problem_name = self.identify_doc(generation)
@@ -193,11 +194,11 @@ class GeneralHumanEvalX(Task):
             prompt = self.get_prompt(doc)
         except Exception as ex:
             print(ex)
-            warnings.warn(f'cannot find prompt by function name extracted from generation. Falling back to using idx={idx}')
+            warnings.warn(f'cannot find prompt by function name extracted from generation. Falling back to using zero_idx={zero_idx}')
         
         if prompt is None:
-            prompt = self.get_prompt(self.dataset["test"][idx])
-            print(f'generation=\n{generation}\nds[{idx}]_prompt=\n{prompt}')
+            prompt = self.get_prompt(self.dataset["test"][zero_idx])
+            print(f'generation=\n{generation}\nds[{zero_idx}]_prompt=\n{prompt}')
             
         generation = generation[len(prompt) :]
         return prompt + self._stop_at_stop_token(generation, self.stop_words)
