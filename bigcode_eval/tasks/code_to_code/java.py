@@ -66,7 +66,7 @@ def extract_function_name_from_prompt_v2(prompt: str) -> str:
         if method_name != "main":
             print(
                 f'extract_function_name_from_prompt_v2: {match.group(0).strip()} => {method_name}')
-        matched_names.append(method_name)
+            matched_names.append(method_name)
     
     if len(matched_names) == 0:
         print(f'[ERROR] extract_function_name_from_prompt_v2: Cannot find function name of\n{prompt}')
