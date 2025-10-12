@@ -55,10 +55,6 @@ def extract_function_name_from_prompt_v2(prompt: str) -> str:
     # Find all method signatures in class Solution, except main
     matches = list(re.finditer(pattern, java_code, re.VERBOSE))
 
-    if len(matches) > 1:
-        print(f'[WARNING] extract_function_name_from_prompt_v2: Found multiple function names in\n{prompt}')
-        print(f'[WARNING] extract_function_name_from_prompt_v2: Matches={[m.group(0).strip() for m in matches]}')
-
     matched_names = []
 
     for match in matches:
@@ -71,6 +67,10 @@ def extract_function_name_from_prompt_v2(prompt: str) -> str:
     if len(matched_names) == 0:
         print(f'[ERROR] extract_function_name_from_prompt_v2: Cannot find function name of\n{prompt}')
         return None
+    
+    if len(matched_names) > 1:
+        print(f'[WARNING] extract_function_name_from_prompt_v2: Found multiple function names in\n{prompt}')
+        print(f'[WARNING] extract_function_name_from_prompt_v2: Matches={matched_names}. Selected: {matched_names[-1]}')
         
     return matched_names[-1]
 
