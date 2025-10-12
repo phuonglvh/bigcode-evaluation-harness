@@ -8,6 +8,7 @@ AUTHOR="Qwen"
 MODEL_NAME="Qwen2.5-Coder-32B-Instruct"
 
 max_length=1024
+do_sample=True
 temperature=0.2
 top_k=0
 top_p=0.95
@@ -29,7 +30,8 @@ save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 seed=10
 
 common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-seed$seed-batch$batch_size-maxlen$max_length-$lang"
-generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
+
+generations_name="mnt${max_length}_p${top_p}_t${temperature}_k${top_k}_seq${batch_size}_sampling${do_sample}_completions"
 
 BASE_DIR=./benchmark/$MODEL_NAME/$lang/improve/pass@1/t$temperature-p$top_p-k$top_k-batch$batch_size-n$n_samples
 
@@ -56,3 +58,13 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --limit $limit \
     --metric_output_path "$BASE_DIR/$generations_name-eval-${eval_limit_start}-${eval_limit}-evaluation_results.json" \
     --max_memory_per_gpu auto
+
+generations_name="mnt${max_length}_p${top_p}_t${temperature}_k${top_k}_seq${batch_size}_sampling${do_sample}_completions"
+
+python main.py --model "$AUTHOR/$MODEL_NAME" \
+    --tasks humanevalx-$lang \
+    --allow_code_execution \
+    --trust_remote_code \
+    --token \
+    --load_generations_path "$BASE_DIR/${generations_name}_preprocessed.json" \
+    --metric_output_path "$BASE_DIR/$generations_name-evaluation_results.json"
