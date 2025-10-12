@@ -1,3 +1,4 @@
+import re
 from typing import List
 from datasets import load_dataset, Dataset
 
@@ -38,6 +39,40 @@ def extract_function_name_from_prompt(prompt: str) -> str:
         
     type_and_func_name = func[start_idx + len(prefix):func.index('(')]
     return type_and_func_name.split(' ')[-1]
+
+def extract_function_name_from_prompt_v2(prompt: str) -> str:
+    java_code = prompt
+    pattern = r"""
+        public\s+                # public keyword
+        (?:static\s+)?           # optional static
+        [\w<>\[\],\s]+?          # return type (có thể có generic, nhiều từ)
+        (\w+)\s*                 # method name (capture group 1)
+        \([^\)]*\)               # parameters (capture group 2)
+        [\s\n]*                  # khoảng trắng hoặc xuống dòng
+        \{?                      # dấu { nếu có (tùy chọn)
+    """
+
+    # Find all method signatures in class Solution, except main
+    matches = list(re.finditer(pattern, java_code, re.VERBOSE))
+
+    if len(matches) > 1:
+        print(f'[WARNING] extract_function_name_from_prompt_v2: Found multiple function names in\n{prompt}')
+        print(f'[WARNING] extract_function_name_from_prompt_v2: Matches={[m.group(0).strip() for m in matches]}')
+
+    matched_names = []
+
+    for match in matches:
+        method_name = match.group(1)
+        if method_name != "main":
+            print(
+                f'extract_function_name_from_prompt_v2: {match.group(0).strip()} => {method_name}')
+        matched_names.append(method_name)
+    
+    if len(matched_names) == 0:
+        print(f'[ERROR] extract_function_name_from_prompt_v2: Cannot find function name of\n{prompt}')
+        return None
+        
+    return matched_names[-1]
 
 def java_detect_unknown_tasks(dataset: Dataset, generations: List[List[str]], start_idx: int) -> List[str]:
     assert dataset != None, 'Dataset must not be none'

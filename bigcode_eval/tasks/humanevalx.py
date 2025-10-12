@@ -75,7 +75,7 @@ class GeneralHumanEvalX(Task):
         
         self.language_extractor_map = {
             'python': py.extract_function_name_from_prompt,
-            'java': java.extract_function_name_from_prompt,
+            'java': java.extract_function_name_from_prompt_v2,
         }
         
         self.language = language
@@ -144,6 +144,10 @@ class GeneralHumanEvalX(Task):
             try:
                 problem_name = self._formalize_problem_name(
                     self.language_extractor_map[self.language](prob_prompt))
+                
+                if problem_name == 'ispalindrome':
+                    print(f'[cautious] problem_name={problem_name}')
+                    print(f'task_id=\n{problem["task_id"]}')
 
                 if problem_name in problem_map:
                     print(f'existing:{problem_map[problem_name]}')
