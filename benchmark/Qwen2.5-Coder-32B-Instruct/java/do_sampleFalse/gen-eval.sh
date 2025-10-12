@@ -22,16 +22,13 @@ eval_limit=164
 save_every_k_tasks=1 # after completing k dataset's tasks
 save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
-# seed=0
-# seed=5
 seed=10
-# seed=15
-# seed=20
 
-common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-seed$seed-batch$batch_size-maxlen$max_length-$lang"
-generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"
+common_name="$MODEL_NAME-do_sample$do_sample-$precision-n$n_samples-seed$seed-maxlen$max_length-$lang"
+generations_name="$common_name-generations-${limit_start}-${limit}_humanevalx-$lang"
+BASE_DIR=./benchmark/$MODEL_NAME/$lang/do_sample$do_sample
 
-BASE_DIR=./benchmark/$MODEL_NAME/$lang/improve/pass@1/t$temperature-p$top_p-k$top_k-batch$batch_size-n$n_samples
+generations_path="$BASE_DIR/$generations_name.json"
 
 mkdir -p $BASE_DIR
 rm -rf /tmp/* /var/tmp/*
@@ -54,3 +51,11 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --limit $limit \
     --metric_output_path "$BASE_DIR/$generations_name-eval-${eval_limit_start}-${eval_limit}-evaluation_results.json" \
     --max_memory_per_gpu auto
+
+python main.py --model "$AUTHOR/$MODEL_NAME" \
+    --tasks humanevalx-$lang \
+    --allow_code_execution \
+    --trust_remote_code \
+    --token \
+    --load_generations_path "$generations_path" \
+    --metric_output_path "$BASE_DIR/$generations_name-evaluation_results.json"
