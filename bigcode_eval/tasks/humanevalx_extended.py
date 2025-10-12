@@ -102,7 +102,7 @@ class GeneralHumanEvalX(Task):
         self.dataset['test'] = Dataset.from_list(json_problems)
 
         for problem in self.dataset['test']:
-            print(f'prob name = {problem['name']}')
+            print(f'prob name = {problem["name"]}')
 
         self.stop_words = [
             "\n    }\n}"
