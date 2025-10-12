@@ -2,6 +2,8 @@
 
 set -euox
 
+export TRANSFORMERS_VERBOSITY=info
+
 AUTHOR="Qwen"
 MODEL_NAME="Qwen2.5-Coder-32B-Instruct"
 
@@ -24,11 +26,7 @@ eval_limit=164
 save_every_k_tasks=1 # after completing k dataset's tasks
 save_every_k_iterations=$((save_every_k_tasks * n_samples / batch_size))
 
-# seed=0
-# seed=5
 seed=10
-# seed=15
-# seed=20
 
 common_name="$MODEL_NAME-temp$temperature-p$top_p-k$top_k-$precision-n$n_samples-seed$seed-batch$batch_size-maxlen$max_length-$lang"
 generations_name="$common_name-generations-${limit_start}-${limit}_multiple-$lang"

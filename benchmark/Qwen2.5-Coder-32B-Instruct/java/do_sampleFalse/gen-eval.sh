@@ -57,5 +57,5 @@ python main.py --model "$AUTHOR/$MODEL_NAME" \
     --allow_code_execution \
     --trust_remote_code \
     --token \
-    --load_generations_path "$generations_path" \
+    --load_generations_path "$BASE_DIR/${generations_name}_preprocessed.json" \
     --metric_output_path "$BASE_DIR/$generations_name-evaluation_results.json"
