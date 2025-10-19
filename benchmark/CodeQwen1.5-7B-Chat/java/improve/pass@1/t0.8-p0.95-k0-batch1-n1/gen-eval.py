@@ -56,7 +56,8 @@ def generate_for_prompt(model, tokenizer, user_prompt, **kwargs):
         tokenize=False,
         add_generation_prompt=True
     )
-    model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
+    model_inputs = tokenizer(
+        [text], return_tensors="pt", return_token_type_ids=False).to(model.device)
     
     # Measure execution time
     start_time = time.time()
