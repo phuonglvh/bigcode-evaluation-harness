@@ -21,7 +21,7 @@ model_name = "Qwen/CodeQwen1.5-7B-Chat"
 
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
-    dtype="auto",
+    torch_dtype="auto",
     device_map="auto"
 )
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -63,12 +63,12 @@ def generate_for_prompt(model, tokenizer, user_prompt, **kwargs):
     
     generated_ids = model.generate(
         **model_inputs,
-        max_new_tokens=max_new_tokens,
-        do_sample=do_sample,
+        max_new_tokens=512,
+        # do_sample=do_sample,
         # num_return_sequences=num_return_sequences,
-        top_p=top_p,
-        temperature=temperature,
-        top_k=top_k
+        # top_p=top_p,
+        # temperature=temperature,
+        # top_k=top_k
     )
 
     execution_time = time.time() - start_time
