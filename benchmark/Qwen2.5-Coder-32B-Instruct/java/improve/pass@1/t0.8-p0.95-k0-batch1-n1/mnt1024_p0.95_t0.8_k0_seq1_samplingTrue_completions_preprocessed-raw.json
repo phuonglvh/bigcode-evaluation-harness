@@ -1,0 +1,494 @@
+[
+    [
+        "        Collections.sort(numbers);\n        for (int i = 0; i < numbers.size() - 1; i++) {\n            if (Math.abs(numbers.get(i) - numbers.get(i + 1)) < threshold) {\n                return true;\n            }\n        }\n        return false;"
+    ],
+    [
+        "        List<String> result = new ArrayList<>();\n        int balance = 0;\n        StringBuilder currentGroup = new StringBuilder();\n\n        for (char c : paren_string.toCharArray()) {\n            if (c == ' ') continue; // Ignore spaces\n            currentGroup.append(c);\n            if (c == '(') balance++;\n            else if (c == ')') balance--;\n\n            if (balance == 0 && currentGroup.length() > 0) {\n                result.add(currentGroup.toString());\n                currentGroup.setLength(0); // Reset the StringBuilder for the next group\n            }\n        }\n\n        return result;"
+    ],
+    [
+        "        return number - Math.floor(number);"
+    ],
+    [
+        "        int balance = 0;\n        for (int operation : operations) {\n            balance += operation;\n            if (balance < 0) {\n                return true;\n            }\n        }\n        return false;"
+    ],
+    [
+        "        double mean = numbers.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);\n        double mad = numbers.stream().mapToDouble(num -> Math.abs(num - mean)).average().orElse(0.0);\n        return mad;"
+    ],
+    [
+        "        if (numbers.isEmpty()) {\n            return new ArrayList<>();\n        }\n        \n        List<Integer> result = new ArrayList<>();\n        for (int i = 0; i < numbers.size(); i++) {\n            result.add(numbers.get(i));\n            if (i < numbers.size() - 1) {\n                result.add(delimiter);\n            }\n        }\n        return result;"
+    ],
+    [
+        "        List<Integer> depths = new ArrayList<>();\n        String[] groups = paren_string.split(\" \");\n        \n        for (String group : groups) {\n            int maxDepth = 0;\n            int currentDepth = 0;\n            \n            for (char c : group.toCharArray()) {\n                if (c == '(') {\n                    currentDepth++;\n                    if (currentDepth > maxDepth) {\n                        maxDepth = currentDepth;\n                    }\n                } else if (c == ')') {\n                    currentDepth--;\n                }\n            }\n            \n            depths.add(maxDepth);\n        }\n        \n        return depths;"
+    ],
+    [
+        "        List<String> result = new ArrayList<>();\n        for (String str : strings) {\n            if (str.contains(substring)) {\n                result.add(str);\n            }\n        }\n        return result;"
+    ],
+    [
+        "        int sum = 0;\n        int product = 1;\n        for (int number : numbers) {\n            sum += number;\n            product *= number;\n        }\n        return Arrays.asList(sum, product);"
+    ],
+    [
+        "        List<Integer> result = new ArrayList<>();\n        if (numbers == null || numbers.isEmpty()) {\n            return result;\n        }\n        \n        int currentMax = numbers.get(0);\n        for (int number : numbers) {\n            if (number > currentMax) {\n                currentMax = number;\n            }\n            result.add(currentMax);\n        }\n        \n        return result;"
+    ],
+    [
+        "        if (string == null || string.isEmpty()) {\n            return string;\n        }\n        \n        int maxSuffixPalindromeLength = 0;\n        for (int i = string.length(); i >= 0; i--) {\n            if (isPalindrome(string.substring(0, i))) {\n                maxSuffixPalindromeLength = i;\n                break;\n            }\n        }\n        \n        StringBuilder prefixToReverse = new StringBuilder(string.substring(maxSuffixPalindromeLength));\n        return string + prefixToReverse.reverse().toString();"
+    ],
+    [
+        "        if (a.length() != b.length()) {\n            throw new IllegalArgumentException(\"Strings must be of the same length\");\n        }\n        \n        StringBuilder result = new StringBuilder();\n        for (int i = 0; i < a.length(); i++) {\n            char bitA = a.charAt(i);\n            char bitB = b.charAt(i);\n            if (bitA == bitB) {\n                result.append('0');\n            } else {\n                result.append('1');\n            }\n        }\n        return result.toString();"
+    ],
+    [
+        "        if (strings == null || strings.isEmpty()) {\n            return Optional.empty();\n        }\n        String longestString = strings.get(0);\n        for (String str : strings) {\n            if (str.length() > longestString.length()) {\n                longestString = str;\n            }\n        }\n        return Optional.of(longestString);"
+    ],
+    [
+        "        while (b != 0) {\n            int temp = b;\n            b = a % b;\n            a = temp;\n        }\n        return a;"
+    ],
+    [
+        "        List<String> prefixes = new ArrayList<>();\n        for (int i = 1; i <= string.length(); i++) {\n            prefixes.add(string.substring(0, i));\n        }\n        return prefixes;"
+    ],
+    [
+        "        StringBuilder result = new StringBuilder();\n        for (int i = 0; i <= n; i++) {\n            result.append(i);\n            if (i < n) {\n                result.append(\" \");\n            }\n        }\n        return result.toString();"
+    ],
+    [
+        "        Set<Character> distinctChars = new HashSet<>();\n        for (char c : string.toLowerCase().toCharArray()) {\n            distinctChars.add(c);\n        }\n        return distinctChars.size();"
+    ],
+    [
+        "        List<Integer> beats = new ArrayList<>();\n        String[] notes = string.split(\" \");\n        for (String note : notes) {\n            switch (note) {\n                case \"o\":\n                    beats.add(4);\n                    break;\n                case \"o|\":\n                    beats.add(2);\n                    break;\n                case \".|\":\n                    beats.add(1);\n                    break;\n                default:\n                    // Handle unexpected input if necessary\n                    break;\n            }\n        }\n        return beats;"
+    ],
+    [
+        "        if (substring.isEmpty()) return 0;\n        int count = 0;\n        int index = 0;\n        while ((index = string.indexOf(substring, index)) != -1) {\n            count++;\n            index++; // Move one character forward to allow overlapping\n        }\n        return count;"
+    ],
+    [
+        "        Map<String, Integer> numberMap = new HashMap<>();\n        numberMap.put(\"zero\", 0);\n        numberMap.put(\"one\", 1);\n        numberMap.put(\"two\", 2);\n        numberMap.put(\"three\", 3);\n        numberMap.put(\"four\", 4);\n        numberMap.put(\"five\", 5);\n        numberMap.put(\"six\", 6);\n        numberMap.put(\"seven\", 7);\n        numberMap.put(\"eight\", 8);\n        numberMap.put(\"nine\", 9);\n\n        String[] words = numbers.split(\" \");\n        Arrays.sort(words, Comparator.comparingInt(numberMap::get));\n\n        return String.join(\" \", words);"
+    ],
+    [
+        "        Collections.sort(numbers);\n        double minDiff = Double.MAX_VALUE;\n        List<Double> result = new ArrayList<>();\n        \n        for (int i = 0; i < numbers.size() - 1; i++) {\n            double diff = numbers.get(i + 1) - numbers.get(i);\n            if (diff < minDiff) {\n                minDiff = diff;\n                result.clear();\n                result.add(numbers.get(i));\n                result.add(numbers.get(i + 1));\n            }\n        }\n        \n        return result;"
+    ],
+    [
+        "        if (numbers == null || numbers.size() < 2) {\n            throw new IllegalArgumentException(\"List must contain at least two elements.\");\n        }\n        \n        double min = Collections.min(numbers);\n        double max = Collections.max(numbers);\n        double range = max - min;\n        \n        List<Double> rescaled = new ArrayList<>();\n        for (Double num : numbers) {\n            rescaled.add((num - min) / range);\n        }\n        \n        return rescaled;"
+    ],
+    [
+        "        List<Integer> integers = new ArrayList<>();\n        for (Object value : values) {\n            if (value instanceof Integer) {\n                integers.add((Integer) value);\n            }\n        }\n        return integers;"
+    ],
+    [
+        "        return string.length();"
+    ],
+    [
+        "        for (int i = n - 1; i > 0; i--) {\n            if (n % i == 0) {\n                return i;\n            }\n        }\n        return 1; // If no divisor is found, return 1 (though this case won't occur for n > 1)\n    }\n\n    public static void main(String[] args) {\n        Solution solution = new Solution();\n        System.out.println(solution.largestDivisor(15)); // Output: 5"
+    ],
+    [
+        "        List<Integer> factors = new ArrayList<>();\n        for (int i = 2; i <= n / i; i++) {\n            while (n % i == 0) {\n                factors.add(i);\n                n /= i;\n            }\n        }\n        if (n > 1) {\n            factors.add(n);\n        }\n        return factors;"
+    ],
+    [
+        "        Map<Integer, Long> frequencyMap = numbers.stream()\n            .collect(Collectors.groupingBy(e -> e, Collectors.counting()));\n        \n        return numbers.stream()\n            .filter(e -> frequencyMap.get(e) == 1)\n            .collect(Collectors.toList());"
+    ],
+    [
+        "        StringBuilder flipped = new StringBuilder(string.length());\n        for (char c : string.toCharArray()) {\n            if (Character.isUpperCase(c)) {\n                flipped.append(Character.toLowerCase(c));\n            } else if (Character.isLowerCase(c)) {\n                flipped.append(Character.toUpperCase(c));\n            } else {\n                flipped.append(c);\n            }\n        }\n        return flipped.toString();"
+    ],
+    [
+        "        StringBuilder result = new StringBuilder();\n        for (String str : strings) {\n            result.append(str);\n        }\n        return result.toString();"
+    ],
+    [
+        "        return strings.stream()\n                      .filter(s -> s.startsWith(prefix))\n                      .collect(Collectors.toList());"
+    ],
+    [
+        "        return l.stream().filter(x -> x > 0).collect(Collectors.toList());"
+    ],
+    [
+        "        if (n <= 1) return false;\n        if (n <= 3) return true;\n        if (n % 2 == 0 || n % 3 == 0) return false;\n        for (int i = 5; i * i <= n; i += 6) {\n            if (n % i == 0 || n % (i + 2) == 0) return false;\n        }\n        return true;"
+    ],
+    [
+        "        double low = -1000, high = 1000;\n        while (high - low > 1e-9) {\n            double mid = (low + high) / 2;\n            if (poly(xs, mid) * poly(xs, low) <= 0) {\n                high = mid;\n            } else {\n                low = mid;\n            }\n        }\n        return (low + high) / 2;"
+    ],
+    [
+        "        List<Integer> result = new ArrayList<>(l);\n        List<Integer> divisibleByThree = new ArrayList<>();\n        \n        for (int i = 0; i < l.size(); i++) {\n            if (i % 3 == 0) {\n                divisibleByThree.add(l.get(i));\n            }\n        }\n        \n        Collections.sort(divisibleByThree);\n        \n        int index = 0;\n        for (int i = 0; i < l.size(); i++) {\n            if (i % 3 == 0) {\n                result.set(i, divisibleByThree.get(index));\n                index++;\n            }\n        }\n        \n        return result;"
+    ],
+    [
+        "        Set<Integer> set = new HashSet<>(l);\n        List<Integer> result = new ArrayList<>(set);\n        Collections.sort(result);\n        return result;"
+    ],
+    [
+        "        if (l == null || l.isEmpty()) {\n            throw new IllegalArgumentException(\"List must not be null or empty\");\n        }\n        return Collections.max(l);"
+    ],
+    [
+        "        int count = 0;\n        for (int i = 1; i < n; i++) {\n            if (i % 11 == 0 || i % 13 == 0) {\n                count += countSevens(i);\n            }\n        }\n        return count;\n    }\n\n    private int countSevens(int number) {\n        int count = 0;\n        while (number > 0) {\n            if (number % 10 == 7) {\n                count++;\n            }\n            number /= 10;\n        }\n        return count;"
+    ],
+    [
+        "        List<Integer> evenIndexedValues = new ArrayList<>();\n        for (int i = 0; i < l.size(); i += 2) {\n            evenIndexedValues.add(l.get(i));\n        }\n        Collections.sort(evenIndexedValues);\n\n        List<Integer> result = new ArrayList<>(l);\n        for (int i = 0, j = 0; i < result.size(); i += 2, j++) {\n            result.set(i, evenIndexedValues.get(j));\n        }\n        return result;"
+    ],
+    [
+        "        // split string to groups. Each of length 3.\n        List<String> groups = new ArrayList<>();\n        for (int i = 0; i < s.length(); i += 3) {\n            groups.add(s.substring(i, Math.min(i + 3, s.length())));\n        }\n        // reverse cycle elements in each group. Unless group has fewer elements than 3.\n        for (int i = 0; i < groups.size(); i++) {\n            if (groups.get(i).length() == 3) {\n                groups.set(i, groups.get(i).charAt(2) + groups.get(i).substring(0, 2));\n            }\n        }\n        return String.join(\"\", groups);"
+    ],
+    [
+        "        List<Integer> primeFibs = new ArrayList<>();\n        int a = 0, b = 1;\n        while (primeFibs.size() < n) {\n            int nextFib = a + b;\n            a = b;\n            b = nextFib;\n            if (isPrime(nextFib)) {\n                primeFibs.add(nextFib);\n            }\n        }\n        return primeFibs.get(n - 1);\n    }\n\n    private boolean isPrime(int num) {\n        if (num < 2) return false;\n        for (int i = 2; i <= Math.sqrt(num); i++) {\n            if (num % i == 0) return false;\n        }\n        return true;"
+    ],
+    [
+        "        Collections.sort(l);\n        for (int i = 0; i < l.size() - 2; i++) {\n            int left = i + 1;\n            int right = l.size() - 1;\n            while (left < right) {\n                int sum = l.get(i) + l.get(left) + l.get(right);\n                if (sum == 0) {\n                    return true;\n                } else if (sum < 0) {\n                    left++;\n                } else {\n                    right--;\n                }\n            }\n        }\n        return false;"
+    ],
+    [
+        "        return n * n;"
+    ],
+    [
+        "        return l.stream().map(x -> x + 1).collect(Collectors.toList());"
+    ],
+    [
+        "        Set<Integer> seen = new HashSet<>();\n        for (int num : l) {\n            if (seen.contains(-num)) {\n                return true;\n            }\n            seen.add(num);\n        }\n        return false;"
+    ],
+    [
+        "        if (base < 2 || base > 9) {\n            throw new IllegalArgumentException(\"Base must be between 2 and 9\");\n        }\n        StringBuilder result = new StringBuilder();\n        do {\n            int remainder = x % base;\n            result.append(remainder);\n            x /= base;\n        } while (x > 0);\n        return result.reverse().toString();\n    }\n\n    public static void main(String[] args) {\n        Solution solution = new Solution();\n        System.out.println(solution.changeBase(8, 3)); // \"22\"\n        System.out.println(solution.changeBase(8, 2)); // \"1000\"\n        System.out.println(solution.changeBase(7, 2)); // \"111\""
+    ],
+    [
+        "        return 0.5 * a * h;"
+    ],
+    [
+        "if (n == 0 || n == 1 || n == 3) return 0;\nif (n == 2) return 2;\n\nint[] fib = new int[n + 1];\nfib[0] = 0;\nfib[1] = 0;\nfib[2] = 2;\nfib[3] = 0;\n\nfor (int i = 4; i <= n; i++) {\n    fib[i] = fib[i - 1] + fib[i - 2] + fib[i - 3] + fib[i - 4];\n}\n\nreturn fib[n];\n}"
+    ],
+    [
+        "        Collections.sort(l);\n        int size = l.size();\n        if (size % 2 == 0) {\n            return (l.get(size / 2 - 1) + l.get(size / 2)) / 2.0;\n        } else {\n            return l.get(size / 2);\n        }"
+    ],
+    [
+        "        int left = 0;\n        int right = text.length() - 1;\n        while (left < right) {\n            if (text.charAt(left) != text.charAt(right)) {\n                return false;\n            }\n            left++;\n            right--;\n        }\n        return true;"
+    ],
+    [
+        "        if (n == 0) return 1;\n        long result = 1;\n        long base = 2;\n        while (n > 0) {\n            if ((n & 1) == 1) {\n                result = (result * base) % p;\n            }\n            base = (base * base) % p;\n            n >>= 1;\n        }\n        return (int) result;"
+    ],
+    [
+        "StringBuilder sb = new StringBuilder();\nfor (char ch : s.toCharArray()) {\n    sb.append((char) ('a' + ((ch - 5 - 'a' + 26) % 26)));\n}\nreturn sb.toString();"
+    ],
+    [
+        "        StringBuilder result = new StringBuilder();\n        for (char c : text.toCharArray()) {\n            if (!isVowel(c)) {\n                result.append(c);\n            }\n        }\n        return result.toString();\n    }\n\n    private boolean isVowel(char c) {\n        return \"AEIOUaeiou\".indexOf(c) != -1;"
+    ],
+    [
+        "        for (int num : l) {\n            if (num >= t) {\n                return false;\n            }\n        }\n        return true;"
+    ],
+    [
+        "        return x + y;"
+    ],
+    [
+        "        Set<Character> set0 = new HashSet<>();\n        Set<Character> set1 = new HashSet<>();\n        \n        for (char c : s0.toCharArray()) {\n            set0.add(c);\n        }\n        \n        for (char c : s1.toCharArray()) {\n            set1.add(c);\n        }\n        \n        return set0.equals(set1);"
+    ],
+    [
+        "        if (n <= 1) {\n            return n;\n        }\n        int a = 0, b = 1, c;\n        for (int i = 2; i <= n; i++) {\n            c = a + b;\n            a = b;\n            b = c;\n        }\n        return b;"
+    ],
+    [
+        "        int balance = 0;\n        for (char ch : brackets.toCharArray()) {\n            if (ch == '<') {\n                balance++;\n            } else if (ch == '>') {\n                balance--;\n            }\n            if (balance < 0) {\n                return false;\n            }\n        }\n        return balance == 0;"
+    ],
+    [
+        "        if (l == null || l.size() <= 1) {\n            return true;\n        }\n        \n        boolean increasing = true;\n        boolean decreasing = true;\n        \n        for (int i = 1; i < l.size(); i++) {\n            if (l.get(i) > l.get(i - 1)) {\n                decreasing = false;\n            }\n            if (l.get(i) < l.get(i - 1)) {\n                increasing = false;\n            }\n        }\n        \n        return increasing || decreasing;"
+    ],
+    [
+        "        Set<Integer> set1 = new HashSet<>(l1);\n        Set<Integer> set2 = new HashSet<>(l2);\n        set1.retainAll(set2);\n        List<Integer> result = new ArrayList<>(set1);\n        Collections.sort(result);\n        return result;"
+    ],
+    [
+        "        int maxPrime = -1;\n        while (n % 2 == 0) {\n            maxPrime = 2;\n            n >>= 1; // equivalent to n /= 2\n        }\n        for (int i = 3; i <= Math.sqrt(n); i += 2) {\n            while (n % i == 0) {\n                maxPrime = i;\n                n = n / i;\n            }\n        }\n        if (n > 2)\n            maxPrime = n;\n        return maxPrime;"
+    ],
+    [
+        "        return n * (n + 1) / 2;"
+    ],
+    [
+        "        int balance = 0;\n        for (char ch : brackets.toCharArray()) {\n            if (ch == '(') {\n                balance++;\n            } else if (ch == ')') {\n                balance--;\n                if (balance < 0) {\n                    return false;\n                }\n            }\n        }\n        return balance == 0;"
+    ],
+    [
+        "        List<Integer> result = new ArrayList<>();\n        for (int i = 1; i < xs.size(); i++) {\n            result.add(xs.get(i) * i);\n        }\n        return result;"
+    ],
+    [
+        "        if (n == 0 || n == 1) return 0;\n        if (n == 2) return 1;\n        \n        int[] dp = new int[n + 1];\n        dp[0] = 0;\n        dp[1] = 0;\n        dp[2] = 1;\n        \n        for (int i = 3; i <= n; i++) {\n            dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];\n        }\n        \n        return dp[n];"
+    ],
+    [
+        "        if (s == null || s.isEmpty()) {\n            return 0;\n        }\n        s = s.toLowerCase();\n        int count = 0;\n        for (int i = 0; i < s.length(); i++) {\n            char c = s.charAt(i);\n            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {\n                count++;\n            } else if (c == 'y' && i == s.length() - 1) {\n                count++;\n            }\n        }\n        return count;"
+    ],
+    [
+        "String numStr = Integer.toString(x);\nint length = numStr.length();\nif (shift >= length) {\n    return new StringBuilder(numStr).reverse().toString();\n}\nshift = shift % length;\nreturn numStr.substring(length - shift) + numStr.substring(0, length - shift);\n}"
+    ],
+    [
+        "        int sum = 0;\n        for (char c : s.toCharArray()) {\n            if (Character.isUpperCase(c)) {\n                sum += (int) c;\n            }\n        }\n        return sum;"
+    ],
+    [
+        "        String[] parts = s.split(\" \");\n        int apples = Integer.parseInt(parts[0]);\n        int oranges = Integer.parseInt(parts[3]);\n        return n - apples - oranges;"
+    ],
+    [
+        "        int minValue = Integer.MAX_VALUE;\n        int minIndex = -1;\n        \n        for (int i = 0; i < arr.size(); i++) {\n            int value = arr.get(i);\n            if (value % 2 == 0 && value < minValue) {\n                minValue = value;\n                minIndex = i;\n            }\n        }\n        \n        if (minIndex == -1) {\n            return new ArrayList<>();\n        } else {\n            return Arrays.asList(minValue, minIndex);\n        }"
+    ],
+    [
+        "        Map<Integer, Integer> frequencyMap = new HashMap<>();\n        for (int num : lst) {\n            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);\n        }\n        \n        int result = -1;\n        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {\n            if (entry.getKey() <= entry.getValue()) {\n                result = Math.max(result, entry.getKey());\n            }\n        }\n        \n        return result;"
+    ],
+    [
+        "        List<Integer> sortedList = new ArrayList<>(lst);\n        Collections.sort(sortedList);\n        List<Integer> result = new ArrayList<>();\n        int i = 0, j = sortedList.size() - 1;\n        while (i <= j) {\n            if (i == j) {\n                result.add(sortedList.get(i));\n            } else {\n                result.add(sortedList.get(i));\n                result.add(sortedList.get(j));\n            }\n            i++;\n            j--;\n        }\n        return result;"
+    ],
+    [
+        "        if (a + b <= c || a + c <= b || b + c <= a) {\n            return -1;\n        }\n        double s = (a + b + c) / 2;\n        double area = Math.sqrt(s * (s - a) * (s - b) * (s - c));\n        return Math.round(area * 100.0) / 100.0;"
+    ],
+    [
+        "        if (!isPalindromic(q)) {\n            return false;\n        }\n        int sum = 0;\n        for (int num : q) {\n            sum += num;\n        }\n        return sum <= w;\n    }\n\n    private boolean isPalindromic(List<Integer> q) {\n        int left = 0;\n        int right = q.size() - 1;\n        while (left < right) {\n            if (!q.get(left).equals(q.get(right))) {\n                return false;\n            }\n            left++;\n            right--;\n        }\n        return true;"
+    ],
+    [
+        "        int changes = 0;\n        int left = 0;\n        int right = arr.size() - 1;\n        \n        while (left < right) {\n            if (!arr.get(left).equals(arr.get(right))) {\n                changes++;\n            }\n            left++;\n            right--;\n        }\n        \n        return changes;"
+    ],
+    [
+        "        int count1 = lst1.stream().mapToInt(String::length).sum();\n        int count2 = lst2.stream().mapToInt(String::length).sum();\n        \n        return count1 < count2 ? lst1 : lst2;"
+    ],
+    [
+        "        if (a < 2) return false;\n        \n        List<Integer> primes = new ArrayList<>();\n        for (int i = 2; i < 100; i++) {\n            if (isPrime(i)) {\n                primes.add(i);\n            }\n        }\n        \n        for (int i = 0; i < primes.size(); i++) {\n            for (int j = i; j < primes.size(); j++) {\n                for (int k = j; k < primes.size(); k++) {\n                    if (primes.get(i) * primes.get(j) * primes.get(k) == a) {\n                        return true;\n                    }\n                }\n            }\n        }\n        \n        return false;\n    }\n    \n    private boolean isPrime(int num) {\n        if (num <= 1) return false;\n        if (num <= 3) return true;\n        if (num % 2 == 0 || num % 3 == 0) return false;\n        for (int i = 5; i * i <= num; i += 6) {\n            if (num % i == 0 || num % (i + 2) == 0) return false;\n        }\n        return true;"
+    ],
+    [
+        "if (x < 1 || n < 1) return false;\nif (n == 1) return x == 1;\nint power = 1;\nwhile (power < x) {\n    power *= n;\n}\nreturn power == x;\n}"
+    ],
+    [
+        "        int absA = Math.abs(a);\n        int cubeRoot = (int) Math.round(Math.cbrt(absA));\n        return cubeRoot * cubeRoot * cubeRoot == absA;"
+    ],
+    [
+        "        int count = 0;\n        Set<Character> primeHexDigits = new HashSet<>(Arrays.asList('2', '3', '5', '7', 'B', 'D'));\n        for (char c : num.toCharArray()) {\n            if (primeHexDigits.contains(c)) {\n                count++;\n            }\n        }\n        return count;"
+    ],
+    [
+        "        return \"db\" + Integer.toBinaryString(decimal) + \"db\";"
+    ],
+    [
+        "        if (s.length() < 3) return false;\n        for (int i = 0; i <= s.length() - 3; i++) {\n            if (s.charAt(i) == s.charAt(i + 1) || s.charAt(i) == s.charAt(i + 2) || s.charAt(i + 1) == s.charAt(i + 2)) {\n                return false;\n            }\n        }\n        return true;"
+    ],
+    [
+        "        List<String> letterGrades = new ArrayList<>();\n        for (Double gpa : grades) {\n            if (gpa == 4.0) letterGrades.add(\"A+\");\n            else if (gpa > 3.7) letterGrades.add(\"A\");\n            else if (gpa > 3.3) letterGrades.add(\"A-\");\n            else if (gpa > 3.0) letterGrades.add(\"B+\");\n            else if (gpa > 2.7) letterGrades.add(\"B\");\n            else if (gpa > 2.3) letterGrades.add(\"B-\");\n            else if (gpa > 2.0) letterGrades.add(\"C+\");\n            else if (gpa > 1.7) letterGrades.add(\"C\");\n            else if (gpa > 1.3) letterGrades.add(\"C-\");\n            else if (gpa > 1.0) letterGrades.add(\"D+\");\n            else if (gpa > 0.7) letterGrades.add(\"D\");\n            else if (gpa > 0.0) letterGrades.add(\"D-\");\n            else letterGrades.add(\"E\");\n        }\n        return letterGrades;"
+    ],
+    [
+        "        int length = string.length();\n        if (length < 2) return false;\n        for (int i = 2; i <= Math.sqrt(length); i++) {\n            if (length % i == 0) return false;\n        }\n        return true;"
+    ],
+    [
+        "        if (n == 1) {\n            return 1; // Only the number 1 itself\n        }\n        // Count numbers starting with 1: 1xxxx... (n-1 digits can be anything from 0-9)\n        int startWithOne = (int) Math.pow(10, n - 1);\n        // Count numbers ending with 1: xxxx...1 (n-1 digits can be anything from 1-9 for the first digit and 0-9 for the rest)\n        int endWithOne = 9 * (int) Math.pow(10, n - 2);\n        // Numbers that both start and end with 1: 1xxx...1 (n-2 digits can be anything from 0-9)\n        int startAndEndWithOne = (int) Math.pow(10, n - 2);\n        // Total count is the sum of the first two counts minus the overlap\n        return startWithOne + endWithOne - startAndEndWithOne;"
+    ],
+    [
+        "        int sum = 0;\n        while (N > 0) {\n            sum += N % 10;\n            N /= 10;\n        }\n        return Integer.toBinaryString(sum);"
+    ],
+    [
+        "int sum = 0;\nfor (int i = 1; i < lst.size(); i += 2) {\n    if (lst.get(i) % 2 == 0) {\n        sum += lst.get(i);"
+    ],
+    [
+        "        StringBuilder result = new StringBuilder();\n        String[] words = s.split(\"(?<=\\\\s)|(?=\\\\s)\");\n        for (String word : words) {\n            if (word.trim().isEmpty()) {\n                result.append(word);\n            } else {\n                char[] chars = word.toCharArray();\n                Arrays.sort(chars);\n                result.append(new String(chars));\n            }\n        }\n        return result.toString();"
+    ],
+    [
+        "        List<List<Integer>> result = new ArrayList<>();\n        \n        for (int i = 0; i < lst.size(); i++) {\n            List<Integer> row = lst.get(i);\n            List<Integer> colIndices = new ArrayList<>();\n            \n            for (int j = 0; j < row.size(); j++) {\n                if (row.get(j) == x) {\n                    colIndices.add(j);\n                }\n            }\n            \n            colIndices.sort(Collections.reverseOrder());\n            \n            for (int col : colIndices) {\n                result.add(Arrays.asList(i, col));\n            }\n        }\n        \n        return result;"
+    ],
+    [
+        "        if (array == null || array.size() <= 1) {\n            return new ArrayList<>(array);\n        }\n        \n        int sum = array.get(0) + array.get(array.size() - 1);\n        List<Integer> sortedArray = new ArrayList<>(array);\n        \n        if (sum % 2 == 0) {\n            sortedArray.sort(Collections.reverseOrder());\n        } else {\n            Collections.sort(sortedArray);\n        }\n        \n        return sortedArray;"
+    ],
+    [
+        "        StringBuilder result = new StringBuilder();\n        int shift = 2 * 2; // The alphabet is rotated by 4 places\n        for (char c : s.toCharArray()) {\n            if (Character.isLetter(c)) {\n                char base = Character.isLowerCase(c) ? 'a' : 'A';\n                c = (char) ((c - base + shift) % 26 + base);\n            }\n            result.append(c);\n        }\n        return result.toString();"
+    ],
+    [
+        "        if (lst == null || lst.size() < 2) {\n            return Optional.empty();\n        }\n        \n        TreeSet<Integer> sortedSet = new TreeSet<>(lst);\n        Integer secondSmallest = null;\n        \n        if (sortedSet.size() > 1) {\n            secondSmallest = sortedSet.higher(sortedSet.first());\n        }\n        \n        return Optional.ofNullable(secondSmallest);"
+    ],
+    [
+        "        int count = 0;\n        String[] sentences = S.split(\"[.?!]\");\n        for (String sentence : sentences) {\n            sentence = sentence.trim();\n            if (sentence.startsWith(\"I\")) {\n                count++;\n            }\n        }\n        return count;"
+    ],
+    [
+        "        if (x instanceof Integer && y instanceof Integer && z instanceof Integer) {\n            int a = (Integer) x;\n            int b = (Integer) y;\n            int c = (Integer) z;\n            return (a == b + c) || (b == a + c) || (c == a + b);\n        }\n        return false;"
+    ],
+    [
+        "        StringBuilder encodedMessage = new StringBuilder();\n        for (char c : message.toCharArray()) {\n            if (Character.isLetter(c)) {\n                // Swap case\n                if (Character.isUpperCase(c)) {\n                    c = Character.toLowerCase(c);\n                } else {\n                    c = Character.toUpperCase(c);\n                }\n                // Replace vowels\n                switch (c) {\n                    case 'a': c = 'C'; break;\n                    case 'e': c = 'G'; break;\n                    case 'i': c = 'K'; break;\n                    case 'o': c = 'Q'; break;\n                    case 'u': c = 'W'; break;\n                    case 'A': c = 'c'; break;\n                    case 'E': c = 'g'; break;\n                    case 'I': c = 'k'; break;\n                    case 'O': c = 'q'; break;\n                    case 'U': c = 'w'; break;\n                }\n            }\n            encodedMessage.append(c);\n        }\n        return encodedMessage.toString();"
+    ],
+    [
+        "        int largestPrime = -1;\n        for (int num : lst) {\n            if (isPrime(num) && num > largestPrime) {\n                largestPrime = num;\n            }\n        }\n        return sumOfDigits(largestPrime);\n    }\n\n    private boolean isPrime(int num) {\n        if (num <= 1) return false;\n        if (num <= 3) return true;\n        if (num % 2 == 0 || num % 3 == 0) return false;\n        for (int i = 5; i * i <= num; i += 6) {\n            if (num % i == 0 || num % (i + 2) == 0) return false;\n        }\n        return true;\n    }\n\n    private int sumOfDigits(int num) {\n        int sum = 0;\n        while (num > 0) {\n            sum += num % 10;\n            num /= 10;\n        }\n        return sum;"
+    ],
+    [
+        "        if (dict.isEmpty()) {\n            return false;\n        }\n\n        boolean allLowerCase = true;\n        boolean allUpperCase = true;\n\n        for (Object key : dict.keySet()) {\n            if (key instanceof String) {\n                String strKey = (String) key;\n                if (!strKey.equals(strKey.toLowerCase())) {\n                    allLowerCase = false;\n                }\n                if (!strKey.equals(strKey.toUpperCase())) {\n                    allUpperCase = false;\n                }\n            } else {\n                return false;\n            }\n        }\n\n        return allLowerCase || allUpperCase;"
+    ],
+    [
+        "        List<Integer> primes = new ArrayList<>();\n        if (n <= 2) return primes;\n        for (int i = 2; i < n; i++) {\n            boolean isPrime = true;\n            for (int j = 2; j <= Math.sqrt(i); j++) {\n                if (i % j == 0) {\n                    isPrime = false;\n                    break;\n                }\n            }\n            if (isPrime) primes.add(i);\n        }\n        return primes;"
+    ],
+    [
+        "        int unitDigitA = Math.abs(a % 10);\n        int unitDigitB = Math.abs(b % 10);\n        return unitDigitA * unitDigitB;"
+    ],
+    [
+        "        int count = 0;\n        for (int i = 0; i < s.length(); i += 2) {\n            char c = s.charAt(i);\n            if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {\n                count++;\n            }\n        }\n        return count;"
+    ],
+    [
+        "        double num = Double.parseDouble(value);\n        int lowerBound = (int) Math.floor(num);\n        int upperBound = (int) Math.ceil(num);\n\n        if (num - lowerBound == upperBound - num) {\n            return num > 0 ? upperBound : lowerBound;\n        } else {\n            return (int) Math.round(num);\n        }"
+    ],
+    [
+        "        List<Integer> pile = new ArrayList<>();\n        int currentStones = n;\n        for (int i = 0; i < n; i++) {\n            pile.add(currentStones);\n            if (n % 2 == 0) {\n                currentStones += 2; // n is even, add the next even number\n            } else {\n                currentStones += 2; // n is odd, add the next odd number\n            }\n        }\n        return pile;"
+    ],
+    [
+        "        if (s == null || s.isEmpty()) {\n            return Collections.emptyList();\n        }\n        String[] words = s.split(\"[,\\\\s]+\");\n        return Arrays.asList(words);"
+    ],
+    [
+        "        if (x > y) {\n            return -1;\n        }\n        for (int i = y; i >= x; i--) {\n            if (i % 2 == 0) {\n                return i;\n            }\n        }\n        return -1;"
+    ],
+    [
+        "        if (n > m) {\n            return -1;\n        }\n        int sum = 0;\n        for (int i = n; i <= m; i++) {\n            sum += i;\n        }\n        int count = m - n + 1;\n        int avg = Math.round((float) sum / count);\n        return Integer.toBinaryString(avg);"
+    ],
+    [
+        "        List<Integer> result = new ArrayList<>();\n        for (Integer number : x) {\n            if (hasOnlyOddDigits(number)) {\n                result.add(number);\n            }\n        }\n        Collections.sort(result);\n        return result;\n    }\n\n    private boolean hasOnlyOddDigits(int number) {\n        while (number > 0) {\n            int digit = number % 10;\n            if (digit % 2 == 0) {\n                return false;\n            }\n            number /= 10;\n        }\n        return true;"
+    ],
+    [
+        "        List<Integer> filteredSorted = arr.stream()\n            .filter(num -> num >= 1 && num <= 9)\n            .sorted()\n            .collect(Collectors.toList());\n        Collections.reverse(filteredSorted);\n        \n        Map<Integer, String> numberToName = new HashMap<>();\n        numberToName.put(1, \"One\");\n        numberToName.put(2, \"Two\");\n        numberToName.put(3, \"Three\");\n        numberToName.put(4, \"Four\");\n        numberToName.put(5, \"Five\");\n        numberToName.put(6, \"Six\");\n        numberToName.put(7, \"Seven\");\n        numberToName.put(8, \"Eight\");\n        numberToName.put(9, \"Nine\");\n        \n        return filteredSorted.stream()\n            .map(numberToName::get)\n            .collect(Collectors.toList());"
+    ],
+    [
+        "        List<Integer> result = new ArrayList<>();\n        for (int i = 1; i <= n; i++) {\n            if (i % 2 == 0) {\n                result.add(factorial(i));\n            } else {\n                result.add(sum(i));\n            }\n        }\n        return result;\n    }\n\n    private int factorial(int num) {\n        int fact = 1;\n        for (int i = 1; i <= num; i++) {\n            fact *= i;\n        }\n        return fact;\n    }\n\n    private int sum(int num) {\n        return num * (num + 1) / 2;"
+    ],
+    [
+        "        int evenCount = 0;\n        int oddCount = 0;\n\n        for (int i = 1; i <= n; i++) {\n            if (isPalindrome(i)) {\n                if (i % 2 == 0) {\n                    evenCount++;\n                } else {\n                    oddCount++;\n                }\n            }\n        }\n\n        return Arrays.asList(evenCount, oddCount);\n    }\n\n    private boolean isPalindrome(int number) {\n        String str = Integer.toString(number);\n        int len = str.length();\n        for (int i = 0; i < len / 2; i++) {\n            if (str.charAt(i) != str.charAt(len - 1 - i)) {\n                return false;\n            }\n        }\n        return true;"
+    ],
+    [
+        "int count = 0;\nfor (int num : arr) {\n    int sum = 0;\n    int n = num;\n    while (n != 0) {\n        sum += n % 10;\n        n /= 10;\n    }\n    if (sum > 0) {\n        count++;"
+    ],
+    [
+        "if (arr.isEmpty()) {\n    return true;\n}\n\nint n = arr.size();\nint count = 0;\n\nfor (int i = 0; i < n; i++) {\n    if (arr.get(i) > arr.get((i + 1) % n)) {\n        count++;\n    }\n    if (count > 1) {\n        return false;"
+    ],
+    [
+        "        for (int num : lst1) {\n            if (num % 2 != 0) {\n                boolean foundEven = false;\n                for (int num2 : lst2) {\n                    if (num2 % 2 == 0) {\n                        foundEven = true;\n                        break;\n                    }\n                }\n                if (!foundEven) {\n                    return \"NO\";\n                }\n            }\n        }\n        return \"YES\";"
+    ],
+    [
+        "        Map<String, Integer> frequencyMap = new HashMap<>();\n        String[] letters = test.split(\" \");\n        \n        for (String letter : letters) {\n            if (!letter.isEmpty()) {\n                frequencyMap.put(letter, frequencyMap.getOrDefault(letter, 0) + 1);\n            }\n        }\n        \n        int maxCount = 0;\n        for (int count : frequencyMap.values()) {\n            if (count > maxCount) {\n                maxCount = count;\n            }\n        }\n        \n        Map<String, Integer> result = new HashMap<>();\n        for (Map.Entry<String, Integer> entry : frequencyMap.entrySet()) {\n            if (entry.getValue() == maxCount) {\n                result.put(entry.getKey(), entry.getValue());\n            }\n        }\n        \n        return result;"
+    ],
+    [
+        "        StringBuilder filtered = new StringBuilder();\n        Set<Character> charsToRemove = new HashSet<>();\n        for (char ch : c.toCharArray()) {\n            charsToRemove.add(ch);\n        }\n        for (char ch : s.toCharArray()) {\n            if (!charsToRemove.contains(ch)) {\n                filtered.append(ch);\n            }\n        }\n        String resultString = filtered.toString();\n        String reversedString = filtered.reverse().toString();\n        boolean isPalindrome = resultString.equals(reversedString);\n        return Arrays.asList(resultString, isPalindrome);"
+    ],
+    [
+        "        List<String> result = new ArrayList<>();\n        for (String s : lst) {\n            int count = 0;\n            for (char c : s.toCharArray()) {\n                if ((c - '0') % 2 != 0) {\n                    count++;\n                }\n            }\n            String output = \"the number of odd elements \" + count + \"n the str\" + count + \"ng \" + count + \" of the \" + count + \"nput.\";\n            result.add(output);\n        }\n        return result;"
+    ],
+    [
+        "        if (nums == null || nums.isEmpty()) {\n            throw new IllegalArgumentException(\"Input list cannot be null or empty\");\n        }\n        \n        int minEndingHere = nums.get(0);\n        int minSoFar = nums.get(0);\n        \n        for (int i = 1; i < nums.size(); i++) {\n            minEndingHere = Math.min(nums.get(i), minEndingHere + nums.get(i));\n            minSoFar = Math.min(minSoFar, minEndingHere);\n        }\n        \n        return minSoFar;"
+    ],
+    [
+        "        int totalWaterUnits = 0;\n        for (List<Integer> well : grid) {\n            for (int waterUnit : well) {\n                totalWaterUnits += waterUnit;\n            }\n        }\n        return (int) Math.ceil((double) totalWaterUnits / capacity);"
+    ],
+    [
+        "        return arr.stream()\n                .sorted(Comparator.comparingInt((Integer i) -> Integer.bitCount(i & 0x7fffffff))\n                        .thenComparingInt(i -> i))\n                .collect(Collectors.toList());"
+    ],
+    [
+        "        List<String> result = new ArrayList<>();\n        String[] words = s.split(\"\\\\s+\");\n        for (String word : words) {\n            if (countConsonants(word) == n) {\n                result.add(word);\n            }\n        }\n        return result;\n    }\n\n    private int countConsonants(String word) {\n        int count = 0;\n        for (char c : word.toLowerCase().toCharArray()) {\n            if (\"bcdfghjklmnpqrstvwxyz\".indexOf(c) != -1) {\n                count++;\n            }\n        }\n        return count;"
+    ],
+    [
+        "        Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));\n        for (int i = word.length() - 2; i > 0; i--) {\n            char current = word.charAt(i);\n            if (vowels.contains(current) && !vowels.contains(word.charAt(i - 1)) && !vowels.contains(word.charAt(i + 1))) {\n                return String.valueOf(current);\n            }\n        }\n        return \"\";"
+    ],
+    [
+        "        String first = lst.get(0);\n        String second = lst.get(1);\n\n        int balanceFirst = 0;\n        int openFirst = 0;\n        for (char c : first.toCharArray()) {\n            if (c == '(') {\n                balanceFirst++;\n                openFirst++;\n            } else {\n                balanceFirst--;\n                if (balanceFirst < 0) {\n                    openFirst--;\n                }\n            }\n        }\n\n        int balanceSecond = 0;\n        int openSecond = 0;\n        for (char c : second.toCharArray()) {\n            if (c == '(') {\n                balanceSecond++;\n                openSecond++;\n            } else {\n                balanceSecond--;\n                if (balanceSecond < 0) {\n                    openSecond--;\n                }\n            }\n        }\n\n        if ((balanceFirst >= 0 && openSecond >= balanceFirst) || (balanceSecond >= 0 && openFirst >= balanceSecond)) {\n            return \"Yes\";\n        }\n        return \"No\";"
+    ],
+    [
+        "        PriorityQueue<Integer> minHeap = new PriorityQueue<>(k);\n        for (int num : arr) {\n            if (minHeap.size() < k) {\n                minHeap.add(num);\n            } else if (num > minHeap.peek()) {\n                minHeap.poll();\n                minHeap.add(num);\n            }\n        }\n        List<Integer> result = new ArrayList<>(minHeap);\n        Collections.sort(result);\n        return result;"
+    ],
+    [
+        "        int sum = 0;\n        for (int i = 0; i < lst.size(); i += 2) {\n            if (lst.get(i) % 2 != 0) {\n                sum += lst.get(i);\n            }\n        }\n        return sum;"
+    ],
+    [
+        "        int sum = 0;\n        for (int i = 0; i < k; i++) {\n            int num = arr.get(i);\n            if (num >= -99 && num <= 99) {\n                sum += num;\n            }\n        }\n        return sum;"
+    ],
+    [
+        "        List<Integer> oddNumbers = new ArrayList<>();\n        while (n != 1) {\n            if (n % 2 != 0) {\n                oddNumbers.add(n);\n            }\n            if (n % 2 == 0) {\n                n = n / 2;\n            } else {\n                n = 3 * n + 1;\n            }\n        }\n        oddNumbers.add(1); // Add 1 to the list as per the problem statement\n        Collections.sort(oddNumbers);\n        return oddNumbers;"
+    ],
+    [
+        "        if (date == null || date.isEmpty()) {\n            return false;\n        }\n        \n        String[] parts = date.split(\"-\");\n        if (parts.length != 3) {\n            return false;\n        }\n        \n        int month, day, year;\n        try {\n            month = Integer.parseInt(parts[0]);\n            day = Integer.parseInt(parts[1]);\n            year = Integer.parseInt(parts[2]);\n        } catch (NumberFormatException e) {\n            return false;\n        }\n        \n        if (month < 1 || month > 12) {\n            return false;\n        }\n        \n        if (day < 1) {\n            return false;\n        }\n        \n        if (month == 2) {\n            if (isLeapYear(year)) {\n                return day <= 29;\n            } else {\n                return day <= 28;\n            }\n        }\n        \n        if (month == 4 || month == 6 || month == 9 || month == 11) {\n            return day <= 30;\n        }\n        \n        return day <= 31;\n    }\n    \n    private boolean isLeapYear(int year) {\n        if (year % 4 != 0) {\n            return false;\n        } else if (year % 100 != 0) {\n            return true;\n        } else {\n            return year % 400 == 0;\n        }"
+    ],
+    [
+        "        if (txt.contains(\" \")) {\n            return Arrays.asList(txt.split(\"\\\\s+\"));\n        } else if (txt.contains(\",\")) {\n            return Arrays.asList(txt.split(\",\"));\n        } else {\n            int count = 0;\n            for (char c : txt.toCharArray()) {\n                if (Character.isLowerCase(c) && ((c - 'a') % 2 == 1)) {\n                    count++;\n                }\n            }\n            return count;\n        }"
+    ],
+    [
+        "        if (lst == null || lst.size() <= 1) {\n            return true;\n        }\n        \n        Map<Integer, Integer> frequencyMap = new HashMap<>();\n        \n        for (int i = 0; i < lst.size(); i++) {\n            if (i > 0 && lst.get(i) < lst.get(i - 1)) {\n                return false;\n            }\n            frequencyMap.put(lst.get(i), frequencyMap.getOrDefault(lst.get(i), 0) + 1);\n            if (frequencyMap.get(lst.get(i)) > 2) {\n                return false;\n            }\n        }\n        \n        return true;"
+    ],
+    [
+        "        int start1 = interval1.get(0);\n        int end1 = interval1.get(1);\n        int start2 = interval2.get(0);\n        int end2 = interval2.get(1);\n\n        int intersectionStart = Math.max(start1, start2);\n        int intersectionEnd = Math.min(end1, end2);\n\n        if (intersectionStart > intersectionEnd) {\n            return \"NO\";\n        }\n\n        int intersectionLength = intersectionEnd - intersectionStart + 1;\n\n        if (isPrime(intersectionLength)) {\n            return \"YES\";\n        } else {\n            return \"NO\";\n        }\n    }\n\n    private boolean isPrime(int num) {\n        if (num <= 1) {\n            return false;\n        }\n        if (num <= 3) {\n            return true;\n        }\n        if (num % 2 == 0 || num % 3 == 0) {\n            return false;\n        }\n        for (int i = 5; i * i <= num; i += 6) {\n            if (num % i == 0 || num % (i + 2) == 0) {\n                return false;\n            }\n        }\n        return true;"
+    ],
+    [
+        "        if (arr.isEmpty()) {\n            return Optional.empty();\n        }\n        \n        int signProduct = 1;\n        int magnitudeSum = 0;\n        \n        for (int num : arr) {\n            if (num == 0) {\n                return Optional.of(0);\n            } else if (num < 0) {\n                signProduct *= -1;\n            }\n            magnitudeSum += Math.abs(num);\n        }\n        \n        return Optional.of(signProduct * magnitudeSum);"
+    ],
+    [
+        "```java\n        int n = grid.size();\n        List<Integer> result = new ArrayList<>();\n        PriorityQueue<Path> pq = new PriorityQueue<>(Comparator.comparingInt(path -> path.values.get(path.length - 1)));\n\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < n; j++) {\n                pq.offer(new Path(i, j, grid.get(i).get(j)));\n            }\n        }\n\n        int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};\n\n        while (!pq.isEmpty()) {\n            Path current = pq.poll();\n            if (current.length == k) {\n                return current.values;\n            }\n            for (int[] dir : directions) {\n                int newRow = current.row + dir[0];\n                int newCol = current.col + dir[1];\n                if (newRow >= 0 && newRow < n && newCol >= 0 && newCol < n) {\n                    List<Integer> newValues = new ArrayList<>(current.values);\n                    newValues.add(grid.get(newRow).get(newCol));\n                    pq.offer(new Path(newRow, newCol, newValues));\n                }\n            }\n        }\n        return result;\n    }\n\n    private static class Path {\n        int row, col;\n        List<Integer> values;\n        int length;\n\n        Path(int row, int col, int value) {\n            this.row = row;\n            this.col = col;\n            this.values = new ArrayList<>();\n            this.values.add(value);\n            this.length = 1;\n        }\n\n        Path(int row, int col, List<Integer> values) {\n            this.row = row;\n            this.col = col;\n            this.values = values;\n            this.length = values.size();\n        }"
+    ],
+    [
+        "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Everyone knows Fibonacci sequence, it was studied deeply by mathematicians in\n    the last couple centuries. However, what people don't know is Tribonacci sequence.\n    Tribonacci sequence is defined by the recurrence:\n    tri(1) = 3\n    tri(n) = 1 + n / 2, if n is even.\n    tri(n) =  tri(n - 1) + tri(n - 2) + tri(n + 1), if n is odd.\n    For example:\n    tri(2) = 1 + (2 / 2) = 2\n    tri(4) = 3\n    tri(3) = tri(2) + tri(1) + tri(4)\n           = 2 + 3 + 3 = 8\n    You are given a non-negative integer number n, you have to a return a list of the\n    first n + 1 numbers of the Tribonacci sequence.\n    Examples:\n    tri(3) = [1, 3, 2, 8]\n     */\n    public List<Integer> tri(int n) {\n        List<Integer> result = new ArrayList<>();\n        if (n < 0) return result;\n        \n        for (int i = 0; i <= n; i++) {\n            if (i == 0) result.add(1);\n            else if (i == 1) result.add(3);\n            else if (i % 2 == 0) result.add(1 + i / 2);\n            else {\n                int nextValue = 1 + (i + 1) / 2;\n                result.add(result.get(i - 1) + result.get(i - 2) + nextValue);\n            }\n        }\n        return result;"
+    ],
+    [
+        "        int product = 1;\n        boolean hasOdd = false;\n        while (n > 0) {\n            int digit = n % 10;\n            if (digit % 2 != 0) {\n                product *= digit;\n                hasOdd = true;\n            }\n            n /= 10;\n        }\n        return hasOdd ? product : 0;"
+    ],
+    [
+        "        int openBrackets = 0;\n        boolean hasNested = false;\n\n        for (char ch : string.toCharArray()) {\n            if (ch == '[') {\n                openBrackets++;\n            } else if (ch == ']') {\n                if (openBrackets > 1) {\n                    hasNested = true;\n                }\n                if (openBrackets > 0) {\n                    openBrackets--;\n                }\n            }\n        }\n\n        return hasNested;"
+    ],
+    [
+        "        int sum = 0;\n        for (Double num : lst) {\n            int ceilValue = (int) Math.ceil(num);\n            sum += ceilValue * ceilValue;\n        }\n        return sum;"
+    ],
+    [
+        "        if (txt == null || txt.isEmpty() || txt.endsWith(\" \")) {\n            return false;\n        }\n        char lastChar = txt.charAt(txt.length() - 1);\n        return Character.isLetter(lastChar) && !Character.isLetter(txt.charAt(txt.length() - 2));"
+    ],
+    [
+        "        for (int i = arr.size() - 1; i > 0; i--) {\n            if (arr.get(i) < arr.get(i - 1)) {\n                return i;\n            }\n        }\n        return -1;"
+    ],
+    [
+        "        Optional<Integer> largestNegative = lst.stream()\n                                               .filter(n -> n < 0)\n                                               .max(Integer::compareTo);\n        Optional<Integer> smallestPositive = lst.stream()\n                                                .filter(n -> n > 0)\n                                                .min(Integer::compareTo);\n        return Arrays.asList(largestNegative, smallestPositive);"
+    ],
+    [
+        "        double numA = parseToDouble(a);\n        double numB = parseToDouble(b);\n\n        if (numA > numB) {\n            return Optional.of(a);\n        } else if (numB > numA) {\n            return Optional.of(b);\n        } else {\n            return Optional.empty();\n        }\n    }\n\n    private double parseToDouble(Object value) {\n        if (value instanceof Number) {\n            return ((Number) value).doubleValue();\n        } else if (value instanceof String) {\n            String stringValue = (String) value;\n            stringValue = stringValue.replace(',', '.');\n            return Double.parseDouble(stringValue);\n        } else {\n            throw new IllegalArgumentException(\"Unsupported type\");\n        }"
+    ],
+    [
+        "        return n >= 8 && n % 2 == 0;"
+    ],
+    [
+        "        if (n <= 0) {\n            throw new IllegalArgumentException(\"Input must be greater than 0\");\n        }\n        long result = 1;\n        for (int i = 1; i <= n; i++) {\n            result *= factorial(i);\n        }\n        return result;\n    }\n\n    private long factorial(int num) {\n        long fact = 1;\n        for (int i = 2; i <= num; i++) {\n            fact *= i;\n        }\n        return fact;\n    }\n\n    public static void main(String[] args) {\n        Solution solution = new Solution();\n        System.out.println(solution.specialFactorial(4)); // 288"
+    ],
+    [
+        "        StringBuilder result = new StringBuilder();\n        int spaceCount = 0;\n\n        for (int i = 0; i < text.length(); i++) {\n            char currentChar = text.charAt(i);\n            if (currentChar == ' ') {\n                spaceCount++;\n            } else {\n                if (spaceCount > 2) {\n                    result.append('-');\n                } else {\n                    for (int j = 0; j < spaceCount; j++) {\n                        result.append('_');\n                    }\n                }\n                result.append(currentChar);\n                spaceCount = 0;\n            }\n        }\n\n        if (spaceCount > 2) {\n            result.append('-');\n        } else {\n            for (int j = 0; j < spaceCount; j++) {\n                result.append('_');\n            }\n        }\n\n        return result.toString();"
+    ],
+    [
+        "        int digitCount = 0;\n        int dotIndex = file_name.indexOf('.');\n        \n        if (dotIndex == -1 || dotIndex == 0 || dotIndex == file_name.length() - 1) {\n            return \"No\";\n        }\n        \n        String namePart = file_name.substring(0, dotIndex);\n        String extensionPart = file_name.substring(dotIndex + 1);\n        \n        if (!Character.isLetter(namePart.charAt(0))) {\n            return \"No\";\n        }\n        \n        for (char c : namePart.toCharArray()) {\n            if (Character.isDigit(c)) {\n                digitCount++;\n            }\n        }\n        \n        if (digitCount > 3) {\n            return \"No\";\n        }\n        \n        List<String> validExtensions = Arrays.asList(\"txt\", \"exe\", \"dll\");\n        if (!validExtensions.contains(extensionPart)) {\n            return \"No\";\n        }\n        \n        return \"Yes\";"
+    ],
+    [
+        "        int sum = 0;\n        for (int i = 0; i < lst.size(); i++) {\n            int value = lst.get(i);\n            if (i % 3 == 0) {\n                value = value * value;\n            } else if (i % 4 == 0) {\n                value = value * value * value;\n            }\n            sum += value;\n        }\n        return sum;"
+    ],
+    [
+        "        String[] words = sentence.split(\" \");\n        StringBuilder result = new StringBuilder();\n        \n        for (String word : words) {\n            if (isPrime(word.length())) {\n                if (result.length() > 0) {\n                    result.append(\" \");\n                }\n                result.append(word);\n            }\n        }\n        \n        return result.toString();\n    }\n    \n    private boolean isPrime(int num) {\n        if (num <= 1) return false;\n        if (num == 2) return true;\n        if (num % 2 == 0) return false;\n        for (int i = 3; i * i <= num; i += 2) {\n            if (num % i == 0) return false;\n        }\n        return true;"
+    ],
+    [
+        "        String[] xParts = x.split(\"/\");\n        String[] nParts = n.split(\"/\");\n\n        int xNumerator = Integer.parseInt(xParts[0]);\n        int xDenominator = Integer.parseInt(xParts[1]);\n        int nNumerator = Integer.parseInt(nParts[0]);\n        int nDenominator = Integer.parseInt(nParts[1]);\n\n        int resultNumerator = xNumerator * nNumerator;\n        int resultDenominator = xDenominator * nDenominator;\n\n        return resultNumerator % resultDenominator == 0;"
+    ],
+    [
+        "        return nums.stream()\n            .sorted(Comparator.comparingInt((Integer n) -> digitSum(n)).thenComparingInt(nums::indexOf))\n            .collect(Collectors.toList());\n    }\n\n    private int digitSum(int n) {\n        n = Math.abs(n);\n        int sum = 0;\n        while (n > 0) {\n            sum += n % 10;\n            n /= 10;\n        }\n        return sum;"
+    ],
+    [
+        "        int count = 0;\n        for (int num : nums) {\n            if (num > 10) {\n                String numStr = Integer.toString(num);\n                char firstDigit = numStr.charAt(0);\n                char lastDigit = numStr.charAt(numStr.length() - 1);\n                if (isOddDigit(firstDigit) && isOddDigit(lastDigit)) {\n                    count++;\n                }\n            }\n        }\n        return count;\n    }\n\n    private boolean isOddDigit(char digit) {\n        return digit == '1' || digit == '3' || digit == '5' || digit == '7' || digit == '9';"
+    ],
+    [
+        "        int[] a = new int[n];\n        for (int i = 0; i < n; i++) {\n            a[i] = (i + 1) * (i + 1) - (i + 1) + 1;\n        }\n\n        int[] count = new int[3];\n        for (int num : a) {\n            count[num % 3]++;\n        }\n\n        int result = 0;\n        // Case 1: All three numbers are of the same type (all 0s, all 1s, or all 2s)\n        for (int i = 0; i < 3; i++) {\n            if (count[i] >= 3) {\n                result += count[i] * (count[i] - 1) * (count[i] - 2) / 6;\n            }\n        }\n\n        // Case 2: Each number is of a different type (one 0, one 1, and one 2)\n        result += count[0] * count[1] * count[2];\n\n        return result;"
+    ],
+    [
+        "        List<String> planets = Arrays.asList(\n            \"Mercury\", \"Venus\", \"Earth\", \"Mars\", \n            \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"\n        );\n        \n        int index1 = planets.indexOf(planet1);\n        int index2 = planets.indexOf(planet2);\n        \n        if (index1 == -1 || index2 == -1) {\n            return Collections.emptyList();\n        }\n        \n        if (index1 > index2) {\n            int temp = index1;\n            index1 = index2;\n            index2 = temp;\n        }\n        \n        return planets.subList(index1 + 1, index2);"
+    ],
+    [
+        "        List<String> result = new ArrayList<>();\n        for (String s : lst) {\n            if (s.length() % 2 == 0) {\n                result.add(s);\n            }\n        }\n        Collections.sort(result, new Comparator<String>() {\n            @Override\n            public int compare(String s1, String s2) {\n                if (s1.length() != s2.length()) {\n                    return Integer.compare(s1.length(), s2.length());\n                } else {\n                    return s1.compareTo(s2);\n                }\n            }\n        });\n        return result;"
+    ],
+    [
+        "        if (isPrime(n)) {\n            return x;\n        } else {\n            return y;\n        }\n    }\n\n    private boolean isPrime(int num) {\n        if (num <= 1) {\n            return false;\n        }\n        for (int i = 2; i <= Math.sqrt(num); i++) {\n            if (num % i == 0) {\n                return false;\n            }\n        }\n        return true;"
+    ],
+    [
+        "        int sum = 0;\n        for (Object obj : lst) {\n            if (obj instanceof Integer) {\n                int num = (Integer) obj;\n                if (num > 0 && num % 2 != 0) {\n                    sum += num * num;\n                }\n            }\n        }\n        return sum;"
+    ],
+    [
+        "        List<Integer> result = new ArrayList<>();\n        for (int i = 0; i < game.size(); i++) {\n            result.add(Math.abs(game.get(i) - guess.get(i)));\n        }\n        return result;"
+    ],
+    [
+        "        String strongestExtension = \"\";\n        double maxStrength = Double.NEGATIVE_INFINITY;\n\n        for (String extension : extensions) {\n            int capCount = 0;\n            int smCount = 0;\n            for (char c : extension.toCharArray()) {\n                if (Character.isUpperCase(c)) capCount++;\n                else if (Character.isLowerCase(c)) smCount++;\n            }\n            double strength = capCount - smCount;\n            if (strength > maxStrength) {\n                maxStrength = strength;\n                strongestExtension = extension;\n            }\n        }\n\n        return class_name + \".\" + strongestExtension;"
+    ],
+    [
+        "        String concatenated = b + b;\n        return concatenated.contains(a);"
+    ],
+    [
+        "        int evenCount = 0;\n        int oddCount = 0;\n        num = Math.abs(num);\n        \n        while (num > 0) {\n            int digit = num % 10;\n            if (digit % 2 == 0) {\n                evenCount++;\n            } else {\n                oddCount++;\n            }\n            num /= 10;\n        }\n        \n        return Arrays.asList(evenCount, oddCount);"
+    ],
+    [
+        "        StringBuilder roman = new StringBuilder();\n        int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};\n        String[] symbols = {\"m\", \"cm\", \"d\", \"cd\", \"c\", \"xc\", \"l\", \"xl\", \"x\", \"ix\", \"v\", \"iv\", \"i\"};\n        \n        for (int i = 0; i < values.length; i++) {\n            while (number >= values[i]) {\n                number -= values[i];\n                roman.append(symbols[i]);\n            }\n        }\n        return roman.toString();"
+    ],
+    [
+        "        // Sort the sides to ensure the largest side is last\n        int[] sides = {a, b, c};\n        Arrays.sort(sides);\n        \n        // Check the Pythagorean theorem\n        return Math.pow(sides[0], 2) + Math.pow(sides[1], 2) == Math.pow(sides[2], 2);"
+    ],
+    [
+        "        String result = \"\";\n        int maxUniqueChars = 0;\n\n        for (String word : words) {\n            Set<Character> uniqueChars = new HashSet<>();\n            for (char c : word.toCharArray()) {\n                uniqueChars.add(c);\n            }\n\n            if (uniqueChars.size() > maxUniqueChars || \n                (uniqueChars.size() == maxUniqueChars && word.compareTo(result) < 0)) {\n                maxUniqueChars = uniqueChars.size();\n                result = word;\n            }\n        }\n\n        return result;"
+    ],
+    [
+        "        int totalEaten = number;\n        int carrotsLeft = remaining;\n\n        if (need <= remaining) {\n            totalEaten += need;\n            carrotsLeft -= need;\n        } else {\n            totalEaten += remaining;\n            carrotsLeft = 0;\n        }\n\n        return Arrays.asList(totalEaten, carrotsLeft);"
+    ],
+    [
+        "import java.util.*;\nimport java.lang.*;\n\nclass Solution {\n    /**\n    Given two lists operator, and operand. The first list has basic algebra operations, and\n    the second list is a list of integers. Use the two given lists to build the algebric\n    expression and return the evaluation of this expression.\n\n    The basic algebra operations:\n    Addition ( + )\n    Subtraction ( - )\n    Multiplication ( * )\n    Floor division ( / )\n    Exponentiation ( ** )\n\n    Example:\n    operator[\"+\", \"*\", \"-\"]\n    array = [2, 3, 4, 5]\n    result = 2 + 3 * 4 - 5\n    => result = 9\n\n    Note:\n        The length of operator list is equal to the length of operand list minus one.\n        Operand is a list of of non-negative integers.\n        Operator list has at least one operator, and operand list has at least two operands.\n     */\n    public int doAlgebra(List<String> operator, List<Integer> operand) {\n        Stack<Integer> stack = new Stack<>();\n        stack.push(operand.get(0));\n        \n        for (int i = 0; i < operator.size(); i++) {\n            String op = operator.get(i);\n            int nextOperand = operand.get(i + 1);\n            \n            switch (op) {\n                case \"+\":\n                    stack.push(nextOperand);\n                    break;\n                case \"-\":\n                    stack.push(-nextOperand);\n                    break;\n                case \"*\":\n                    stack.push(stack.pop() * nextOperand);\n                    break;\n                case \"/\":\n                    stack.push(stack.pop() / nextOperand);\n                    break;\n                case \"**\":\n                    stack.push((int) Math.pow(stack.pop(), nextOperand));\n                    break;\n                default:\n                    throw new IllegalArgumentException(\"Invalid operator: \" + op);\n            }\n        }\n        \n        int result = 0;\n        while (!stack.isEmpty()) {\n            result += stack.pop();\n        }\n        \n        return result;"
+    ],
+    [
+        "        boolean hasLetters = false;\n        StringBuilder result = new StringBuilder();\n\n        for (char c : s.toCharArray()) {\n            if (Character.isLetter(c)) {\n                hasLetters = true;\n                if (Character.isUpperCase(c)) {\n                    result.append(Character.toLowerCase(c));\n                } else {\n                    result.append(Character.toUpperCase(c));\n                }\n            } else {\n                result.append(c);\n            }\n        }\n\n        return hasLetters ? result.toString() : result.reverse().toString();"
+    ],
+    [
+        "if (text.isEmpty()) {\n    return Optional.empty();\n}\nMessageDigest md = MessageDigest.getInstance(\"MD5\");\nbyte[] hashBytes = md.digest(text.getBytes());\nBigInteger number = new BigInteger(1, hashBytes);\nString hashtext = number.toString(16);\n// Add leading zeros to make it 32 chars long\nwhile (hashtext.length() < 32) {\n    hashtext = \"0\" + hashtext;\n}\nreturn Optional.of(hashtext);\n}"
+    ],
+    [
+        "        List<Integer> result = new ArrayList<>();\n        int start = Math.min(a, b);\n        int end = Math.max(a, b);\n        \n        for (int i = start; i <= end; i++) {\n            if (i % 2 == 0) {\n                result.add(i);\n            }\n        }\n        \n        return result;"
+    ]
+]
