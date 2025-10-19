@@ -17,11 +17,11 @@ logging.basicConfig(
 # %%
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model_name = "Qwen/CodeQwen1.5-7B-Chat"
+model_name = "Qwen/Qwen2.5-Coder-32B"
 
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
-    torch_dtype="auto",
+    dtype="auto",
     device_map="auto"
 )
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -56,9 +56,7 @@ def generate_for_prompt(model, tokenizer, user_prompt, **kwargs):
         tokenize=False,
         add_generation_prompt=True
     )
-    # return_token_type_ids=False is required for CodeQwen1.5-7B-Chat
-    model_inputs = tokenizer(
-        [text], return_tensors="pt", return_token_type_ids=False).to(model.device)
+    model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
     
     # Measure execution time
     start_time = time.time()
@@ -163,14 +161,48 @@ def generate_for_dataset(model, tokenizer, problems, **kwargs):
     do_sample = kwargs.get("do_sample", False)
     output_path = f'mnt{max_new_tokens}_p{top_p}_t{temperature}_k{top_k}_seq{num_return_sequences}_sampling{do_sample}_completions.json'
     
-    print(f'completions:\n{completions}')
-    
     with open(output_path, 'w') as f:
         json.dump(completions, f, indent=4)
-        logging.info(f'Saved completions at {output_path}')
 
     return completions
 
+# %%
+# test_prompt = """
+# import java.util.*;
+# import java.lang.*;
+
+# class Solution {
+#     /**
+#         Given a positive floating point number, it can be decomposed into
+#         and integer part (largest integer smaller than given number) and decimals
+#         (leftover part always smaller than 1).
+
+#         Return the decimal part of the number.
+#         >>> truncateNumber(3.5)
+#         0.5
+#      */
+#     public double truncateNumber(double number) {        
+# """;
+
+test_prompt = """
+import java.util.*;
+import java.lang.*;
+
+class Solution {
+        /**
+        Given a positive floating point number, it can be decomposed into
+        and integer part (largest integer smaller than given number) and decimals
+        (leftover part always smaller than 1).
+    
+        Return the decimal part of the number.
+        >>> truncateNumber(3.5)
+        0.5
+         */
+        public double truncateNumber(double number) {
+"""
+
+# %%
+logging.info(generate_for_prompt(model, tokenizer, test_prompt))
 
 # %%
 import os
