@@ -63,9 +63,9 @@ def generate_for_prompt(model, tokenizer, user_prompt, **kwargs):
     
     generated_ids = model.generate(
         **model_inputs,
-        # max_new_tokens=max_new_tokens,
+        max_new_tokens=max_new_tokens,
         do_sample=do_sample,
-        num_return_sequences=num_return_sequences,
+        # num_return_sequences=num_return_sequences,
         top_p=top_p,
         temperature=temperature,
         top_k=top_k
