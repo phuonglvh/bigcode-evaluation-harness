@@ -95,6 +95,7 @@ class Evaluator:
         print(f'generate_text collecting references')
         references = []
         
+        dataset_doc = None
         for gen_ith, problem_gens in enumerate(generations):
             first_gen = problem_gens[0]
             try:
