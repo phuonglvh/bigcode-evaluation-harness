@@ -1,0 +1,63 @@
+---
+config:
+    layout: elk
+    theme: default
+---
+
+flowchart TD
+    subgraph subGraph0["Core Components"]
+        A["Evaluator"]
+        B["Task Interface"]
+        C["Model & Tokenizer"]
+        D["Arguments"]
+    end
+    subgraph subGraph1["Task Suite"]
+        E["Task Implementations"]
+        F["HumanEval"]
+        G["HumanEvalX"]
+        H["MBPP"]
+        I["Code2Code"]
+        J["APPS"]
+        K["Concode"]
+        L["Conala"]
+    end
+    subgraph subGraph2["Processing Pipeline"]
+        O["Generation Process"]
+        P["Parallel Generations"]
+        Q["Intermediate Results"]
+        R["Evaluation Process"]
+        S["Code Execution"]
+        T["Metrics Calculation"]
+    end
+    subgraph subGraph3["Output Layer"]
+        U["Output"]
+        V["Generations JSON"]
+        W["References JSON"]
+        X["Results JSON"]
+    end
+    subgraph subGraph4["HumanEvalX Subclasses"]
+        G1["GeneralHumanEvalX"]
+        G2["HumanEvalX"]
+        G3["HumanEvalX Extended"]
+        G4["HumanEvalX Clean"]
+    end
+
+    A --> B & C & D & O & R & U
+    B --> E
+    E --> F & G & H & I & J & K & L
+    I --> M["Python to Java"] & N["Java to Python"]
+    O --> P & Q
+    R --> S & T
+    U --> V & W & X
+    G --> G1
+    G1 --> G2 & G3 & G4
+    
+    G2 --> H1["Base Implementation"]
+    G3 --> H2["Extended Features"]
+    G4 --> H3["Clean Version"]
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style E fill:#bfb,stroke:#333,stroke-width:2px
+    style G1 fill:#ff9,stroke:#333,stroke-width:2px
+    style G fill:#ff9,stroke:#333,stroke-width:2px
