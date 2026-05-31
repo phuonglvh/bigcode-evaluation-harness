@@ -35,7 +35,7 @@ def generate_for_prompt(model, tokenizer, user_prompt, **kwargs):
             {
                 "role": "system",
                 "content": (
-                    "You are a helpful assistant. Respond naturally to the user's request. If the response contains code, only output code without additional explanations."
+                    "You are a helpful assistant. Respond naturally to the user's request. If the response contains code, only output code without explanations."
                 )
             },
             {"role": "user", "content": user_prompt}
